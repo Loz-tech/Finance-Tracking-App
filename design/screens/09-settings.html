@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ISpend — Settings</title>
+<style>
+:root {
+  --primary: oklch(47% 0.125 192); --on-primary: oklch(99% 0.002 192);
+  --primary-container: oklch(92% 0.045 192); --on-primary-container: oklch(12% 0.035 192);
+  --secondary-container: oklch(92% 0.02 192); --on-secondary-container: oklch(12% 0.025 192);
+  --surface: oklch(98.5% 0.008 192); --on-surface: oklch(11% 0.02 192);
+  --surface-variant: oklch(93% 0.012 192); --on-surface-variant: oklch(38% 0.025 192);
+  --surface-container-lowest: oklch(99.5% 0.003 192);
+  --surface-container-low: oklch(97.5% 0.005 192);
+  --surface-container-high: oklch(92.5% 0.015 192);
+  --outline-variant: oklch(85% 0.015 192); --outline: oklch(72% 0.025 192);
+  --error: oklch(42% 0.20 25); --error-container: oklch(92% 0.08 25);
+  --radius-xs: 8px; --radius-sm: 12px; --radius-md: 16px; --radius-lg: 24px; --radius-full: 999px;
+  --font-sans: 'Google Sans', 'Roboto', -apple-system, 'Segoe UI', sans-serif;
+  --elevation-1: 0 1px 3px oklch(0% 0 0 / 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+body { font-family: var(--font-sans); font-size: 14px; color: var(--on-surface); background: var(--surface); display: flex; flex-direction: column; }
+.status-bar { height: 28px; background: var(--surface-container-lowest); display: flex; align-items: center; padding: 0 16px; font-size: 12px; font-weight: 600; }
+
+.app-bar { display: flex; align-items: center; padding: 4px 16px; background: var(--surface-container-lowest); }
+.app-bar h2 { font-size: 20px; font-weight: 500; }
+
+.scroll { flex: 1; overflow-y: auto; padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 12px; -webkit-overflow-scrolling: touch; }
+
+/* Section */
+.section { display: flex; flex-direction: column; }
+.section-label {
+  font-size: 12px; font-weight: 600; color: var(--primary); text-transform: uppercase;
+  letter-spacing: 0.04em; padding: 8px 4px 4px;
+}
+
+/* Setting row */
+.setting {
+  display: flex; align-items: center; padding: 14px 8px;
+  background: var(--surface-container-low); border-bottom: 1px solid var(--outline-variant);
+  gap: 12px;
+}
+.setting:first-of-type { border-radius: var(--radius-md) var(--radius-md) 0 0; }
+.setting:last-of-type { border-radius: 0 0 var(--radius-md) var(--radius-md); border-bottom: none; }
+.setting:only-of-type { border-radius: var(--radius-md); border-bottom: none; }
+.setting-icon { font-size: 20px; width: 28px; text-align: center; flex-shrink: 0; }
+.setting-info { flex: 1; min-width: 0; }
+.setting-info .title { font-size: 14px; font-weight: 500; }
+.setting-info .sub { font-size: 12px; color: var(--on-surface-variant); margin-top: 2px; }
+.setting .right { color: var(--on-surface-variant); font-size: 13px; }
+
+/* Theme chips */
+.theme-row { display: flex; gap: 8px; }
+.theme-chip {
+  flex: 1; padding: 12px 8px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--outline-variant); text-align: center;
+  cursor: pointer; background: transparent; font-family: var(--font-sans);
+  font-size: 12px; font-weight: 500; color: var(--on-surface-variant);
+  transition: all .15s; display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+.theme-chip .dot {
+  width: 24px; height: 24px; border-radius: var(--radius-full);
+}
+.theme-chip.active { border-color: var(--primary); color: var(--primary); }
+
+/* Accent chips */
+.accent-row { display: flex; gap: 8px; }
+.accent-chip {
+  width: 40px; height: 40px; border-radius: var(--radius-full);
+  cursor: pointer; border: 3px solid transparent; transition: border .15s;
+}
+.accent-chip.active { border-color: var(--on-surface); }
+
+.bottom-nav {
+  display: flex; background: var(--surface-container-lowest);
+  border-top: 1px solid var(--outline-variant); padding: 6px 8px 10px;
+  justify-content: space-around;
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 4px 12px; border-radius: var(--radius-md); cursor: pointer;
+  text-decoration: none; color: var(--on-surface-variant); font-size: 11px; font-weight: 500; min-width: 56px;
+}
+.nav-item.active { color: var(--primary); }
+.nav-item svg { width: 24px; height: 24px; fill: currentColor; }
+</style>
+</head>
+<body>
+
+<div class="status-bar"><span>9:41</span></div>
+
+<div class="app-bar"><h2>Settings</h2></div>
+
+<div class="scroll">
+
+  <!-- Theme -->
+  <div class="section">
+    <div class="section-label">Appearance</div>
+    <div style="background:var(--surface-container-low);border-radius:var(--radius-md);padding:14px 16px;box-shadow:var(--elevation-1);">
+      <div style="font-size:14px;font-weight:500;margin-bottom:10px;">Theme</div>
+      <div class="theme-row">
+        <div class="theme-chip active" onclick="document.querySelectorAll('.theme-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+          <div class="dot" style="background:oklch(98% 0.005 192);border:1px solid var(--outline-variant)"></div>
+          Light
+        </div>
+        <div class="theme-chip" onclick="document.querySelectorAll('.theme-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+          <div class="dot" style="background:oklch(20% 0.02 192)"></div>
+          Dark
+        </div>
+        <div class="theme-chip" onclick="document.querySelectorAll('.theme-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')">
+          <div class="dot" style="background:oklch(0% 0 0)"></div>
+          OLED
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accent Color -->
+  <div class="section">
+    <div class="section-label">Accent Color</div>
+    <div style="background:var(--surface-container-low);border-radius:var(--radius-md);padding:14px 16px;box-shadow:var(--elevation-1);">
+      <div style="font-size:14px;font-weight:500;margin-bottom:10px;">Accent</div>
+      <div class="accent-row">
+        <div class="accent-chip active" style="background:oklch(47% 0.125 192);" onclick="document.querySelectorAll('.accent-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')"></div>
+        <div class="accent-chip" style="background:oklch(58% 0.18 255);" onclick="document.querySelectorAll('.accent-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')"></div>
+        <div class="accent-chip" style="background:oklch(58% 0.16 35);" onclick="document.querySelectorAll('.accent-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')"></div>
+        <div class="accent-chip" style="background:oklch(64% 0.13 28);" onclick="document.querySelectorAll('.accent-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')"></div>
+        <div class="accent-chip" style="background:oklch(58% 0.16 145);" onclick="document.querySelectorAll('.accent-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')"></div>
+        <div class="accent-chip" style="background:oklch(48% 0.09 285);" onclick="document.querySelectorAll('.accent-chip').forEach(c=>c.classList.remove('active'));this.classList.add('active')"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preferences -->
+  <div class="section">
+    <div class="section-label">Preferences</div>
+    <div style="background:var(--surface-container-low);border-radius:var(--radius-md);box-shadow:var(--elevation-1);">
+      <div class="setting">
+        <span class="setting-icon">💵</span>
+        <div class="setting-info"><div class="title">Currency</div></div>
+        <span class="right">USD ($) ›</span>
+      </div>
+      <div class="setting">
+        <span class="setting-icon">🔤</span>
+        <div class="setting-info"><div class="title">Language</div></div>
+        <span class="right">English ›</span>
+      </div>
+      <div class="setting">
+        <span class="setting-icon">📂</span>
+        <div class="setting-info"><div class="title">Categories</div></div>
+        <span class="right">›</span>
+      </div>
+      <div class="setting">
+        <span class="setting-icon">📋</span>
+        <div class="setting-info"><div class="title">History</div></div>
+        <span class="right">›</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data -->
+  <div class="section">
+    <div class="section-label">Data</div>
+    <div style="background:var(--surface-container-low);border-radius:var(--radius-md);box-shadow:var(--elevation-1);">
+      <div class="setting">
+        <span class="setting-icon">📤</span>
+        <div class="setting-info"><div class="title">Export to CSV</div><div class="sub">Download all transactions</div></div>
+        <span class="right">›</span>
+      </div>
+      <div class="setting">
+        <span class="setting-icon">📥</span>
+        <div class="setting-info"><div class="title">Import from CSV</div><div class="sub">Merge external data</div></div>
+        <span class="right">›</span>
+      </div>
+      <div class="setting" style="color:var(--error)">
+        <span class="setting-icon">🗑️</span>
+        <div class="setting-info"><div class="title" style="color:var(--error)">Delete all data</div><div class="sub">This cannot be undone</div></div>
+        <span class="right" style="color:var(--error)">›</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="section">
+    <div class="section-label">About</div>
+    <div style="background:var(--surface-container-low);border-radius:var(--radius-md);box-shadow:var(--elevation-1);">
+      <div class="setting">
+        <span class="setting-icon">ℹ️</span>
+        <div class="setting-info"><div class="title">Version</div></div>
+        <span class="right">1.0.0</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="bottom-nav">
+  <a class="nav-item" href="../01-home.html"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg> Home</a>
+  <a class="nav-item" href="05-dashboard.html"><svg viewBox="0 0 24 24"><path d="M9 21H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2zm10 0h-4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2z"/></svg> Analytics</a>
+  <a class="nav-item" href="04-search.html"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> Search</a>
+  <a class="nav-item active" href="09-settings.html"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81a.484.484 0 00-.41-.3h-3.98c-.2 0-.38.12-.45.3l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 00-.59.22L2.69 8.87a.49.49 0 00.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.38.31.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.17.24.3.45.3h3.98c.2 0 .38-.12.41-.3l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96a.49.49 0 00.59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg> Settings</a>
+</nav>
+
+</body>
+</html>

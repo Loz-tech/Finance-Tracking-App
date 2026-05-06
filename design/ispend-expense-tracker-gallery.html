@@ -1,0 +1,210 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ISpend — Expense Tracker (Android Prototype)</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: oklch(96% 0.004 100);
+  --surface: oklch(100% 0 0);
+  --fg: oklch(15% 0.02 100);
+  --muted: oklch(45% 0.02 100);
+  --border: oklch(88% 0.01 100);
+  --accent: oklch(58% 0.22 255);
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans); background: var(--bg); color: var(--fg);
+  min-height: 100vh; padding: 24px;
+}
+
+.header {
+  text-align: center; max-width: 800px; margin: 0 auto 40px;
+}
+.header h1 {
+  font-size: clamp(28px, 5vw, 48px); font-weight: 700;
+  letter-spacing: -0.025em; margin-bottom: 8px;
+}
+.header .tagline {
+  font-size: 16px; color: var(--muted); font-weight: 400; line-height: 1.5;
+}
+.header .meta {
+  margin-top: 12px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+}
+.header .meta .pill {
+  padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 500;
+  background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+}
+
+.gallery {
+  display: flex; flex-wrap: wrap; gap: 32px 24px; justify-content: center;
+  max-width: 1400px; margin: 0 auto;
+}
+
+.device {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  transition: transform .2s ease;
+}
+.device:hover { transform: translateY(-4px); }
+.device-label {
+  font-size: 13px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+.frame {
+  width: 300px; height: 650px; position: relative;
+  background: oklch(15% 0.02 100); border-radius: 28px;
+  padding: 10px; box-shadow:
+    0 0 0 2px oklch(25% 0.02 100),
+    0 0 0 4px oklch(15% 0.02 100),
+    0 8px 32px oklch(0% 0 0 / 0.25);
+}
+.frame::before {
+  content: ''; position: absolute; top: 18px; left: 50%;
+  transform: translateX(-50%); z-index: 10;
+  width: 8px; height: 8px;
+  border-radius: 50%; background: oklch(10% 0.02 100);
+  box-shadow: inset 0 0 0 1px oklch(30% 0.02 100);
+}
+
+.screen {
+  width: 100%; height: calc(100% - 28px);
+  margin-top: 28px; border-radius: 20px; overflow: hidden;
+  background: var(--surface);
+}
+.screen iframe {
+  width: 100%; height: 100%; border: none; display: block;
+}
+
+.frame::after {
+  content: ''; position: absolute; bottom: 14px; left: 50%;
+  transform: translateX(-50%); z-index: 10;
+  width: 80px; height: 4px; border-radius: 2px;
+  background: oklch(65% 0.01 100);
+}
+
+.footer {
+  text-align: center; margin-top: 48px; padding: 24px;
+  color: var(--muted); font-size: 13px;
+}
+.footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 720px) {
+  body { padding: 12px; }
+  .frame { width: 260px; height: 564px; }
+  .gallery { gap: 20px 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>&#x1F4B8; ISpend</h1>
+  <p class="tagline">
+    Free, offline Android expense tracker. Material Design 3.<br>
+    Emoji-tagged categories. Local-only. Open app &rarr; log in under 5 seconds.
+  </p>
+  <div class="meta">
+    <span class="pill">&#x1F4F1; Android</span>
+    <span class="pill">&#x1F3A8; Material You</span>
+    <span class="pill">&#x1F512; Offline-first</span>
+    <span class="pill">&#x1F317; Light &middot; Dark &middot; OLED</span>
+  </div>
+</div>
+
+<div class="gallery">
+
+  <div class="device">
+    <div class="device-label">01 &middot; Home</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="01-home.html" title="Home screen — budget progress card and recent activity" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">02 &middot; Add Expense</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/02-add-transaction.html" title="Bottom sheet — add transaction with emoji categories" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">03 &middot; History</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/03-history.html" title="Transaction history — date-grouped list" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">04 &middot; Search</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/04-search.html" title="Search transactions with filters" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">05 &middot; Analytics</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/05-dashboard.html" title="Analytics — donut and bar charts" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">06 &middot; Categories</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/06-categories.html" title="Category management with progress bars" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">07 &middot; Budget</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/07-budget.html" title="Monthly budget sliders per category" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">08 &middot; Calendar</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/08-calendar.html" title="Spending calendar heat map — intensity by day" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="device-label">09 &middot; Settings</div>
+    <div class="frame">
+      <div class="screen">
+        <iframe src="screens/09-settings.html" title="Settings — theme, accent, currency, export" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>ISpend &mdash; your money, your data, your device. No accounts. No cloud.</p>
+</div>
+
+</body>
+</html>

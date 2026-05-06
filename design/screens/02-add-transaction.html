@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ISpend — Add Transaction</title>
+<style>
+:root {
+  --primary: oklch(47% 0.125 192); --on-primary: oklch(99% 0.002 192);
+  --primary-container: oklch(92% 0.045 192); --on-primary-container: oklch(12% 0.035 192);
+  --secondary-container: oklch(92% 0.02 192); --on-secondary-container: oklch(12% 0.025 192);
+  --surface: oklch(98.5% 0.008 192); --on-surface: oklch(11% 0.02 192);
+  --surface-variant: oklch(93% 0.012 192); --on-surface-variant: oklch(38% 0.025 192);
+  --surface-container-lowest: oklch(99.5% 0.003 192);
+  --surface-container-low: oklch(97.5% 0.005 192);
+  --surface-container-high: oklch(92.5% 0.015 192);
+  --outline-variant: oklch(85% 0.015 192); --outline: oklch(72% 0.025 192);
+  --error: oklch(42% 0.20 25); --error-container: oklch(92% 0.08 25);
+  --radius-xs: 8px; --radius-sm: 12px; --radius-md: 16px; --radius-lg: 24px; --radius-xl: 28px; --radius-full: 999px;
+  --font-sans: 'Google Sans', 'Roboto', -apple-system, 'Segoe UI', sans-serif;
+  --elevation-1: 0 1px 3px oklch(0% 0 0 / 0.08); --elevation-3: 0 6px 16px oklch(0% 0 0 / 0.14);
+  --scrim: oklch(0% 0 0 / 0.32);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: var(--font-sans); font-size: 14px;
+  color: var(--on-surface); background: var(--scrim);
+  display: flex; align-items: flex-end;
+}
+
+/* Bottom sheet */
+.sheet {
+  width: 100%; max-height: 92vh; overflow-y: auto;
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: 8px 16px 24px;
+  display: flex; flex-direction: column; gap: 16px;
+  box-shadow: var(--elevation-3); animation: slideUp .3s ease;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.sheet-handle { width: 32px; height: 4px; background: var(--outline-variant); border-radius: 2px; margin: 0 auto; }
+
+/* Header */
+.sheet-header { display: flex; align-items: center; justify-content: space-between; }
+.sheet-header h2 { font-size: 20px; font-weight: 500; }
+.sheet-header .close {
+  width: 36px; height: 36px; border-radius: var(--radius-full); border: none;
+  background: transparent; cursor: pointer; display: flex; align-items: center;
+  justify-content: center; color: var(--on-surface-variant); font-size: 22px;
+}
+
+/* Category chips grid */
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cat-option {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 4px; border-radius: var(--radius-sm); border: 1.5px solid var(--outline-variant);
+  background: transparent; cursor: pointer; font-family: var(--font-sans);
+  font-size: 11px; color: var(--on-surface-variant); transition: all .15s;
+}
+.cat-option .emoji { font-size: 24px; }
+.cat-option.selected {
+  border-color: var(--primary); background: var(--primary-container);
+  color: var(--on-primary-container);
+}
+.cat-option:active { transform: scale(0.96); }
+
+/* Amount input */
+.amount-row { display: flex; align-items: center; gap: 4px; padding-top: 4px; }
+.amount-row .currency {
+  font-size: 32px; font-weight: 400; color: var(--on-surface-variant);
+}
+.amount-row input {
+  flex: 1; border: none; background: transparent; font-family: var(--font-sans);
+  font-size: 36px; font-weight: 500; color: var(--on-surface); outline: none;
+  caret-color: var(--primary);
+}
+.amount-row input::placeholder { color: var(--on-surface-variant); opacity: 0.5; }
+
+/* Note field */
+.note-input {
+  width: 100%; padding: 12px 16px; border-radius: var(--radius-sm);
+  border: 1px solid var(--outline-variant); font-family: var(--font-sans);
+  font-size: 14px; color: var(--on-surface); background: transparent;
+  outline: none; transition: border .15s;
+}
+.note-input:focus { border-color: var(--primary); }
+.note-input::placeholder { color: var(--on-surface-variant); opacity: 0.6; }
+
+/* Date row */
+.date-row { display: flex; align-items: center; gap: 8px; }
+.date-row span { font-size: 14px; color: var(--on-surface-variant); }
+.date-row .date-val { color: var(--on-surface); font-weight: 500; }
+
+/* Save button */
+.btn-primary {
+  width: 100%; padding: 16px; border-radius: var(--radius-full);
+  background: var(--primary); color: var(--on-primary); border: none;
+  font-family: var(--font-sans); font-size: 16px; font-weight: 500;
+  cursor: pointer; transition: opacity .2s;
+}
+.btn-primary:active { opacity: 0.8; }
+
+/* Quick amounts */
+.quick-row { display: flex; gap: 8px; }
+.quick-chip {
+  flex: 1; padding: 8px; border-radius: var(--radius-xs);
+  border: 1px solid var(--outline-variant); background: transparent;
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500;
+  color: var(--on-surface-variant); cursor: pointer; text-align: center;
+  transition: all .15s;
+}
+.quick-chip:active { background: var(--secondary-container); color: var(--on-secondary-container); border-color: transparent; }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-header">
+    <h2>Add Expense</h2>
+    <button class="close" onclick="location.href='../01-home.html'">&times;</button>
+  </div>
+
+  <!-- Category Picker -->
+  <div>
+    <div style="font-size:13px;font-weight:500;color:var(--on-surface-variant);margin-bottom:8px;">Category</div>
+    <div class="cat-grid" id="catGrid">
+      <button class="cat-option" data-cat="food"><span class="emoji">🍔</span>Food</button>
+      <button class="cat-option" data-cat="groceries"><span class="emoji">🛒</span>Groceries</button>
+      <button class="cat-option" data-cat="transport"><span class="emoji">🚗</span>Transport</button>
+      <button class="cat-option selected" data-cat="shopping"><span class="emoji">🛍️</span>Shopping</button>
+      <button class="cat-option" data-cat="entertainment"><span class="emoji">🎬</span>Entertain</button>
+      <button class="cat-option" data-cat="bills"><span class="emoji">💡</span>Bills</button>
+      <button class="cat-option" data-cat="health"><span class="emoji">⚕️</span>Health</button>
+      <button class="cat-option" data-cat="other"><span class="emoji">📦</span>Other</button>
+    </div>
+  </div>
+
+  <!-- Amount -->
+  <div>
+    <div style="font-size:13px;font-weight:500;color:var(--on-surface-variant);margin-bottom:4px;">Amount</div>
+    <div class="amount-row">
+      <span class="currency">$</span>
+      <input type="number" id="amount" placeholder="0.00" step="0.01" min="0" inputmode="decimal" autofocus>
+    </div>
+    <div class="quick-row" style="margin-top:8px;">
+      <button class="quick-chip" onclick="document.getElementById('amount').value='5'">$5</button>
+      <button class="quick-chip" onclick="document.getElementById('amount').value='10'">$10</button>
+      <button class="quick-chip" onclick="document.getElementById('amount').value='25'">$25</button>
+      <button class="quick-chip" onclick="document.getElementById('amount').value='50'">$50</button>
+    </div>
+  </div>
+
+  <!-- Note -->
+  <input type="text" class="note-input" placeholder="Add a note (optional)">
+
+  <!-- Date -->
+  <div class="date-row">
+    <span>📅</span>
+    <span class="date-val">Today · May 5, 2026</span>
+  </div>
+
+  <!-- Save -->
+  <button class="btn-primary" onclick="alert('Expense saved!');location.href='../01-home.html'">Save Expense</button>
+</div>
+
+<script>
+document.querySelectorAll('.cat-option').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-option').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+</script>
+
+</body>
+</html>
