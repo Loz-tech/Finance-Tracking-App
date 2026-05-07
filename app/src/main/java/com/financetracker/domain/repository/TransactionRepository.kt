@@ -1,0 +1,20 @@
+package com.financetracker.domain.repository
+
+import com.financetracker.domain.model.Transaction
+import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
+import java.util.UUID
+
+interface TransactionRepository {
+    fun getAllTransactions(): Flow<List<Transaction>>
+    fun getTransactionsByDateRange(start: LocalDate, end: LocalDate): Flow<List<Transaction>>
+    fun getTransactionsByCategory(categoryId: UUID): Flow<List<Transaction>>
+    fun searchTransactions(query: String): Flow<List<Transaction>>
+    fun getRecentTransactions(limit: Int = 5): Flow<List<Transaction>>
+    fun getTransactionsByYearMonth(yearMonth: String): Flow<List<Transaction>>
+    suspend fun getTransactionById(id: UUID): Transaction?
+    suspend fun getDailyTotals(start: LocalDate, end: LocalDate): Map<LocalDate, Double>
+    suspend fun saveTransaction(transaction: Transaction)
+    suspend fun deleteTransaction(transaction: Transaction)
+    suspend fun deleteAllTransactions()
+}
