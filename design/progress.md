@@ -1,0 +1,15 @@
+- [ ] 1. Design Material 3 token system based on Material You dynamic color (teal seed)
+- [ ] 2. Build shared CSS framework with Material 3 components (FAB, bottom sheets, cards, chips, nav bar)
+- [ ] 3. Build 01-home.html — budget progress cards + recent activity + FAB
+- [ ] 4. Build 02-add-transaction.html — bottom sheet with emoji categories + keypad
+- [ ] 5. Build 03-history.html — transaction list with date headers + swipe hint
+- [ ] 6. Build 04-search.html — search bar + filters + results
+- [ ] 7. Build 05-dashboard.html — donut chart + bar chart (SVG/inline)
+- [ ] 8. Build 06-categories.html — emoji-tagged category grid with edit
+- [ ] 9. Build 07-budget.html — monthly budget sliders per category
+- [ ] 10. Build 08-calendar.html — calendar heat map with spending intensity
+- [ ] 11. Build 09-settings.html — theme toggle, accent picker, export
+- [ ] 12. Build index.html — gallery with Android device frames, all screens in iframes
+- [ ] 13. Self-check: all screens cohesive, Material 3 consistent
+- [ ] 14. 5-dim critique + fix regressions
+- [ ] 15. Emit artifact
