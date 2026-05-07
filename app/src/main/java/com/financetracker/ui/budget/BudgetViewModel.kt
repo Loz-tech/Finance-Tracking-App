@@ -1,0 +1,87 @@
+package com.financetracker.ui.budget
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.financetracker.domain.model.Budget
+import com.financetracker.domain.model.Category
+import com.financetracker.domain.repository.BudgetRepository
+import com.financetracker.domain.repository.CategoryRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import java.math.BigDecimal
+import java.time.YearMonth
+import javax.inject.Inject
+
+data class CategoryBudgetSliders(
+    val category: Category,
+    val limit: BigDecimal,
+    val spent: BigDecimal
+)
+
+data class BudgetUiState(
+    val totalBudget: BigDecimal = BigDecimal.ZERO,
+    val categorySliders: List<CategoryBudgetSliders> = emptyList(),
+    val isLoading: Boolean = true
+)
+
+@HiltViewModel
+class BudgetViewModel @Inject constructor(
+    private val budgetRepository: BudgetRepository,
+    private val categoryRepository: CategoryRepository
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow(BudgetUiState())
+    val uiState: StateFlow<BudgetUiState> = _uiState
+
+    init {
+        loadBudget()
+    }
+
+    private fun loadBudget() {
+        viewModelScope.launch {
+            val yearMonth = YearMonth.now().toString()
+            val totalBudget = budgetRepository.getTotalBudget(yearMonth)?.limitAmount ?: BigDecimal.ZERO
+            val categories = categoryRepository.getAllCategories().first()
+            val existingBudgets = budgetRepository.getBudgetsByYearMonth(yearMonth).first()
+            val prevBudgets = budgetRepository.getBudgetsByYearMonth(YearMonth.now().minusMonths(1).toString()).first()
+
+            val sliders = categories.map { cat ->
+                val existing = existingBudgets.find { it.categoryId == cat.id }
+                val prev = prevBudgets.find { it.categoryId == cat.id }
+                val limit = existing?.limitAmount ?: prev?.limitAmount ?: BigDecimal.ZERO
+                CategoryBudgetSliders(cat, limit, BigDecimal.ZERO)
+            }
+
+            _uiState.value = BudgetUiState(totalBudget, sliders, false)
+        }
+    }
+
+    fun setTotalBudget(amount: BigDecimal) {
+        _uiState.value = _uiState.value.copy(totalBudget = amount)
+        viewModelScope.launch {
+            val yearMonth = YearMonth.now().toString()
+            val budget = Budget(categoryId = null, yearMonth = yearMonth, limitAmount = amount)
+            budgetRepository.saveBudget(budget)
+        }
+    }
+
+    fun setCategoryBudget(category: Category, amount: BigDecimal) {
+        _uiState.value = _uiState.value.copy(
+            categorySliders = _uiState.value.categorySliders.map {
+                if (it.category.id == category.id) it.copy(limit = amount) else it
+            }
+        )
+        viewModelScope.launch {
+            val yearMonth = YearMonth.now().toString()
+            val budget = Budget(categoryId = category.id, yearMonth = yearMonth, limitAmount = amount)
+            budgetRepository.saveBudget(budget)
+        }
+    }
+
+    fun applyPreset(category: Category, preset: BigDecimal) {
+        setCategoryBudget(category, preset)
+    }
+}
