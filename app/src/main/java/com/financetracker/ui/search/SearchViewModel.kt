@@ -8,11 +8,16 @@ import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.UUID
 import javax.inject.Inject
@@ -25,7 +30,7 @@ data class SearchUiState(
     val isLoading: Boolean = false
 )
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class, kotlinx.coroutines.FlowPreview::class)
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val transactionRepository: TransactionRepository,
@@ -40,42 +45,37 @@ class SearchViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             categoryRepository.getAllCategories().collect { categories ->
-                _uiState.value = _uiState.value.copy(allCategories = categories)
+                _uiState.update { it.copy(allCategories = categories) }
             }
         }
 
-        viewModelScope.launch {
-            _query.combine(_selectedCategoryIds) { query, categoryIds ->
-                val effectiveQuery = query.trim()
-                if (effectiveQuery.isEmpty() && categoryIds.isEmpty()) {
-                    emptyList()
-                } else if (effectiveQuery.isEmpty()) {
-                    // Filter only by categories
-                    categoryIds.flatMap { id ->
-                        transactionRepository.getTransactionsByCategory(id).let { flow ->
-                            var result = emptyList<Transaction>()
-                            flow.collect { result = it }
-                            result
-                        }
-                    }
-                } else {
-                    val searchResults = transactionRepository.searchTransactions(effectiveQuery).let { flow ->
-                        var result = emptyList<Transaction>()
-                        flow.collect { result = it }
-                        result
-                    }
-                    if (categoryIds.isEmpty()) searchResults
-                    else searchResults.filter { it.category.id in categoryIds }
+        val searchResults: Flow<List<Transaction>> =
+            _query
+                .debounce(300)
+                .combine(_selectedCategoryIds) { query, categoryIds ->
+                    query.trim() to categoryIds
                 }
-            }.collect { results ->
-                _uiState.value = _uiState.value.copy(results = results)
+                .flatMapLatest { (effectiveQuery, categoryIds) ->
+                    if (effectiveQuery.isEmpty() && categoryIds.isEmpty()) {
+                        flowOf(emptyList())
+                    } else {
+                        transactionRepository.searchTransactions(
+                            query = effectiveQuery,
+                            categoryIds = categoryIds.toList()
+                        )
+                    }
+                }
+
+        searchResults
+            .onEach { results ->
+                _uiState.update { it.copy(results = results) }
             }
-        }
+            .launchIn(viewModelScope)
     }
 
     fun onQueryChanged(query: String) {
         _query.value = query
-        _uiState.value = _uiState.value.copy(query = query)
+        _uiState.update { it.copy(query = query) }
     }
 
     fun onCategoryToggled(categoryId: UUID) {
@@ -83,12 +83,14 @@ class SearchViewModel @Inject constructor(
         if (categoryId in current) current.remove(categoryId)
         else current.add(categoryId)
         _selectedCategoryIds.value = current
-        _uiState.value = _uiState.value.copy(selectedCategoryIds = current)
+        _uiState.update { it.copy(selectedCategoryIds = current) }
     }
 
     fun clearSearch() {
         _query.value = ""
         _selectedCategoryIds.value = emptySet()
-        _uiState.value = _uiState.value.copy(query = "", selectedCategoryIds = emptySet(), results = emptyList())
+        _uiState.value = SearchUiState(
+            allCategories = _uiState.value.allCategories
+        )
     }
 }

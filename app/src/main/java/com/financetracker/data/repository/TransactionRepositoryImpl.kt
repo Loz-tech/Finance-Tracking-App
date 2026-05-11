@@ -2,6 +2,7 @@ package com.financetracker.data.repository
 
 import com.financetracker.data.local.db.TransactionDao
 import com.financetracker.data.local.entity.TransactionEntity
+import com.financetracker.data.local.entity.TransactionSearchResult
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
@@ -31,8 +32,12 @@ class TransactionRepositoryImpl @Inject constructor(
     override fun getTransactionsByCategory(categoryId: UUID): Flow<List<Transaction>> =
         transactionDao.getByCategory(categoryId).map { it.mapToDomain() }
 
-    override fun searchTransactions(query: String): Flow<List<Transaction>> =
-        transactionDao.searchByNote(query).map { it.mapToDomain() }
+    override fun searchTransactions(query: String, categoryIds: List<UUID>): Flow<List<Transaction>> =
+        if (categoryIds.isEmpty()) {
+            transactionDao.searchByTextOnly(query).map { it.mapToDomain() }
+        } else {
+            transactionDao.searchByTextAndCategories(query, categoryIds).map { it.mapToDomain() }
+        }
 
     override fun getRecentTransactions(limit: Int): Flow<List<Transaction>> =
         transactionDao.getRecent(limit).map { it.mapToDomain() }
@@ -62,6 +67,22 @@ class TransactionRepositoryImpl @Inject constructor(
     override suspend fun deleteAllTransactions() {
         transactionDao.deleteAll()
     }
+
+    private fun TransactionSearchResult.toDomain(): Transaction = Transaction(
+        id = id,
+        amount = amount,
+        note = note,
+        date = date,
+        category = Category(
+            id = categoryId,
+            name = categoryName,
+            emoji = categoryEmoji,
+            colorHex = categoryColorHex
+        ),
+        createdAt = createdAt.toEpochMilli()
+    )
+
+    private fun List<TransactionSearchResult>.mapToDomain(): List<Transaction> = map { it.toDomain() }
 
     private suspend fun List<TransactionEntity>.mapToDomain(): List<Transaction> {
         if (isEmpty()) return emptyList()
