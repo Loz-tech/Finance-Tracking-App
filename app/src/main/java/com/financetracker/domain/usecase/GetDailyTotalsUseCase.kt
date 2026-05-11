@@ -11,6 +11,7 @@ class GetDailyTotalsUseCase @Inject constructor(
     suspend operator fun invoke(yearMonth: YearMonth): Map<LocalDate, Double> {
         val start = yearMonth.atDay(1)
         val end = yearMonth.atEndOfMonth()
+
         return transactionRepository.getDailyTotals(start, end)
     }
 }

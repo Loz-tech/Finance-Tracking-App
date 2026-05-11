@@ -23,15 +23,23 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,9 +50,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import java.text.NumberFormat
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
@@ -52,7 +64,13 @@ fun SearchScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val focusManager = LocalFocusManager.current
-    val focusRequester = androidx.compose.runtime.remember { FocusRequester() }
+    val focusRequester = remember { FocusRequester() }
+
+    var showStartDatePicker by remember { mutableStateOf(false) }
+    var showEndDatePicker by remember { mutableStateOf(false) }
+    var pendingCustomStart by remember { mutableStateOf<LocalDate?>(null) }
+
+    val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         // Search input
@@ -72,6 +90,61 @@ fun SearchScreen(
             singleLine = true,
             shape = RoundedCornerShape(16.dp)
         )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // Date range label
+        Text(
+            text = "Date range",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.height(4.dp))
+
+        // Date filter chips + clear button
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+                modifier = Modifier.weight(1f)
+            ) {
+                QuickChip.entries.forEach { chip ->
+                    val dateFilter = uiState.dateFilter
+                    val selected = dateFilter is DateFilter.Quick && dateFilter.chip == chip
+                    FilterChip(
+                        selected = selected,
+                        onClick = { viewModel.onQuickChipSelected(chip) },
+                        label = { Text(chip.label, style = MaterialTheme.typography.labelMedium) }
+                    )
+                }
+
+                // Custom chip
+                val isCustomSelected = uiState.dateFilter is DateFilter.Custom
+                val customLabel = when (val df = uiState.dateFilter) {
+                    is DateFilter.Custom -> "${df.start.format(dateFormatter)} – ${df.end.format(dateFormatter)}"
+                    else -> "Custom"
+                }
+                FilterChip(
+                    selected = isCustomSelected,
+                    onClick = {
+                        if (!isCustomSelected) {
+                            showStartDatePicker = true
+                        }
+                    },
+                    label = { Text(customLabel, style = MaterialTheme.typography.labelMedium) }
+                )
+            }
+
+            if (uiState.dateFilter != DateFilter.None) {
+                IconButton(onClick = viewModel::clearDateFilter) {
+                    Icon(Icons.Default.Clear, contentDescription = "Clear date filter")
+                }
+            }
+        }
 
         // Category filter chips
         if (uiState.allCategories.isNotEmpty()) {
@@ -95,9 +168,31 @@ fun SearchScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         // Results
-        if (uiState.results.isEmpty() && (uiState.query.isNotEmpty() || uiState.selectedCategoryIds.isNotEmpty())) {
-            Box(modifier = Modifier.fillMaxWidth().padding(vertical = 64.dp), contentAlignment = Alignment.Center) {
-                Text("No transactions found", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        val hasActiveFilter = uiState.query.isNotEmpty() ||
+                uiState.selectedCategoryIds.isNotEmpty() ||
+                uiState.dateFilter !is DateFilter.None
+
+        if (uiState.results.isEmpty() && hasActiveFilter) {
+            Box(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 64.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    "No transactions found",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        } else if (uiState.results.isEmpty() && !hasActiveFilter) {
+            Box(
+                modifier = Modifier.fillMaxWidth().padding(vertical = 64.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    "Select a filter to search",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -105,6 +200,62 @@ fun SearchScreen(
                     SearchResultRow(transaction)
                 }
             }
+        }
+    }
+
+    // Start date picker
+    if (showStartDatePicker) {
+        val datePickerState = rememberDatePickerState()
+        DatePickerDialog(
+            onDismissRequest = { showStartDatePicker = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    datePickerState.selectedDateMillis?.let { millis ->
+                        val date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate()
+                        pendingCustomStart = date
+                        showStartDatePicker = false
+                        showEndDatePicker = true
+                    } ?: run {
+                        showStartDatePicker = false
+                    }
+                }) { Text("Next") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showStartDatePicker = false }) { Text("Cancel") }
+            }
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
+
+    // End date picker
+    if (showEndDatePicker) {
+        val datePickerState = rememberDatePickerState()
+        DatePickerDialog(
+            onDismissRequest = { showEndDatePicker = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    datePickerState.selectedDateMillis?.let { millis ->
+                        val endDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate()
+                        pendingCustomStart?.let { startDate ->
+                            viewModel.onCustomDateRangeSelected(startDate, endDate)
+                        }
+                        showEndDatePicker = false
+                        pendingCustomStart = null
+                    } ?: run {
+                        showEndDatePicker = false
+                        pendingCustomStart = null
+                    }
+                }) { Text("OK") }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    showEndDatePicker = false
+                    pendingCustomStart = null
+                }) { Text("Cancel") }
+            }
+        ) {
+            DatePicker(state = datePickerState)
         }
     }
 }
@@ -119,17 +270,33 @@ private fun SearchResultRow(transaction: com.financetracker.domain.model.Transac
         shape = RoundedCornerShape(8.dp)
     ) {
         Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(modifier = Modifier.size(36.dp).clip(CircleShape).background(MaterialTheme.colorScheme.surfaceContainerHigh), contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier.size(36.dp).clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceContainerHigh),
+                contentAlignment = Alignment.Center
+            ) {
                 Text(transaction.category.emoji, style = MaterialTheme.typography.bodyMedium)
             }
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
-                Text(transaction.category.name, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+                Text(
+                    transaction.category.name,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium
+                )
                 if (transaction.note.isNotBlank()) {
-                    Text(transaction.note, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(
+                        transaction.note,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
             }
-            Text("-${currencyFormatter.format(transaction.amount)}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+            Text(
+                "-${currencyFormatter.format(transaction.amount)}",
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }
