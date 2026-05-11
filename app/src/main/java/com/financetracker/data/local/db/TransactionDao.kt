@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.financetracker.data.local.entity.TransactionEntity
+import com.financetracker.data.local.entity.TransactionSearchResult
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 import java.util.UUID
@@ -36,13 +37,32 @@ interface TransactionDao {
 
     @Query(
         """
-        SELECT * FROM transactions 
-        WHERE note LIKE '%' || :query || '%' 
-           OR categoryId IN (SELECT id FROM categories WHERE name LIKE '%' || :query || '%')
-        ORDER BY date DESC, createdAt DESC
+        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+        FROM transactions t
+        JOIN categories c ON t.categoryId = c.id
+        WHERE t.note LIKE '%' || :query || '%'
+           OR c.name LIKE '%' || :query || '%'
+        ORDER BY t.date DESC, t.createdAt DESC
         """
     )
-    fun searchByNote(query: String): Flow<List<TransactionEntity>>
+    fun searchByTextOnly(query: String): Flow<List<TransactionSearchResult>>
+
+    @Query(
+        """
+        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+        FROM transactions t
+        JOIN categories c ON t.categoryId = c.id
+        WHERE (t.note LIKE '%' || :query || '%' OR c.name LIKE '%' || :query || '%')
+          AND t.categoryId IN (:categoryIds)
+        ORDER BY t.date DESC, t.createdAt DESC
+        """
+    )
+    fun searchByTextAndCategories(
+        query: String,
+        categoryIds: List<UUID>
+    ): Flow<List<TransactionSearchResult>>
 
     @Query(
         """
