@@ -1,59 +1,65 @@
-# Graph Report - .  (2026-05-14)
+# Graph Report - FinanceTrackingApp  (2026-05-14)
 
 ## Corpus Check
-- Corpus is ~38,471 words - fits in a single context window. You may not need a graph.
+- 66 files · ~38,520 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 454 nodes · 550 edges · 49 communities (19 shown, 30 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 66 edges (avg confidence: 0.76)
+- 457 nodes · 554 edges · 50 communities (20 shown, 30 thin omitted)
+- Extraction: 87% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 69 edges (avg confidence: 0.76)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `28163f04`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_UI Shell & Navigation|UI Shell & Navigation]]
-- [[_COMMUNITY_Feature Screens & ViewModels|Feature Screens & ViewModels]]
-- [[_COMMUNITY_UI Composables|UI Composables]]
-- [[_COMMUNITY_Design Mockups|Design Mockups]]
-- [[_COMMUNITY_Analytics & Chart Components|Analytics & Chart Components]]
-- [[_COMMUNITY_Data Layer Core|Data Layer Core]]
-- [[_COMMUNITY_Category Management|Category Management]]
-- [[_COMMUNITY_Transaction Database Queries|Transaction Database Queries]]
-- [[_COMMUNITY_Transaction Repository Implementation|Transaction Repository Implementation]]
-- [[_COMMUNITY_Search ViewModel Logic|Search ViewModel Logic]]
-- [[_COMMUNITY_Transaction Repository Interface|Transaction Repository Interface]]
-- [[_COMMUNITY_Add Transaction ViewModel|Add Transaction ViewModel]]
-- [[_COMMUNITY_Navigation Routes|Navigation Routes]]
-- [[_COMMUNITY_Category Database Queries|Category Database Queries]]
-- [[_COMMUNITY_Budget Persistence|Budget Persistence]]
-- [[_COMMUNITY_Room Type Converters|Room Type Converters]]
-- [[_COMMUNITY_Dependency Injection|Dependency Injection]]
-- [[_COMMUNITY_Budget Database Queries|Budget Database Queries]]
-- [[_COMMUNITY_Calendar ViewModel|Calendar ViewModel]]
-- [[_COMMUNITY_Budget ViewModel|Budget ViewModel]]
-- [[_COMMUNITY_Category Repository Interface|Category Repository Interface]]
-- [[_COMMUNITY_App Entry & Theming|App Entry & Theming]]
-- [[_COMMUNITY_History ViewModel|History ViewModel]]
-- [[_COMMUNITY_Budget Repository Interface|Budget Repository Interface]]
-- [[_COMMUNITY_Settings ViewModel|Settings ViewModel]]
-- [[_COMMUNITY_Room Database|Room Database]]
-- [[_COMMUNITY_Settings Data Store|Settings Data Store]]
-- [[_COMMUNITY_Settings Repository Impl|Settings Repository Impl]]
-- [[_COMMUNITY_Settings Repository Interface|Settings Repository Interface]]
-- [[_COMMUNITY_Budget Progress Calculation|Budget Progress Calculation]]
-- [[_COMMUNITY_Unit Tests|Unit Tests]]
-- [[_COMMUNITY_CSV Export|CSV Export]]
-- [[_COMMUNITY_JSON Export|JSON Export]]
-- [[_COMMUNITY_Instrumented Tests|Instrumented Tests]]
-- [[_COMMUNITY_Home ViewModel|Home ViewModel]]
-- [[_COMMUNITY_App Branding & Icons|App Branding & Icons]]
-- [[_COMMUNITY_Daily Totals Calculation|Daily Totals Calculation]]
-- [[_COMMUNITY_Data Exporters|Data Exporters]]
-- [[_COMMUNITY_Transaction Search Result|Transaction Search Result]]
-- [[_COMMUNITY_Period Domain Model|Period Domain Model]]
-- [[_COMMUNITY_Accent Color Enum|Accent Color Enum]]
-- [[_COMMUNITY_Finance Application Class|Finance Application Class]]
-- [[_COMMUNITY_Budget Domain Model|Budget Domain Model]]
-- [[_COMMUNITY_Gradle Wrapper|Gradle Wrapper]]
-- [[_COMMUNITY_Settings Repository|Settings Repository]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
+- [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
+- [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `TransactionDao` - 16 edges
@@ -92,65 +98,65 @@
 - **Shared Bottom Navigation Bar Framework Across Screens** — bottom_navigation, 03_history_screen, 04_search_screen, 05_dashboard_screen, 06_categories_screen, 07_budget_screen, 08_calendar_screen, 09_settings_screen [EXTRACTED 1.00]
 - **Shared Material Design 3 (OKLCH) Design Language Across All Screens** — design_system, 02_add_transaction_screen, 03_history_screen, 04_search_screen, 05_dashboard_screen, 06_categories_screen, 07_budget_screen, 08_calendar_screen, 09_settings_screen [EXTRACTED 1.00]
 
-## Communities (49 total, 30 thin omitted)
+## Communities (50 total, 30 thin omitted)
 
-### Community 0 - "UI Shell & Navigation"
+### Community 0 - "Community 0"
 Cohesion: 0.07
 Nodes (44): Accent Color Options, Application FAB, App Navigation Host, Application Top Bar, Bottom Navigation Bar, Bottom Navigation Item Model, Budget Repository, Budget Summary Card (+36 more)
 
-### Community 1 - "Feature Screens & ViewModels"
+### Community 1 - "Community 1"
 Cohesion: 0.1
 Nodes (35): AddTransactionSheet, AddTransactionUiState, AddTransactionViewModel, AnalyticsScreen, AnalyticsUiState, AnalyticsViewModel, BarChart, BarData (+27 more)
 
-### Community 2 - "UI Composables"
-Cohesion: 0.09
-Nodes (18): AddTransactionSheet(), CategoryChip(), BudgetScreen(), CalendarScreen(), DayCell(), AddCategoryDialog(), CategoriesScreen(), CategoryCard() (+10 more)
+### Community 2 - "Community 2"
+Cohesion: 0.08
+Nodes (19): AddTransactionSheet(), CategoryChip(), BudgetScreen(), CalendarScreen(), DayCell(), AddCategoryDialog(), CategoriesScreen(), CategoryCard() (+11 more)
 
-### Community 3 - "Design Mockups"
+### Community 3 - "Community 3"
 Cohesion: 0.12
 Nodes (26): Add Transaction Screen (Bottom Sheet), Transaction History Screen, Search Transactions Screen, Analytics Dashboard Screen, Categories Management Screen, Monthly Budget Configuration Screen, Spending Calendar with Heat Map Screen, App Settings Screen (+18 more)
 
-### Community 4 - "Analytics & Chart Components"
+### Community 4 - "Community 4"
 Cohesion: 0.12
 Nodes (16): AnalyticsScreen(), StatBox(), AnalyticsUiState, AnalyticsViewModel, WeekdayBar, BarChart(), BarData, DonutChart() (+8 more)
 
-### Community 5 - "Data Layer Core"
+### Community 5 - "Community 5"
 Cohesion: 0.21
 Nodes (22): AppDatabase (Room Database), AppModule (Hilt DI Module), BudgetDao, BudgetEntity (Room Entity), BudgetRepositoryImpl, CategoryDao, CategoryEntity (Room Entity), CategoryRepositoryImpl (+14 more)
 
-### Community 6 - "Category Management"
+### Community 6 - "Community 6"
 Cohesion: 0.12
 Nodes (6): CategoriesUiState, CategoriesViewModel, CategoryWithProgress, CategoryEntity, Category, CategoryRepositoryImpl
 
-### Community 9 - "Search ViewModel Logic"
+### Community 9 - "Community 9"
 Cohesion: 0.19
 Nodes (7): Custom, DateFilter, None, Quick, QuickChip, SearchUiState, SearchViewModel
 
-### Community 11 - "Add Transaction ViewModel"
+### Community 11 - "Community 11"
 Cohesion: 0.18
 Nodes (3): AddTransactionUiState, AddTransactionViewModel, Transaction
 
-### Community 12 - "Navigation Routes"
+### Community 12 - "Community 12"
 Cohesion: 0.17
 Nodes (11): AddTransaction, Analytics, BottomNavItem, Budget, Calendar, Categories, History, Home (+3 more)
 
-### Community 18 - "Calendar ViewModel"
+### Community 18 - "Community 18"
 Cohesion: 0.39
 Nodes (3): CalendarDay, CalendarUiState, CalendarViewModel
 
-### Community 19 - "Budget ViewModel"
+### Community 19 - "Community 19"
 Cohesion: 0.36
 Nodes (3): BudgetUiState, BudgetViewModel, CategoryBudgetSliders
 
-### Community 21 - "App Entry & Theming"
+### Community 21 - "Community 21"
 Cohesion: 0.39
 Nodes (5): MainActivity, darkColorScheme(), FinanceTrackingAppTheme(), lightColorScheme(), oledColorScheme()
 
-### Community 22 - "History ViewModel"
+### Community 22 - "Community 22"
 Cohesion: 0.29
 Nodes (3): DateGroup, HistoryUiState, HistoryViewModel
 
-### Community 35 - "App Branding & Icons"
+### Community 35 - "Community 35"
 Cohesion: 0.67
 Nodes (3): ISpend Personal Finance Tracking Android App, ISpend App Android Launcher Icons (Adaptive Icon: foreground layer at multiple densities), ISpend App Play Store Listing Icon
 
@@ -172,11 +178,11 @@ _Questions this graph is uniquely positioned to answer:_
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
 - **What is the exact relationship between `Settings ViewModel` and `Design Progress Checklist`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `AppNavHost()` connect `UI Composables` to `Analytics & Chart Components`, `App Entry & Theming`?**
+- **Why does `AppNavHost()` connect `Community 2` to `Community 4`, `Community 21`?**
   _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `Category` connect `Category Management` to `Transaction Repository Implementation`?**
+- **Why does `Category` connect `Community 6` to `Community 8`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `AnalyticsScreen()` connect `Analytics & Chart Components` to `UI Composables`?**
+- **Why does `HomeScreen()` connect `Community 4` to `Community 2`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `AppNavHost()` (e.g. with `.onCreate()` and `AppTopBar()`) actually correct?**
   _`AppNavHost()` has 13 INFERRED edges - model-reasoned connections that need verification._
