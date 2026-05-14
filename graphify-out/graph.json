@@ -2519,7 +2519,7 @@
       "label": "BudgetSummaryCard()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
-      "source_location": "L137",
+      "source_location": "L139",
       "id": "home_homescreen_budgetsummarycard",
       "community": 4,
       "norm_label": "budgetsummarycard()"
@@ -2528,7 +2528,7 @@
       "label": "EmptyHomeScreen()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
-      "source_location": "L222",
+      "source_location": "L224",
       "id": "home_homescreen_emptyhomescreen",
       "community": 4,
       "norm_label": "emptyhomescreen()"
@@ -2564,7 +2564,7 @@
       "label": "AppNavHost()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
-      "source_location": "L32",
+      "source_location": "L34",
       "id": "navigation_appnavhost_appnavhost",
       "community": 2,
       "norm_label": "appnavhost()"
@@ -7382,9 +7382,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/TransactionCard.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_transactioncard_kt",
-      "target": "components_transactioncard_transactioncard",
-      "confidence_score": 1.0
+      "target": "components_transactioncard_transactioncard"
     },
     {
       "relation": "calls",
@@ -10470,5 +10470,5 @@
       "source_file": "design/screens/02-add-transaction.html"
     }
   ],
-  "built_at_commit": "28163f04f8c6fc02c22727d901a0a2cabfc6e45d"
+  "built_at_commit": "2f1ab97379a655404eae778266640554f54184e6"
 }

@@ -1,7 +1,7 @@
-# Graph Report - FinanceTrackingApp  (2026-05-14)
+# Graph Report - FinanceTrackingApp  (2026-05-15)
 
 ## Corpus Check
-- 66 files · ~38,520 words
+- 66 files · ~38,593 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `28163f04`
+- Built from commit: `2f1ab973`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
