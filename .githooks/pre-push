@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# pre-push hook — incremental graphify update
+#
+# Keeps graphify-out/ in sync with the current code state before every push.
+# The update runs best-effort: if it fails, a warning is printed but the
+# push is NOT blocked.
+#
+# Install / enable:
+#   git config core.hooksPath .githooks
+#
+# NOTE: This hook lives in .githooks/ (tracked by Git) so it is shared
+# across clones. Run the install command above in each clone to activate.
+#
+
+set -euo pipefail
+
+# Only update when graphify artifacts already exist
+if [ ! -f "graphify-out/graph.json" ]; then
+    echo "[graphify] graphify-out/ not found — skipping update. Run 'graphify .' first."
+    exit 0
+fi
+
+echo "[graphify] Running incremental update …"
+
+# Run graphify update; if it fails, warn but do NOT block the push.
+if command -v graphify > /dev/null 2>&1; then
+    if graphify update .; then
+        echo "[graphify] Update complete."
+    else
+        echo "[graphify] WARNING: update failed — push will continue." >&2
+    fi
+else
+    echo "[graphify] WARNING: 'graphify' not found in PATH — skipping update." >&2
+fi
+
+exit 0

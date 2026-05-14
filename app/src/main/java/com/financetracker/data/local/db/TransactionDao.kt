@@ -66,6 +66,42 @@ interface TransactionDao {
 
     @Query(
         """
+        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+        FROM transactions t
+        JOIN categories c ON t.categoryId = c.id
+        WHERE (t.note LIKE '%' || :query || '%' OR c.name LIKE '%' || :query || '%')
+          AND t.date BETWEEN :start AND :end
+        ORDER BY t.date DESC, t.createdAt DESC
+        """
+    )
+    fun searchByTextAndDateRange(
+        query: String,
+        start: LocalDate,
+        end: LocalDate
+    ): Flow<List<TransactionSearchResult>>
+
+    @Query(
+        """
+        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+        FROM transactions t
+        JOIN categories c ON t.categoryId = c.id
+        WHERE (t.note LIKE '%' || :query || '%' OR c.name LIKE '%' || :query || '%')
+          AND t.categoryId IN (:categoryIds)
+          AND t.date BETWEEN :start AND :end
+        ORDER BY t.date DESC, t.createdAt DESC
+        """
+    )
+    fun searchByTextCategoriesAndDateRange(
+        query: String,
+        categoryIds: List<UUID>,
+        start: LocalDate,
+        end: LocalDate
+    ): Flow<List<TransactionSearchResult>>
+
+    @Query(
+        """
         SELECT date, SUM(CAST(amount AS REAL)) as total 
         FROM transactions 
         WHERE date BETWEEN :start AND :end 

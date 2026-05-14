@@ -15,10 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.financetracker.ui.addtransaction.AddTransactionSheet
 import com.financetracker.ui.analytics.AnalyticsScreen
 import com.financetracker.ui.budget.BudgetScreen
@@ -96,13 +98,18 @@ fun AppNavHost() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                HomeScreen(onAddTransaction = { navController.navigate(Screen.AddTransaction.route) })
+                HomeScreen(
+                    onAddTransaction = { navController.navigate(Screen.AddTransaction.route) },
+                    onEditTransaction = { id -> navController.navigate("${Screen.AddTransaction.route}/$id") }
+                )
             }
             composable(Screen.Analytics.route) {
                 AnalyticsScreen()
             }
             composable(Screen.Search.route) {
-                SearchScreen()
+                SearchScreen(
+                    onEditTransaction = { id -> navController.navigate("${Screen.AddTransaction.route}/$id") }
+                )
             }
             composable(Screen.Settings.route) {
                 SettingsScreen(
@@ -123,6 +130,17 @@ fun AppNavHost() {
             }
             composable(Screen.Calendar.route) {
                 CalendarScreen()
+            }
+            composable(
+                route = "${Screen.AddTransaction.route}/{transactionId}",
+                arguments = listOf(navArgument("transactionId") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val transactionId = backStackEntry.arguments?.getString("transactionId")?.let { java.util.UUID.fromString(it) }
+
+                AddTransactionSheet(
+                    onDismiss = { navController.popBackStack() },
+                    editTransactionId = transactionId
+                )
             }
             composable(Screen.AddTransaction.route) {
                 AddTransactionSheet(onDismiss = { navController.popBackStack() })

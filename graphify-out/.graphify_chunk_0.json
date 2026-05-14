@@ -1,0 +1,652 @@
+{
+  "nodes": [
+    {
+      "id": "settings_gradle",
+      "label": "Gradle Settings (settings.gradle.kts)",
+      "file_type": "code",
+      "source_file": "settings.gradle.kts",
+      "rationale": "Configures plugin repositories (Google, Maven Central, Gradle Plugin Portal), enables foojay-resolver toolchain convention, and declares the single :app subproject."
+    },
+    {
+      "id": "build_gradle",
+      "label": "Root Build Script (build.gradle.kts)",
+      "file_type": "code",
+      "source_file": "build.gradle.kts"
+    },
+    {
+      "id": "app_build_gradle",
+      "label": "App Module Build Script (app/build.gradle.kts)",
+      "file_type": "code",
+      "source_file": "app/build.gradle.kts",
+      "rationale": "Configures Android SDK 36, Jetpack Compose, Room via KSP, Hilt DI, DataStore, Navigation, and kotlinx-serialization. Defines the ISpend app's full dependency graph."
+    },
+    {
+      "id": "gradlew",
+      "label": "Gradle Wrapper Script",
+      "file_type": "code",
+      "source_file": "gradlew"
+    },
+    {
+      "id": "FinanceApp",
+      "label": "FinanceApp (Hilt Application)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/FinanceApp.kt",
+      "rationale": "@HiltAndroidApp entry point enabling Hilt dependency injection across the application lifecycle."
+    },
+    {
+      "id": "MainActivity",
+      "label": "MainActivity",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/MainActivity.kt"
+    },
+    {
+      "id": "CsvExporter",
+      "label": "CsvExporter",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt"
+    },
+    {
+      "id": "JsonExporter",
+      "label": "JsonExporter",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt"
+    },
+    {
+      "id": "AppDatabase",
+      "label": "AppDatabase (Room Database)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt"
+    },
+    {
+      "id": "TransactionDao",
+      "label": "TransactionDao",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt"
+    },
+    {
+      "id": "CategoryDao",
+      "label": "CategoryDao",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt"
+    },
+    {
+      "id": "BudgetDao",
+      "label": "BudgetDao",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt"
+    },
+    {
+      "id": "Converters",
+      "label": "Converters (Room TypeConverters)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt"
+    },
+    {
+      "id": "TransactionEntity",
+      "label": "TransactionEntity (Room Entity)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionEntity.kt"
+    },
+    {
+      "id": "CategoryEntity",
+      "label": "CategoryEntity (Room Entity)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/CategoryEntity.kt"
+    },
+    {
+      "id": "BudgetEntity",
+      "label": "BudgetEntity (Room Entity)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/BudgetEntity.kt"
+    },
+    {
+      "id": "TransactionSearchResult",
+      "label": "TransactionSearchResult (JOIN Projection)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionSearchResult.kt",
+      "rationale": "Room-mapped projection from a JOIN between transactions and categories tables, used for search results that carry denormalized category fields."
+    },
+    {
+      "id": "DailyTotal",
+      "label": "DailyTotal (Aggregation Result)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
+      "rationale": "Data class for GROUP BY date SUM(amount) query results."
+    },
+    {
+      "id": "SettingsDataStore",
+      "label": "SettingsDataStore",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt"
+    },
+    {
+      "id": "UserPreferences",
+      "label": "UserPreferences",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt"
+    },
+    {
+      "id": "TransactionRepositoryImpl",
+      "label": "TransactionRepositoryImpl",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt"
+    },
+    {
+      "id": "CategoryRepositoryImpl",
+      "label": "CategoryRepositoryImpl",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt"
+    },
+    {
+      "id": "BudgetRepositoryImpl",
+      "label": "BudgetRepositoryImpl",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt"
+    },
+    {
+      "id": "SettingsRepositoryImpl",
+      "label": "SettingsRepositoryImpl",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt"
+    },
+    {
+      "id": "AppModule",
+      "label": "AppModule (Hilt DI Module)",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "rationale": "Dagger/Hilt @Module installed in SingletonComponent that provides Room database, all DAOs, and binds repository implementations to their domain interfaces."
+    }
+  ],
+  "edges": [
+    {
+      "source": "settings_gradle",
+      "target": "app_build_gradle",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "settings.gradle.kts",
+      "weight": 1.0
+    },
+    {
+      "source": "build_gradle",
+      "target": "app_build_gradle",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "build.gradle.kts",
+      "weight": 0.7
+    },
+    {
+      "source": "app_build_gradle",
+      "target": "AppDatabase",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/build.gradle.kts",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "AppDatabase",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "TransactionDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "CategoryDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "BudgetDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "TransactionRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "CategoryRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "BudgetRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "SettingsRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppModule",
+      "target": "FinanceApp",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
+      "weight": 0.7
+    },
+    {
+      "source": "AppDatabase",
+      "target": "TransactionEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppDatabase",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppDatabase",
+      "target": "BudgetEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppDatabase",
+      "target": "Converters",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppDatabase",
+      "target": "TransactionDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppDatabase",
+      "target": "CategoryDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "AppDatabase",
+      "target": "BudgetDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionDao",
+      "target": "TransactionEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionDao",
+      "target": "TransactionSearchResult",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionDao",
+      "target": "DailyTotal",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "CategoryDao",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetDao",
+      "target": "BudgetEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionEntity",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionEntity.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetEntity",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/BudgetEntity.kt",
+      "weight": 0.7
+    },
+    {
+      "source": "TransactionSearchResult",
+      "target": "TransactionEntity",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionSearchResult.kt",
+      "weight": 0.8
+    },
+    {
+      "source": "TransactionSearchResult",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionSearchResult.kt",
+      "weight": 0.8
+    },
+    {
+      "source": "DailyTotal",
+      "target": "TransactionEntity",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
+      "weight": 0.8
+    },
+    {
+      "source": "TransactionRepositoryImpl",
+      "target": "TransactionDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionRepositoryImpl",
+      "target": "CategoryRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionRepositoryImpl",
+      "target": "TransactionEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionRepositoryImpl",
+      "target": "TransactionSearchResult",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionRepositoryImpl",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "CategoryRepositoryImpl",
+      "target": "CategoryDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "CategoryRepositoryImpl",
+      "target": "CategoryEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetRepositoryImpl",
+      "target": "BudgetDao",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetRepositoryImpl",
+      "target": "BudgetEntity",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsRepositoryImpl",
+      "target": "SettingsDataStore",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsRepositoryImpl",
+      "target": "UserPreferences",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsDataStore",
+      "target": "UserPreferences",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "MainActivity",
+      "target": "CategoryRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/MainActivity.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "MainActivity",
+      "target": "SettingsRepositoryImpl",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/MainActivity.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "MainActivity",
+      "target": "UserPreferences",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/MainActivity.kt",
+      "weight": 1.0
+    },
+    {
+      "source": "MainActivity",
+      "target": "FinanceApp",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "app/src/main/java/com/financetracker/MainActivity.kt",
+      "weight": 0.6
+    },
+    {
+      "source": "CsvExporter",
+      "target": "JsonExporter",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "weight": 0.9
+    },
+    {
+      "source": "TransactionRepositoryImpl",
+      "target": "BudgetRepositoryImpl",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
+      "weight": 0.6
+    },
+    {
+      "source": "CategoryRepositoryImpl",
+      "target": "TransactionRepositoryImpl",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
+      "weight": 0.7
+    },
+    {
+      "source": "CategoryRepositoryImpl",
+      "target": "BudgetRepositoryImpl",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
+      "weight": 0.6
+    },
+    {
+      "source": "Converters",
+      "target": "TransactionEntity",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
+      "weight": 0.6
+    },
+    {
+      "source": "Converters",
+      "target": "BudgetEntity",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
+      "weight": 0.6
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "repository_pattern",
+      "label": "Repository Pattern Implementation",
+      "nodes": ["TransactionRepositoryImpl", "CategoryRepositoryImpl", "BudgetRepositoryImpl", "SettingsRepositoryImpl"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt"
+    },
+    {
+      "id": "room_persistence_layer",
+      "label": "Room Persistence Layer",
+      "nodes": ["AppDatabase", "TransactionDao", "CategoryDao", "BudgetDao", "TransactionEntity", "CategoryEntity", "BudgetEntity", "Converters", "TransactionSearchResult", "DailyTotal"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt"
+    },
+    {
+      "id": "hilt_di_wiring",
+      "label": "Hilt Dependency Injection Wiring",
+      "nodes": ["AppModule", "FinanceApp", "MainActivity"],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
+      "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

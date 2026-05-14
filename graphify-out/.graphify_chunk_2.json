@@ -1,0 +1,1173 @@
+{
+  "nodes": [
+    {
+      "id": "HistoryScreen_screen",
+      "label": "History Screen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "HistoryViewModel_viewmodel",
+      "label": "History ViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DateGroup_model",
+      "label": "DateGroup Data Model",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "HistoryUiState_model",
+      "label": "History UI State",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "HomeScreen_screen",
+      "label": "Home Screen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "HomeViewModel_viewmodel",
+      "label": "Home ViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "HomeUiState_model",
+      "label": "Home UI State",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetSummaryCard_component",
+      "label": "Budget Summary Card",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DonutChart_component",
+      "label": "Donut Chart Component",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DonutLegend_component",
+      "label": "Donut Legend Component",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutLegend.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DonutSegment_model",
+      "label": "DonutSegment Data Model",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutSegment.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AppFAB_component",
+      "label": "Application FAB",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppFAB.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AppNavHost_navigation",
+      "label": "App Navigation Host",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AppTopBar_component",
+      "label": "Application Top Bar",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppTopBar.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BottomNavBar_component",
+      "label": "Bottom Navigation Bar",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/BottomNavBar.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "Screen_routes",
+      "label": "Screen Route Definitions",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BottomNavItem_model",
+      "label": "Bottom Navigation Item Model",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SearchScreen_screen",
+      "label": "Search Screen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SearchViewModel_viewmodel",
+      "label": "Search ViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "QuickChip_enum",
+      "label": "Quick Date Preset Chips",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DateFilter_sealed",
+      "label": "Date Filter State Machine",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SearchUiState_model",
+      "label": "Search UI State",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SettingsScreen_screen",
+      "label": "Settings Screen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SettingsViewModel_viewmodel",
+      "label": "Settings ViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SettingsUiState_model",
+      "label": "Settings UI State",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ColorTokens_theme",
+      "label": "Teal Seed Color Palette",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Color.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AccentColor_enum",
+      "label": "Accent Color Options",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Color.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "FinanceTrackingAppTheme_composable",
+      "label": "Application Theme Composable",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "Typography_theme",
+      "label": "RobotoMono Typography",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Type.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "UserPreferences_config",
+      "label": "UserPreferences Persistence",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/prefs/UserPreferences.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "TransactionRepository_repo",
+      "label": "Transaction Repository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetRepository_repo",
+      "label": "Budget Repository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CategoryRepository_repo",
+      "label": "Category Repository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SettingsRepository_repo",
+      "label": "Settings Repository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/SettingsRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "PlaceholderTests_test",
+      "label": "Placeholder Unit and Instrumentation Tests",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/ExampleUnitTest.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ISpendHomeDesign_design",
+      "label": "ISpend Home Screen HTML Design",
+      "file_type": "document",
+      "source_file": "design/01-home.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ISpendGalleryDesign_design",
+      "label": "ISpend Gallery Page (All Screens)",
+      "file_type": "document",
+      "source_file": "design/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ISpendDesignProgress_doc",
+      "label": "Design Progress Checklist",
+      "file_type": "document",
+      "source_file": "design/progress.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ISpendPDFPrototype_doc",
+      "label": "ISpend PDF Prototype Export",
+      "file_type": "document",
+      "source_file": "design/ISpendExpenseTrackerPrototype.pdf",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "OfflineFirst_rationale",
+      "label": "Offline-First Architecture Decision",
+      "file_type": "rationale",
+      "source_file": "design/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "MaterialYou_rationale",
+      "label": "Material Design 3 / Material You Design System",
+      "file_type": "rationale",
+      "source_file": "design/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "EmojiCategories_rationale",
+      "label": "Emoji-Tagged Category System",
+      "file_type": "rationale",
+      "source_file": "design/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DebouncedSearch_rationale",
+      "label": "Debounced Reactive Search Pipeline",
+      "file_type": "rationale",
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "MultiThemeArchitecture_rationale",
+      "label": "Light-Dark-OLED Theme Architecture",
+      "file_type": "rationale",
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "HistoryScreen_screen",
+      "target": "HistoryViewModel_viewmodel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HistoryViewModel_viewmodel",
+      "target": "TransactionRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HistoryViewModel_viewmodel",
+      "target": "DateGroup_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HistoryViewModel_viewmodel",
+      "target": "HistoryUiState_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeScreen_screen",
+      "target": "HomeViewModel_viewmodel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeScreen_screen",
+      "target": "DonutChart_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeScreen_screen",
+      "target": "DonutLegend_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeScreen_screen",
+      "target": "BudgetSummaryCard_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeViewModel_viewmodel",
+      "target": "TransactionRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeViewModel_viewmodel",
+      "target": "BudgetRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeViewModel_viewmodel",
+      "target": "DonutSegment_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HomeViewModel_viewmodel",
+      "target": "HomeUiState_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SearchScreen_screen",
+      "target": "SearchViewModel_viewmodel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SearchViewModel_viewmodel",
+      "target": "TransactionRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SearchViewModel_viewmodel",
+      "target": "CategoryRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SearchViewModel_viewmodel",
+      "target": "QuickChip_enum",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SearchViewModel_viewmodel",
+      "target": "DateFilter_sealed",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SearchViewModel_viewmodel",
+      "target": "SearchUiState_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsScreen_screen",
+      "target": "SettingsViewModel_viewmodel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsScreen_screen",
+      "target": "AccentColor_enum",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsScreen_screen",
+      "target": "UserPreferences_config",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsViewModel_viewmodel",
+      "target": "SettingsRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsViewModel_viewmodel",
+      "target": "TransactionRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsViewModel_viewmodel",
+      "target": "CategoryRepository_repo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsViewModel_viewmodel",
+      "target": "UserPreferences_config",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "SettingsViewModel_viewmodel",
+      "target": "SettingsUiState_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "Screen_routes",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "AppTopBar_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "BottomNavBar_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "AppFAB_component",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "HomeScreen_screen",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "HistoryScreen_screen",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "SearchScreen_screen",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AppNavHost_navigation",
+      "target": "SettingsScreen_screen",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BottomNavBar_component",
+      "target": "Screen_routes",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/BottomNavBar.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BottomNavBar_component",
+      "target": "BottomNavItem_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/BottomNavBar.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "Screen_routes",
+      "target": "BottomNavItem_model",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "FinanceTrackingAppTheme_composable",
+      "target": "ColorTokens_theme",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "FinanceTrackingAppTheme_composable",
+      "target": "Typography_theme",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "FinanceTrackingAppTheme_composable",
+      "target": "AccentColor_enum",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "FinanceTrackingAppTheme_composable",
+      "target": "UserPreferences_config",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HistoryScreen_screen",
+      "target": "HomeScreen_screen",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "ISpendHomeDesign_design",
+      "target": "HomeScreen_screen",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/01-home.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ISpendHomeDesign_design",
+      "target": "BudgetSummaryCard_component",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "design/01-home.html",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "ISpendHomeDesign_design",
+      "target": "DonutChart_component",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "design/01-home.html",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ISpendGalleryDesign_design",
+      "target": "Screen_routes",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "ISpendGalleryDesign_design",
+      "target": "ISpendHomeDesign_design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ISpendGalleryDesign_design",
+      "target": "ISpendPDFPrototype_doc",
+      "relation": "semantically_similar_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ISpendDesignProgress_doc",
+      "target": "ISpendHomeDesign_design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/progress.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ISpendDesignProgress_doc",
+      "target": "ISpendGalleryDesign_design",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/progress.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "HistoryScreen_screen",
+      "target": "ISpendHomeDesign_design",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "SearchViewModel_viewmodel",
+      "target": "DebouncedSearch_rationale",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "FinanceTrackingAppTheme_composable",
+      "target": "MultiThemeArchitecture_rationale",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "MultiThemeArchitecture_rationale",
+      "target": "OfflineFirst_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 0.6
+    },
+    {
+      "source": "ISpendGalleryDesign_design",
+      "target": "EmojiCategories_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ISpendGalleryDesign_design",
+      "target": "MaterialYou_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ISpendGalleryDesign_design",
+      "target": "OfflineFirst_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ColorTokens_theme",
+      "target": "MaterialYou_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Color.kt",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "AccentColor_enum",
+      "target": "EmojiCategories_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Color.kt",
+      "source_location": null,
+      "weight": 0.6
+    },
+    {
+      "source": "HomeScreen_screen",
+      "target": "EmojiCategories_rationale",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "PlaceholderTests_test",
+      "target": "HistoryViewModel_viewmodel",
+      "relation": "semantically_similar_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": "app/src/test/java/com/financetracker/ExampleUnitTest.kt",
+      "source_location": null,
+      "weight": 0.2
+    },
+    {
+      "source": "SearchScreen_screen",
+      "target": "SearchViewModel_viewmodel",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchScreen.kt",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "SettingsViewModel_viewmodel",
+      "target": "ISpendDesignProgress_doc",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": null,
+      "weight": 0.3
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "mvvm_architecture_pattern",
+      "label": "MVVM Architecture Pattern: Screen-ViewModel-Repository-Data flow",
+      "nodes": [
+        "HomeScreen_screen",
+        "HomeViewModel_viewmodel",
+        "HistoryScreen_screen",
+        "HistoryViewModel_viewmodel",
+        "SearchScreen_screen",
+        "SearchViewModel_viewmodel",
+        "SettingsScreen_screen",
+        "SettingsViewModel_viewmodel"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt"
+    },
+    {
+      "id": "multi_theme_system",
+      "label": "Multi-Theme System: Light + Dark + OLED with accent color picker",
+      "nodes": [
+        "FinanceTrackingAppTheme_composable",
+        "ColorTokens_theme",
+        "AccentColor_enum",
+        "UserPreferences_config",
+        "MultiThemeArchitecture_rationale"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt"
+    },
+    {
+      "id": "design_prototype_coverage",
+      "label": "HTML Design Prototype Covering All 9 Screens with Android Frame Gallery",
+      "nodes": [
+        "ISpendHomeDesign_design",
+        "ISpendGalleryDesign_design",
+        "ISpendDesignProgress_doc",
+        "ISpendPDFPrototype_doc",
+        "MaterialYou_rationale",
+        "OfflineFirst_rationale",
+        "EmojiCategories_rationale"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/index.html"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

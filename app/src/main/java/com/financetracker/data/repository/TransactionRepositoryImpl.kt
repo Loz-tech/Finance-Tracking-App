@@ -32,12 +32,19 @@ class TransactionRepositoryImpl @Inject constructor(
     override fun getTransactionsByCategory(categoryId: UUID): Flow<List<Transaction>> =
         transactionDao.getByCategory(categoryId).map { it.mapToDomain() }
 
-    override fun searchTransactions(query: String, categoryIds: List<UUID>): Flow<List<Transaction>> =
-        if (categoryIds.isEmpty()) {
-            transactionDao.searchByTextOnly(query).map { it.mapToDomain() }
-        } else {
-            transactionDao.searchByTextAndCategories(query, categoryIds).map { it.mapToDomain() }
+    override fun searchTransactions(query: String, categoryIds: List<UUID>, start: LocalDate?, end: LocalDate?): Flow<List<Transaction>> {
+        val hasDateRange = start != null && end != null
+        return when {
+            hasDateRange && categoryIds.isNotEmpty() ->
+                transactionDao.searchByTextCategoriesAndDateRange(query, categoryIds, start, end).map { it.mapToDomain() }
+            hasDateRange && categoryIds.isEmpty() ->
+                transactionDao.searchByTextAndDateRange(query, start, end).map { it.mapToDomain() }
+            !hasDateRange && categoryIds.isNotEmpty() ->
+                transactionDao.searchByTextAndCategories(query, categoryIds).map { it.mapToDomain() }
+            else ->
+                transactionDao.searchByTextOnly(query).map { it.mapToDomain() }
         }
+    }
 
     override fun getRecentTransactions(limit: Int): Flow<List<Transaction>> =
         transactionDao.getRecent(limit).map { it.mapToDomain() }
