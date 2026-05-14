@@ -1,0 +1,1012 @@
+{
+  "nodes": [
+    {
+      "id": "Budget_Budget",
+      "label": "Budget",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/model/Budget.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "Category_Category",
+      "label": "Category",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/model/Category.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "Period_Period",
+      "label": "Period",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/model/Period.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "Transaction_Transaction",
+      "label": "Transaction",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/model/Transaction.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetRepository_BudgetRepository",
+      "label": "BudgetRepository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CategoryRepository_CategoryRepository",
+      "label": "CategoryRepository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "SettingsRepository_SettingsRepository",
+      "label": "SettingsRepository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/SettingsRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "TransactionRepository_TransactionRepository",
+      "label": "TransactionRepository",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CalculateBudgetProgressUseCase_CalculateBudgetProgressUseCase",
+      "label": "CalculateBudgetProgressUseCase",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CalculateBudgetProgressUseCase_BudgetProgress",
+      "label": "BudgetProgress",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "GetDailyTotalsUseCase_GetDailyTotalsUseCase",
+      "label": "GetDailyTotalsUseCase",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetDailyTotalsUseCase.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "GetMonthlySummaryUseCase_GetMonthlySummaryUseCase",
+      "label": "GetMonthlySummaryUseCase",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "GetMonthlySummaryUseCase_MonthlySummary",
+      "label": "MonthlySummary",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AddTransactionSheet_AddTransactionSheet",
+      "label": "AddTransactionSheet",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AddTransactionViewModel_AddTransactionViewModel",
+      "label": "AddTransactionViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AddTransactionViewModel_AddTransactionUiState",
+      "label": "AddTransactionUiState",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AnalyticsScreen_AnalyticsScreen",
+      "label": "AnalyticsScreen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AnalyticsViewModel_AnalyticsViewModel",
+      "label": "AnalyticsViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "AnalyticsViewModel_AnalyticsUiState",
+      "label": "AnalyticsUiState",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetScreen_BudgetScreen",
+      "label": "BudgetScreen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetViewModel_BudgetViewModel",
+      "label": "BudgetViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetViewModel_BudgetUiState",
+      "label": "BudgetUiState",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BudgetViewModel_CategoryBudgetSliders",
+      "label": "CategoryBudgetSliders",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CalendarScreen_CalendarScreen",
+      "label": "CalendarScreen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CalendarViewModel_CalendarViewModel",
+      "label": "CalendarViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CalendarViewModel_CalendarDay",
+      "label": "CalendarDay",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CalendarViewModel_CalendarUiState",
+      "label": "CalendarUiState",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CategoriesScreen_CategoriesScreen",
+      "label": "CategoriesScreen",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CategoriesViewModel_CategoriesViewModel",
+      "label": "CategoriesViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CategoriesViewModel_CategoryWithProgress",
+      "label": "CategoryWithProgress",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "CategoriesViewModel_CategoriesUiState",
+      "label": "CategoriesUiState",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BarChart_BarChart",
+      "label": "BarChart",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "BarChart_BarData",
+      "label": "BarData",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DonutChart_DonutChart",
+      "label": "DonutChart",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DonutChart_DonutSegment",
+      "label": "DonutSegment",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "DonutChart_DonutLegend",
+      "label": "DonutLegend",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "Transaction_Transaction",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/model/Transaction.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "Budget_Budget",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/model/Budget.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetRepository_BudgetRepository",
+      "target": "Budget_Budget",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoryRepository_CategoryRepository",
+      "target": "Category_Category",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "TransactionRepository_TransactionRepository",
+      "target": "Transaction_Transaction",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalculateBudgetProgressUseCase_CalculateBudgetProgressUseCase",
+      "target": "BudgetRepository_BudgetRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalculateBudgetProgressUseCase_CalculateBudgetProgressUseCase",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalculateBudgetProgressUseCase_CalculateBudgetProgressUseCase",
+      "target": "CalculateBudgetProgressUseCase_BudgetProgress",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "GetDailyTotalsUseCase_GetDailyTotalsUseCase",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetDailyTotalsUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "GetMonthlySummaryUseCase_GetMonthlySummaryUseCase",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "GetMonthlySummaryUseCase_GetMonthlySummaryUseCase",
+      "target": "DonutChart_DonutSegment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "GetMonthlySummaryUseCase_MonthlySummary",
+      "target": "DonutChart_DonutSegment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AddTransactionSheet_AddTransactionSheet",
+      "target": "AddTransactionViewModel_AddTransactionViewModel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AddTransactionViewModel_AddTransactionViewModel",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AddTransactionViewModel_AddTransactionViewModel",
+      "target": "CategoryRepository_CategoryRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AddTransactionViewModel_AddTransactionViewModel",
+      "target": "AddTransactionViewModel_AddTransactionUiState",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AddTransactionViewModel_AddTransactionUiState",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AddTransactionSheet_AddTransactionSheet",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsScreen_AnalyticsScreen",
+      "target": "AnalyticsViewModel_AnalyticsViewModel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsScreen_AnalyticsScreen",
+      "target": "BarChart_BarChart",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsScreen_AnalyticsScreen",
+      "target": "DonutChart_DonutChart",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsScreen_AnalyticsScreen",
+      "target": "DonutChart_DonutLegend",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsScreen_AnalyticsScreen",
+      "target": "Period_Period",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsViewModel_AnalyticsViewModel",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsViewModel_AnalyticsViewModel",
+      "target": "AnalyticsViewModel_AnalyticsUiState",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsViewModel_AnalyticsUiState",
+      "target": "DonutChart_DonutSegment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsViewModel_AnalyticsUiState",
+      "target": "Period_Period",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetScreen_BudgetScreen",
+      "target": "BudgetViewModel_BudgetViewModel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetViewModel_BudgetViewModel",
+      "target": "BudgetRepository_BudgetRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetViewModel_BudgetViewModel",
+      "target": "CategoryRepository_CategoryRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetViewModel_BudgetViewModel",
+      "target": "BudgetViewModel_BudgetUiState",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetViewModel_BudgetUiState",
+      "target": "BudgetViewModel_CategoryBudgetSliders",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetViewModel_CategoryBudgetSliders",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarScreen_CalendarScreen",
+      "target": "CalendarViewModel_CalendarViewModel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarViewModel_CalendarViewModel",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarViewModel_CalendarViewModel",
+      "target": "CalendarViewModel_CalendarDay",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarViewModel_CalendarViewModel",
+      "target": "CalendarViewModel_CalendarUiState",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarViewModel_CalendarUiState",
+      "target": "CalendarViewModel_CalendarDay",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarScreen_CalendarScreen",
+      "target": "CalendarViewModel_CalendarDay",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesScreen_CategoriesScreen",
+      "target": "CategoriesViewModel_CategoriesViewModel",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesViewModel_CategoriesViewModel",
+      "target": "CategoryRepository_CategoryRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesViewModel_CategoriesViewModel",
+      "target": "TransactionRepository_TransactionRepository",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesViewModel_CategoriesViewModel",
+      "target": "CategoriesViewModel_CategoryWithProgress",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesViewModel_CategoriesViewModel",
+      "target": "CategoriesViewModel_CategoriesUiState",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesViewModel_CategoryWithProgress",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesViewModel_CategoriesUiState",
+      "target": "CategoriesViewModel_CategoryWithProgress",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BarChart_BarChart",
+      "target": "BarChart_BarData",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "DonutChart_DonutChart",
+      "target": "DonutChart_DonutSegment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "DonutChart_DonutLegend",
+      "target": "DonutChart_DonutSegment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalculateBudgetProgressUseCase_BudgetProgress",
+      "target": "CategoriesViewModel_CategoryWithProgress",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "DonutChart_DonutChart",
+      "target": "BarChart_BarChart",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "AnalyticsScreen_AnalyticsScreen",
+      "target": "CalendarScreen_CalendarScreen",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetViewModel_BudgetViewModel",
+      "target": "CalculateBudgetProgressUseCase_CalculateBudgetProgressUseCase",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CalendarViewModel_CalendarViewModel",
+      "target": "AnalyticsViewModel_AnalyticsViewModel",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "GetMonthlySummaryUseCase_GetMonthlySummaryUseCase",
+      "target": "AnalyticsViewModel_AnalyticsViewModel",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesScreen_CategoriesScreen",
+      "target": "Category_Category",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "CategoriesScreen_CategoriesScreen",
+      "target": "CategoriesViewModel_CategoryWithProgress",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "BudgetScreen_BudgetScreen",
+      "target": "BudgetViewModel_CategoryBudgetSliders",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "budget_management_flow",
+      "label": "Budget Management System",
+      "nodes": [
+        "BudgetViewModel_BudgetViewModel",
+        "BudgetRepository_BudgetRepository",
+        "CalculateBudgetProgressUseCase_CalculateBudgetProgressUseCase"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt"
+    },
+    {
+      "id": "chart_visualization_pipeline",
+      "label": "Financial Visualization Pipeline",
+      "nodes": [
+        "AnalyticsScreen_AnalyticsScreen",
+        "DonutChart_DonutChart",
+        "BarChart_BarChart"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

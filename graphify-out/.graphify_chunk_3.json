@@ -1,0 +1,793 @@
+{
+  "nodes": [
+    {
+      "id": "02_add_transaction_screen",
+      "label": "Add Transaction Screen (Bottom Sheet)",
+      "file_type": "document",
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "03_history_screen",
+      "label": "Transaction History Screen",
+      "file_type": "document",
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "04_search_screen",
+      "label": "Search Transactions Screen",
+      "file_type": "document",
+      "source_file": "design/screens/04-search.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "05_dashboard_screen",
+      "label": "Analytics Dashboard Screen",
+      "file_type": "document",
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "06_categories_screen",
+      "label": "Categories Management Screen",
+      "file_type": "document",
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "07_budget_screen",
+      "label": "Monthly Budget Configuration Screen",
+      "file_type": "document",
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "08_calendar_screen",
+      "label": "Spending Calendar with Heat Map Screen",
+      "file_type": "document",
+      "source_file": "design/screens/08-calendar.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "09_settings_screen",
+      "label": "App Settings Screen",
+      "file_type": "document",
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "playstore_icon",
+      "label": "ISpend App Play Store Listing Icon",
+      "file_type": "image",
+      "source_file": "app/src/main/res/playstore-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "launcher_icons",
+      "label": "ISpend App Android Launcher Icons (Adaptive Icon: foreground layer at multiple densities)",
+      "file_type": "image",
+      "source_file": "app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "bottom_navigation",
+      "label": "Bottom Navigation Bar (Home, Analytics, Search, Settings)",
+      "file_type": "document",
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_category_picker",
+      "label": "Emoji-Based Category Picker Grid",
+      "file_type": "document",
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_amount_input",
+      "label": "Amount Input with Quick Amount Chips",
+      "file_type": "document",
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_month_selector",
+      "label": "Month Navigation Selector (Prev/Next Arrows)",
+      "file_type": "document",
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_transaction_list",
+      "label": "Transaction List Grouped by Date Headers",
+      "file_type": "document",
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_search_bar",
+      "label": "Search Bar with Filter Chips and Cancel Button",
+      "file_type": "document",
+      "source_file": "design/screens/04-search.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_period_selector",
+      "label": "Period Selector Tabs (Week/Month/Year)",
+      "file_type": "document",
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_donut_chart",
+      "label": "Donut Chart for Category Breakdown Visualization",
+      "file_type": "document",
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_bar_chart",
+      "label": "Vertical Bar Chart for Daily Spending (Last 7 Days)",
+      "file_type": "document",
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_category_progress_card",
+      "label": "Category Card with Emoji, Transaction Count, Progress Bar, and Amount",
+      "file_type": "document",
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_budget_slider",
+      "label": "Budget Range Slider with Preset Chips for Category Budget Allocation",
+      "file_type": "document",
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_calendar_heatmap",
+      "label": "Monthly Calendar Grid with Spending Heat Map (5 Intensity Levels)",
+      "file_type": "document",
+      "source_file": "design/screens/08-calendar.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_theme_selector",
+      "label": "Theme Selector (Light, Dark, OLED Modes)",
+      "file_type": "document",
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_accent_color_picker",
+      "label": "Accent Color Picker (6 Color Options)",
+      "file_type": "document",
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ui_data_management",
+      "label": "Data Management Controls (Export CSV, Import CSV, Delete All Data)",
+      "file_type": "document",
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "expense_categories",
+      "label": "Expense Categories (Food, Groceries, Transport, Shopping, Entertainment, Bills, Health, Education, Travel, Personal Care, Other)",
+      "file_type": "document",
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "design_system",
+      "label": "Material Design 3 Color System (OKLCH-based, Google Sans font, elevation tokens)",
+      "file_type": "document",
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ispend_app",
+      "label": "ISpend Personal Finance Tracking Android App",
+      "file_type": "document",
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "budget_tracking",
+      "label": "Monthly Budget Tracking with Per-Category Allocation and Spending Progress",
+      "file_type": "document",
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "02_add_transaction_screen",
+      "target": "ui_category_picker",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_add_transaction_screen",
+      "target": "ui_amount_input",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_add_transaction_screen",
+      "target": "expense_categories",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "03_history_screen",
+      "target": "ui_month_selector",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "03_history_screen",
+      "target": "ui_transaction_list",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "03_history_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "04_search_screen",
+      "target": "ui_search_bar",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/04-search.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "04_search_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/04-search.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "ui_period_selector",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "ui_donut_chart",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "ui_bar_chart",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_categories_screen",
+      "target": "ui_category_progress_card",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_categories_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "07_budget_screen",
+      "target": "ui_budget_slider",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "07_budget_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "08_calendar_screen",
+      "target": "ui_calendar_heatmap",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/08-calendar.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "08_calendar_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/08-calendar.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "09_settings_screen",
+      "target": "ui_theme_selector",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "09_settings_screen",
+      "target": "ui_accent_color_picker",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "09_settings_screen",
+      "target": "ui_data_management",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "09_settings_screen",
+      "target": "bottom_navigation",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_categories_screen",
+      "target": "expense_categories",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "07_budget_screen",
+      "target": "expense_categories",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "expense_categories",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "02_add_transaction_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/02-add-transaction.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "03_history_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "04_search_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/04-search.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_categories_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "07_budget_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "08_calendar_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/08-calendar.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "09_settings_screen",
+      "target": "design_system",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/09-settings.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "playstore_icon",
+      "target": "ispend_app",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/res/playstore-icon.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "launcher_icons",
+      "target": "ispend_app",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "07_budget_screen",
+      "target": "budget_tracking",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/07-budget.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "06_categories_screen",
+      "target": "budget_tracking",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "design/screens/06-categories.html",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "03_history_screen",
+      "target": "02_add_transaction_screen",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "design/screens/03-history.html",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "08_calendar_screen",
+      "target": "03_history_screen",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "design/screens/08-calendar.html",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "05_dashboard_screen",
+      "target": "06_categories_screen",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "design/screens/05-dashboard.html",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "04_search_screen",
+      "target": "03_history_screen",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "design/screens/04-search.html",
+      "source_location": null,
+      "weight": 0.7
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "ispend_ui_screens_suite",
+      "label": "ISpend App Complete UI Screen Suite (7 Screens + Home)",
+      "nodes": [
+        "02_add_transaction_screen",
+        "03_history_screen",
+        "04_search_screen",
+        "05_dashboard_screen",
+        "06_categories_screen",
+        "07_budget_screen",
+        "08_calendar_screen",
+        "09_settings_screen"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/02-add-transaction.html"
+    },
+    {
+      "id": "shared_bottom_nav_framework",
+      "label": "Shared Bottom Navigation Bar Framework Across Screens",
+      "nodes": [
+        "bottom_navigation",
+        "03_history_screen",
+        "04_search_screen",
+        "05_dashboard_screen",
+        "06_categories_screen",
+        "07_budget_screen",
+        "08_calendar_screen",
+        "09_settings_screen"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/03-history.html"
+    },
+    {
+      "id": "shared_material3_design_language",
+      "label": "Shared Material Design 3 (OKLCH) Design Language Across All Screens",
+      "nodes": [
+        "design_system",
+        "02_add_transaction_screen",
+        "03_history_screen",
+        "04_search_screen",
+        "05_dashboard_screen",
+        "06_categories_screen",
+        "07_budget_screen",
+        "08_calendar_screen",
+        "09_settings_screen"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "design/screens/02-add-transaction.html"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
