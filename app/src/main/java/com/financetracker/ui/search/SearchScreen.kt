@@ -51,6 +51,7 @@ import java.util.Locale
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
+    onEditTransaction: (java.util.UUID) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
@@ -192,7 +193,8 @@ fun SearchScreen(
                     TransactionCard(
                         transaction = transaction,
                         iconSize = 36.dp,
-                        cardCornerRadius = 8.dp
+                        cardCornerRadius = 8.dp,
+                        onClick = { onEditTransaction(transaction.id) }
                     )
                 }
             }

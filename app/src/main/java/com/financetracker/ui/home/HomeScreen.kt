@@ -37,6 +37,7 @@ import java.util.Locale
 @Composable
 fun HomeScreen(
     onAddTransaction: () -> Unit,
+    onEditTransaction: (java.util.UUID) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
@@ -124,7 +125,8 @@ fun HomeScreen(
                 useCard = false,
                 iconSize = 44.dp,
                 showDate = true,
-                verticalPadding = 8.dp
+                verticalPadding = 8.dp,
+                onClick = { onEditTransaction(transaction.id) }
             )
         }
 
