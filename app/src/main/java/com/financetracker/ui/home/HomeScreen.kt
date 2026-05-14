@@ -1,7 +1,6 @@
 package com.financetracker.ui.home
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,10 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -25,19 +22,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.financetracker.ui.components.DonutChart
 import com.financetracker.ui.components.DonutLegend
+import com.financetracker.ui.components.TransactionCard
 import java.math.BigDecimal
 import java.text.NumberFormat
 import java.time.LocalDate
-import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import java.util.Locale
 
 @Composable
@@ -125,7 +119,13 @@ fun HomeScreen(
             items = uiState.recentTransactions,
             key = { it.id }
         ) { transaction ->
-            TransactionRow(transaction = transaction)
+            TransactionCard(
+                transaction = transaction,
+                useCard = false,
+                iconSize = 44.dp,
+                showDate = true,
+                verticalPadding = 8.dp
+            )
         }
 
         item(key = "bottom_spacer") {
@@ -216,70 +216,6 @@ private fun BudgetSummaryCard(
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun TransactionRow(
-    transaction: com.financetracker.domain.model.Transaction,
-    modifier: Modifier = Modifier
-) {
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
-    val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable { }
-            .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        // Category emoji circle
-        Box(
-            modifier = Modifier
-                .size(44.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.surfaceContainerHigh),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = transaction.category.emoji,
-                style = MaterialTheme.typography.titleMedium
-            )
-        }
-
-        Spacer(modifier = Modifier.width(12.dp))
-
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = transaction.category.name,
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Medium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            if (transaction.note.isNotBlank()) {
-                Text(
-                    text = transaction.note,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-            Text(
-                text = transaction.date.format(dateFormatter),
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-
-        Text(
-            text = "-${currencyFormatter.format(transaction.amount)}",
-            style = MaterialTheme.typography.bodyMedium,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onSurface
-        )
     }
 }
 
