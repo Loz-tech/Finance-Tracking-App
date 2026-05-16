@@ -1,16 +1,16 @@
 # Graph Report - FinanceTrackingApp  (2026-05-16)
 
 ## Corpus Check
-- 73 files · ~43,643 words
+- 73 files · ~44,229 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 429 nodes · 456 edges · 45 communities (18 shown, 27 thin omitted)
+- 432 nodes · 461 edges · 46 communities (21 shown, 25 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 43 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d77dad22`
+- Built from commit: `7215a0df`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,6 +55,7 @@
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Agent Guide — FinanceTrackingApp` - 19 edges
@@ -80,19 +81,19 @@
 - `AppNavHost()` --calls--> `BudgetScreen()`  [INFERRED]
   app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt → app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt
 
-## Communities (45 total, 27 thin omitted)
+## Communities (46 total, 25 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
 Nodes (17): AddTransactionSheet(), CategoryChip(), BudgetScreen(), CalendarScreen(), DayCell(), AddCategoryDialog(), CategoriesScreen(), CategoryCard() (+9 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.12
-Nodes (10): MainActivity, Transaction, SettingsDataStore, UserPreferences, darkColorScheme(), FinanceTrackingAppTheme(), lightColorScheme(), oledColorScheme() (+2 more)
+Cohesion: 0.15
+Nodes (9): MainActivity, SettingsDataStore, UserPreferences, darkColorScheme(), FinanceTrackingAppTheme(), lightColorScheme(), oledColorScheme(), QuickAddContent() (+1 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.12
-Nodes (15): AnalyticsScreen(), StatBox(), AnalyticsUiState, AnalyticsViewModel, WeekdayBar, BarChart(), BarData, DonutChart() (+7 more)
+Cohesion: 0.15
+Nodes (13): AnalyticsScreen(), StatBox(), BarChart(), BarData, DonutChart(), DonutLegend(), DonutSegment, BudgetSummaryCard() (+5 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.19
@@ -115,7 +116,7 @@ Cohesion: 0.06
 Nodes (31): code:toml (ktlintGradle = "14.2.0"), code:block10 (- No detekt, ktlint, or `.editorconfig`), code:block11 (- **ktlint** — `org.jlleitschuh.gradle.ktlint` 14.2.0, confi), code:bash (./gradlew ktlintCheck), code:toml (ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref), code:kotlin (alias(libs.plugins.ktlint) apply false), code:kotlin (ktlint {), code:editorconfig (root = true) (+23 more)
 
 ### Community 16 - "Community 16"
-Cohesion: 0.36
+Cohesion: 0.33
 Nodes (3): BudgetUiState, BudgetViewModel, CategoryBudgetSliders
 
 ### Community 17 - "Community 17"
@@ -130,29 +131,41 @@ Nodes (20): Architecture Pattern, Build System, Code Context — FinanceTracking
 Cohesion: 0.29
 Nodes (3): DateGroup, HistoryUiState, HistoryViewModel
 
+### Community 22 - "Community 22"
+Cohesion: 0.18
+Nodes (3): AddTransactionUiState, AddTransactionViewModel, Transaction
+
+### Community 32 - "Community 32"
+Cohesion: 0.5
+Nodes (3): CategoryBudgetProgress, HomeUiState, HomeViewModel
+
 ### Community 44 - "Community 44"
 Cohesion: 0.06
 Nodes (33): 10. How to Add a New Feature (End-to-End), 11. Testing, 12. Key Files to Read First, 13. Custom Abstractions / Utils, 14. Widget, 15. Code Style / Lint, 16. Common Patterns (Copy-Paste Ready), 17. Open Questions to Ask the User (+25 more)
 
+### Community 45 - "Community 45"
+Cohesion: 0.53
+Nodes (3): AnalyticsUiState, AnalyticsViewModel, WeekdayBar
+
 ## Knowledge Gaps
-- **86 isolated node(s):** `FinanceApp`, `DailyTotal`, `TransactionSearchResult`, `Budget`, `Period` (+81 more)
+- **87 isolated node(s):** `FinanceApp`, `DailyTotal`, `TransactionSearchResult`, `Budget`, `Period` (+82 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **25 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppNavHost()` connect `Community 0` to `Community 1`, `Community 2`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+  _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **Why does `Category` connect `Community 6` to `Community 1`, `Community 4`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `AppNavHost()` (e.g. with `.onCreate()` and `AppTopBar()`) actually correct?**
   _`AppNavHost()` has 13 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `FinanceApp`, `DailyTotal`, `TransactionSearchResult` to the rest of the system?**
-  _86 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _87 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.12 - nodes in this community are weakly interconnected._
-- **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.12 - nodes in this community are weakly interconnected._
+- **Should `Community 3` be split into smaller, more focused modules?**
+  _Cohesion score 0.11 - nodes in this community are weakly interconnected._
+- **Should `Community 6` be split into smaller, more focused modules?**
+  _Cohesion score 0.13 - nodes in this community are weakly interconnected._

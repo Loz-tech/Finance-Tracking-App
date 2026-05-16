@@ -58,7 +58,7 @@ fun DonutChart(
             segments.forEach { segment ->
                 val sweep = if (total > 0) (segment.value / total) * 360f * animationProgress else 0f
                 drawArc(
-                    color = segment.color.copy(alpha = 0.3f),
+                    color = segment.color,
                     startAngle = startAngle,
                     sweepAngle = sweep,
                     useCenter = false,

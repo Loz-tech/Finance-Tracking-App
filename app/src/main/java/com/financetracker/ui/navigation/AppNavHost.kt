@@ -95,7 +95,8 @@ fun AppNavHost() {
             composable(Screen.Home.route) {
                 HomeScreen(
                     onAddTransaction = { navController.navigate(Screen.AddTransaction.route) },
-                    onEditTransaction = { id -> navController.navigate("${Screen.AddTransaction.route}/$id") }
+                    onEditTransaction = { id -> navController.navigate("${Screen.AddTransaction.route}/$id") },
+                    onNavigateToBudget = { navController.navigate(Screen.Budget.route) }
                 )
             }
             composable(Screen.Analytics.route) {
@@ -109,7 +110,8 @@ fun AppNavHost() {
             composable(Screen.Settings.route) {
                 SettingsScreen(
                     onExportCsv = { /* handled via ViewModel */ },
-                    onExportJson = { /* handled via ViewModel */ }
+                    onExportJson = { /* handled via ViewModel */ },
+                    onNavigateToBudget = { navController.navigate(Screen.Budget.route) }
                 )
             }
             composable(Screen.History.route) {

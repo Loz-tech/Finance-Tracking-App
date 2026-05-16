@@ -9,6 +9,7 @@ import com.financetracker.domain.repository.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
 import java.time.YearMonth
+import java.util.UUID
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -59,7 +60,13 @@ class BudgetViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(totalBudget = amount)
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
-            val budget = Budget(categoryId = null, yearMonth = yearMonth, limitAmount = amount)
+            val existing = budgetRepository.getTotalBudget(yearMonth)
+            val budget = Budget(
+                id = existing?.id ?: UUID.randomUUID(),
+                categoryId = null,
+                yearMonth = yearMonth,
+                limitAmount = amount
+            )
             budgetRepository.saveBudget(budget)
         }
     }
@@ -72,12 +79,21 @@ class BudgetViewModel @Inject constructor(
         )
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
-            val budget = Budget(categoryId = category.id, yearMonth = yearMonth, limitAmount = amount)
+            val existing = budgetRepository.getCategoryBudget(yearMonth, category.id)
+            val budget = Budget(
+                id = existing?.id ?: UUID.randomUUID(),
+                categoryId = category.id,
+                yearMonth = yearMonth,
+                limitAmount = amount
+            )
             budgetRepository.saveBudget(budget)
         }
     }
 
-    fun applyPreset(category: Category, preset: BigDecimal) {
-        setCategoryBudget(category, preset)
+    fun recalculateTotalBudget() {
+        val sum = _uiState.value.categorySliders
+            .map { it.limit }
+            .fold(BigDecimal.ZERO) { acc, limit -> acc + limit }
+        setTotalBudget(sum)
     }
 }

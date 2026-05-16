@@ -1,8 +1,10 @@
 package com.financetracker.ui.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,9 +13,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,6 +25,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -36,6 +41,7 @@ import java.util.Locale
 fun HomeScreen(
     onAddTransaction: () -> Unit,
     onEditTransaction: (java.util.UUID) -> Unit,
+    onNavigateToBudget: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
@@ -57,8 +63,17 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(8.dp))
             BudgetSummaryCard(
                 totalSpent = uiState.totalSpent,
-                totalBudget = uiState.totalBudget
+                totalBudget = uiState.totalBudget,
+                onClick = onNavigateToBudget
             )
+        }
+
+        // Category budget progress row
+        if (uiState.categoryBudgets.isNotEmpty()) {
+            item(key = "category_budgets") {
+                Spacer(modifier = Modifier.height(4.dp))
+                CategoryBudgetRow(budgets = uiState.categoryBudgets)
+            }
         }
 
         // Donut chart + legend
@@ -135,7 +150,12 @@ fun HomeScreen(
 }
 
 @Composable
-private fun BudgetSummaryCard(totalSpent: BigDecimal, totalBudget: BigDecimal?, modifier: Modifier = Modifier) {
+private fun BudgetSummaryCard(
+    totalSpent: BigDecimal,
+    totalBudget: BigDecimal?,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     val today = LocalDate.now()
     val daysInMonth = today.lengthOfMonth()
     val daysLeft = daysInMonth - today.dayOfMonth
@@ -149,7 +169,7 @@ private fun BudgetSummaryCard(totalSpent: BigDecimal, totalBudget: BigDecimal?, 
     val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
 
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().clickable { onClick() },
         colors = CardDefaults.cardColors(
             containerColor = if (remaining < BigDecimal.ZERO) {
                 MaterialTheme.colorScheme.errorContainer
@@ -213,6 +233,63 @@ private fun BudgetSummaryCard(totalSpent: BigDecimal, totalBudget: BigDecimal?, 
                     text = "$daysLeft days remaining",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.secondary
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun CategoryBudgetRow(budgets: List<CategoryBudgetProgress>, modifier: Modifier = Modifier) {
+    LazyRow(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = PaddingValues(horizontal = 4.dp)
+    ) {
+        items(budgets) { budget ->
+            val progress = if (budget.limit > BigDecimal.ZERO) {
+                (budget.spent.toFloat() / budget.limit.toFloat()).coerceIn(0f, 1f)
+            } else {
+                0f
+            }
+            val indicatorColor = budget.colorHex?.let { safeColor ->
+                try {
+                    Color(android.graphics.Color.parseColor(safeColor))
+                } catch (_: IllegalArgumentException) {
+                    MaterialTheme.colorScheme.primary
+                }
+            } ?: MaterialTheme.colorScheme.primary
+
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(
+                    modifier = Modifier.size(64.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(
+                        progress = { progress },
+                        modifier = Modifier.fillMaxSize(),
+                        strokeWidth = 4.dp,
+                        color = indicatorColor,
+                        trackColor = MaterialTheme.colorScheme.surfaceContainerHigh
+                    )
+                    Text(
+                        text = budget.emoji,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                }
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = budget.categoryName,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1
+                )
+                val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+                Text(
+                    text = currencyFormatter.format(budget.spent),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    maxLines = 1
                 )
             }
         }

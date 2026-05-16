@@ -46,6 +46,7 @@ import com.financetracker.ui.theme.AccentColor
 fun SettingsScreen(
     onExportCsv: () -> Unit,
     onExportJson: () -> Unit,
+    onNavigateToBudget: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
@@ -118,6 +119,24 @@ fun SettingsScreen(
                             Text(accent.label, style = MaterialTheme.typography.labelSmall)
                         }
                     }
+                }
+            }
+        }
+
+        // Budget
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text("Budget", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(
+                    onClick = onNavigateToBudget,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium
+                ) {
+                    Text("📊 Manage Budgets")
                 }
             }
         }

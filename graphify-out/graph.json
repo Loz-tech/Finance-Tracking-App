@@ -1242,7 +1242,7 @@
       "source_file": "app/src/main/java/com/financetracker/domain/model/Transaction.kt",
       "source_location": "L1",
       "id": "app_src_main_java_com_financetracker_domain_model_transaction_kt",
-      "community": 1,
+      "community": 22,
       "norm_label": "transaction.kt"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "app/src/main/java/com/financetracker/domain/model/Transaction.kt",
       "source_location": "L7",
       "id": "model_transaction_transaction",
-      "community": 1,
+      "community": 22,
       "norm_label": "transaction"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L84",
       "id": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_savetransaction",
-      "community": 1,
+      "community": 22,
       "norm_label": ".savetransaction()"
     },
     {
@@ -1757,6 +1757,60 @@
       "id": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_reset",
       "community": 22,
       "norm_label": ".reset()"
+    },
+    {
+      "label": "AnalyticsViewModel.kt",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": "L1",
+      "id": "app_src_main_java_com_financetracker_ui_analytics_analyticsviewmodel_kt",
+      "community": 45,
+      "norm_label": "analyticsviewmodel.kt"
+    },
+    {
+      "label": "WeekdayBar",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": "L20",
+      "id": "analytics_analyticsviewmodel_weekdaybar",
+      "community": 45,
+      "norm_label": "weekdaybar"
+    },
+    {
+      "label": "AnalyticsUiState",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": "L22",
+      "id": "analytics_analyticsviewmodel_analyticsuistate",
+      "community": 45,
+      "norm_label": "analyticsuistate"
+    },
+    {
+      "label": "AnalyticsViewModel",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": "L32",
+      "id": "analytics_analyticsviewmodel_analyticsviewmodel",
+      "community": 45,
+      "norm_label": "analyticsviewmodel"
+    },
+    {
+      "label": ".onPeriodSelected()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": "L42",
+      "id": "analytics_analyticsviewmodel_analyticsviewmodel_onperiodselected",
+      "community": 45,
+      "norm_label": ".onperiodselected()"
+    },
+    {
+      "label": ".loadData()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
+      "source_location": "L47",
+      "id": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
+      "community": 45,
+      "norm_label": ".loaddata()"
     },
     {
       "label": "AnalyticsScreen.kt",
@@ -1786,60 +1840,6 @@
       "norm_label": "statbox()"
     },
     {
-      "label": "AnalyticsViewModel.kt",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
-      "source_location": "L1",
-      "id": "app_src_main_java_com_financetracker_ui_analytics_analyticsviewmodel_kt",
-      "community": 2,
-      "norm_label": "analyticsviewmodel.kt"
-    },
-    {
-      "label": "WeekdayBar",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
-      "source_location": "L19",
-      "id": "analytics_analyticsviewmodel_weekdaybar",
-      "community": 2,
-      "norm_label": "weekdaybar"
-    },
-    {
-      "label": "AnalyticsUiState",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
-      "source_location": "L21",
-      "id": "analytics_analyticsviewmodel_analyticsuistate",
-      "community": 2,
-      "norm_label": "analyticsuistate"
-    },
-    {
-      "label": "AnalyticsViewModel",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
-      "source_location": "L31",
-      "id": "analytics_analyticsviewmodel_analyticsviewmodel",
-      "community": 2,
-      "norm_label": "analyticsviewmodel"
-    },
-    {
-      "label": ".onPeriodSelected()",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
-      "source_location": "L41",
-      "id": "analytics_analyticsviewmodel_analyticsviewmodel_onperiodselected",
-      "community": 2,
-      "norm_label": ".onperiodselected()"
-    },
-    {
-      "label": ".loadData()",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
-      "source_location": "L46",
-      "id": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
-      "community": 2,
-      "norm_label": ".loaddata()"
-    },
-    {
       "label": "BudgetScreen.kt",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
@@ -1852,7 +1852,7 @@
       "label": "BudgetScreen()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
-      "source_location": "L37",
+      "source_location": "L45",
       "id": "budget_budgetscreen_budgetscreen",
       "community": 0,
       "norm_label": "budgetscreen()"
@@ -1870,7 +1870,7 @@
       "label": "CategoryBudgetSliders",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L18",
+      "source_location": "L19",
       "id": "budget_budgetviewmodel_categorybudgetsliders",
       "community": 16,
       "norm_label": "categorybudgetsliders"
@@ -1879,7 +1879,7 @@
       "label": "BudgetUiState",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "budget_budgetviewmodel_budgetuistate",
       "community": 16,
       "norm_label": "budgetuistate"
@@ -1888,7 +1888,7 @@
       "label": "BudgetViewModel",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L26",
+      "source_location": "L27",
       "id": "budget_budgetviewmodel_budgetviewmodel",
       "community": 16,
       "norm_label": "budgetviewmodel"
@@ -1897,7 +1897,7 @@
       "label": ".loadBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L39",
+      "source_location": "L40",
       "id": "budget_budgetviewmodel_budgetviewmodel_loadbudget",
       "community": 16,
       "norm_label": ".loadbudget()"
@@ -1906,7 +1906,7 @@
       "label": ".setTotalBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L58",
+      "source_location": "L59",
       "id": "budget_budgetviewmodel_budgetviewmodel_settotalbudget",
       "community": 16,
       "norm_label": ".settotalbudget()"
@@ -1915,19 +1915,19 @@
       "label": ".setCategoryBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L67",
+      "source_location": "L74",
       "id": "budget_budgetviewmodel_budgetviewmodel_setcategorybudget",
       "community": 16,
       "norm_label": ".setcategorybudget()"
     },
     {
-      "label": ".applyPreset()",
+      "label": ".recalculateTotalBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L80",
-      "id": "budget_budgetviewmodel_budgetviewmodel_applypreset",
+      "source_location": "L93",
+      "id": "budget_budgetviewmodel_budgetviewmodel_recalculatetotalbudget",
       "community": 16,
-      "norm_label": ".applypreset()"
+      "norm_label": ".recalculatetotalbudget()"
     },
     {
       "label": "CalendarScreen.kt",
@@ -2149,7 +2149,7 @@
       "label": "BarData",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
-      "source_location": "L27",
+      "source_location": "L28",
       "id": "components_barchart_bardata",
       "community": 2,
       "norm_label": "bardata"
@@ -2158,46 +2158,10 @@
       "label": "BarChart()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
-      "source_location": "L29",
+      "source_location": "L30",
       "id": "components_barchart_barchart",
       "community": 2,
       "norm_label": "barchart()"
-    },
-    {
-      "label": "DonutChart.kt",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
-      "source_location": "L1",
-      "id": "app_src_main_java_com_financetracker_ui_components_donutchart_kt",
-      "community": 2,
-      "norm_label": "donutchart.kt"
-    },
-    {
-      "label": "DonutSegment",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
-      "source_location": "L28",
-      "id": "components_donutchart_donutsegment",
-      "community": 2,
-      "norm_label": "donutsegment"
-    },
-    {
-      "label": "DonutChart()",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
-      "source_location": "L30",
-      "id": "components_donutchart_donutchart",
-      "community": 2,
-      "norm_label": "donutchart()"
-    },
-    {
-      "label": "DonutLegend()",
-      "file_type": "code",
-      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
-      "source_location": "L91",
-      "id": "components_donutchart_donutlegend",
-      "community": 2,
-      "norm_label": "donutlegend()"
     },
     {
       "label": "TransactionCard.kt",
@@ -2216,6 +2180,42 @@
       "id": "components_transactioncard_transactioncard",
       "community": 0,
       "norm_label": "transactioncard()"
+    },
+    {
+      "label": "DonutChart.kt",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": "L1",
+      "id": "app_src_main_java_com_financetracker_ui_components_donutchart_kt",
+      "community": 2,
+      "norm_label": "donutchart.kt"
+    },
+    {
+      "label": "DonutSegment",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": "L29",
+      "id": "components_donutchart_donutsegment",
+      "community": 2,
+      "norm_label": "donutsegment"
+    },
+    {
+      "label": "DonutChart()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": "L31",
+      "id": "components_donutchart_donutchart",
+      "community": 2,
+      "norm_label": "donutchart()"
+    },
+    {
+      "label": "DonutLegend()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
+      "source_location": "L92",
+      "id": "components_donutchart_donutlegend",
+      "community": 2,
+      "norm_label": "donutlegend()"
     },
     {
       "label": "HistoryScreen.kt",
@@ -2308,10 +2308,19 @@
       "norm_label": "homeviewmodel.kt"
     },
     {
+      "label": "CategoryBudgetProgress",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": "L23",
+      "id": "home_homeviewmodel_categorybudgetprogress",
+      "community": 32,
+      "norm_label": "categorybudgetprogress"
+    },
+    {
       "label": "HomeUiState",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
-      "source_location": "L20",
+      "source_location": "L32",
       "id": "home_homeviewmodel_homeuistate",
       "community": 32,
       "norm_label": "homeuistate"
@@ -2320,7 +2329,7 @@
       "label": "HomeViewModel",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
-      "source_location": "L29",
+      "source_location": "L42",
       "id": "home_homeviewmodel_homeviewmodel",
       "community": 32,
       "norm_label": "homeviewmodel"
@@ -2338,7 +2347,7 @@
       "label": "HomeScreen()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
-      "source_location": "L35",
+      "source_location": "L40",
       "id": "home_homescreen_homescreen",
       "community": 2,
       "norm_label": "homescreen()"
@@ -2347,16 +2356,25 @@
       "label": "BudgetSummaryCard()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
-      "source_location": "L137",
+      "source_location": "L152",
       "id": "home_homescreen_budgetsummarycard",
       "community": 2,
       "norm_label": "budgetsummarycard()"
     },
     {
+      "label": "CategoryBudgetRow()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": "L242",
+      "id": "home_homescreen_categorybudgetrow",
+      "community": 2,
+      "norm_label": "categorybudgetrow()"
+    },
+    {
       "label": "EmptyHomeScreen()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
-      "source_location": "L222",
+      "source_location": "L299",
       "id": "home_homescreen_emptyhomescreen",
       "community": 2,
       "norm_label": "emptyhomescreen()"
@@ -2770,7 +2788,7 @@
       "label": "AccentColor",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Color.kt",
-      "source_location": "L53",
+      "source_location": "L63",
       "id": "theme_color_accentcolor",
       "community": 36,
       "norm_label": "accentcolor"
@@ -3845,6 +3863,15 @@
       "id": "plans_ktlint_integration_future_work_blocked",
       "community": 14,
       "norm_label": "future work (blocked)"
+    },
+    {
+      "label": ".applyPreset()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": "L93",
+      "community": 16,
+      "norm_label": ".applypreset()",
+      "id": "budget_budgetviewmodel_budgetviewmodel_applypreset"
     },
     {
       "label": "WidgetModels.kt",
@@ -5942,92 +5969,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L36",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsscreen_kt",
-      "target": "analytics_analyticsscreen_analyticsscreen"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L106",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsscreen_kt",
-      "target": "analytics_analyticsscreen_statbox"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L67",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "analytics_analyticsscreen_analyticsscreen",
-      "target": "analytics_analyticsscreen_statbox"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L81",
-      "weight": 1.0,
-      "source": "analytics_analyticsscreen_analyticsscreen",
-      "target": "components_donutchart_donutchart"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L83",
-      "weight": 1.0,
-      "source": "analytics_analyticsscreen_analyticsscreen",
-      "target": "components_donutchart_donutlegend"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L96",
-      "weight": 1.0,
-      "source": "analytics_analyticsscreen_analyticsscreen",
-      "target": "components_barchart_barchart"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
-      "source_location": "L97",
-      "weight": 1.0,
-      "source": "analytics_analyticsscreen_analyticsscreen",
-      "target": "components_barchart_bardata"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
-      "source_location": "L107",
-      "weight": 1.0,
-      "source": "navigation_appnavhost_appnavhost",
-      "target": "analytics_analyticsscreen_analyticsscreen"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L20",
       "weight": 1.0,
@@ -6118,6 +6059,92 @@
       "weight": 1.0,
       "source": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
       "target": "components_donutchart_donutsegment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsscreen_kt",
+      "target": "analytics_analyticsscreen_analyticsscreen"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsscreen_kt",
+      "target": "analytics_analyticsscreen_statbox"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "analytics_analyticsscreen_analyticsscreen",
+      "target": "analytics_analyticsscreen_statbox"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "analytics_analyticsscreen_analyticsscreen",
+      "target": "components_donutchart_donutchart"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "analytics_analyticsscreen_analyticsscreen",
+      "target": "components_donutchart_donutlegend"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "analytics_analyticsscreen_analyticsscreen",
+      "target": "components_barchart_barchart"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "analytics_analyticsscreen_analyticsscreen",
+      "target": "components_barchart_bardata"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "navigation_appnavhost_appnavhost",
+      "target": "analytics_analyticsscreen_analyticsscreen"
     },
     {
       "relation": "contains",
@@ -6226,11 +6253,32 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": "L93",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "budget_budgetviewmodel_budgetviewmodel",
+      "target": "budget_budgetviewmodel_budgetviewmodel_recalculatetotalbudget"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L84",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel",
       "target": "budget_budgetviewmodel_budgetviewmodel_applypreset"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "budget_budgetviewmodel_budgetviewmodel_recalculatetotalbudget",
+      "target": "budget_budgetviewmodel_budgetviewmodel_settotalbudget"
     },
     {
       "relation": "calls",
@@ -6566,6 +6614,49 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/components/TransactionCard.kt",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_ui_components_transactioncard_kt",
+      "target": "components_transactioncard_transactioncard"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "history_historyscreen_historyscreen",
+      "target": "components_transactioncard_transactioncard"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "home_homescreen_homescreen",
+      "target": "components_transactioncard_transactioncard"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchScreen.kt",
+      "source_location": "L193",
+      "weight": 1.0,
+      "source": "search_searchscreen_searchscreen",
+      "target": "components_transactioncard_transactioncard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
       "source_location": "L29",
       "weight": 1.0,
@@ -6614,49 +6705,6 @@
       "weight": 1.0,
       "source": "home_homescreen_homescreen",
       "target": "components_donutchart_donutlegend"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/src/main/java/com/financetracker/ui/components/TransactionCard.kt",
-      "source_location": "L49",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_src_main_java_com_financetracker_ui_components_transactioncard_kt",
-      "target": "components_transactioncard_transactioncard"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
-      "source_location": "L102",
-      "weight": 1.0,
-      "source": "history_historyscreen_historyscreen",
-      "target": "components_transactioncard_transactioncard"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
-      "source_location": "L123",
-      "weight": 1.0,
-      "source": "home_homescreen_homescreen",
-      "target": "components_transactioncard_transactioncard"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "app/src/main/java/com/financetracker/ui/search/SearchScreen.kt",
-      "source_location": "L193",
-      "weight": 1.0,
-      "source": "search_searchscreen_searchscreen",
-      "target": "components_transactioncard_transactioncard"
     },
     {
       "relation": "contains",
@@ -6743,6 +6791,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_ui_home_homeviewmodel_kt",
+      "target": "home_homeviewmodel_categorybudgetprogress"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
       "source_location": "L22",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -6783,6 +6841,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": "L242",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_ui_home_homescreen_kt",
+      "target": "home_homescreen_categorybudgetrow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
       "source_location": "L224",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -6810,6 +6878,17 @@
       "confidence_score": 1.0,
       "source": "home_homescreen_homescreen",
       "target": "home_homescreen_budgetsummarycard"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "home_homescreen_homescreen",
+      "target": "home_homescreen_categorybudgetrow"
     },
     {
       "relation": "calls",
@@ -7611,9 +7690,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetCategory.kt",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_widget_widgetcategory_kt",
-      "target": "widget_widgetcategory_widgetcategory",
-      "confidence_score": 1.0
+      "target": "widget_widgetcategory_widgetcategory"
     },
     {
       "relation": "contains",
@@ -7661,9 +7740,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agents_md",
-      "target": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_agent_guide_financetrackingapp"
     },
     {
       "relation": "contains",
@@ -7681,9 +7760,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_1_project_overview",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_1_project_overview"
     },
     {
       "relation": "contains",
@@ -7691,9 +7770,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_2_tech_stack",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_2_tech_stack"
     },
     {
       "relation": "contains",
@@ -7701,9 +7780,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_3_architecture",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_3_architecture"
     },
     {
       "relation": "contains",
@@ -7711,9 +7790,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_4_directory_structure",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_4_directory_structure"
     },
     {
       "relation": "contains",
@@ -7721,9 +7800,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_5_naming_conventions",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_5_naming_conventions"
     },
     {
       "relation": "contains",
@@ -7731,9 +7810,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_6_database",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_6_database"
     },
     {
       "relation": "contains",
@@ -7741,9 +7820,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_7_dependency_injection_hilt",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_7_dependency_injection_hilt"
     },
     {
       "relation": "contains",
@@ -7751,9 +7830,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L159",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_8_ui_patterns",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_8_ui_patterns"
     },
     {
       "relation": "contains",
@@ -7761,9 +7840,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L172",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_9_navigation",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_9_navigation"
     },
     {
       "relation": "contains",
@@ -7771,9 +7850,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L197",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_10_how_to_add_a_new_feature_end_to_end",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_10_how_to_add_a_new_feature_end_to_end"
     },
     {
       "relation": "contains",
@@ -7781,9 +7860,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L210",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_11_testing",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_11_testing"
     },
     {
       "relation": "contains",
@@ -7791,9 +7870,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L217",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_12_key_files_to_read_first",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_12_key_files_to_read_first"
     },
     {
       "relation": "contains",
@@ -7801,9 +7880,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L228",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_13_custom_abstractions_utils",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_13_custom_abstractions_utils"
     },
     {
       "relation": "contains",
@@ -7811,9 +7890,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L239",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_14_widget",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_14_widget"
     },
     {
       "relation": "contains",
@@ -7821,9 +7900,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L246",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_15_code_style_lint",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_15_code_style_lint"
     },
     {
       "relation": "contains",
@@ -7831,9 +7910,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L257",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_16_common_patterns_copy_paste_ready",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_16_common_patterns_copy_paste_ready"
     },
     {
       "relation": "contains",
@@ -7841,9 +7920,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L312",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_17_open_questions_to_ask_the_user",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_17_open_questions_to_ask_the_user"
     },
     {
       "relation": "contains",
@@ -7851,9 +7930,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L324",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_agent_guide_financetrackingapp",
-      "target": "financetrackingapp_agents_tools",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_tools"
     },
     {
       "relation": "contains",
@@ -7861,9 +7940,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_3_architecture",
-      "target": "financetrackingapp_agents_codeblock_1",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_1"
     },
     {
       "relation": "contains",
@@ -7871,9 +7950,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_3_architecture",
-      "target": "financetrackingapp_agents_layer_rules",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_layer_rules"
     },
     {
       "relation": "contains",
@@ -7881,9 +7960,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_4_directory_structure",
-      "target": "financetrackingapp_agents_codeblock_2",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_2"
     },
     {
       "relation": "contains",
@@ -7891,9 +7970,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_7_dependency_injection_hilt",
-      "target": "financetrackingapp_agents_codeblock_3",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_3"
     },
     {
       "relation": "contains",
@@ -7901,9 +7980,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L142",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_7_dependency_injection_hilt",
-      "target": "financetrackingapp_agents_codeblock_4",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_4"
     },
     {
       "relation": "contains",
@@ -7911,9 +7990,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_7_dependency_injection_hilt",
-      "target": "financetrackingapp_agents_codeblock_5",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_5"
     },
     {
       "relation": "contains",
@@ -7921,9 +8000,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L176",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_9_navigation",
-      "target": "financetrackingapp_agents_codeblock_6",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_6"
     },
     {
       "relation": "contains",
@@ -7931,9 +8010,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_9_navigation",
-      "target": "financetrackingapp_agents_codeblock_7",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_7"
     },
     {
       "relation": "contains",
@@ -7941,9 +8020,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L259",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_16_common_patterns_copy_paste_ready",
-      "target": "financetrackingapp_agents_viewmodel_template",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_viewmodel_template"
     },
     {
       "relation": "contains",
@@ -7951,9 +8030,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L286",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_16_common_patterns_copy_paste_ready",
-      "target": "financetrackingapp_agents_screen_template",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_screen_template"
     },
     {
       "relation": "contains",
@@ -7961,9 +8040,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L301",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_16_common_patterns_copy_paste_ready",
-      "target": "financetrackingapp_agents_repository_implementation_template",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_repository_implementation_template"
     },
     {
       "relation": "contains",
@@ -7971,9 +8050,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L260",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_viewmodel_template",
-      "target": "financetrackingapp_agents_codeblock_8",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_8"
     },
     {
       "relation": "contains",
@@ -7981,9 +8060,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L287",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_screen_template",
-      "target": "financetrackingapp_agents_codeblock_9",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_9"
     },
     {
       "relation": "contains",
@@ -7991,9 +8070,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L302",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_repository_implementation_template",
-      "target": "financetrackingapp_agents_codeblock_10",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_codeblock_10"
     },
     {
       "relation": "contains",
@@ -8001,9 +8080,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L326",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_agents_tools",
-      "target": "financetrackingapp_agents_graphify",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_agents_graphify"
     },
     {
       "relation": "contains",
@@ -8011,9 +8090,9 @@
       "source_file": "context.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "context_md",
-      "target": "financetrackingapp_context_code_context_financetrackingapp",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_code_context_financetrackingapp"
     },
     {
       "relation": "contains",
@@ -8021,9 +8100,9 @@
       "source_file": "context.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_code_context_financetrackingapp",
-      "target": "financetrackingapp_context_files_retrieved",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_files_retrieved"
     },
     {
       "relation": "contains",
@@ -8031,9 +8110,9 @@
       "source_file": "context.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_code_context_financetrackingapp",
-      "target": "financetrackingapp_context_key_code",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_key_code"
     },
     {
       "relation": "contains",
@@ -8041,9 +8120,9 @@
       "source_file": "context.md",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_code_context_financetrackingapp",
-      "target": "financetrackingapp_context_remaining_questions_3_5",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_remaining_questions_3_5"
     },
     {
       "relation": "contains",
@@ -8051,9 +8130,9 @@
       "source_file": "context.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_tech_stack",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_tech_stack"
     },
     {
       "relation": "contains",
@@ -8061,9 +8140,9 @@
       "source_file": "context.md",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_architecture_pattern",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_architecture_pattern"
     },
     {
       "relation": "contains",
@@ -8071,9 +8150,9 @@
       "source_file": "context.md",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_naming_conventions",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_naming_conventions"
     },
     {
       "relation": "contains",
@@ -8081,9 +8160,9 @@
       "source_file": "context.md",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_dependency_injection",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_dependency_injection"
     },
     {
       "relation": "contains",
@@ -8091,9 +8170,9 @@
       "source_file": "context.md",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_database_schema",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_database_schema"
     },
     {
       "relation": "contains",
@@ -8101,9 +8180,9 @@
       "source_file": "context.md",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_ui_patterns",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_ui_patterns"
     },
     {
       "relation": "contains",
@@ -8111,9 +8190,9 @@
       "source_file": "context.md",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_navigation_structure",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_navigation_structure"
     },
     {
       "relation": "contains",
@@ -8121,9 +8200,9 @@
       "source_file": "context.md",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_testing_setup",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_testing_setup"
     },
     {
       "relation": "contains",
@@ -8131,9 +8210,9 @@
       "source_file": "context.md",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_build_system",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_build_system"
     },
     {
       "relation": "contains",
@@ -8141,9 +8220,9 @@
       "source_file": "context.md",
       "source_location": "L118",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_custom_abstractions_utils",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_custom_abstractions_utils"
     },
     {
       "relation": "contains",
@@ -8151,9 +8230,9 @@
       "source_file": "context.md",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_code_style_lint",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_code_style_lint"
     },
     {
       "relation": "contains",
@@ -8161,9 +8240,9 @@
       "source_file": "context.md",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_feature_structure_end_to_end_example_add_transaction",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_feature_structure_end_to_end_example_add_transaction"
     },
     {
       "relation": "contains",
@@ -8171,9 +8250,9 @@
       "source_file": "context.md",
       "source_location": "L140",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_key_code",
-      "target": "financetrackingapp_context_widget_extra",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_widget_extra"
     },
     {
       "relation": "contains",
@@ -8181,9 +8260,9 @@
       "source_file": "context.md",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_dependency_injection",
-      "target": "financetrackingapp_context_codeblock_1",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_codeblock_1"
     },
     {
       "relation": "contains",
@@ -8191,9 +8270,9 @@
       "source_file": "context.md",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_dependency_injection",
-      "target": "financetrackingapp_context_codeblock_2",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_codeblock_2"
     },
     {
       "relation": "contains",
@@ -8201,9 +8280,9 @@
       "source_file": "context.md",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetrackingapp_context_dependency_injection",
-      "target": "financetrackingapp_context_codeblock_3",
-      "confidence_score": 1.0
+      "target": "financetrackingapp_context_codeblock_3"
     },
     {
       "relation": "contains",
@@ -8211,9 +8290,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_md",
-      "target": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b"
     },
     {
       "relation": "contains",
@@ -8221,9 +8300,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_status",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_status"
     },
     {
       "relation": "contains",
@@ -8231,9 +8310,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_context",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_context"
     },
     {
       "relation": "contains",
@@ -8241,9 +8320,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_goal",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_goal"
     },
     {
       "relation": "contains",
@@ -8251,9 +8330,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_evidence",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_evidence"
     },
     {
       "relation": "contains",
@@ -8261,9 +8340,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_uncertainties_assumptions",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_uncertainties_assumptions"
     },
     {
       "relation": "contains",
@@ -8271,9 +8350,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_execution_steps",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_execution_steps"
     },
     {
       "relation": "contains",
@@ -8281,9 +8360,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L237",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_rollback_instructions",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_rollback_instructions"
     },
     {
       "relation": "contains",
@@ -8291,9 +8370,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L250",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_post_integration_notes",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_post_integration_notes"
     },
     {
       "relation": "contains",
@@ -8301,9 +8380,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L256",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_plan_ktlint_editorconfig_integration_option_b",
-      "target": "plans_ktlint_integration_future_work_blocked",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_future_work_blocked"
     },
     {
       "relation": "contains",
@@ -8311,9 +8390,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_1_add_ktlint_to_version_catalog",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_1_add_ktlint_to_version_catalog"
     },
     {
       "relation": "contains",
@@ -8321,9 +8400,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_2_register_in_root_build_script",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_2_register_in_root_build_script"
     },
     {
       "relation": "contains",
@@ -8331,9 +8410,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_3_apply_and_configure_in_app_module",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_3_apply_and_configure_in_app_module"
     },
     {
       "relation": "contains",
@@ -8341,9 +8420,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_4_create_editorconfig",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_4_create_editorconfig"
     },
     {
       "relation": "contains",
@@ -8351,9 +8430,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_5_run_initial_format_and_review",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_5_run_initial_format_and_review"
     },
     {
       "relation": "contains",
@@ -8361,9 +8440,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L158",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_6_wire_to_check_task",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_6_wire_to_check_task"
     },
     {
       "relation": "contains",
@@ -8371,9 +8450,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L170",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_7_create_ci_workflow",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_7_create_ci_workflow"
     },
     {
       "relation": "contains",
@@ -8381,9 +8460,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L207",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_8_update_agents_md",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_8_update_agents_md"
     },
     {
       "relation": "contains",
@@ -8391,9 +8470,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L228",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_execution_steps",
-      "target": "plans_ktlint_integration_step_9_validate",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_step_9_validate"
     },
     {
       "relation": "contains",
@@ -8401,9 +8480,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_1_add_ktlint_to_version_catalog",
-      "target": "plans_ktlint_integration_codeblock_1",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_1"
     },
     {
       "relation": "contains",
@@ -8411,9 +8490,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_1_add_ktlint_to_version_catalog",
-      "target": "plans_ktlint_integration_codeblock_2",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_2"
     },
     {
       "relation": "contains",
@@ -8421,9 +8500,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_2_register_in_root_build_script",
-      "target": "plans_ktlint_integration_codeblock_3",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_3"
     },
     {
       "relation": "contains",
@@ -8431,9 +8510,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_3_apply_and_configure_in_app_module",
-      "target": "plans_ktlint_integration_codeblock_4",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_4"
     },
     {
       "relation": "contains",
@@ -8441,9 +8520,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_4_create_editorconfig",
-      "target": "plans_ktlint_integration_codeblock_5",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_5"
     },
     {
       "relation": "contains",
@@ -8451,9 +8530,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L134",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_5_run_initial_format_and_review",
-      "target": "plans_ktlint_integration_codeblock_6",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_6"
     },
     {
       "relation": "contains",
@@ -8461,9 +8540,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_5_run_initial_format_and_review",
-      "target": "plans_ktlint_integration_codeblock_7",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_7"
     },
     {
       "relation": "contains",
@@ -8471,9 +8550,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L162",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_6_wire_to_check_task",
-      "target": "plans_ktlint_integration_codeblock_8",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_8"
     },
     {
       "relation": "contains",
@@ -8481,9 +8560,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L173",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_7_create_ci_workflow",
-      "target": "plans_ktlint_integration_codeblock_9",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_9"
     },
     {
       "relation": "contains",
@@ -8491,9 +8570,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L211",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_8_update_agents_md",
-      "target": "plans_ktlint_integration_codeblock_10",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_10"
     },
     {
       "relation": "contains",
@@ -8501,9 +8580,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L217",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_8_update_agents_md",
-      "target": "plans_ktlint_integration_codeblock_11",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_11"
     },
     {
       "relation": "contains",
@@ -8511,9 +8590,9 @@
       "source_file": "plans/ktlint-integration.md",
       "source_location": "L230",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plans_ktlint_integration_step_9_validate",
-      "target": "plans_ktlint_integration_codeblock_12",
-      "confidence_score": 1.0
+      "target": "plans_ktlint_integration_codeblock_12"
     },
     {
       "relation": "contains",
@@ -8527,5 +8606,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d77dad22a211e1f429404cc3c63bbb3e475bb6a7"
+  "built_at_commit": "7215a0dfee50288a31885779b8d60f6c21e26513"
 }
