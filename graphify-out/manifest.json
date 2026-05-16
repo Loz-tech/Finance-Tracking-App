@@ -8,48 +8,48 @@
     "hash": "266606e78242737ef3da02a80ea0564d"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/build.gradle.kts": {
-    "mtime": 1778184894.5963137,
-    "hash": "aba52f01ca6d86c2bbcb994abdd58593"
+    "mtime": 1778958409.7412403,
+    "hash": "21b79847dbf9a7ae1867bfbde3afa96e"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/build.gradle.kts": {
-    "mtime": 1778795003.7916431,
-    "hash": "cb8d3f08f63f1c050cb27eeed14ec8e0"
+    "mtime": 1778958444.294283,
+    "hash": "789f39126fa378b6c3e66caa661ef05f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/FinanceApp.kt": {
     "mtime": 1778184896.0635839,
     "hash": "61d2efd320e48acedfa4ccead3807225"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/MainActivity.kt": {
-    "mtime": 1778184896.063669,
-    "hash": "6f29c88bb6cecc91d25606c082ce1d16"
+    "mtime": 1778958445.6285727,
+    "hash": "1b06f52587a4f1fabd36fb13d9bfed65"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/export/CsvExporter.kt": {
-    "mtime": 1778184896.0637074,
-    "hash": "6b3a5c8ccc1a3de52008d6fc5b82b0d3"
+    "mtime": 1778958445.1377535,
+    "hash": "37ae961983612c2322efd98971c6f115"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/export/JsonExporter.kt": {
-    "mtime": 1778184896.0637481,
-    "hash": "6fce2db7e6b7df96735938f606998fc0"
+    "mtime": 1778958445.1776526,
+    "hash": "80b813d7ae0a77ede66f6a1e141f8430"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt": {
-    "mtime": 1778936053.4475873,
-    "hash": "dbfc6d6d0b3f2b6adc3617e5090f5b38"
+    "mtime": 1778958445.193518,
+    "hash": "4292432d310c3aa6b42ee6074ff4c838"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt": {
-    "mtime": 1778184896.0638204,
-    "hash": "451f6b8d3baa4bfc2ff565292b93c554"
+    "mtime": 1778958445.2129452,
+    "hash": "817b32d512459278c2ffc24efc59f37e"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt": {
-    "mtime": 1778184896.0638204,
-    "hash": "788a911a9f7c4e1547fad76b5a52be66"
+    "mtime": 1778958445.2350771,
+    "hash": "e711d36242b76415a36f4a489102208c"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/Converters.kt": {
     "mtime": 1778184896.0638204,
     "hash": "be053e3aebae003b9d401f0b9bcc74c4"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt": {
-    "mtime": 1778529812.8309982,
-    "hash": "211bd9e41e023c2e92649ef00098ad85"
+    "mtime": 1778958445.2786167,
+    "hash": "11607382e2c2f3747dba90af995d0955"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/entity/BudgetEntity.kt": {
     "mtime": 1778184896.0638204,
@@ -68,28 +68,28 @@
     "hash": "7a995855119185e81421aa33b40095d0"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt": {
-    "mtime": 1778184896.0639682,
-    "hash": "cf0d5f28d4228b13be435a207388ce2c"
+    "mtime": 1778958445.3405247,
+    "hash": "f66b7cb312b34e8f666ff4222137156f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt": {
-    "mtime": 1778184896.0639682,
-    "hash": "09aa165a0cf367914247a4064551ff95"
+    "mtime": 1778958445.3656044,
+    "hash": "87c198176009eebf3be229283c8b58dc"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt": {
-    "mtime": 1778794359.850019,
-    "hash": "c995e78ad0677ef567a1a32178c45fcc"
+    "mtime": 1778958445.4039187,
+    "hash": "4cb0d5c55e5c8785fa01bfd9454c0596"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt": {
-    "mtime": 1778184896.064084,
-    "hash": "201a302b94a86ea3abd09e3d3ed1e93f"
+    "mtime": 1778958445.415272,
+    "hash": "eb5183e67004e185f0cb3a29ab38fa9f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt": {
-    "mtime": 1778529847.810179,
-    "hash": "fb623f2c02fa846b3c69337f555d5dd7"
+    "mtime": 1778958445.4773927,
+    "hash": "743f8f3e5e19dde31385854140593e21"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/di/AppModule.kt": {
-    "mtime": 1778184896.064084,
-    "hash": "e617b45156255ff7803e2a410b6e4434"
+    "mtime": 1778958445.4969764,
+    "hash": "c96c7a44a10a845f4ddee690cc4cb19a"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/model/Budget.kt": {
     "mtime": 1778184896.064202,
@@ -100,148 +100,148 @@
     "hash": "489f8af8fbc0556c81f96a4b3ee25acf"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/model/Period.kt": {
-    "mtime": 1778184896.064238,
-    "hash": "498382cc181744f42269bf701a2552ce"
+    "mtime": 1778958445.5116575,
+    "hash": "ff5f2bf9f270939503855b408cf84be5"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/model/Transaction.kt": {
     "mtime": 1778184896.064238,
     "hash": "a42743af9ef55407c697bee9d7c3f087"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt": {
-    "mtime": 1778184896.064238,
-    "hash": "3a521e975fb885c5ba09ffc7aec9b33f"
+    "mtime": 1778958445.5226567,
+    "hash": "d3c09ffb5d2e8218399f8251e181ecfc"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt": {
-    "mtime": 1778184896.0643415,
-    "hash": "32b48ec7ce127660bd89adf6eecc8c9c"
+    "mtime": 1778958445.529984,
+    "hash": "1c14d051eadcfe2995afc8348ecbc84e"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/repository/SettingsRepository.kt": {
     "mtime": 1778184896.0643415,
     "hash": "603a3da6e41300fe715bd472a60206ec"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt": {
-    "mtime": 1778529825.161936,
-    "hash": "e9b126b7a445f8521591ba817936e70a"
+    "mtime": 1778958445.5452747,
+    "hash": "0128b347ed906b33fca9f98ada6b1347"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt": {
-    "mtime": 1778184896.0643415,
-    "hash": "2c8dfb3b01c05d912c545417084783b6"
+    "mtime": 1778958445.5729067,
+    "hash": "4c01713e3abcff6324b3231e1f3876fa"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/usecase/GetDailyTotalsUseCase.kt": {
-    "mtime": 1778529673.366118,
-    "hash": "48af12b572733ce4f2af35712131cc96"
+    "mtime": 1778958445.5811794,
+    "hash": "4138e7134f58e83ce7e84c0ae5cf75f0"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt": {
-    "mtime": 1778184896.0644507,
-    "hash": "550c1ec3800353a0e6c760e7453d3b71"
+    "mtime": 1778958445.60621,
+    "hash": "52a1199a25791b90c4beb5e173d70c17"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt": {
-    "mtime": 1778184896.0645535,
-    "hash": "6c4748460ee38241559e43fa99700f92"
+    "mtime": 1778958445.7088919,
+    "hash": "5e1d2ee2ef39e7cd45f18394c6563647"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt": {
-    "mtime": 1778184896.0646045,
-    "hash": "42e88bf8df37e400a46978c7757fd6f2"
+    "mtime": 1778958445.7453055,
+    "hash": "4def8704b6266f5bcc05453d348a1fb3"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt": {
-    "mtime": 1778184896.0646045,
-    "hash": "b3bd8698c703e7fd99db560299278968"
+    "mtime": 1778958445.7843657,
+    "hash": "aac21214b8c0b9207a4771c456cb8af2"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt": {
-    "mtime": 1778184896.064678,
-    "hash": "4229085c01894c0e634e7a3f20193365"
+    "mtime": 1778958445.825468,
+    "hash": "f656efc278d3072091185466cc3af73b"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt": {
-    "mtime": 1778184896.064678,
-    "hash": "5a7dae1139d7915ab679a1b678f79a46"
+    "mtime": 1778958445.8672104,
+    "hash": "86b2b6c694f242c1d68332bd714b04f0"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt": {
-    "mtime": 1778184896.0647476,
-    "hash": "2587e59fa9b4a6e9ba31a02084296056"
+    "mtime": 1778958445.8923352,
+    "hash": "6f5bafd375bc9bb3ec93ea0fdeca76c0"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt": {
-    "mtime": 1778184896.0647476,
-    "hash": "cd3bfa46f317ee64defb94524d3c4daf"
+    "mtime": 1778958445.9477196,
+    "hash": "6c1540362c1d1cb6908bd273b5ae9df8"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt": {
-    "mtime": 1778184896.0648158,
-    "hash": "538169df234398b28199d3bb4060ce94"
+    "mtime": 1778958502.5111623,
+    "hash": "e9b521b55f983688c094efd447c0fa0b"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt": {
-    "mtime": 1778184896.0648158,
-    "hash": "4ab94c90ae91ad09e1328badbcda9374"
+    "mtime": 1778958446.0322096,
+    "hash": "b0648389e5ba20e061d46db278236a8f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt": {
-    "mtime": 1778184896.0648828,
-    "hash": "164dd5120c47600010ea4540a47b44a8"
+    "mtime": 1778958446.0590322,
+    "hash": "1f2c9aab5aecb93f61fe491103abe232"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/components/BarChart.kt": {
-    "mtime": 1778184896.0648828,
-    "hash": "a247a9681676e6a8574bf487614fff97"
+    "mtime": 1778958446.0984898,
+    "hash": "d622916e31bd2b50a6c143f7d11991b9"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/components/DonutChart.kt": {
-    "mtime": 1778184896.0649564,
-    "hash": "263847ddf516c6f7a58991ff48f9d689"
+    "mtime": 1778958446.1292796,
+    "hash": "0816b798550d4a28aa4d285f2ff32bb7"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/components/TransactionCard.kt": {
-    "mtime": 1778791285.918182,
-    "hash": "b3cbc4e20f80e4e7de4d9fbf26334179"
+    "mtime": 1778958446.168323,
+    "hash": "63876a66c419814ddcc03216c71229a6"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt": {
-    "mtime": 1778791362.7670987,
-    "hash": "2112b47af7cae4db965e5da4a9d4b9c6"
+    "mtime": 1778958446.2021792,
+    "hash": "c25d66e90c03ff14c7989235065a2963"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt": {
-    "mtime": 1778184896.065028,
-    "hash": "bdc714c957ec4a14fc2fd45d86ab0923"
+    "mtime": 1778958502.5111623,
+    "hash": "b1d3acc1aa78bbff7d134842775ae777"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt": {
-    "mtime": 1778184896.065101,
-    "hash": "5d2d38350487ad320dc98e7fa4579896"
+    "mtime": 1778958446.319249,
+    "hash": "9f10cc2606f77d4ae2a3062d4d37eea3"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/home/HomeScreen.kt": {
-    "mtime": 1778792188.6506786,
-    "hash": "be42b02f66607b0aa1586b322c574cd3"
+    "mtime": 1778958446.2923243,
+    "hash": "61e189f9cdec3f1c5096c4bdfbbcde62"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/navigation/AppFAB.kt": {
-    "mtime": 1778184896.065101,
-    "hash": "4416d84c0bde9036f1a80d4fc8e514c5"
+    "mtime": 1778958446.3252707,
+    "hash": "eaa91e15c22ad97f6a121b36c90f9d2c"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt": {
-    "mtime": 1778792354.019806,
-    "hash": "cd6216d81a752a16a09eff7b327b99fc"
+    "mtime": 1778958446.3625104,
+    "hash": "e0265d243097e58462a3f7094f5fe027"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/navigation/AppTopBar.kt": {
-    "mtime": 1778184896.0651622,
-    "hash": "de7a4e4fa82a8e72af4c424764fde10e"
+    "mtime": 1778958446.3717694,
+    "hash": "3c2593f197e425ffd3ba10448e62ea19"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/navigation/BottomNavBar.kt": {
-    "mtime": 1778533077.7847006,
-    "hash": "0afcecd90f797d494b11e9ca0b6027c8"
+    "mtime": 1778958446.3876626,
+    "hash": "7b394daa2628eaf75381a2fc1166b008"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/navigation/Screen.kt": {
     "mtime": 1778532610.675378,
     "hash": "22f527f507de7b33c39e7bff8674a4f4"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/search/SearchScreen.kt": {
-    "mtime": 1778792192.5336826,
-    "hash": "c7d8134df49f48bc8359c00aa3f6491c"
+    "mtime": 1778958446.4733813,
+    "hash": "ec685f6eaa825849d782e2e2ff681940"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt": {
-    "mtime": 1778529901.8168547,
-    "hash": "4db176d11cb867dc1e6d83593dfa5561"
+    "mtime": 1778958502.5111623,
+    "hash": "ebe95caef87e735d5ef2e5290b71d15f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt": {
-    "mtime": 1778184896.065372,
-    "hash": "ad634b4d87345d022838966687e52f80"
+    "mtime": 1778958446.635343,
+    "hash": "01e1557ae88e3c4c50cbfd0033d09ddb"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt": {
-    "mtime": 1778789391.9024353,
-    "hash": "04a4866de793b6360b4054e919ec3cc6"
+    "mtime": 1778958446.6162093,
+    "hash": "af1732c49591cd26f7f0518f232fa3ca"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/theme/Color.kt": {
-    "mtime": 1778184896.065372,
-    "hash": "6831c7b99b28a859bd5f9c94b7c4a713"
+    "mtime": 1778958446.6499233,
+    "hash": "30111eaf2513c1ffa4c65821e517f53b"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/ui/theme/Theme.kt": {
     "mtime": 1778184896.0654325,
@@ -251,33 +251,37 @@
     "mtime": 1778531039.1880019,
     "hash": "bb3effde4f790c9d480ee94c6e943b66"
   },
-  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/WidgetModels.kt": {
-    "mtime": 1778793955.9642928,
-    "hash": "d1b71986e94febc09d3ca25d34f7ce7e"
-  },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/WidgetCategoryStore.kt": {
-    "mtime": 1778795713.039157,
-    "hash": "8f9150cff0a7349a9e42737692016a2b"
+    "mtime": 1778958446.8397658,
+    "hash": "00955aa40aaa7a8217ae66a183efe3fb"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt": {
-    "mtime": 1778794260.690064,
-    "hash": "8c5705d5517915d09a088f27ab20af9d"
+    "mtime": 1778958446.7908304,
+    "hash": "50153e4c0ab19db37b5e09eb79c04202"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt": {
-    "mtime": 1778941789.1940992,
-    "hash": "21f092a954b523625a1af20aa3470d4f"
+    "mtime": 1778958446.8216593,
+    "hash": "3c38a9348cece12aa3a2c9ddf3553298"
+  },
+  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/WidgetCategory.kt": {
+    "mtime": 1778958446.8426833,
+    "hash": "7de08eff1551d048b208e93ff7285e1f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/androidTest/java/com/financetracker/ExampleInstrumentedTest.kt": {
-    "mtime": 1778184896.0635293,
-    "hash": "945abb3d79314191de242d161c1458d2"
+    "mtime": 1778958466.0328696,
+    "hash": "2a86da49c59d4ece62721a9b6336b7da"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/test/java/com/financetracker/ExampleUnitTest.kt": {
-    "mtime": 1778184896.0655136,
-    "hash": "18601a86688791345ad74aa1811dcfab"
+    "mtime": 1778958479.1882617,
+    "hash": "88ca1cf214371d6842cd407074e42520"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/AGENTS.md": {
-    "mtime": 1778935719.4362888,
-    "hash": "a993bd9a8466b705f520b2a269a544bc"
+    "mtime": 1778958619.6620638,
+    "hash": "1aec7938a8fa3ad42f42af8b32b093d7"
+  },
+  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/context.md": {
+    "mtime": 1778942574.7356596,
+    "hash": "634bb58124ac4e0ef5fa765eb025cbea"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/design/01-home.html": {
     "mtime": 1778184804.4777246,
@@ -326,6 +330,10 @@
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/design/screens/09-settings.html": {
     "mtime": 1778184804.4793942,
     "hash": "a289487c4acb8facbf86999fce6b53e6"
+  },
+  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/plans/ktlint-integration.md": {
+    "mtime": 1778945572.4241135,
+    "hash": "2e9c0af7a2ad08e6d5523c47a76cd152"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/design/ISpendExpenseTrackerPrototype.pdf": {
     "mtime": 1778184894.5973868,
