@@ -10,4 +10,5 @@ interface BudgetRepository {
     suspend fun getCategoryBudget(yearMonth: String, categoryId: UUID): Budget?
     suspend fun saveBudget(budget: Budget)
     suspend fun deleteAllBudgets()
+    suspend fun deleteDuplicateBudgets()
 }

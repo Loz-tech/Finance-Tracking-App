@@ -40,6 +40,7 @@ class BudgetViewModel @Inject constructor(
     private fun loadBudget() {
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
+            budgetRepository.deleteDuplicateBudgets()
             val totalBudget = budgetRepository.getTotalBudget(yearMonth)?.limitAmount ?: BigDecimal.ZERO
             val categories = categoryRepository.getAllCategories().first()
             val existingBudgets = budgetRepository.getBudgetsByYearMonth(yearMonth).first()

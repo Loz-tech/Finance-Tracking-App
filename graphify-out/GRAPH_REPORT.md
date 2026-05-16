@@ -1,16 +1,16 @@
 # Graph Report - FinanceTrackingApp  (2026-05-16)
 
 ## Corpus Check
-- 73 files · ~44,229 words
+- 73 files · ~44,314 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 432 nodes · 461 edges · 46 communities (21 shown, 25 thin omitted)
+- 435 nodes · 464 edges · 45 communities (20 shown, 25 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 43 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7215a0df`
+- Built from commit: `94ed0e14`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,7 +55,6 @@
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 44|Community 44]]
-- [[_COMMUNITY_Community 45|Community 45]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Agent Guide — FinanceTrackingApp` - 19 edges
@@ -81,7 +80,7 @@
 - `AppNavHost()` --calls--> `BudgetScreen()`  [INFERRED]
   app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt → app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt
 
-## Communities (46 total, 25 thin omitted)
+## Communities (45 total, 25 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
@@ -92,8 +91,8 @@ Cohesion: 0.15
 Nodes (9): MainActivity, SettingsDataStore, UserPreferences, darkColorScheme(), FinanceTrackingAppTheme(), lightColorScheme(), oledColorScheme(), QuickAddContent() (+1 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.15
-Nodes (13): AnalyticsScreen(), StatBox(), BarChart(), BarData, DonutChart(), DonutLegend(), DonutSegment, BudgetSummaryCard() (+5 more)
+Cohesion: 0.12
+Nodes (16): AnalyticsScreen(), StatBox(), AnalyticsUiState, AnalyticsViewModel, WeekdayBar, BarChart(), BarData, DonutChart() (+8 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.19
@@ -143,10 +142,6 @@ Nodes (3): CategoryBudgetProgress, HomeUiState, HomeViewModel
 Cohesion: 0.06
 Nodes (33): 10. How to Add a New Feature (End-to-End), 11. Testing, 12. Key Files to Read First, 13. Custom Abstractions / Utils, 14. Widget, 15. Code Style / Lint, 16. Common Patterns (Copy-Paste Ready), 17. Open Questions to Ask the User (+25 more)
 
-### Community 45 - "Community 45"
-Cohesion: 0.53
-Nodes (3): AnalyticsUiState, AnalyticsViewModel, WeekdayBar
-
 ## Knowledge Gaps
 - **87 isolated node(s):** `FinanceApp`, `DailyTotal`, `TransactionSearchResult`, `Budget`, `Period` (+82 more)
   These have ≤1 connection - possible missing edges or undocumented components.
@@ -156,7 +151,7 @@ Nodes (3): AnalyticsUiState, AnalyticsViewModel, WeekdayBar
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppNavHost()` connect `Community 0` to `Community 1`, `Community 2`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Why does `Category` connect `Community 6` to `Community 1`, `Community 4`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `AppNavHost()` (e.g. with `.onCreate()` and `AppTopBar()`) actually correct?**
@@ -165,7 +160,7 @@ _Questions this graph is uniquely positioned to answer:_
   _87 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `Community 2` be split into smaller, more focused modules?**
+  _Cohesion score 0.12 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
   _Cohesion score 0.11 - nodes in this community are weakly interconnected._
-- **Should `Community 6` be split into smaller, more focused modules?**
-  _Cohesion score 0.13 - nodes in this community are weakly interconnected._

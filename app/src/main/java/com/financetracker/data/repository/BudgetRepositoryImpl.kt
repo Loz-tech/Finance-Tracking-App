@@ -29,6 +29,10 @@ class BudgetRepositoryImpl @Inject constructor(private val budgetDao: BudgetDao)
         budgetDao.deleteAll()
     }
 
+    override suspend fun deleteDuplicateBudgets() {
+        budgetDao.deleteDuplicateBudgets()
+    }
+
     private fun BudgetEntity.toDomain() = Budget(
         id = id,
         categoryId = categoryId,

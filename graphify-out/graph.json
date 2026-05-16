@@ -247,10 +247,19 @@
       "norm_label": ".getbudgetbycategory()"
     },
     {
+      "label": ".deleteDuplicateBudgets()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
+      "source_location": "L33",
+      "id": "db_budgetdao_budgetdao_deleteduplicatebudgets",
+      "community": 15,
+      "norm_label": ".deleteduplicatebudgets()"
+    },
+    {
       "label": ".deleteAll()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
-      "source_location": "L31",
+      "source_location": "L45",
       "id": "db_budgetdao_budgetdao_deleteall",
       "community": 15,
       "norm_label": ".deleteall()"
@@ -796,10 +805,19 @@
       "norm_label": ".deleteallbudgets()"
     },
     {
-      "label": ".toDomain()",
+      "label": ".deleteDuplicateBudgets()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L32",
+      "id": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteduplicatebudgets",
+      "community": 10,
+      "norm_label": ".deleteduplicatebudgets()"
+    },
+    {
+      "label": ".toDomain()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
+      "source_location": "L36",
       "id": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain",
       "community": 10,
       "norm_label": ".todomain()"
@@ -808,7 +826,7 @@
       "label": ".toEntity()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
-      "source_location": "L39",
+      "source_location": "L43",
       "id": "repository_budgetrepositoryimpl_budgetrepositoryimpl_toentity",
       "community": 10,
       "norm_label": ".toentity()"
@@ -1318,6 +1336,15 @@
       "norm_label": ".deleteallbudgets()"
     },
     {
+      "label": ".deleteDuplicateBudgets()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
+      "source_location": "L13",
+      "id": "repository_budgetrepository_budgetrepository_deleteduplicatebudgets",
+      "community": 21,
+      "norm_label": ".deleteduplicatebudgets()"
+    },
+    {
       "label": "CategoryRepository.kt",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
@@ -1764,7 +1791,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L1",
       "id": "app_src_main_java_com_financetracker_ui_analytics_analyticsviewmodel_kt",
-      "community": 45,
+      "community": 2,
       "norm_label": "analyticsviewmodel.kt"
     },
     {
@@ -1773,7 +1800,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L20",
       "id": "analytics_analyticsviewmodel_weekdaybar",
-      "community": 45,
+      "community": 2,
       "norm_label": "weekdaybar"
     },
     {
@@ -1782,7 +1809,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L22",
       "id": "analytics_analyticsviewmodel_analyticsuistate",
-      "community": 45,
+      "community": 2,
       "norm_label": "analyticsuistate"
     },
     {
@@ -1791,7 +1818,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L32",
       "id": "analytics_analyticsviewmodel_analyticsviewmodel",
-      "community": 45,
+      "community": 2,
       "norm_label": "analyticsviewmodel"
     },
     {
@@ -1800,7 +1827,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L42",
       "id": "analytics_analyticsviewmodel_analyticsviewmodel_onperiodselected",
-      "community": 45,
+      "community": 2,
       "norm_label": ".onperiodselected()"
     },
     {
@@ -1809,7 +1836,7 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L47",
       "id": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
-      "community": 45,
+      "community": 2,
       "norm_label": ".loaddata()"
     },
     {
@@ -1852,7 +1879,7 @@
       "label": "BudgetScreen()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
-      "source_location": "L45",
+      "source_location": "L47",
       "id": "budget_budgetscreen_budgetscreen",
       "community": 0,
       "norm_label": "budgetscreen()"
@@ -1906,7 +1933,7 @@
       "label": ".setTotalBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L59",
+      "source_location": "L60",
       "id": "budget_budgetviewmodel_budgetviewmodel_settotalbudget",
       "community": 16,
       "norm_label": ".settotalbudget()"
@@ -1915,7 +1942,7 @@
       "label": ".setCategoryBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L74",
+      "source_location": "L75",
       "id": "budget_budgetviewmodel_budgetviewmodel_setcategorybudget",
       "community": 16,
       "norm_label": ".setcategorybudget()"
@@ -1924,7 +1951,7 @@
       "label": ".recalculateTotalBudget()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
-      "source_location": "L93",
+      "source_location": "L94",
       "id": "budget_budgetviewmodel_budgetviewmodel_recalculatetotalbudget",
       "community": 16,
       "norm_label": ".recalculatetotalbudget()"
@@ -4099,6 +4126,16 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "db_budgetdao_budgetdao",
+      "target": "db_budgetdao_budgetdao_deleteduplicatebudgets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L31",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -4669,6 +4706,16 @@
       "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
       "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteallbudgets"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteduplicatebudgets",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -5489,6 +5536,16 @@
       "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
       "target": "repository_budgetrepository_budgetrepository_deleteallbudgets"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "repository_budgetrepository_budgetrepository",
+      "target": "repository_budgetrepository_budgetrepository_deleteduplicatebudgets",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -8606,5 +8663,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7215a0dfee50288a31885779b8d60f6c21e26513"
+  "built_at_commit": "94ed0e14246d872ddf1913708339925e5aa906ec"
 }
