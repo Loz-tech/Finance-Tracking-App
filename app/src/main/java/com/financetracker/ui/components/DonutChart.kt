@@ -32,7 +32,7 @@ data class DonutSegment(val label: String, val emoji: String, val value: Float, 
 fun DonutChart(
     segments: List<DonutSegment>,
     modifier: Modifier = Modifier,
-    strokeWidth: Float = 40f,
+    strokeWidth: Float = 80f,
     centerText: String? = null
 ) {
     val total = segments.sumOf { it.value.toDouble() }.toFloat()
@@ -58,7 +58,7 @@ fun DonutChart(
             segments.forEach { segment ->
                 val sweep = if (total > 0) (segment.value / total) * 360f * animationProgress else 0f
                 drawArc(
-                    color = segment.color,
+                    color = segment.color.copy(alpha = 0.3f),
                     startAngle = startAngle,
                     sweepAngle = sweep,
                     useCenter = false,

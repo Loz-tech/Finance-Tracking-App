@@ -6,6 +6,7 @@ import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.BudgetRepository
 import com.financetracker.domain.repository.TransactionRepository
 import com.financetracker.ui.components.DonutSegment
+import com.financetracker.ui.theme.ChartColors
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -52,16 +53,7 @@ class HomeViewModel @Inject constructor(
 
                 // Group by category for donut
                 val categoryGroups = monthlyTransactions.groupBy { it.category }
-                val chartColors = listOf(
-                    androidx.compose.ui.graphics.Color(0xFF006874),
-                    androidx.compose.ui.graphics.Color(0xFF496364),
-                    androidx.compose.ui.graphics.Color(0xFF634186),
-                    androidx.compose.ui.graphics.Color(0xFFBA1A1A),
-                    androidx.compose.ui.graphics.Color(0xFF8B4A00),
-                    androidx.compose.ui.graphics.Color(0xFF006E28),
-                    androidx.compose.ui.graphics.Color(0xFF90416A),
-                    androidx.compose.ui.graphics.Color(0xFF005CBB)
-                )
+                val chartColors = ChartColors
                 val segments = categoryGroups.entries.mapIndexed { i, (cat, txns) ->
                     DonutSegment(
                         label = cat.name,
