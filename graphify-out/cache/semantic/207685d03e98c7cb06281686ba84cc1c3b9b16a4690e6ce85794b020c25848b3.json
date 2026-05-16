@@ -1,1 +1,0 @@
-{"nodes": [{"id": "FinanceApp", "label": "FinanceApp (Hilt Application)", "file_type": "code", "source_file": "app/src/main/java/com/financetracker/FinanceApp.kt", "rationale": "@HiltAndroidApp entry point enabling Hilt dependency injection across the application lifecycle."}], "edges": [], "hyperedges": []}
