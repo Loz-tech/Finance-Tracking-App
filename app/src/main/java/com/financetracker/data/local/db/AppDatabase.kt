@@ -16,6 +16,7 @@ import com.financetracker.data.local.entity.TransactionEntity
     version = 1,
     exportSchema = false
 )
+
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun transactionDao(): TransactionDao

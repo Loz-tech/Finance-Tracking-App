@@ -1,95 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Widget background -->
     <item>
         <shape android:shape="rectangle">
             <solid android:color="#FF021A54" />
             <corners android:radius="16dp" />
+            <size android:width="64dp" android:height="68dp" />
         </shape>
     </item>
 
-    <!-- Title: Quick Add -->
+    <!-- Single icon slot -->
     <item
-        android:left="16dp"
-        android:top="16dp"
-        android:right="16dp"
-        android:bottom="140dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#FFF5F5F5" />
-            <corners android:radius="4dp" />
-            <size android:height="18dp" />
-        </shape>
-    </item>
-
-    <!-- Button 1: Food -->
-    <item
-        android:left="16dp"
-        android:top="48dp"
-        android:right="16dp"
-        android:bottom="96dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#FFFF85BB" />
-            <corners android:radius="12dp" />
-        </shape>
-    </item>
-    <!-- Food label -->
-    <item
-        android:left="56dp"
-        android:top="58dp"
-        android:right="56dp"
-        android:bottom="104dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#80F5F5F5" />
-            <corners android:radius="3dp" />
-            <size android:height="10dp" />
-        </shape>
-    </item>
-
-    <!-- Button 2: Transport -->
-    <item
-        android:left="16dp"
-        android:top="104dp"
-        android:right="16dp"
-        android:bottom="40dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#FFFF85BB" />
-            <corners android:radius="12dp" />
-        </shape>
-    </item>
-    <!-- Transport label -->
-    <item
-        android:left="56dp"
-        android:top="114dp"
-        android:right="56dp"
-        android:bottom="48dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#80F5F5F5" />
-            <corners android:radius="3dp" />
-            <size android:height="10dp" />
-        </shape>
-    </item>
-
-    <!-- Button 3: Housing -->
-    <item
-        android:left="16dp"
-        android:top="160dp"
-        android:right="16dp"
-        android:bottom="-16dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#FFFF85BB" />
-            <corners android:radius="12dp" />
-        </shape>
-    </item>
-    <!-- Housing label -->
-    <item
-        android:left="56dp"
-        android:top="170dp"
-        android:right="56dp"
-        android:bottom="-8dp">
-        <shape android:shape="rectangle">
-            <solid android:color="#80F5F5F5" />
-            <corners android:radius="3dp" />
-            <size android:height="10dp" />
+        android:left="8dp"
+        android:top="10dp"
+        android:right="8dp"
+        android:bottom="10dp">
+        <shape android:shape="oval">
+            <solid android:color="#25FFFFFF" />
         </shape>
     </item>
 </layer-list>

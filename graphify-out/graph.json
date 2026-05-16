@@ -151,7 +151,7 @@
       "label": ".transactionDao()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
-      "source_location": "L21",
+      "source_location": "L22",
       "id": "db_appdatabase_appdatabase_transactiondao",
       "community": 24,
       "norm_label": ".transactiondao()"
@@ -160,7 +160,7 @@
       "label": ".categoryDao()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
-      "source_location": "L22",
+      "source_location": "L23",
       "id": "db_appdatabase_appdatabase_categorydao",
       "community": 24,
       "norm_label": ".categorydao()"
@@ -169,7 +169,7 @@
       "label": ".budgetDao()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
-      "source_location": "L23",
+      "source_location": "L24",
       "id": "db_appdatabase_appdatabase_budgetdao",
       "community": 24,
       "norm_label": ".budgetdao()"
@@ -2905,7 +2905,7 @@
       "label": "TransactionWidgetReceiver",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
-      "source_location": "L11",
+      "source_location": "L13",
       "id": "widget_transactionwidgetreceiver_transactionwidgetreceiver",
       "community": 13,
       "norm_label": "transactionwidgetreceiver"
@@ -2914,10 +2914,37 @@
       "label": ".onUpdate()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
-      "source_location": "L13",
+      "source_location": "L15",
       "id": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onupdate",
       "community": 13,
       "norm_label": ".onupdate()"
+    },
+    {
+      "label": ".onAppWidgetOptionsChanged()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L28",
+      "id": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onappwidgetoptionschanged",
+      "community": 13,
+      "norm_label": ".onappwidgetoptionschanged()"
+    },
+    {
+      "label": ".updateWidget()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L39",
+      "id": "widget_transactionwidgetreceiver_transactionwidgetreceiver_updatewidget",
+      "community": 13,
+      "norm_label": ".updatewidget()"
+    },
+    {
+      "label": "refreshAllWidgets()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L106",
+      "id": "widget_transactionwidgetreceiver_refreshallwidgets",
+      "community": 13,
+      "norm_label": "refreshallwidgets()"
     },
     {
       "label": "QuickAddTransactionActivity.kt",
@@ -3019,6 +3046,24 @@
       "norm_label": ".addition_iscorrect()"
     },
     {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "agents_md",
+      "community": 44,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "financetrackingapp_agents_graphify",
+      "community": 44,
+      "norm_label": "graphify"
+    },
+    {
       "label": "progress.md",
       "file_type": "document",
       "source_file": "design/progress.md",
@@ -3035,9 +3080,9 @@
       "source_file": "app/src/main/java/com/financetracker/FinanceApp.kt",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_financeapp_kt",
-      "target": "financetracker_financeapp_financeapp",
-      "confidence_score": 1.0
+      "target": "financetracker_financeapp_financeapp"
     },
     {
       "relation": "contains",
@@ -3045,9 +3090,9 @@
       "source_file": "app/src/main/java/com/financetracker/MainActivity.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_mainactivity_kt",
-      "target": "financetracker_mainactivity_mainactivity",
-      "confidence_score": 1.0
+      "target": "financetracker_mainactivity_mainactivity"
     },
     {
       "relation": "method",
@@ -3055,9 +3100,9 @@
       "source_file": "app/src/main/java/com/financetracker/MainActivity.kt",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetracker_mainactivity_mainactivity",
-      "target": "financetracker_mainactivity_mainactivity_oncreate",
-      "confidence_score": 1.0
+      "target": "financetracker_mainactivity_mainactivity_oncreate"
     },
     {
       "relation": "calls",
@@ -3087,9 +3132,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_export_csvexporter_kt",
-      "target": "export_csvexporter_csvexporter",
-      "confidence_score": 1.0
+      "target": "export_csvexporter_csvexporter"
     },
     {
       "relation": "method",
@@ -3097,9 +3142,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "export_csvexporter_csvexporter",
-      "target": "export_csvexporter_csvexporter_export",
-      "confidence_score": 1.0
+      "target": "export_csvexporter_csvexporter_export"
     },
     {
       "relation": "contains",
@@ -3107,9 +3152,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_export_jsonexporter_kt",
-      "target": "export_jsonexporter_jsonexporter",
-      "confidence_score": 1.0
+      "target": "export_jsonexporter_jsonexporter"
     },
     {
       "relation": "method",
@@ -3117,9 +3162,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "export_jsonexporter_jsonexporter",
-      "target": "export_jsonexporter_jsonexporter_export",
-      "confidence_score": 1.0
+      "target": "export_jsonexporter_jsonexporter_export"
     },
     {
       "relation": "contains",
@@ -3127,9 +3172,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_db_appdatabase_kt",
-      "target": "db_appdatabase_appdatabase",
-      "confidence_score": 1.0
+      "target": "db_appdatabase_appdatabase"
     },
     {
       "relation": "method",
@@ -3137,9 +3182,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_appdatabase_appdatabase",
-      "target": "db_appdatabase_appdatabase_transactiondao",
-      "confidence_score": 1.0
+      "target": "db_appdatabase_appdatabase_transactiondao"
     },
     {
       "relation": "method",
@@ -3147,9 +3192,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_appdatabase_appdatabase",
-      "target": "db_appdatabase_appdatabase_categorydao",
-      "confidence_score": 1.0
+      "target": "db_appdatabase_appdatabase_categorydao"
     },
     {
       "relation": "method",
@@ -3157,9 +3202,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_appdatabase_appdatabase",
-      "target": "db_appdatabase_appdatabase_budgetdao",
-      "confidence_score": 1.0
+      "target": "db_appdatabase_appdatabase_budgetdao"
     },
     {
       "relation": "contains",
@@ -3167,9 +3212,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_db_budgetdao_kt",
-      "target": "db_budgetdao_budgetdao",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao"
     },
     {
       "relation": "method",
@@ -3177,9 +3222,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_insert",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_insert"
     },
     {
       "relation": "method",
@@ -3187,9 +3232,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_getbyyearmonth",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_getbyyearmonth"
     },
     {
       "relation": "method",
@@ -3197,9 +3242,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_getbyyearmonthsync",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_getbyyearmonthsync"
     },
     {
       "relation": "method",
@@ -3207,9 +3252,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_gettotalbudget",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_gettotalbudget"
     },
     {
       "relation": "method",
@@ -3217,9 +3262,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_getcategorybudgets",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_getcategorybudgets"
     },
     {
       "relation": "method",
@@ -3227,9 +3272,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_getbudgetbycategory",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_getbudgetbycategory"
     },
     {
       "relation": "method",
@@ -3237,9 +3282,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_deleteall",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_deleteall"
     },
     {
       "relation": "contains",
@@ -3247,9 +3292,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_db_categorydao_kt",
-      "target": "db_categorydao_categorydao",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao"
     },
     {
       "relation": "method",
@@ -3257,9 +3302,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_insert",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_insert"
     },
     {
       "relation": "method",
@@ -3267,9 +3312,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_insertall",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_insertall"
     },
     {
       "relation": "method",
@@ -3277,9 +3322,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_update",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_update"
     },
     {
       "relation": "method",
@@ -3287,9 +3332,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_delete",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_delete"
     },
     {
       "relation": "method",
@@ -3297,9 +3342,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_getbyid",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_getbyid"
     },
     {
       "relation": "method",
@@ -3307,9 +3352,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_getall",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_getall"
     },
     {
       "relation": "method",
@@ -3317,9 +3362,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_getallsync",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_getallsync"
     },
     {
       "relation": "method",
@@ -3327,9 +3372,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_getdefaultcategories",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_getdefaultcategories"
     },
     {
       "relation": "method",
@@ -3337,9 +3382,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_count",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_count"
     },
     {
       "relation": "method",
@@ -3347,9 +3392,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/CategoryDao.kt",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_categorydao_categorydao",
-      "target": "db_categorydao_categorydao_deleteallcustom",
-      "confidence_score": 1.0
+      "target": "db_categorydao_categorydao_deleteallcustom"
     },
     {
       "relation": "contains",
@@ -3357,9 +3402,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_db_converters_kt",
-      "target": "db_converters_converters",
-      "confidence_score": 1.0
+      "target": "db_converters_converters"
     },
     {
       "relation": "method",
@@ -3367,9 +3412,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_fromuuid",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_fromuuid"
     },
     {
       "relation": "method",
@@ -3377,9 +3422,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_touuid",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_touuid"
     },
     {
       "relation": "method",
@@ -3387,9 +3432,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_fromlocaldate",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_fromlocaldate"
     },
     {
       "relation": "method",
@@ -3397,9 +3442,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_tolocaldate",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_tolocaldate"
     },
     {
       "relation": "method",
@@ -3407,9 +3452,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_frombigdecimal",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_frombigdecimal"
     },
     {
       "relation": "method",
@@ -3417,9 +3462,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_tobigdecimal",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_tobigdecimal"
     },
     {
       "relation": "method",
@@ -3427,9 +3472,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_frominstant",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_frominstant"
     },
     {
       "relation": "method",
@@ -3437,9 +3482,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/Converters.kt",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_converters_converters",
-      "target": "db_converters_converters_toinstant",
-      "confidence_score": 1.0
+      "target": "db_converters_converters_toinstant"
     },
     {
       "relation": "contains",
@@ -3447,9 +3492,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_db_transactiondao_kt",
-      "target": "db_transactiondao_transactiondao",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao"
     },
     {
       "relation": "contains",
@@ -3457,9 +3502,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_db_transactiondao_kt",
-      "target": "db_transactiondao_dailytotal",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_dailytotal"
     },
     {
       "relation": "method",
@@ -3467,9 +3512,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_insert",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_insert"
     },
     {
       "relation": "method",
@@ -3477,9 +3522,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_update",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_update"
     },
     {
       "relation": "method",
@@ -3487,9 +3532,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_delete",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_delete"
     },
     {
       "relation": "method",
@@ -3497,9 +3542,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getbyid",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getbyid"
     },
     {
       "relation": "method",
@@ -3507,9 +3552,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getall",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getall"
     },
     {
       "relation": "method",
@@ -3517,9 +3562,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getbydaterange",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getbydaterange"
     },
     {
       "relation": "method",
@@ -3527,9 +3572,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getbycategory",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getbycategory"
     },
     {
       "relation": "method",
@@ -3537,9 +3582,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_searchbytextonly",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_searchbytextonly"
     },
     {
       "relation": "method",
@@ -3547,9 +3592,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_searchbytextandcategories",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_searchbytextandcategories"
     },
     {
       "relation": "method",
@@ -3557,9 +3602,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_searchbytextanddaterange",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_searchbytextanddaterange"
     },
     {
       "relation": "method",
@@ -3567,9 +3612,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_searchbytextcategoriesanddaterange",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_searchbytextcategoriesanddaterange"
     },
     {
       "relation": "method",
@@ -3577,9 +3622,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getdailytotals",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getdailytotals"
     },
     {
       "relation": "method",
@@ -3587,9 +3632,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getrecent",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getrecent"
     },
     {
       "relation": "method",
@@ -3597,9 +3642,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L117",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_getbyyearmonth",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_getbyyearmonth"
     },
     {
       "relation": "method",
@@ -3607,9 +3652,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_transactiondao_transactiondao",
-      "target": "db_transactiondao_transactiondao_deleteall",
-      "confidence_score": 1.0
+      "target": "db_transactiondao_transactiondao_deleteall"
     },
     {
       "relation": "contains",
@@ -3617,9 +3662,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/entity/BudgetEntity.kt",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_entity_budgetentity_kt",
-      "target": "entity_budgetentity_budgetentity",
-      "confidence_score": 1.0
+      "target": "entity_budgetentity_budgetentity"
     },
     {
       "relation": "calls",
@@ -3638,9 +3683,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/entity/CategoryEntity.kt",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_entity_categoryentity_kt",
-      "target": "entity_categoryentity_categoryentity",
-      "confidence_score": 1.0
+      "target": "entity_categoryentity_categoryentity"
     },
     {
       "relation": "calls",
@@ -3670,9 +3715,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionEntity.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_entity_transactionentity_kt",
-      "target": "entity_transactionentity_transactionentity",
-      "confidence_score": 1.0
+      "target": "entity_transactionentity_transactionentity"
     },
     {
       "relation": "calls",
@@ -3691,9 +3736,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/entity/TransactionSearchResult.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_entity_transactionsearchresult_kt",
-      "target": "entity_transactionsearchresult_transactionsearchresult",
-      "confidence_score": 1.0
+      "target": "entity_transactionsearchresult_transactionsearchresult"
     },
     {
       "relation": "contains",
@@ -3701,9 +3746,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_prefs_settingsdatastore_kt",
-      "target": "prefs_settingsdatastore_userpreferences",
-      "confidence_score": 1.0
+      "target": "prefs_settingsdatastore_userpreferences"
     },
     {
       "relation": "contains",
@@ -3711,9 +3756,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_local_prefs_settingsdatastore_kt",
-      "target": "prefs_settingsdatastore_settingsdatastore",
-      "confidence_score": 1.0
+      "target": "prefs_settingsdatastore_settingsdatastore"
     },
     {
       "relation": "calls",
@@ -3732,9 +3777,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prefs_settingsdatastore_settingsdatastore",
-      "target": "prefs_settingsdatastore_settingsdatastore_setthememode",
-      "confidence_score": 1.0
+      "target": "prefs_settingsdatastore_settingsdatastore_setthememode"
     },
     {
       "relation": "method",
@@ -3742,9 +3787,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prefs_settingsdatastore_settingsdatastore",
-      "target": "prefs_settingsdatastore_settingsdatastore_setaccentcolor",
-      "confidence_score": 1.0
+      "target": "prefs_settingsdatastore_settingsdatastore_setaccentcolor"
     },
     {
       "relation": "contains",
@@ -3752,9 +3797,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_repository_budgetrepositoryimpl_kt",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl"
     },
     {
       "relation": "method",
@@ -3762,9 +3807,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_getbudgetsbyyearmonth",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_getbudgetsbyyearmonth"
     },
     {
       "relation": "method",
@@ -3772,9 +3817,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_gettotalbudget",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_gettotalbudget"
     },
     {
       "relation": "method",
@@ -3782,9 +3827,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_getcategorybudget",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_getcategorybudget"
     },
     {
       "relation": "method",
@@ -3792,9 +3837,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_savebudget",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_savebudget"
     },
     {
       "relation": "method",
@@ -3802,9 +3847,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteallbudgets",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteallbudgets"
     },
     {
       "relation": "method",
@@ -3812,9 +3857,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain"
     },
     {
       "relation": "method",
@@ -3822,9 +3867,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -3833,9 +3878,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl_getbudgetsbyyearmonth",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -3844,9 +3889,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl_gettotalbudget",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -3855,9 +3900,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl_getcategorybudget",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -3866,9 +3911,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl_savebudget",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_toentity"
     },
     {
       "relation": "contains",
@@ -3876,9 +3921,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_repository_categoryrepositoryimpl_kt",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl"
     },
     {
       "relation": "method",
@@ -3886,9 +3931,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getallcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getallcategories"
     },
     {
       "relation": "method",
@@ -3896,9 +3941,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getcategorybyid",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getcategorybyid"
     },
     {
       "relation": "method",
@@ -3906,9 +3951,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_savecategory",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_savecategory"
     },
     {
       "relation": "method",
@@ -3916,9 +3961,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_deletecategory",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_deletecategory"
     },
     {
       "relation": "method",
@@ -3926,9 +3971,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getcategorycount",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getcategorycount"
     },
     {
       "relation": "method",
@@ -3936,9 +3981,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_seeddefaultcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_seeddefaultcategories"
     },
     {
       "relation": "method",
@@ -3946,9 +3991,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories"
     },
     {
       "relation": "method",
@@ -3956,9 +4001,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain"
     },
     {
       "relation": "method",
@@ -3966,9 +4011,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -3977,9 +4022,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getallcategories",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -3988,9 +4033,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_getcategorybyid",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -3999,9 +4044,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_savecategory",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -4010,9 +4055,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_savecategory",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories"
     },
     {
       "relation": "calls",
@@ -4021,9 +4066,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_deletecategory",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -4032,9 +4077,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_deletecategory",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories"
     },
     {
       "relation": "calls",
@@ -4043,9 +4088,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_seeddefaultcategories",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories"
     },
     {
       "relation": "calls",
@@ -4054,9 +4099,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/CategoryRepositoryImpl.kt",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepositoryimpl_categoryrepositoryimpl_syncwidgetcategories",
-      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepositoryimpl_categoryrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -4075,9 +4120,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_repository_settingsrepositoryimpl_kt",
-      "target": "repository_settingsrepositoryimpl_settingsrepositoryimpl",
-      "confidence_score": 1.0
+      "target": "repository_settingsrepositoryimpl_settingsrepositoryimpl"
     },
     {
       "relation": "method",
@@ -4085,9 +4130,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_settingsrepositoryimpl_settingsrepositoryimpl",
-      "target": "repository_settingsrepositoryimpl_settingsrepositoryimpl_setthememode",
-      "confidence_score": 1.0
+      "target": "repository_settingsrepositoryimpl_settingsrepositoryimpl_setthememode"
     },
     {
       "relation": "method",
@@ -4095,9 +4140,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/SettingsRepositoryImpl.kt",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_settingsrepositoryimpl_settingsrepositoryimpl",
-      "target": "repository_settingsrepositoryimpl_settingsrepositoryimpl_setaccentcolor",
-      "confidence_score": 1.0
+      "target": "repository_settingsrepositoryimpl_settingsrepositoryimpl_setaccentcolor"
     },
     {
       "relation": "contains",
@@ -4105,9 +4150,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_data_repository_transactionrepositoryimpl_kt",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl"
     },
     {
       "relation": "method",
@@ -4115,9 +4160,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getalltransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getalltransactions"
     },
     {
       "relation": "method",
@@ -4125,9 +4170,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbydaterange",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbydaterange"
     },
     {
       "relation": "method",
@@ -4135,9 +4180,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbycategory",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbycategory"
     },
     {
       "relation": "method",
@@ -4145,9 +4190,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_searchtransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_searchtransactions"
     },
     {
       "relation": "method",
@@ -4155,9 +4200,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getrecenttransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getrecenttransactions"
     },
     {
       "relation": "method",
@@ -4165,9 +4210,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbyyearmonth",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbyyearmonth"
     },
     {
       "relation": "method",
@@ -4175,9 +4220,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionbyid",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionbyid"
     },
     {
       "relation": "method",
@@ -4185,9 +4230,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getdailytotals",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getdailytotals"
     },
     {
       "relation": "method",
@@ -4195,9 +4240,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_savetransaction",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_savetransaction"
     },
     {
       "relation": "method",
@@ -4205,9 +4250,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_deletetransaction",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_deletetransaction"
     },
     {
       "relation": "method",
@@ -4215,9 +4260,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_deletealltransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_deletealltransactions"
     },
     {
       "relation": "method",
@@ -4225,9 +4270,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_todomain"
     },
     {
       "relation": "method",
@@ -4235,9 +4280,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "method",
@@ -4245,9 +4290,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -4256,9 +4301,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getalltransactions",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "calls",
@@ -4267,9 +4312,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbydaterange",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "calls",
@@ -4278,9 +4323,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbycategory",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "calls",
@@ -4289,9 +4334,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_searchtransactions",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "calls",
@@ -4300,9 +4345,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_getrecenttransactions",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "calls",
@@ -4311,9 +4356,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionsbyyearmonth",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain"
     },
     {
       "relation": "calls",
@@ -4322,9 +4367,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_gettransactionbyid",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -4333,9 +4378,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_savetransaction",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -4344,9 +4389,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_deletetransaction",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_toentity",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_toentity"
     },
     {
       "relation": "calls",
@@ -4355,9 +4400,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepositoryimpl_transactionrepositoryimpl_maptodomain",
-      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_todomain",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepositoryimpl_transactionrepositoryimpl_todomain"
     },
     {
       "relation": "calls",
@@ -4387,9 +4432,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_di_appmodule_kt",
-      "target": "di_appmodule_appmodule",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule"
     },
     {
       "relation": "method",
@@ -4397,9 +4442,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providedatabase",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providedatabase"
     },
     {
       "relation": "method",
@@ -4407,9 +4452,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providetransactiondao",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providetransactiondao"
     },
     {
       "relation": "method",
@@ -4417,9 +4462,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providecategorydao",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providecategorydao"
     },
     {
       "relation": "method",
@@ -4427,9 +4472,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providebudgetdao",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providebudgetdao"
     },
     {
       "relation": "method",
@@ -4437,9 +4482,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providetransactionrepository",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providetransactionrepository"
     },
     {
       "relation": "method",
@@ -4447,9 +4492,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providecategoryrepository",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providecategoryrepository"
     },
     {
       "relation": "method",
@@ -4457,9 +4502,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providebudgetrepository",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providebudgetrepository"
     },
     {
       "relation": "method",
@@ -4467,9 +4512,9 @@
       "source_file": "app/src/main/java/com/financetracker/di/AppModule.kt",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "di_appmodule_appmodule",
-      "target": "di_appmodule_appmodule_providesettingsrepository",
-      "confidence_score": 1.0
+      "target": "di_appmodule_appmodule_providesettingsrepository"
     },
     {
       "relation": "contains",
@@ -4477,9 +4522,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/model/Budget.kt",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_model_budget_kt",
-      "target": "model_budget_budget",
-      "confidence_score": 1.0
+      "target": "model_budget_budget"
     },
     {
       "relation": "contains",
@@ -4487,9 +4532,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/model/Category.kt",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_model_category_kt",
-      "target": "model_category_category",
-      "confidence_score": 1.0
+      "target": "model_category_category"
     },
     {
       "relation": "calls",
@@ -4530,9 +4575,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/model/Period.kt",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_model_period_kt",
-      "target": "model_period_period",
-      "confidence_score": 1.0
+      "target": "model_period_period"
     },
     {
       "relation": "contains",
@@ -4540,9 +4585,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/model/Transaction.kt",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_model_transaction_kt",
-      "target": "model_transaction_transaction",
-      "confidence_score": 1.0
+      "target": "model_transaction_transaction"
     },
     {
       "relation": "calls",
@@ -4572,9 +4617,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_repository_budgetrepository_kt",
-      "target": "repository_budgetrepository_budgetrepository",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository"
     },
     {
       "relation": "method",
@@ -4582,9 +4627,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
-      "target": "repository_budgetrepository_budgetrepository_getbudgetsbyyearmonth",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository_getbudgetsbyyearmonth"
     },
     {
       "relation": "method",
@@ -4592,9 +4637,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
-      "target": "repository_budgetrepository_budgetrepository_gettotalbudget",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository_gettotalbudget"
     },
     {
       "relation": "method",
@@ -4602,9 +4647,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
-      "target": "repository_budgetrepository_budgetrepository_getcategorybudget",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository_getcategorybudget"
     },
     {
       "relation": "method",
@@ -4612,9 +4657,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
-      "target": "repository_budgetrepository_budgetrepository_savebudget",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository_savebudget"
     },
     {
       "relation": "method",
@@ -4622,9 +4667,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
-      "target": "repository_budgetrepository_budgetrepository_deleteallbudgets",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository_deleteallbudgets"
     },
     {
       "relation": "contains",
@@ -4632,9 +4677,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_repository_categoryrepository_kt",
-      "target": "repository_categoryrepository_categoryrepository",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository"
     },
     {
       "relation": "method",
@@ -4642,9 +4687,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepository_categoryrepository",
-      "target": "repository_categoryrepository_categoryrepository_getallcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository_getallcategories"
     },
     {
       "relation": "method",
@@ -4652,9 +4697,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepository_categoryrepository",
-      "target": "repository_categoryrepository_categoryrepository_getcategorybyid",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository_getcategorybyid"
     },
     {
       "relation": "method",
@@ -4662,9 +4707,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepository_categoryrepository",
-      "target": "repository_categoryrepository_categoryrepository_savecategory",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository_savecategory"
     },
     {
       "relation": "method",
@@ -4672,9 +4717,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepository_categoryrepository",
-      "target": "repository_categoryrepository_categoryrepository_deletecategory",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository_deletecategory"
     },
     {
       "relation": "method",
@@ -4682,9 +4727,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepository_categoryrepository",
-      "target": "repository_categoryrepository_categoryrepository_getcategorycount",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository_getcategorycount"
     },
     {
       "relation": "method",
@@ -4692,9 +4737,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/CategoryRepository.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_categoryrepository_categoryrepository",
-      "target": "repository_categoryrepository_categoryrepository_seeddefaultcategories",
-      "confidence_score": 1.0
+      "target": "repository_categoryrepository_categoryrepository_seeddefaultcategories"
     },
     {
       "relation": "contains",
@@ -4702,9 +4747,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/SettingsRepository.kt",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_repository_settingsrepository_kt",
-      "target": "repository_settingsrepository_settingsrepository",
-      "confidence_score": 1.0
+      "target": "repository_settingsrepository_settingsrepository"
     },
     {
       "relation": "method",
@@ -4712,9 +4757,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/SettingsRepository.kt",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_settingsrepository_settingsrepository",
-      "target": "repository_settingsrepository_settingsrepository_setthememode",
-      "confidence_score": 1.0
+      "target": "repository_settingsrepository_settingsrepository_setthememode"
     },
     {
       "relation": "method",
@@ -4722,9 +4767,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/SettingsRepository.kt",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_settingsrepository_settingsrepository",
-      "target": "repository_settingsrepository_settingsrepository_setaccentcolor",
-      "confidence_score": 1.0
+      "target": "repository_settingsrepository_settingsrepository_setaccentcolor"
     },
     {
       "relation": "contains",
@@ -4732,9 +4777,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_repository_transactionrepository_kt",
-      "target": "repository_transactionrepository_transactionrepository",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository"
     },
     {
       "relation": "method",
@@ -4742,9 +4787,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_getalltransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_getalltransactions"
     },
     {
       "relation": "method",
@@ -4752,9 +4797,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_gettransactionsbydaterange",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_gettransactionsbydaterange"
     },
     {
       "relation": "method",
@@ -4762,9 +4807,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_gettransactionsbycategory",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_gettransactionsbycategory"
     },
     {
       "relation": "method",
@@ -4772,9 +4817,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_searchtransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_searchtransactions"
     },
     {
       "relation": "method",
@@ -4782,9 +4827,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_getrecenttransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_getrecenttransactions"
     },
     {
       "relation": "method",
@@ -4792,9 +4837,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_gettransactionsbyyearmonth",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_gettransactionsbyyearmonth"
     },
     {
       "relation": "method",
@@ -4802,9 +4847,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_gettransactionbyid",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_gettransactionbyid"
     },
     {
       "relation": "method",
@@ -4812,9 +4857,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_getdailytotals",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_getdailytotals"
     },
     {
       "relation": "method",
@@ -4822,9 +4867,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_savetransaction",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_savetransaction"
     },
     {
       "relation": "method",
@@ -4832,9 +4877,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_deletetransaction",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_deletetransaction"
     },
     {
       "relation": "method",
@@ -4842,9 +4887,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_transactionrepository_transactionrepository",
-      "target": "repository_transactionrepository_transactionrepository_deletealltransactions",
-      "confidence_score": 1.0
+      "target": "repository_transactionrepository_transactionrepository_deletealltransactions"
     },
     {
       "relation": "contains",
@@ -4852,9 +4897,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_usecase_calculatebudgetprogressusecase_kt",
-      "target": "usecase_calculatebudgetprogressusecase_budgetprogress",
-      "confidence_score": 1.0
+      "target": "usecase_calculatebudgetprogressusecase_budgetprogress"
     },
     {
       "relation": "contains",
@@ -4862,9 +4907,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_usecase_calculatebudgetprogressusecase_kt",
-      "target": "usecase_calculatebudgetprogressusecase_calculatebudgetprogressusecase",
-      "confidence_score": 1.0
+      "target": "usecase_calculatebudgetprogressusecase_calculatebudgetprogressusecase"
     },
     {
       "relation": "calls",
@@ -4873,9 +4918,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "usecase_calculatebudgetprogressusecase_calculatebudgetprogressusecase_invoke",
-      "target": "usecase_calculatebudgetprogressusecase_budgetprogress",
-      "confidence_score": 1.0
+      "target": "usecase_calculatebudgetprogressusecase_budgetprogress"
     },
     {
       "relation": "method",
@@ -4883,9 +4928,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/CalculateBudgetProgressUseCase.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "usecase_calculatebudgetprogressusecase_calculatebudgetprogressusecase",
-      "target": "usecase_calculatebudgetprogressusecase_calculatebudgetprogressusecase_invoke",
-      "confidence_score": 1.0
+      "target": "usecase_calculatebudgetprogressusecase_calculatebudgetprogressusecase_invoke"
     },
     {
       "relation": "contains",
@@ -4893,9 +4938,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetDailyTotalsUseCase.kt",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_usecase_getdailytotalsusecase_kt",
-      "target": "usecase_getdailytotalsusecase_getdailytotalsusecase",
-      "confidence_score": 1.0
+      "target": "usecase_getdailytotalsusecase_getdailytotalsusecase"
     },
     {
       "relation": "method",
@@ -4903,9 +4948,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetDailyTotalsUseCase.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "usecase_getdailytotalsusecase_getdailytotalsusecase",
-      "target": "usecase_getdailytotalsusecase_getdailytotalsusecase_invoke",
-      "confidence_score": 1.0
+      "target": "usecase_getdailytotalsusecase_getdailytotalsusecase_invoke"
     },
     {
       "relation": "contains",
@@ -4913,9 +4958,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_usecase_getmonthlysummaryusecase_kt",
-      "target": "usecase_getmonthlysummaryusecase_getmonthlysummaryusecase",
-      "confidence_score": 1.0
+      "target": "usecase_getmonthlysummaryusecase_getmonthlysummaryusecase"
     },
     {
       "relation": "contains",
@@ -4923,9 +4968,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_domain_usecase_getmonthlysummaryusecase_kt",
-      "target": "usecase_getmonthlysummaryusecase_monthlysummary",
-      "confidence_score": 1.0
+      "target": "usecase_getmonthlysummaryusecase_monthlysummary"
     },
     {
       "relation": "method",
@@ -4933,9 +4978,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "usecase_getmonthlysummaryusecase_getmonthlysummaryusecase",
-      "target": "usecase_getmonthlysummaryusecase_getmonthlysummaryusecase_invoke",
-      "confidence_score": 1.0
+      "target": "usecase_getmonthlysummaryusecase_getmonthlysummaryusecase_invoke"
     },
     {
       "relation": "calls",
@@ -4944,9 +4989,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/usecase/GetMonthlySummaryUseCase.kt",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "usecase_getmonthlysummaryusecase_getmonthlysummaryusecase_invoke",
-      "target": "usecase_getmonthlysummaryusecase_monthlysummary",
-      "confidence_score": 1.0
+      "target": "usecase_getmonthlysummaryusecase_monthlysummary"
     },
     {
       "relation": "calls",
@@ -4965,9 +5010,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_addtransaction_addtransactionsheet_kt",
-      "target": "addtransaction_addtransactionsheet_addtransactionsheet",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionsheet_addtransactionsheet"
     },
     {
       "relation": "contains",
@@ -4975,9 +5020,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt",
       "source_location": "L226",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_addtransaction_addtransactionsheet_kt",
-      "target": "addtransaction_addtransactionsheet_categorychip",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionsheet_categorychip"
     },
     {
       "relation": "calls",
@@ -4986,9 +5031,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt",
       "source_location": "L155",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionsheet_addtransactionsheet",
-      "target": "addtransaction_addtransactionsheet_categorychip",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionsheet_categorychip"
     },
     {
       "relation": "calls",
@@ -5007,9 +5052,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_addtransaction_addtransactionviewmodel_kt",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionuistate",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionuistate"
     },
     {
       "relation": "contains",
@@ -5017,9 +5062,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_addtransaction_addtransactionviewmodel_kt",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel"
     },
     {
       "relation": "calls",
@@ -5028,9 +5073,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_reset",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionuistate",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionuistate"
     },
     {
       "relation": "method",
@@ -5038,9 +5083,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_loadtransaction",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_loadtransaction"
     },
     {
       "relation": "method",
@@ -5048,9 +5093,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_oncategoryselected",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_oncategoryselected"
     },
     {
       "relation": "method",
@@ -5058,9 +5103,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_onamountchanged",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_onamountchanged"
     },
     {
       "relation": "method",
@@ -5068,9 +5113,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_onnotechanged",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_onnotechanged"
     },
     {
       "relation": "method",
@@ -5078,9 +5123,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_ondateselected",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_ondateselected"
     },
     {
       "relation": "method",
@@ -5088,9 +5133,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_savetransaction",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_savetransaction"
     },
     {
       "relation": "method",
@@ -5098,9 +5143,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "addtransaction_addtransactionviewmodel_addtransactionviewmodel",
-      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_reset",
-      "confidence_score": 1.0
+      "target": "addtransaction_addtransactionviewmodel_addtransactionviewmodel_reset"
     },
     {
       "relation": "contains",
@@ -5108,9 +5153,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsscreen_kt",
-      "target": "analytics_analyticsscreen_analyticsscreen",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsscreen_analyticsscreen"
     },
     {
       "relation": "contains",
@@ -5118,9 +5163,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsscreen_kt",
-      "target": "analytics_analyticsscreen_statbox",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsscreen_statbox"
     },
     {
       "relation": "calls",
@@ -5129,9 +5174,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "analytics_analyticsscreen_analyticsscreen",
-      "target": "analytics_analyticsscreen_statbox",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsscreen_statbox"
     },
     {
       "relation": "calls",
@@ -5194,9 +5239,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsviewmodel_kt",
-      "target": "analytics_analyticsviewmodel_weekdaybar",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_weekdaybar"
     },
     {
       "relation": "contains",
@@ -5204,9 +5249,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsviewmodel_kt",
-      "target": "analytics_analyticsviewmodel_analyticsuistate",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_analyticsuistate"
     },
     {
       "relation": "contains",
@@ -5214,9 +5259,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_analytics_analyticsviewmodel_kt",
-      "target": "analytics_analyticsviewmodel_analyticsviewmodel",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_analyticsviewmodel"
     },
     {
       "relation": "calls",
@@ -5225,9 +5270,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
-      "target": "analytics_analyticsviewmodel_weekdaybar",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_weekdaybar"
     },
     {
       "relation": "calls",
@@ -5236,9 +5281,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
-      "target": "analytics_analyticsviewmodel_analyticsuistate",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_analyticsuistate"
     },
     {
       "relation": "method",
@@ -5246,9 +5291,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "analytics_analyticsviewmodel_analyticsviewmodel",
-      "target": "analytics_analyticsviewmodel_analyticsviewmodel_onperiodselected",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_analyticsviewmodel_onperiodselected"
     },
     {
       "relation": "method",
@@ -5256,9 +5301,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "analytics_analyticsviewmodel_analyticsviewmodel",
-      "target": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata"
     },
     {
       "relation": "calls",
@@ -5267,9 +5312,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/analytics/AnalyticsViewModel.kt",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "analytics_analyticsviewmodel_analyticsviewmodel_onperiodselected",
-      "target": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata",
-      "confidence_score": 1.0
+      "target": "analytics_analyticsviewmodel_analyticsviewmodel_loaddata"
     },
     {
       "relation": "calls",
@@ -5288,9 +5333,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_budget_budgetscreen_kt",
-      "target": "budget_budgetscreen_budgetscreen",
-      "confidence_score": 1.0
+      "target": "budget_budgetscreen_budgetscreen"
     },
     {
       "relation": "calls",
@@ -5309,9 +5354,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_budget_budgetviewmodel_kt",
-      "target": "budget_budgetviewmodel_categorybudgetsliders",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_categorybudgetsliders"
     },
     {
       "relation": "contains",
@@ -5319,9 +5364,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_budget_budgetviewmodel_kt",
-      "target": "budget_budgetviewmodel_budgetuistate",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetuistate"
     },
     {
       "relation": "contains",
@@ -5329,9 +5374,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_budget_budgetviewmodel_kt",
-      "target": "budget_budgetviewmodel_budgetviewmodel",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetviewmodel"
     },
     {
       "relation": "calls",
@@ -5340,9 +5385,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel_loadbudget",
-      "target": "budget_budgetviewmodel_categorybudgetsliders",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_categorybudgetsliders"
     },
     {
       "relation": "calls",
@@ -5351,9 +5396,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel_loadbudget",
-      "target": "budget_budgetviewmodel_budgetuistate",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetuistate"
     },
     {
       "relation": "method",
@@ -5361,9 +5406,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel",
-      "target": "budget_budgetviewmodel_budgetviewmodel_loadbudget",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetviewmodel_loadbudget"
     },
     {
       "relation": "method",
@@ -5371,9 +5416,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel",
-      "target": "budget_budgetviewmodel_budgetviewmodel_settotalbudget",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetviewmodel_settotalbudget"
     },
     {
       "relation": "method",
@@ -5381,9 +5426,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel",
-      "target": "budget_budgetviewmodel_budgetviewmodel_setcategorybudget",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetviewmodel_setcategorybudget"
     },
     {
       "relation": "method",
@@ -5391,9 +5436,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel",
-      "target": "budget_budgetviewmodel_budgetviewmodel_applypreset",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetviewmodel_applypreset"
     },
     {
       "relation": "calls",
@@ -5402,9 +5447,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/budget/BudgetViewModel.kt",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "budget_budgetviewmodel_budgetviewmodel_applypreset",
-      "target": "budget_budgetviewmodel_budgetviewmodel_setcategorybudget",
-      "confidence_score": 1.0
+      "target": "budget_budgetviewmodel_budgetviewmodel_setcategorybudget"
     },
     {
       "relation": "contains",
@@ -5412,9 +5457,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_calendar_calendarscreen_kt",
-      "target": "calendar_calendarscreen_calendarscreen",
-      "confidence_score": 1.0
+      "target": "calendar_calendarscreen_calendarscreen"
     },
     {
       "relation": "contains",
@@ -5422,9 +5467,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_calendar_calendarscreen_kt",
-      "target": "calendar_calendarscreen_daycell",
-      "confidence_score": 1.0
+      "target": "calendar_calendarscreen_daycell"
     },
     {
       "relation": "calls",
@@ -5433,9 +5478,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarscreen_calendarscreen",
-      "target": "calendar_calendarscreen_daycell",
-      "confidence_score": 1.0
+      "target": "calendar_calendarscreen_daycell"
     },
     {
       "relation": "calls",
@@ -5454,9 +5499,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_calendar_calendarviewmodel_kt",
-      "target": "calendar_calendarviewmodel_calendarday",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarday"
     },
     {
       "relation": "contains",
@@ -5464,9 +5509,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_calendar_calendarviewmodel_kt",
-      "target": "calendar_calendarviewmodel_calendaruistate",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendaruistate"
     },
     {
       "relation": "contains",
@@ -5474,9 +5519,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_calendar_calendarviewmodel_kt",
-      "target": "calendar_calendarviewmodel_calendarviewmodel",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel"
     },
     {
       "relation": "calls",
@@ -5485,9 +5530,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel_loadmonth",
-      "target": "calendar_calendarviewmodel_calendarday",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarday"
     },
     {
       "relation": "calls",
@@ -5496,9 +5541,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel_loadmonth",
-      "target": "calendar_calendarviewmodel_calendaruistate",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendaruistate"
     },
     {
       "relation": "method",
@@ -5506,9 +5551,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel",
-      "target": "calendar_calendarviewmodel_calendarviewmodel_previousmonth",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel_previousmonth"
     },
     {
       "relation": "method",
@@ -5516,9 +5561,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel",
-      "target": "calendar_calendarviewmodel_calendarviewmodel_nextmonth",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel_nextmonth"
     },
     {
       "relation": "method",
@@ -5526,9 +5571,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel",
-      "target": "calendar_calendarviewmodel_calendarviewmodel_ondayclicked",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel_ondayclicked"
     },
     {
       "relation": "method",
@@ -5536,9 +5581,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel",
-      "target": "calendar_calendarviewmodel_calendarviewmodel_loadmonth",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel_loadmonth"
     },
     {
       "relation": "calls",
@@ -5547,9 +5592,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel_previousmonth",
-      "target": "calendar_calendarviewmodel_calendarviewmodel_loadmonth",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel_loadmonth"
     },
     {
       "relation": "calls",
@@ -5558,9 +5603,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/calendar/CalendarViewModel.kt",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "calendar_calendarviewmodel_calendarviewmodel_nextmonth",
-      "target": "calendar_calendarviewmodel_calendarviewmodel_loadmonth",
-      "confidence_score": 1.0
+      "target": "calendar_calendarviewmodel_calendarviewmodel_loadmonth"
     },
     {
       "relation": "contains",
@@ -5568,9 +5613,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesscreen_kt",
-      "target": "categories_categoriesscreen_categoriesscreen",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_categoriesscreen"
     },
     {
       "relation": "contains",
@@ -5578,9 +5623,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesscreen_kt",
-      "target": "categories_categoriesscreen_categorycard",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_categorycard"
     },
     {
       "relation": "contains",
@@ -5588,9 +5633,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesscreen_kt",
-      "target": "categories_categoriesscreen_addcategorydialog",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_addcategorydialog"
     },
     {
       "relation": "contains",
@@ -5598,9 +5643,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesscreen_kt",
-      "target": "categories_categoriesscreen_editcategorydialog",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_editcategorydialog"
     },
     {
       "relation": "calls",
@@ -5609,9 +5654,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "categories_categoriesscreen_categoriesscreen",
-      "target": "categories_categoriesscreen_categorycard",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_categorycard"
     },
     {
       "relation": "calls",
@@ -5620,9 +5665,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "categories_categoriesscreen_categoriesscreen",
-      "target": "categories_categoriesscreen_addcategorydialog",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_addcategorydialog"
     },
     {
       "relation": "calls",
@@ -5631,9 +5676,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "categories_categoriesscreen_categoriesscreen",
-      "target": "categories_categoriesscreen_editcategorydialog",
-      "confidence_score": 1.0
+      "target": "categories_categoriesscreen_editcategorydialog"
     },
     {
       "relation": "calls",
@@ -5652,9 +5697,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesviewmodel_kt",
-      "target": "categories_categoriesviewmodel_categorywithprogress",
-      "confidence_score": 1.0
+      "target": "categories_categoriesviewmodel_categorywithprogress"
     },
     {
       "relation": "contains",
@@ -5662,9 +5707,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesviewmodel_kt",
-      "target": "categories_categoriesviewmodel_categoriesuistate",
-      "confidence_score": 1.0
+      "target": "categories_categoriesviewmodel_categoriesuistate"
     },
     {
       "relation": "contains",
@@ -5672,9 +5717,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_categories_categoriesviewmodel_kt",
-      "target": "categories_categoriesviewmodel_categoriesviewmodel",
-      "confidence_score": 1.0
+      "target": "categories_categoriesviewmodel_categoriesviewmodel"
     },
     {
       "relation": "method",
@@ -5682,9 +5727,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "categories_categoriesviewmodel_categoriesviewmodel",
-      "target": "categories_categoriesviewmodel_categoriesviewmodel_addcategory",
-      "confidence_score": 1.0
+      "target": "categories_categoriesviewmodel_categoriesviewmodel_addcategory"
     },
     {
       "relation": "method",
@@ -5692,9 +5737,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "categories_categoriesviewmodel_categoriesviewmodel",
-      "target": "categories_categoriesviewmodel_categoriesviewmodel_updatecategory",
-      "confidence_score": 1.0
+      "target": "categories_categoriesviewmodel_categoriesviewmodel_updatecategory"
     },
     {
       "relation": "method",
@@ -5702,9 +5747,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/categories/CategoriesViewModel.kt",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "categories_categoriesviewmodel_categoriesviewmodel",
-      "target": "categories_categoriesviewmodel_categoriesviewmodel_deletecategory",
-      "confidence_score": 1.0
+      "target": "categories_categoriesviewmodel_categoriesviewmodel_deletecategory"
     },
     {
       "relation": "contains",
@@ -5712,9 +5757,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_barchart_kt",
-      "target": "components_barchart_bardata",
-      "confidence_score": 1.0
+      "target": "components_barchart_bardata"
     },
     {
       "relation": "contains",
@@ -5722,9 +5767,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/BarChart.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_barchart_kt",
-      "target": "components_barchart_barchart",
-      "confidence_score": 1.0
+      "target": "components_barchart_barchart"
     },
     {
       "relation": "contains",
@@ -5732,9 +5777,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_donutchart_kt",
-      "target": "components_donutchart_donutsegment",
-      "confidence_score": 1.0
+      "target": "components_donutchart_donutsegment"
     },
     {
       "relation": "contains",
@@ -5742,9 +5787,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_donutchart_kt",
-      "target": "components_donutchart_donutchart",
-      "confidence_score": 1.0
+      "target": "components_donutchart_donutchart"
     },
     {
       "relation": "contains",
@@ -5752,9 +5797,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/DonutChart.kt",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_donutchart_kt",
-      "target": "components_donutchart_donutlegend",
-      "confidence_score": 1.0
+      "target": "components_donutchart_donutlegend"
     },
     {
       "relation": "calls",
@@ -5784,9 +5829,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/components/TransactionCard.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_components_transactioncard_kt",
-      "target": "components_transactioncard_transactioncard",
-      "confidence_score": 1.0
+      "target": "components_transactioncard_transactioncard"
     },
     {
       "relation": "calls",
@@ -5827,9 +5872,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_history_historyscreen_kt",
-      "target": "history_historyscreen_historyscreen",
-      "confidence_score": 1.0
+      "target": "history_historyscreen_historyscreen"
     },
     {
       "relation": "calls",
@@ -5848,9 +5893,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_history_historyviewmodel_kt",
-      "target": "history_historyviewmodel_dategroup",
-      "confidence_score": 1.0
+      "target": "history_historyviewmodel_dategroup"
     },
     {
       "relation": "contains",
@@ -5858,9 +5903,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_history_historyviewmodel_kt",
-      "target": "history_historyviewmodel_historyuistate",
-      "confidence_score": 1.0
+      "target": "history_historyviewmodel_historyuistate"
     },
     {
       "relation": "contains",
@@ -5868,9 +5913,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_history_historyviewmodel_kt",
-      "target": "history_historyviewmodel_historyviewmodel",
-      "confidence_score": 1.0
+      "target": "history_historyviewmodel_historyviewmodel"
     },
     {
       "relation": "method",
@@ -5878,9 +5923,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "history_historyviewmodel_historyviewmodel",
-      "target": "history_historyviewmodel_historyviewmodel_previousmonth",
-      "confidence_score": 1.0
+      "target": "history_historyviewmodel_historyviewmodel_previousmonth"
     },
     {
       "relation": "method",
@@ -5888,9 +5933,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "history_historyviewmodel_historyviewmodel",
-      "target": "history_historyviewmodel_historyviewmodel_nextmonth",
-      "confidence_score": 1.0
+      "target": "history_historyviewmodel_historyviewmodel_nextmonth"
     },
     {
       "relation": "method",
@@ -5898,9 +5943,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/history/HistoryViewModel.kt",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "history_historyviewmodel_historyviewmodel",
-      "target": "history_historyviewmodel_historyviewmodel_deletetransaction",
-      "confidence_score": 1.0
+      "target": "history_historyviewmodel_historyviewmodel_deletetransaction"
     },
     {
       "relation": "contains",
@@ -5908,9 +5953,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_home_homeviewmodel_kt",
-      "target": "home_homeviewmodel_homeuistate",
-      "confidence_score": 1.0
+      "target": "home_homeviewmodel_homeuistate"
     },
     {
       "relation": "contains",
@@ -5918,9 +5963,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_home_homeviewmodel_kt",
-      "target": "home_homeviewmodel_homeviewmodel",
-      "confidence_score": 1.0
+      "target": "home_homeviewmodel_homeviewmodel"
     },
     {
       "relation": "contains",
@@ -5928,9 +5973,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_home_homescreen_kt",
-      "target": "home_homescreen_homescreen",
-      "confidence_score": 1.0
+      "target": "home_homescreen_homescreen"
     },
     {
       "relation": "contains",
@@ -5938,9 +5983,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_home_homescreen_kt",
-      "target": "home_homescreen_budgetsummarycard",
-      "confidence_score": 1.0
+      "target": "home_homescreen_budgetsummarycard"
     },
     {
       "relation": "contains",
@@ -5948,9 +5993,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
       "source_location": "L224",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_home_homescreen_kt",
-      "target": "home_homescreen_emptyhomescreen",
-      "confidence_score": 1.0
+      "target": "home_homescreen_emptyhomescreen"
     },
     {
       "relation": "calls",
@@ -5959,9 +6004,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "home_homescreen_homescreen",
-      "target": "home_homescreen_emptyhomescreen",
-      "confidence_score": 1.0
+      "target": "home_homescreen_emptyhomescreen"
     },
     {
       "relation": "calls",
@@ -5970,9 +6015,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/home/HomeScreen.kt",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "home_homescreen_homescreen",
-      "target": "home_homescreen_budgetsummarycard",
-      "confidence_score": 1.0
+      "target": "home_homescreen_budgetsummarycard"
     },
     {
       "relation": "calls",
@@ -5991,9 +6036,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppFAB.kt",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_appfab_kt",
-      "target": "navigation_appfab_appfab",
-      "confidence_score": 1.0
+      "target": "navigation_appfab_appfab"
     },
     {
       "relation": "calls",
@@ -6012,9 +6057,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_appnavhost_kt",
-      "target": "navigation_appnavhost_appnavhost",
-      "confidence_score": 1.0
+      "target": "navigation_appnavhost_appnavhost"
     },
     {
       "relation": "calls",
@@ -6066,9 +6111,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/AppTopBar.kt",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_apptopbar_kt",
-      "target": "navigation_apptopbar_apptopbar",
-      "confidence_score": 1.0
+      "target": "navigation_apptopbar_apptopbar"
     },
     {
       "relation": "contains",
@@ -6076,9 +6121,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/BottomNavBar.kt",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_bottomnavbar_kt",
-      "target": "navigation_bottomnavbar_bottomnavbar",
-      "confidence_score": 1.0
+      "target": "navigation_bottomnavbar_bottomnavbar"
     },
     {
       "relation": "contains",
@@ -6086,9 +6131,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_screen",
-      "confidence_score": 1.0
+      "target": "navigation_screen_screen"
     },
     {
       "relation": "contains",
@@ -6096,9 +6141,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_home",
-      "confidence_score": 1.0
+      "target": "navigation_screen_home"
     },
     {
       "relation": "contains",
@@ -6106,9 +6151,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_analytics",
-      "confidence_score": 1.0
+      "target": "navigation_screen_analytics"
     },
     {
       "relation": "contains",
@@ -6116,9 +6161,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_search",
-      "confidence_score": 1.0
+      "target": "navigation_screen_search"
     },
     {
       "relation": "contains",
@@ -6126,9 +6171,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_settings",
-      "confidence_score": 1.0
+      "target": "navigation_screen_settings"
     },
     {
       "relation": "contains",
@@ -6136,9 +6181,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_history",
-      "confidence_score": 1.0
+      "target": "navigation_screen_history"
     },
     {
       "relation": "contains",
@@ -6146,9 +6191,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_categories",
-      "confidence_score": 1.0
+      "target": "navigation_screen_categories"
     },
     {
       "relation": "contains",
@@ -6156,9 +6201,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_budget",
-      "confidence_score": 1.0
+      "target": "navigation_screen_budget"
     },
     {
       "relation": "contains",
@@ -6166,9 +6211,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_calendar",
-      "confidence_score": 1.0
+      "target": "navigation_screen_calendar"
     },
     {
       "relation": "contains",
@@ -6176,9 +6221,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_addtransaction",
-      "confidence_score": 1.0
+      "target": "navigation_screen_addtransaction"
     },
     {
       "relation": "contains",
@@ -6186,9 +6231,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/navigation/Screen.kt",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_navigation_screen_kt",
-      "target": "navigation_screen_bottomnavitem",
-      "confidence_score": 1.0
+      "target": "navigation_screen_bottomnavitem"
     },
     {
       "relation": "contains",
@@ -6196,9 +6241,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchScreen.kt",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchscreen_kt",
-      "target": "search_searchscreen_searchscreen",
-      "confidence_score": 1.0
+      "target": "search_searchscreen_searchscreen"
     },
     {
       "relation": "contains",
@@ -6206,9 +6251,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_quickchip",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_quickchip"
     },
     {
       "relation": "contains",
@@ -6216,9 +6261,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_datefilter",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_datefilter"
     },
     {
       "relation": "contains",
@@ -6226,9 +6271,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_none",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_none"
     },
     {
       "relation": "contains",
@@ -6236,9 +6281,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_quick",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_quick"
     },
     {
       "relation": "contains",
@@ -6246,9 +6291,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_custom",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_custom"
     },
     {
       "relation": "contains",
@@ -6256,9 +6301,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_searchuistate",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchuistate"
     },
     {
       "relation": "contains",
@@ -6266,9 +6311,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_search_searchviewmodel_kt",
-      "target": "search_searchviewmodel_searchviewmodel",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel"
     },
     {
       "relation": "calls",
@@ -6277,9 +6322,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel_onquickchipselected",
-      "target": "search_searchviewmodel_quick",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_quick"
     },
     {
       "relation": "calls",
@@ -6288,9 +6333,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L149",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel_clearsearch",
-      "target": "search_searchviewmodel_quick",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_quick"
     },
     {
       "relation": "calls",
@@ -6299,9 +6344,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel_oncustomdaterangeselected",
-      "target": "search_searchviewmodel_custom",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_custom"
     },
     {
       "relation": "calls",
@@ -6310,9 +6355,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L150",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel_clearsearch",
-      "target": "search_searchviewmodel_searchuistate",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchuistate"
     },
     {
       "relation": "method",
@@ -6320,9 +6365,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L118",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel",
-      "target": "search_searchviewmodel_searchviewmodel_onquerychanged",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel_onquerychanged"
     },
     {
       "relation": "method",
@@ -6330,9 +6375,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L123",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel",
-      "target": "search_searchviewmodel_searchviewmodel_oncategorytoggled",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel_oncategorytoggled"
     },
     {
       "relation": "method",
@@ -6340,9 +6385,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel",
-      "target": "search_searchviewmodel_searchviewmodel_onquickchipselected",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel_onquickchipselected"
     },
     {
       "relation": "method",
@@ -6350,9 +6395,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel",
-      "target": "search_searchviewmodel_searchviewmodel_oncustomdaterangeselected",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel_oncustomdaterangeselected"
     },
     {
       "relation": "method",
@@ -6360,9 +6405,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel",
-      "target": "search_searchviewmodel_searchviewmodel_cleardatefilter",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel_cleardatefilter"
     },
     {
       "relation": "method",
@@ -6370,9 +6415,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "search_searchviewmodel_searchviewmodel",
-      "target": "search_searchviewmodel_searchviewmodel_clearsearch",
-      "confidence_score": 1.0
+      "target": "search_searchviewmodel_searchviewmodel_clearsearch"
     },
     {
       "relation": "contains",
@@ -6380,9 +6425,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_settings_settingsviewmodel_kt",
-      "target": "settings_settingsviewmodel_settingsuistate",
-      "confidence_score": 1.0
+      "target": "settings_settingsviewmodel_settingsuistate"
     },
     {
       "relation": "contains",
@@ -6390,9 +6435,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_settings_settingsviewmodel_kt",
-      "target": "settings_settingsviewmodel_settingsviewmodel",
-      "confidence_score": 1.0
+      "target": "settings_settingsviewmodel_settingsviewmodel"
     },
     {
       "relation": "method",
@@ -6400,9 +6445,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_settingsviewmodel_settingsviewmodel",
-      "target": "settings_settingsviewmodel_settingsviewmodel_setthememode",
-      "confidence_score": 1.0
+      "target": "settings_settingsviewmodel_settingsviewmodel_setthememode"
     },
     {
       "relation": "method",
@@ -6410,9 +6455,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_settingsviewmodel_settingsviewmodel",
-      "target": "settings_settingsviewmodel_settingsviewmodel_setaccentcolor",
-      "confidence_score": 1.0
+      "target": "settings_settingsviewmodel_settingsviewmodel_setaccentcolor"
     },
     {
       "relation": "method",
@@ -6420,9 +6465,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_settingsviewmodel_settingsviewmodel",
-      "target": "settings_settingsviewmodel_settingsviewmodel_resetalldata",
-      "confidence_score": 1.0
+      "target": "settings_settingsviewmodel_settingsviewmodel_resetalldata"
     },
     {
       "relation": "contains",
@@ -6430,9 +6475,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_settings_settingsscreen_kt",
-      "target": "settings_settingsscreen_settingsscreen",
-      "confidence_score": 1.0
+      "target": "settings_settingsscreen_settingsscreen"
     },
     {
       "relation": "contains",
@@ -6440,9 +6485,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Color.kt",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_theme_color_kt",
-      "target": "theme_color_accentcolor",
-      "confidence_score": 1.0
+      "target": "theme_color_accentcolor"
     },
     {
       "relation": "contains",
@@ -6450,9 +6495,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_theme_theme_kt",
-      "target": "theme_theme_lightcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_lightcolorscheme"
     },
     {
       "relation": "contains",
@@ -6460,9 +6505,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_theme_theme_kt",
-      "target": "theme_theme_darkcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_darkcolorscheme"
     },
     {
       "relation": "contains",
@@ -6470,9 +6515,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_theme_theme_kt",
-      "target": "theme_theme_oledcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_oledcolorscheme"
     },
     {
       "relation": "contains",
@@ -6480,9 +6525,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L110",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_ui_theme_theme_kt",
-      "target": "theme_theme_financetrackingapptheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_financetrackingapptheme"
     },
     {
       "relation": "calls",
@@ -6491,9 +6536,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "theme_theme_financetrackingapptheme",
-      "target": "theme_theme_lightcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_lightcolorscheme"
     },
     {
       "relation": "calls",
@@ -6502,9 +6547,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "theme_theme_oledcolorscheme",
-      "target": "theme_theme_darkcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_darkcolorscheme"
     },
     {
       "relation": "calls",
@@ -6513,9 +6558,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "theme_theme_financetrackingapptheme",
-      "target": "theme_theme_darkcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_darkcolorscheme"
     },
     {
       "relation": "calls",
@@ -6524,9 +6569,9 @@
       "source_file": "app/src/main/java/com/financetracker/ui/theme/Theme.kt",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "theme_theme_financetrackingapptheme",
-      "target": "theme_theme_oledcolorscheme",
-      "confidence_score": 1.0
+      "target": "theme_theme_oledcolorscheme"
     },
     {
       "relation": "calls",
@@ -6545,9 +6590,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetModels.kt",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_widget_widgetmodels_kt",
-      "target": "widget_widgetmodels_widgetcategory",
-      "confidence_score": 1.0
+      "target": "widget_widgetmodels_widgetcategory"
     },
     {
       "relation": "calls",
@@ -6566,9 +6611,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetCategoryStore.kt",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_widget_widgetcategorystore_kt",
-      "target": "widget_widgetcategorystore_widgetcategorystore",
-      "confidence_score": 1.0
+      "target": "widget_widgetcategorystore_widgetcategorystore"
     },
     {
       "relation": "method",
@@ -6576,9 +6621,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetCategoryStore.kt",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_widgetcategorystore_widgetcategorystore",
-      "target": "widget_widgetcategorystore_widgetcategorystore_savecategories",
-      "confidence_score": 1.0
+      "target": "widget_widgetcategorystore_widgetcategorystore_savecategories"
     },
     {
       "relation": "method",
@@ -6586,9 +6631,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetCategoryStore.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_widgetcategorystore_widgetcategorystore",
-      "target": "widget_widgetcategorystore_widgetcategorystore_getcategories",
-      "confidence_score": 1.0
+      "target": "widget_widgetcategorystore_widgetcategorystore_getcategories"
     },
     {
       "relation": "method",
@@ -6596,9 +6641,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetCategoryStore.kt",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_widgetcategorystore_widgetcategorystore",
-      "target": "widget_widgetcategorystore_widgetcategorystore_updatewidgets",
-      "confidence_score": 1.0
+      "target": "widget_widgetcategorystore_widgetcategorystore_updatewidgets"
     },
     {
       "relation": "calls",
@@ -6614,13 +6659,24 @@
     {
       "relation": "calls",
       "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onappwidgetoptionschanged",
+      "target": "widget_widgetcategorystore_widgetcategorystore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/widget/WidgetCategoryStore.kt",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_widgetcategorystore_widgetcategorystore_savecategories",
-      "target": "widget_widgetcategorystore_widgetcategorystore_updatewidgets",
-      "confidence_score": 1.0
+      "target": "widget_widgetcategorystore_widgetcategorystore_updatewidgets"
     },
     {
       "relation": "contains",
@@ -6628,8 +6684,18 @@
       "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_widget_transactionwidgetreceiver_kt",
-      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver",
+      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "app_src_main_java_com_financetracker_widget_transactionwidgetreceiver_kt",
+      "target": "widget_transactionwidgetreceiver_refreshallwidgets",
       "confidence_score": 1.0
     },
     {
@@ -6638,8 +6704,50 @@
       "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_transactionwidgetreceiver_transactionwidgetreceiver",
-      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onupdate",
+      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onupdate"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "widget_transactionwidgetreceiver_transactionwidgetreceiver",
+      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onappwidgetoptionschanged",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "widget_transactionwidgetreceiver_transactionwidgetreceiver",
+      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver_updatewidget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onupdate",
+      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver_updatewidget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "widget_transactionwidgetreceiver_transactionwidgetreceiver_onappwidgetoptionschanged",
+      "target": "widget_transactionwidgetreceiver_transactionwidgetreceiver_updatewidget",
       "confidence_score": 1.0
     },
     {
@@ -6648,9 +6756,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_widget_quickaddtransactionactivity_kt",
-      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity",
-      "confidence_score": 1.0
+      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity"
     },
     {
       "relation": "contains",
@@ -6658,9 +6766,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt",
       "source_location": "L117",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_main_java_com_financetracker_widget_quickaddtransactionactivity_kt",
-      "target": "widget_quickaddtransactionactivity_quickaddcontent",
-      "confidence_score": 1.0
+      "target": "widget_quickaddtransactionactivity_quickaddcontent"
     },
     {
       "relation": "method",
@@ -6668,9 +6776,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_quickaddtransactionactivity_quickaddtransactionactivity",
-      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity_oncreate",
-      "confidence_score": 1.0
+      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity_oncreate"
     },
     {
       "relation": "method",
@@ -6678,9 +6786,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_quickaddtransactionactivity_quickaddtransactionactivity",
-      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity_savetransaction",
-      "confidence_score": 1.0
+      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity_savetransaction"
     },
     {
       "relation": "calls",
@@ -6689,9 +6797,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt",
       "source_location": "L87",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_quickaddtransactionactivity_quickaddtransactionactivity_oncreate",
-      "target": "widget_quickaddtransactionactivity_quickaddcontent",
-      "confidence_score": 1.0
+      "target": "widget_quickaddtransactionactivity_quickaddcontent"
     },
     {
       "relation": "calls",
@@ -6700,9 +6808,9 @@
       "source_file": "app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "widget_quickaddtransactionactivity_quickaddtransactionactivity_oncreate",
-      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity_savetransaction",
-      "confidence_score": 1.0
+      "target": "widget_quickaddtransactionactivity_quickaddtransactionactivity_savetransaction"
     },
     {
       "relation": "contains",
@@ -6710,9 +6818,9 @@
       "source_file": "app/src/androidTest/java/com/financetracker/ExampleInstrumentedTest.kt",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_androidtest_java_com_financetracker_exampleinstrumentedtest_kt",
-      "target": "financetracker_exampleinstrumentedtest_exampleinstrumentedtest",
-      "confidence_score": 1.0
+      "target": "financetracker_exampleinstrumentedtest_exampleinstrumentedtest"
     },
     {
       "relation": "method",
@@ -6720,9 +6828,9 @@
       "source_file": "app/src/androidTest/java/com/financetracker/ExampleInstrumentedTest.kt",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetracker_exampleinstrumentedtest_exampleinstrumentedtest",
-      "target": "financetracker_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
-      "confidence_score": 1.0
+      "target": "financetracker_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext"
     },
     {
       "relation": "contains",
@@ -6730,9 +6838,9 @@
       "source_file": "app/src/test/java/com/financetracker/ExampleUnitTest.kt",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_src_test_java_com_financetracker_exampleunittest_kt",
-      "target": "financetracker_exampleunittest_exampleunittest",
-      "confidence_score": 1.0
+      "target": "financetracker_exampleunittest_exampleunittest"
     },
     {
       "relation": "method",
@@ -6740,11 +6848,21 @@
       "source_file": "app/src/test/java/com/financetracker/ExampleUnitTest.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "financetracker_exampleunittest_exampleunittest",
-      "target": "financetracker_exampleunittest_exampleunittest_addition_iscorrect",
+      "target": "financetracker_exampleunittest_exampleunittest_addition_iscorrect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agents_md",
+      "target": "financetrackingapp_agents_graphify",
       "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6bd5d68eaa13513541224cf41aa6a5a8d453b25a"
+  "built_at_commit": "e0a8652b482cfdab3dd205c686da1f4424c8a97f"
 }

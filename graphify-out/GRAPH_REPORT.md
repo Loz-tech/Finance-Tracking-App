@@ -1,16 +1,16 @@
 # Graph Report - FinanceTrackingApp  (2026-05-16)
 
 ## Corpus Check
-- 70 files · ~39,704 words
+- 71 files · ~40,007 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 336 nodes · 362 edges · 44 communities (17 shown, 27 thin omitted)
-- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 41 edges (avg confidence: 0.8)
+- 341 nodes · 369 edges · 45 communities (17 shown, 28 thin omitted)
+- Extraction: 89% EXTRACTED · 11% INFERRED · 0% AMBIGUOUS · INFERRED: 42 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6bd5d68e`
+- Built from commit: `e0a8652b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,6 +54,7 @@
 - [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 44|Community 44]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `TransactionDao` - 16 edges
@@ -79,7 +80,7 @@
 - `AppNavHost()` --calls--> `BudgetScreen()`  [INFERRED]
   app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt → app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt
 
-## Communities (44 total, 27 thin omitted)
+## Communities (45 total, 28 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
@@ -102,7 +103,7 @@ Cohesion: 0.17
 Nodes (11): AddTransaction, Analytics, BottomNavItem, Budget, Calendar, Categories, History, Home (+3 more)
 
 ### Community 13 - "Community 13"
-Cohesion: 0.22
+Cohesion: 0.21
 Nodes (3): TransactionWidgetReceiver, WidgetCategoryStore, WidgetCategory
 
 ### Community 14 - "Community 14"
@@ -130,23 +131,23 @@ Cohesion: 0.53
 Nodes (3): AnalyticsUiState, AnalyticsViewModel, WeekdayBar
 
 ## Knowledge Gaps
-- **27 isolated node(s):** `FinanceApp`, `DailyTotal`, `TransactionSearchResult`, `Budget`, `Period` (+22 more)
+- **28 isolated node(s):** `FinanceApp`, `DailyTotal`, `TransactionSearchResult`, `Budget`, `Period` (+23 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **28 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppNavHost()` connect `Community 0` to `Community 18`, `Community 2`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
+  _High betweenness centrality (0.080) - this node is a cross-community bridge._
 - **Why does `FinanceTrackingAppTheme()` connect `Community 18` to `Community 1`?**
-  _High betweenness centrality (0.071) - this node is a cross-community bridge._
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
 - **Why does `Category` connect `Community 14` to `Community 1`, `Community 4`, `Community 6`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `AppNavHost()` (e.g. with `.onCreate()` and `AppTopBar()`) actually correct?**
   _`AppNavHost()` has 13 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `FinanceApp`, `DailyTotal`, `TransactionSearchResult` to the rest of the system?**
-  _27 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _28 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**

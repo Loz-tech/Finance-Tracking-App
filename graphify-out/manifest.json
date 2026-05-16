@@ -32,8 +32,8 @@
     "hash": "6fce2db7e6b7df96735938f606998fc0"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt": {
-    "mtime": 1778184896.0637827,
-    "hash": "4292432d310c3aa6b42ee6074ff4c838"
+    "mtime": 1778936053.4475873,
+    "hash": "dbfc6d6d0b3f2b6adc3617e5090f5b38"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt": {
     "mtime": 1778184896.0638204,
@@ -259,13 +259,13 @@
     "mtime": 1778795713.039157,
     "hash": "8f9150cff0a7349a9e42737692016a2b"
   },
-  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt": {
-    "mtime": 1778794886.8937185,
-    "hash": "e6905b4fc28d44ee83c4502866acc623"
-  },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/QuickAddTransactionActivity.kt": {
     "mtime": 1778794260.690064,
     "hash": "8c5705d5517915d09a088f27ab20af9d"
+  },
+  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/main/java/com/financetracker/widget/TransactionWidgetReceiver.kt": {
+    "mtime": 1778941789.1940992,
+    "hash": "21f092a954b523625a1af20aa3470d4f"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/androidTest/java/com/financetracker/ExampleInstrumentedTest.kt": {
     "mtime": 1778184896.0635293,
@@ -274,6 +274,10 @@
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/app/src/test/java/com/financetracker/ExampleUnitTest.kt": {
     "mtime": 1778184896.0655136,
     "hash": "18601a86688791345ad74aa1811dcfab"
+  },
+  "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/AGENTS.md": {
+    "mtime": 1778935719.4362888,
+    "hash": "a993bd9a8466b705f520b2a269a544bc"
   },
   "/home/vlad/AndroidStudioProjects/FinanceTrackingApp/design/01-home.html": {
     "mtime": 1778184804.4777246,
