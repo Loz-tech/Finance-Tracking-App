@@ -23,6 +23,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import java.util.Locale
 
 data class BarData(val label: String, val value: Double)
 
@@ -102,7 +103,7 @@ fun BarChart(bars: List<BarData>, modifier: Modifier = Modifier, maxValue: Doubl
         if (selectedIndex in bars.indices) {
             val selected = bars[selectedIndex]
             Text(
-                text = "${selected.label}: $${String.format("%.2f", selected.value)}",
+                text = "${selected.label}: $${String.format(Locale.getDefault(), "%.2f", selected.value)}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.fillMaxWidth().padding(top = 4.dp),

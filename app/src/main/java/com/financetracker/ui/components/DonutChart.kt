@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import java.util.Locale
 
 data class DonutSegment(val label: String, val emoji: String, val value: Float, val color: Color)
 
@@ -79,7 +80,7 @@ fun DonutChart(
             }
             if (total > 0) {
                 Text(
-                    text = "$${String.format("%.2f", total)}",
+                    text = "$${String.format(Locale.getDefault(), "%.2f", total)}",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

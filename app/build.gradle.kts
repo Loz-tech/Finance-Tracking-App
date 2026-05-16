@@ -31,6 +31,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -38,6 +39,12 @@ android {
         compose = true
     }
     buildToolsVersion = "36.0.0"
+
+    lint {
+        lintConfig = file("lint.xml")
+        abortOnError = true
+        checkReleaseBuilds = true
+    }
 }
 
 ktlint {
@@ -82,4 +89,5 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
     implementation(libs.kotlinx.serialization.json)
+    coreLibraryDesugaring(libs.android.desugar.jdk)
 }
