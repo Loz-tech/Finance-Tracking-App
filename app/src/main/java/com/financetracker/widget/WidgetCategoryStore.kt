@@ -5,12 +5,12 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import com.financetracker.domain.model.Category
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.encodeToString
 import javax.inject.Inject
 import javax.inject.Singleton
-import androidx.core.content.edit
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Singleton
 class WidgetCategoryStore @Inject constructor(

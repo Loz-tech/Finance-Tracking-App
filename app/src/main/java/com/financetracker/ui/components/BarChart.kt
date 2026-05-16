@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,11 +17,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,11 +27,7 @@ import androidx.compose.ui.unit.dp
 data class BarData(val label: String, val value: Double)
 
 @Composable
-fun BarChart(
-    bars: List<BarData>,
-    modifier: Modifier = Modifier,
-    maxValue: Double? = null
-) {
+fun BarChart(bars: List<BarData>, modifier: Modifier = Modifier, maxValue: Double? = null) {
     if (bars.isEmpty()) return
 
     val barMax = maxValue ?: bars.maxOf { it.value }
@@ -63,15 +56,24 @@ fun BarChart(
             val totalHeight = size.height - 40f
 
             bars.forEachIndexed { index, bar ->
-                val barHeight = if (displayMax > 0) (bar.value / displayMax * totalHeight * animationProgress).toFloat() else 0f
+                val barHeight = if (displayMax >
+                    0
+                ) {
+                    (bar.value / displayMax * totalHeight * animationProgress).toFloat()
+                } else {
+                    0f
+                }
                 val x = index * barWidth + barWidth * 0.15f
                 val y = totalHeight - barHeight + 10f
 
                 drawRect(
-                    color = if (index == selectedIndex) primaryColor
-                    else primaryColorDim,
+                    color = if (index == selectedIndex) {
+                        primaryColor
+                    } else {
+                        primaryColorDim
+                    },
                     topLeft = Offset(x, y),
-                    size = Size(barWidth * 0.7f, barHeight),
+                    size = Size(barWidth * 0.7f, barHeight)
                 )
             }
         }
@@ -85,8 +87,11 @@ fun BarChart(
                 Text(
                     text = bar.label,
                     style = MaterialTheme.typography.labelSmall,
-                    color = if (index == selectedIndex) MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = if (index == selectedIndex) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    },
                     fontWeight = if (index == selectedIndex) FontWeight.Bold else FontWeight.Normal,
                     modifier = Modifier.weight(1f),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center

@@ -50,11 +50,7 @@ val Neutral95 = Color(0xFFF0F1F1)
 val Neutral99 = Color(0xFFFBFDFC)
 
 // Accent Color Seeds (for accent picker)
-enum class AccentColor(
-    val label: String,
-    val primaryColor: Color,
-    val primaryContainerColor: Color
-) {
+enum class AccentColor(val label: String, val primaryColor: Color, val primaryContainerColor: Color) {
     TEAL("Teal", Color(0xFF006874), Color(0xFFB9FCFF)),
     BLUE("Blue", Color(0xFF005CBB), Color(0xFFD7E3FF)),
     PURPLE("Purple", Color(0xFF634186), Color(0xFFE8DEFF)),

@@ -5,11 +5,11 @@ import com.financetracker.data.local.entity.CategoryEntity
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.widget.WidgetCategoryStore
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class CategoryRepositoryImpl @Inject constructor(
@@ -20,8 +20,7 @@ class CategoryRepositoryImpl @Inject constructor(
     override fun getAllCategories(): Flow<List<Category>> =
         categoryDao.getAll().map { entities -> entities.map { it.toDomain() } }
 
-    override suspend fun getCategoryById(id: UUID): Category? =
-        categoryDao.getById(id)?.toDomain()
+    override suspend fun getCategoryById(id: UUID): Category? = categoryDao.getById(id)?.toDomain()
 
     override suspend fun saveCategory(category: Category) {
         categoryDao.insert(category.toEntity())

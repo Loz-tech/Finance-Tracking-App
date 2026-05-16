@@ -5,14 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.LocalDate
+import java.time.YearMonth
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.YearMonth
-import javax.inject.Inject
 
 data class DateGroup(val date: LocalDate, val label: String, val transactions: List<Transaction>)
 
@@ -23,11 +23,10 @@ data class HistoryUiState(
 )
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor(
-    private val transactionRepository: TransactionRepository
-) : ViewModel() {
+class HistoryViewModel @Inject constructor(private val transactionRepository: TransactionRepository) : ViewModel() {
 
     private val _currentYearMonth = MutableStateFlow(YearMonth.now())
+    val currentYearMonth: StateFlow<YearMonth> = _currentYearMonth
     private val _uiState = MutableStateFlow(HistoryUiState())
     val uiState: StateFlow<HistoryUiState> = _uiState
 

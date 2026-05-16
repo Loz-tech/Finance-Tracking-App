@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -26,7 +25,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -37,10 +35,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 @Composable
-fun BudgetScreen(
-    modifier: Modifier = Modifier,
-    viewModel: BudgetViewModel = hiltViewModel()
-) {
+fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
     val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
     var totalInput by remember { mutableStateOf(uiState.totalBudget.toPlainString()) }
@@ -52,7 +47,10 @@ fun BudgetScreen(
         Text("Monthly Budget", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
 
         // Total budget
-        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Total Monthly Limit", style = MaterialTheme.typography.titleSmall)
                 Spacer(modifier = Modifier.height(8.dp))
@@ -77,11 +75,23 @@ fun BudgetScreen(
         // Per-category sliders
         Text("Category Budgets", style = MaterialTheme.typography.titleSmall)
         uiState.categorySliders.forEach { slider ->
-            Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+            ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text("${slider.category.emoji} ${slider.category.name}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
-                        Text(currencyFormatter.format(slider.limit), style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                        Text(
+                            "${slider.category.emoji} ${slider.category.name}",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Medium
+                        )
+                        Text(
+                            currencyFormatter.format(slider.limit),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary
+                        )
                     }
                     Slider(
                         value = slider.limit.toFloat(),

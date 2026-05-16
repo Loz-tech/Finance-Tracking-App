@@ -57,16 +57,31 @@ fun SettingsScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // Theme selector
-        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Theme", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    listOf(UserPreferences.THEME_LIGHT, UserPreferences.THEME_DARK, UserPreferences.THEME_OLED).forEach { mode ->
+                    listOf(
+                        UserPreferences.THEME_LIGHT,
+                        UserPreferences.THEME_DARK,
+                        UserPreferences.THEME_OLED
+                    ).forEach { mode ->
                         FilterChip(
                             selected = uiState.themeMode == mode,
                             onClick = { viewModel.setThemeMode(mode) },
-                            label = { Text(when(mode) { UserPreferences.THEME_LIGHT -> "☀ Light"; UserPreferences.THEME_DARK -> "🌙 Dark"; else -> "⬛ OLED" }) }
+                            label = {
+                                Text(
+                                    when (mode) {
+                                        UserPreferences.THEME_LIGHT -> "☀ Light"
+                                        UserPreferences.THEME_DARK -> "🌙 Dark"
+                                        else -> "⬛ OLED"
+                                    }
+                                )
+                            }
                         )
                     }
                 }
@@ -74,7 +89,10 @@ fun SettingsScreen(
         }
 
         // Accent color picker
-        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Accent Color", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.height(8.dp))
@@ -86,8 +104,13 @@ fun SettingsScreen(
                                     .size(36.dp)
                                     .clip(CircleShape)
                                     .then(
-                                        if (index == uiState.accentColorIndex) Modifier.border(3.dp, MaterialTheme.colorScheme.onSurface, CircleShape)
-                                        else Modifier.border(1.dp, Color.Transparent, CircleShape)
+                                        if (index ==
+                                            uiState.accentColorIndex
+                                        ) {
+                                            Modifier.border(3.dp, MaterialTheme.colorScheme.onSurface, CircleShape)
+                                        } else {
+                                            Modifier.border(1.dp, Color.Transparent, CircleShape)
+                                        }
                                     )
                                     .clickable { viewModel.setAccentColor(index) }
                                     .background(accent.primaryColor, CircleShape)
@@ -100,20 +123,41 @@ fun SettingsScreen(
         }
 
         // Export
-        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Export Data", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.height(8.dp))
-                Button(onClick = onExportCsv, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) { Text("📄 Export as CSV") }
+                Button(onClick = onExportCsv, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) {
+                    Text("📄 Export as CSV")
+                }
                 Spacer(modifier = Modifier.height(8.dp))
-                Button(onClick = onExportJson, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) { Text("📋 Export as JSON") }
+                Button(
+                    onClick = onExportJson,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium
+                ) {
+                    Text("📋 Export as JSON")
+                }
             }
         }
 
         // Reset
-        Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f))) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f)
+            )
+        ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text("Danger Zone", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.error)
+                Text(
+                    "Danger Zone",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.error
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
                     onClick = { showResetDialog = true },
@@ -124,7 +168,11 @@ fun SettingsScreen(
         }
 
         if (uiState.message != null) {
-            Text(uiState.message!!, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+            Text(
+                uiState.message!!,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary
+            )
         }
     }
 
@@ -132,9 +180,16 @@ fun SettingsScreen(
         androidx.compose.material3.AlertDialog(
             onDismissRequest = { showResetDialog = false },
             title = { Text("Reset All Data?") },
-            text = { Text("This will permanently delete all transactions, custom categories, and budgets. This cannot be undone.") },
+            text = {
+                Text(
+                    "This will permanently delete all transactions, custom categories, and budgets. This cannot be undone."
+                )
+            },
             confirmButton = {
-                TextButton(onClick = { viewModel.resetAllData(); showResetDialog = false }) { Text("Reset", color = MaterialTheme.colorScheme.error) }
+                TextButton(onClick = {
+                    viewModel.resetAllData()
+                    showResetDialog = false
+                }) { Text("Reset", color = MaterialTheme.colorScheme.error) }
             },
             dismissButton = { TextButton(onClick = { showResetDialog = false }) { Text("Cancel") } }
         )

@@ -23,15 +23,9 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
-data class DonutSegment(
-    val label: String,
-    val emoji: String,
-    val value: Float,
-    val color: Color
-)
+data class DonutSegment(val label: String, val emoji: String, val value: Float, val color: Color)
 
 @Composable
 fun DonutChart(
@@ -95,10 +89,7 @@ fun DonutChart(
 }
 
 @Composable
-fun DonutLegend(
-    segments: List<DonutSegment>,
-    modifier: Modifier = Modifier
-) {
+fun DonutLegend(segments: List<DonutSegment>, modifier: Modifier = Modifier) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         segments.forEach { segment ->
             val total = segments.sumOf { it.value.toDouble() }.toFloat()

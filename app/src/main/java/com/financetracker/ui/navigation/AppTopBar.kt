@@ -13,11 +13,7 @@ import androidx.compose.runtime.Composable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppTopBar(
-    title: String,
-    showBackButton: Boolean = false,
-    onBackClick: () -> Unit = {}
-) {
+fun AppTopBar(title: String, showBackButton: Boolean = false, onBackClick: () -> Unit = {}) {
     TopAppBar(
         title = {
             Text(

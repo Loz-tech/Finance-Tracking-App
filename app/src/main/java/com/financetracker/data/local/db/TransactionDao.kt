@@ -8,9 +8,9 @@ import androidx.room.Query
 import androidx.room.Update
 import com.financetracker.data.local.entity.TransactionEntity
 import com.financetracker.data.local.entity.TransactionSearchResult
-import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 import java.util.UUID
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TransactionDao {
@@ -59,10 +59,7 @@ interface TransactionDao {
         ORDER BY t.date DESC, t.createdAt DESC
         """
     )
-    fun searchByTextAndCategories(
-        query: String,
-        categoryIds: List<UUID>
-    ): Flow<List<TransactionSearchResult>>
+    fun searchByTextAndCategories(query: String, categoryIds: List<UUID>): Flow<List<TransactionSearchResult>>
 
     @Query(
         """
@@ -75,11 +72,7 @@ interface TransactionDao {
         ORDER BY t.date DESC, t.createdAt DESC
         """
     )
-    fun searchByTextAndDateRange(
-        query: String,
-        start: LocalDate,
-        end: LocalDate
-    ): Flow<List<TransactionSearchResult>>
+    fun searchByTextAndDateRange(query: String, start: LocalDate, end: LocalDate): Flow<List<TransactionSearchResult>>
 
     @Query(
         """
@@ -127,7 +120,4 @@ interface TransactionDao {
     suspend fun deleteAll()
 }
 
-data class DailyTotal(
-    val date: String,
-    val total: Double
-)
+data class DailyTotal(val date: String, val total: Double)

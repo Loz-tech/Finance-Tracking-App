@@ -1,6 +1,5 @@
 package com.financetracker.ui.home
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,7 +30,6 @@ import com.financetracker.ui.components.TransactionCard
 import java.math.BigDecimal
 import java.text.NumberFormat
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 @Composable
@@ -137,28 +135,27 @@ fun HomeScreen(
 }
 
 @Composable
-private fun BudgetSummaryCard(
-    totalSpent: BigDecimal,
-    totalBudget: BigDecimal?,
-    modifier: Modifier = Modifier
-) {
+private fun BudgetSummaryCard(totalSpent: BigDecimal, totalBudget: BigDecimal?, modifier: Modifier = Modifier) {
     val today = LocalDate.now()
     val daysInMonth = today.lengthOfMonth()
     val daysLeft = daysInMonth - today.dayOfMonth
     val remaining = totalBudget?.subtract(totalSpent) ?: BigDecimal.ZERO
     val progress = if (totalBudget != null && totalBudget > BigDecimal.ZERO) {
         (totalSpent.toFloat() / totalBudget.toFloat()).coerceIn(0f, 1f)
-    } else 0f
+    } else {
+        0f
+    }
 
     val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
 
     Card(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = if (remaining < BigDecimal.ZERO)
+            containerColor = if (remaining < BigDecimal.ZERO) {
                 MaterialTheme.colorScheme.errorContainer
-            else
+            } else {
                 MaterialTheme.colorScheme.surfaceContainerLow
+            }
         ),
         shape = MaterialTheme.shapes.medium
     ) {
@@ -205,10 +202,11 @@ private fun BudgetSummaryCard(
                     Text(
                         text = "${currencyFormatter.format(remaining)} left",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = if (remaining < BigDecimal.ZERO)
+                        color = if (remaining < BigDecimal.ZERO) {
                             MaterialTheme.colorScheme.error
-                        else
+                        } else {
                             MaterialTheme.colorScheme.onSurfaceVariant
+                        }
                     )
                 }
                 Text(
@@ -222,10 +220,7 @@ private fun BudgetSummaryCard(
 }
 
 @Composable
-private fun EmptyHomeScreen(
-    onAddTransaction: () -> Unit,
-    modifier: Modifier = Modifier
-) {
+private fun EmptyHomeScreen(onAddTransaction: () -> Unit, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()

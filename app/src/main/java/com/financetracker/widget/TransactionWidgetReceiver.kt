@@ -12,11 +12,7 @@ import com.financetracker.R
 
 class TransactionWidgetReceiver : AppWidgetProvider() {
 
-    override fun onUpdate(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetIds: IntArray
-    ) {
+    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         val store = WidgetCategoryStore(context.applicationContext)
         val categories = store.getCategories()
 
@@ -47,8 +43,8 @@ class TransactionWidgetReceiver : AppWidgetProvider() {
         val minHeight = options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, 68)
 
         // Layout constants
-        val iconSlotWidth = 56  // 48dp icon + 4dp margin each side
-        val rowHeight = 56      // 48dp icon + 4dp margin top/bottom
+        val iconSlotWidth = 56 // 48dp icon + 4dp margin each side
+        val rowHeight = 56 // 48dp icon + 4dp margin top/bottom
         val padding = 4
 
         // Calculate capacity

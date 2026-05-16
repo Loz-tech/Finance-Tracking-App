@@ -1,13 +1,12 @@
 package com.financetracker.domain.usecase
 
-import com.financetracker.domain.model.Budget
 import com.financetracker.domain.repository.BudgetRepository
 import com.financetracker.domain.repository.TransactionRepository
-import kotlinx.coroutines.flow.first
 import java.math.BigDecimal
 import java.time.YearMonth
 import java.util.UUID
 import javax.inject.Inject
+import kotlinx.coroutines.flow.first
 
 data class BudgetProgress(
     val categoryId: UUID?,
@@ -29,9 +28,18 @@ class CalculateBudgetProgressUseCase @Inject constructor(
             .mapValues { (_, txns) -> txns.fold(BigDecimal.ZERO) { acc, t -> acc + t.amount } }
 
         return budgets.map { budget ->
-            val spent = if (budget.categoryId != null) categorySpending[budget.categoryId] ?: BigDecimal.ZERO
-            else budgets.fold(BigDecimal.ZERO) { acc, b -> acc + (categorySpending[b.categoryId] ?: BigDecimal.ZERO) }
-            BudgetProgress(budget.categoryId, budget.limitAmount, spent, budget.limitAmount - spent, spent > budget.limitAmount)
+            val spent = if (budget.categoryId != null) {
+                categorySpending[budget.categoryId] ?: BigDecimal.ZERO
+            } else {
+                budgets.fold(BigDecimal.ZERO) { acc, b -> acc + (categorySpending[b.categoryId] ?: BigDecimal.ZERO) }
+            }
+            BudgetProgress(
+                budget.categoryId,
+                budget.limitAmount,
+                spent,
+                budget.limitAmount - spent,
+                spent > budget.limitAmount
+            )
         }
     }
 }

@@ -7,19 +7,15 @@ import com.financetracker.domain.model.Category
 import com.financetracker.domain.repository.BudgetRepository
 import com.financetracker.domain.repository.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.math.BigDecimal
+import java.time.YearMonth
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import java.math.BigDecimal
-import java.time.YearMonth
-import javax.inject.Inject
 
-data class CategoryBudgetSliders(
-    val category: Category,
-    val limit: BigDecimal,
-    val spent: BigDecimal
-)
+data class CategoryBudgetSliders(val category: Category, val limit: BigDecimal, val spent: BigDecimal)
 
 data class BudgetUiState(
     val totalBudget: BigDecimal = BigDecimal.ZERO,

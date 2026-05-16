@@ -7,13 +7,12 @@ import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.time.LocalDate
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 data class AddTransactionUiState(
     val categories: List<Category> = emptyList(),

@@ -7,6 +7,9 @@ import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.LocalDate
+import java.util.UUID
+import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
@@ -20,9 +23,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.util.UUID
-import javax.inject.Inject
 
 enum class QuickChip(val label: String) {
     TODAY("Today"),
@@ -66,8 +66,11 @@ class SearchViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _query = MutableStateFlow("")
+    val query: StateFlow<String> = _query
     private val _selectedCategoryIds = MutableStateFlow<Set<UUID>>(emptySet())
+    val selectedCategoryIds: StateFlow<Set<UUID>> = _selectedCategoryIds
     private val _dateFilter = MutableStateFlow<DateFilter>(DateFilter.Quick(QuickChip.LAST_7_DAYS))
+    val dateFilter: StateFlow<DateFilter> = _dateFilter
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState
 
@@ -122,8 +125,11 @@ class SearchViewModel @Inject constructor(
 
     fun onCategoryToggled(categoryId: UUID) {
         val current = _selectedCategoryIds.value.toMutableSet()
-        if (categoryId in current) current.remove(categoryId)
-        else current.add(categoryId)
+        if (categoryId in current) {
+            current.remove(categoryId)
+        } else {
+            current.add(categoryId)
+        }
         _selectedCategoryIds.value = current
         _uiState.update { it.copy(selectedCategoryIds = current) }
     }

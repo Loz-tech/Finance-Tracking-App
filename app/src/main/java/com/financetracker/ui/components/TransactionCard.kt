@@ -79,10 +79,11 @@ fun TransactionCard(
             ) {
                 Text(
                     text = transaction.category.emoji,
-                    style = if (iconSize >= 42.dp)
+                    style = if (iconSize >= 42.dp) {
                         MaterialTheme.typography.titleMedium
-                    else
+                    } else {
                         MaterialTheme.typography.bodyMedium
+                    }
                 )
             }
 

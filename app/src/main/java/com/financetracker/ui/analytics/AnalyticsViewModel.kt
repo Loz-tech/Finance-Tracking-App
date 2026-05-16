@@ -3,19 +3,18 @@ package com.financetracker.ui.analytics
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Period
-import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.TransactionRepository
 import com.financetracker.ui.components.DonutSegment
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.temporal.TemporalAdjusters
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 data class WeekdayBar(val day: String, val average: Double, val raw: List<Double>)
 
@@ -30,9 +29,7 @@ data class AnalyticsUiState(
 )
 
 @HiltViewModel
-class AnalyticsViewModel @Inject constructor(
-    private val transactionRepository: TransactionRepository
-) : ViewModel() {
+class AnalyticsViewModel @Inject constructor(private val transactionRepository: TransactionRepository) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AnalyticsUiState())
     val uiState: StateFlow<AnalyticsUiState> = _uiState
@@ -61,11 +58,28 @@ class AnalyticsViewModel @Inject constructor(
             val dailyAverage = totalSpent / BigDecimal(daysSpan)
 
             // Category breakdown
-            val chartColors = listOf(0xFF006874, 0xFF496364, 0xFF634186, 0xFFBA1A1A, 0xFF8B4A00, 0xFF006E28, 0xFF90416A, 0xFF005CBB)
+            val chartColors = listOf(
+                0xFF006874,
+                0xFF496364,
+                0xFF634186,
+                0xFFBA1A1A,
+                0xFF8B4A00,
+                0xFF006E28,
+                0xFF90416A,
+                0xFF005CBB
+            )
                 .map { androidx.compose.ui.graphics.Color(it) }
             val categoryGroups = transactions.groupBy { it.category }
             val categorySegments = categoryGroups.entries.mapIndexed { i, (cat, txns) ->
-                DonutSegment(cat.name, cat.emoji, txns.sumOf { it.amount.toDouble() }.toFloat(), chartColors[i % chartColors.size])
+                DonutSegment(
+                    cat.name,
+                    cat.emoji,
+                    txns.sumOf { it.amount.toDouble() }.toFloat(),
+                    chartColors[
+                        i %
+                            chartColors.size
+                    ]
+                )
             }
 
             // Weekday averages

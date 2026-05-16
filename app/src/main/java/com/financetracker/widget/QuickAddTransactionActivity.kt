@@ -47,17 +47,19 @@ import com.financetracker.domain.repository.SettingsRepository
 import com.financetracker.domain.repository.TransactionRepository
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class QuickAddTransactionActivity : ComponentActivity() {
 
     @Inject lateinit var transactionRepository: TransactionRepository
+
     @Inject lateinit var categoryRepository: CategoryRepository
+
     @Inject lateinit var settingsRepository: SettingsRepository
 
     @OptIn(ExperimentalLayoutApi::class)

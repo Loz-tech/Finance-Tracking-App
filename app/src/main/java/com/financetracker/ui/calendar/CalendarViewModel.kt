@@ -5,18 +5,19 @@ import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 data class CalendarDay(
     val date: LocalDate,
     val total: Double,
     val transactions: List<Transaction>,
-    val intensity: Int // 0-4
+    // 0-4
+    val intensity: Int
 )
 
 data class CalendarUiState(
@@ -27,9 +28,7 @@ data class CalendarUiState(
 )
 
 @HiltViewModel
-class CalendarViewModel @Inject constructor(
-    private val transactionRepository: TransactionRepository
-) : ViewModel() {
+class CalendarViewModel @Inject constructor(private val transactionRepository: TransactionRepository) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CalendarUiState())
     val uiState: StateFlow<CalendarUiState> = _uiState
@@ -38,8 +37,12 @@ class CalendarViewModel @Inject constructor(
         loadMonth(YearMonth.now())
     }
 
-    fun previousMonth() { loadMonth(_uiState.value.yearMonth.minusMonths(1)) }
-    fun nextMonth() { loadMonth(_uiState.value.yearMonth.plusMonths(1)) }
+    fun previousMonth() {
+        loadMonth(_uiState.value.yearMonth.minusMonths(1))
+    }
+    fun nextMonth() {
+        loadMonth(_uiState.value.yearMonth.plusMonths(1))
+    }
 
     fun onDayClicked(day: CalendarDay) {
         _uiState.value = if (_uiState.value.selectedDay?.date == day.date) {
