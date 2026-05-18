@@ -17,21 +17,33 @@ class JsonExporter @Inject constructor(@ApplicationContext private val context: 
         val dateStr = java.time.LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
         val file = File(dir, "ISpend_export_$dateStr.json")
 
-        val json = StringBuilder()
-        json.appendLine("[")
-        transactions.forEachIndexed { i, txn ->
-            json.append("  {")
-            json.append("\"date\": \"${txn.date}\", ")
-            json.append("\"category\": \"${txn.category.name}\", ")
-            json.append("\"emoji\": \"${txn.category.emoji}\", ")
-            json.append("\"amount\": ${txn.amount}, ")
-            json.append("\"note\": \"${txn.note.replace("\"", "\\\"")}\"")
-            json.append("}")
-            if (i < transactions.size - 1) json.appendLine(",") else json.appendLine()
-        }
-        json.appendLine("]")
-
-        file.writeText(json.toString())
+        file.writeText(buildJsonString(transactions))
         return file
+    }
+
+    companion object {
+        internal fun buildJsonString(transactions: List<Transaction>): String {
+            val json = StringBuilder()
+            json.appendLine("[")
+            transactions.forEachIndexed { i, txn ->
+                json.append("  {")
+                json.append("\"date\": \"${txn.date}\", ")
+                json.append("\"category\": \"${escapeJson(txn.category.name)}\", ")
+                json.append("\"emoji\": \"${escapeJson(txn.category.emoji)}\", ")
+                json.append("\"amount\": ${txn.amount}, ")
+                json.append("\"note\": \"${escapeJson(txn.note)}\"")
+                json.append("}")
+                if (i < transactions.size - 1) json.appendLine(",") else json.appendLine()
+            }
+            json.appendLine("]")
+            return json.toString()
+        }
+
+        private fun escapeJson(value: String): String = value
+            .replace("\\", "\\\\")
+            .replace("\"", "\\\"")
+            .replace("\n", "\\n")
+            .replace("\r", "\\r")
+            .replace("\t", "\\t")
     }
 }

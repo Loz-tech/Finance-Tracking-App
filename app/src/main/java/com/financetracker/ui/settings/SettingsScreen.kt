@@ -44,8 +44,6 @@ import com.financetracker.ui.theme.AccentColor
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SettingsScreen(
-    onExportCsv: () -> Unit,
-    onExportJson: () -> Unit,
     onNavigateToBudget: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = hiltViewModel()
@@ -149,12 +147,12 @@ fun SettingsScreen(
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Export Data", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.height(8.dp))
-                Button(onClick = onExportCsv, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) {
+                Button(onClick = { viewModel.exportCsv() }, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) {
                     Text("📄 Export as CSV")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(
-                    onClick = onExportJson,
+                    onClick = { viewModel.exportJson() },
                     modifier = Modifier.fillMaxWidth(),
                     shape = MaterialTheme.shapes.medium
                 ) {

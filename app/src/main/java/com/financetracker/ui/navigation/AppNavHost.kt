@@ -109,8 +109,6 @@ fun AppNavHost() {
             }
             composable(Screen.Settings.route) {
                 SettingsScreen(
-                    onExportCsv = { /* handled via ViewModel */ },
-                    onExportJson = { /* handled via ViewModel */ },
                     onNavigateToBudget = { navController.navigate(Screen.Budget.route) }
                 )
             }

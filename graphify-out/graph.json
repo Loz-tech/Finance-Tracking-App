@@ -88,7 +88,7 @@
       "label": "CsvExporter",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
-      "source_location": "L12",
+      "source_location": "L11",
       "id": "export_csvexporter_csvexporter",
       "community": 30,
       "norm_label": "csvexporter"
@@ -97,10 +97,28 @@
       "label": ".export()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
-      "source_location": "L14",
+      "source_location": "L13",
       "id": "export_csvexporter_csvexporter_export",
       "community": 30,
       "norm_label": ".export()"
+    },
+    {
+      "label": "buildCsvContent()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "source_location": "L25",
+      "id": "export_csvexporter_buildcsvcontent",
+      "community": 30,
+      "norm_label": "buildcsvcontent()"
+    },
+    {
+      "label": "csvField()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "source_location": "L38",
+      "id": "export_csvexporter_csvfield",
+      "community": 30,
+      "norm_label": "csvfield()"
     },
     {
       "label": "JsonExporter.kt",
@@ -128,6 +146,24 @@
       "id": "export_jsonexporter_jsonexporter_export",
       "community": 28,
       "norm_label": ".export()"
+    },
+    {
+      "label": "buildJsonString()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
+      "source_location": "L25",
+      "id": "export_jsonexporter_buildjsonstring",
+      "community": 28,
+      "norm_label": "buildjsonstring()"
+    },
+    {
+      "label": "escapeJson()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
+      "source_location": "L42",
+      "id": "export_jsonexporter_escapejson",
+      "community": 28,
+      "norm_label": "escapejson()"
     },
     {
       "label": "AppDatabase.kt",
@@ -2743,7 +2779,7 @@
       "label": "SettingsUiState",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
-      "source_location": "L15",
+      "source_location": "L18",
       "id": "settings_settingsviewmodel_settingsuistate",
       "community": 23,
       "norm_label": "settingsuistate"
@@ -2752,7 +2788,7 @@
       "label": "SettingsViewModel",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
-      "source_location": "L21",
+      "source_location": "L24",
       "id": "settings_settingsviewmodel_settingsviewmodel",
       "community": 23,
       "norm_label": "settingsviewmodel"
@@ -2761,7 +2797,7 @@
       "label": ".setThemeMode()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
-      "source_location": "L42",
+      "source_location": "L47",
       "id": "settings_settingsviewmodel_settingsviewmodel_setthememode",
       "community": 23,
       "norm_label": ".setthememode()"
@@ -2770,16 +2806,34 @@
       "label": ".setAccentColor()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
-      "source_location": "L48",
+      "source_location": "L53",
       "id": "settings_settingsviewmodel_settingsviewmodel_setaccentcolor",
       "community": 23,
       "norm_label": ".setaccentcolor()"
     },
     {
+      "label": ".exportCsv()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": "L59",
+      "id": "settings_settingsviewmodel_settingsviewmodel_exportcsv",
+      "community": 23,
+      "norm_label": ".exportcsv()"
+    },
+    {
+      "label": ".exportJson()",
+      "file_type": "code",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": "L67",
+      "id": "settings_settingsviewmodel_settingsviewmodel_exportjson",
+      "community": 23,
+      "norm_label": ".exportjson()"
+    },
+    {
       "label": ".resetAllData()",
       "file_type": "code",
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
-      "source_location": "L54",
+      "source_location": "L75",
       "id": "settings_settingsviewmodel_settingsviewmodel_resetalldata",
       "community": 23,
       "norm_label": ".resetalldata()"
@@ -3089,6 +3143,312 @@
       "id": "financetracker_exampleunittest_exampleunittest_addition_iscorrect",
       "community": 29,
       "norm_label": ".addition_iscorrect()"
+    },
+    {
+      "label": "TransactionFixtures.kt",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L1",
+      "id": "app_src_test_java_com_financetracker_data_export_transactionfixtures_kt",
+      "community": 22,
+      "norm_label": "transactionfixtures.kt"
+    },
+    {
+      "label": "TransactionFixtures",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L9",
+      "id": "export_transactionfixtures_transactionfixtures",
+      "community": 22,
+      "norm_label": "transactionfixtures"
+    },
+    {
+      "label": ".cat()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L10",
+      "id": "export_transactionfixtures_transactionfixtures_cat",
+      "community": 22,
+      "norm_label": ".cat()"
+    },
+    {
+      "label": ".txn()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L19",
+      "id": "export_transactionfixtures_transactionfixtures_txn",
+      "community": 22,
+      "norm_label": ".txn()"
+    },
+    {
+      "label": "JsonExporterTest.kt",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L1",
+      "id": "app_src_test_java_com_financetracker_data_export_jsonexportertest_kt",
+      "community": 46,
+      "norm_label": "jsonexportertest.kt"
+    },
+    {
+      "label": "JsonExporterTest",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L8",
+      "id": "export_jsonexportertest_jsonexportertest",
+      "community": 46,
+      "norm_label": "jsonexportertest"
+    },
+    {
+      "label": ".`export empty list creates valid JSON array`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L10",
+      "id": "export_jsonexportertest_jsonexportertest_export_empty_list_creates_valid_json_array",
+      "community": 46,
+      "norm_label": ".`export empty list creates valid json array`()"
+    },
+    {
+      "label": ".`export single transaction outputs correct fields`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L18",
+      "id": "export_jsonexportertest_jsonexportertest_export_single_transaction_outputs_correct_fields",
+      "community": 46,
+      "norm_label": ".`export single transaction outputs correct fields`()"
+    },
+    {
+      "label": ".`export multiple transactions has comma between objects`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L30",
+      "id": "export_jsonexportertest_jsonexportertest_export_multiple_transactions_has_comma_between_objects",
+      "community": 46,
+      "norm_label": ".`export multiple transactions has comma between objects`()"
+    },
+    {
+      "label": ".`export category name with quote is escaped`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L41",
+      "id": "export_jsonexportertest_jsonexportertest_export_category_name_with_quote_is_escaped",
+      "community": 46,
+      "norm_label": ".`export category name with quote is escaped`()"
+    },
+    {
+      "label": ".`export note with double quotes escapes quotes`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L50",
+      "id": "export_jsonexportertest_jsonexportertest_export_note_with_double_quotes_escapes_quotes",
+      "community": 46,
+      "norm_label": ".`export note with double quotes escapes quotes`()"
+    },
+    {
+      "label": ".`export note with backslash escapes backslash`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L58",
+      "id": "export_jsonexportertest_jsonexportertest_export_note_with_backslash_escapes_backslash",
+      "community": 46,
+      "norm_label": ".`export note with backslash escapes backslash`()"
+    },
+    {
+      "label": ".`export note with newline escapes newline`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L66",
+      "id": "export_jsonexportertest_jsonexportertest_export_note_with_newline_escapes_newline",
+      "community": 46,
+      "norm_label": ".`export note with newline escapes newline`()"
+    },
+    {
+      "label": ".`export note with carriage return escapes carriage return`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L74",
+      "id": "export_jsonexportertest_jsonexportertest_export_note_with_carriage_return_escapes_carriage_return",
+      "community": 46,
+      "norm_label": ".`export note with carriage return escapes carriage return`()"
+    },
+    {
+      "label": ".`export note with tab escapes tab`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L82",
+      "id": "export_jsonexportertest_jsonexportertest_export_note_with_tab_escapes_tab",
+      "community": 46,
+      "norm_label": ".`export note with tab escapes tab`()"
+    },
+    {
+      "label": ".`export amount preserves decimal scale`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L90",
+      "id": "export_jsonexportertest_jsonexportertest_export_amount_preserves_decimal_scale",
+      "community": 46,
+      "norm_label": ".`export amount preserves decimal scale`()"
+    },
+    {
+      "label": ".`export negative amount preserves negative sign`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L99",
+      "id": "export_jsonexportertest_jsonexportertest_export_negative_amount_preserves_negative_sign",
+      "community": 46,
+      "norm_label": ".`export negative amount preserves negative sign`()"
+    },
+    {
+      "label": ".`export empty note outputs empty string`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L107",
+      "id": "export_jsonexportertest_jsonexportertest_export_empty_note_outputs_empty_string",
+      "community": 46,
+      "norm_label": ".`export empty note outputs empty string`()"
+    },
+    {
+      "label": ".`export note with unicode preserves characters`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L115",
+      "id": "export_jsonexportertest_jsonexportertest_export_note_with_unicode_preserves_characters",
+      "community": 46,
+      "norm_label": ".`export note with unicode preserves characters`()"
+    },
+    {
+      "label": "CsvExporterTest.kt",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L1",
+      "id": "app_src_test_java_com_financetracker_data_export_csvexportertest_kt",
+      "community": 45,
+      "norm_label": "csvexportertest.kt"
+    },
+    {
+      "label": "CsvExporterTest",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L7",
+      "id": "export_csvexportertest_csvexportertest",
+      "community": 45,
+      "norm_label": "csvexportertest"
+    },
+    {
+      "label": ".`export empty list outputs header only`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L9",
+      "id": "export_csvexportertest_csvexportertest_export_empty_list_outputs_header_only",
+      "community": 45,
+      "norm_label": ".`export empty list outputs header only`()"
+    },
+    {
+      "label": ".`export single transaction outputs correct row`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L17",
+      "id": "export_csvexportertest_csvexportertest_export_single_transaction_outputs_correct_row",
+      "community": 45,
+      "norm_label": ".`export single transaction outputs correct row`()"
+    },
+    {
+      "label": ".`export note with quotes escapes quotes`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L29",
+      "id": "export_csvexportertest_csvexportertest_export_note_with_quotes_escapes_quotes",
+      "community": 45,
+      "norm_label": ".`export note with quotes escapes quotes`()"
+    },
+    {
+      "label": ".`export note with commas preserved inside quotes`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L37",
+      "id": "export_csvexportertest_csvexportertest_export_note_with_commas_preserved_inside_quotes",
+      "community": 45,
+      "norm_label": ".`export note with commas preserved inside quotes`()"
+    },
+    {
+      "label": ".`export note with newline is quoted`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L45",
+      "id": "export_csvexportertest_csvexportertest_export_note_with_newline_is_quoted",
+      "community": 45,
+      "norm_label": ".`export note with newline is quoted`()"
+    },
+    {
+      "label": ".`export category name with comma is quoted`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L53",
+      "id": "export_csvexportertest_csvexportertest_export_category_name_with_comma_is_quoted",
+      "community": 45,
+      "norm_label": ".`export category name with comma is quoted`()"
+    },
+    {
+      "label": ".`export category name with quote is escaped`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L62",
+      "id": "export_csvexportertest_csvexportertest_export_category_name_with_quote_is_escaped",
+      "community": 45,
+      "norm_label": ".`export category name with quote is escaped`()"
+    },
+    {
+      "label": ".`export category emoji with comma is quoted`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L71",
+      "id": "export_csvexportertest_csvexportertest_export_category_emoji_with_comma_is_quoted",
+      "community": 45,
+      "norm_label": ".`export category emoji with comma is quoted`()"
+    },
+    {
+      "label": ".`export multiple transactions has multiple rows`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L80",
+      "id": "export_csvexportertest_csvexportertest_export_multiple_transactions_has_multiple_rows",
+      "community": 45,
+      "norm_label": ".`export multiple transactions has multiple rows`()"
+    },
+    {
+      "label": ".`export amount uses plain number`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L90",
+      "id": "export_csvexportertest_csvexportertest_export_amount_uses_plain_number",
+      "community": 45,
+      "norm_label": ".`export amount uses plain number`()"
+    },
+    {
+      "label": ".`export negative amount preserves negative sign`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L98",
+      "id": "export_csvexportertest_csvexportertest_export_negative_amount_preserves_negative_sign",
+      "community": 45,
+      "norm_label": ".`export negative amount preserves negative sign`()"
+    },
+    {
+      "label": ".`export empty note outputs quoted empty`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L106",
+      "id": "export_csvexportertest_csvexportertest_export_empty_note_outputs_quoted_empty",
+      "community": 45,
+      "norm_label": ".`export empty note outputs quoted empty`()"
+    },
+    {
+      "label": ".`export note with unicode preserves characters`()",
+      "file_type": "code",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L114",
+      "id": "export_csvexportertest_csvexportertest_export_note_with_unicode_preserves_characters",
+      "community": 45,
+      "norm_label": ".`export note with unicode preserves characters`()"
     },
     {
       "label": "AGENTS.md",
@@ -3983,6 +4343,26 @@
       "target": "export_csvexporter_csvexporter"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_data_export_csvexporter_kt",
+      "target": "export_csvexporter_buildcsvcontent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_data_export_csvexporter_kt",
+      "target": "export_csvexporter_csvfield"
+    },
+    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
@@ -3991,6 +4371,28 @@
       "confidence_score": 1.0,
       "source": "export_csvexporter_csvexporter",
       "target": "export_csvexporter_csvexporter_export"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexporter_csvexporter_export",
+      "target": "export_csvexporter_buildcsvcontent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/CsvExporter.kt",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexporter_buildcsvcontent",
+      "target": "export_csvexporter_csvfield"
     },
     {
       "relation": "contains",
@@ -4003,6 +4405,26 @@
       "target": "export_jsonexporter_jsonexporter"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_data_export_jsonexporter_kt",
+      "target": "export_jsonexporter_buildjsonstring"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
+      "source_location": "L42",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_main_java_com_financetracker_data_export_jsonexporter_kt",
+      "target": "export_jsonexporter_escapejson"
+    },
+    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
@@ -4011,6 +4433,28 @@
       "confidence_score": 1.0,
       "source": "export_jsonexporter_jsonexporter",
       "target": "export_jsonexporter_jsonexporter_export"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexporter_jsonexporter_export",
+      "target": "export_jsonexporter_buildjsonstring"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/data/export/JsonExporter.kt",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexporter_buildjsonstring",
+      "target": "export_jsonexporter_escapejson"
     },
     {
       "relation": "contains",
@@ -4128,9 +4572,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/local/db/BudgetDao.kt",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "db_budgetdao_budgetdao",
-      "target": "db_budgetdao_budgetdao_deleteduplicatebudgets",
-      "confidence_score": 1.0
+      "target": "db_budgetdao_budgetdao_deleteduplicatebudgets"
     },
     {
       "relation": "method",
@@ -4713,9 +5157,9 @@
       "source_file": "app/src/main/java/com/financetracker/data/repository/BudgetRepositoryImpl.kt",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepositoryimpl_budgetrepositoryimpl",
-      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteduplicatebudgets",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepositoryimpl_budgetrepositoryimpl_deleteduplicatebudgets"
     },
     {
       "relation": "method",
@@ -5436,6 +5880,17 @@
       "target": "model_category_category"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "export_transactionfixtures_transactionfixtures_cat",
+      "target": "model_category_category"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/domain/model/Period.kt",
@@ -5475,6 +5930,17 @@
       "source_location": "L105",
       "weight": 1.0,
       "source": "widget_quickaddtransactionactivity_quickaddtransactionactivity_savetransaction",
+      "target": "model_transaction_transaction"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "export_transactionfixtures_transactionfixtures_txn",
       "target": "model_transaction_transaction"
     },
     {
@@ -5543,9 +6009,9 @@
       "source_file": "app/src/main/java/com/financetracker/domain/repository/BudgetRepository.kt",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "repository_budgetrepository_budgetrepository",
-      "target": "repository_budgetrepository_budgetrepository_deleteduplicatebudgets",
-      "confidence_score": 1.0
+      "target": "repository_budgetrepository_budgetrepository_deleteduplicatebudgets"
     },
     {
       "relation": "contains",
@@ -7391,6 +7857,26 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "settings_settingsviewmodel_settingsviewmodel",
+      "target": "settings_settingsviewmodel_settingsviewmodel_exportcsv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "settings_settingsviewmodel_settingsviewmodel",
+      "target": "settings_settingsviewmodel_settingsviewmodel_exportjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/main/java/com/financetracker/ui/settings/SettingsViewModel.kt",
       "source_location": "L55",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -7790,6 +8276,316 @@
       "confidence_score": 1.0,
       "source": "financetracker_exampleunittest_exampleunittest",
       "target": "financetracker_exampleunittest_exampleunittest_addition_iscorrect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_test_java_com_financetracker_data_export_transactionfixtures_kt",
+      "target": "export_transactionfixtures_transactionfixtures"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_transactionfixtures_transactionfixtures",
+      "target": "export_transactionfixtures_transactionfixtures_cat"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/TransactionFixtures.kt",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_transactionfixtures_transactionfixtures",
+      "target": "export_transactionfixtures_transactionfixtures_txn"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_test_java_com_financetracker_data_export_jsonexportertest_kt",
+      "target": "export_jsonexportertest_jsonexportertest"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_empty_list_creates_valid_json_array"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_single_transaction_outputs_correct_fields"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_multiple_transactions_has_comma_between_objects"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_category_name_with_quote_is_escaped"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_note_with_double_quotes_escapes_quotes"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_note_with_backslash_escapes_backslash"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_note_with_newline_escapes_newline"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L74",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_note_with_carriage_return_escapes_carriage_return"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L82",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_note_with_tab_escapes_tab"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_amount_preserves_decimal_scale"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_negative_amount_preserves_negative_sign"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_empty_note_outputs_empty_string"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/JsonExporterTest.kt",
+      "source_location": "L115",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_jsonexportertest_jsonexportertest",
+      "target": "export_jsonexportertest_jsonexportertest_export_note_with_unicode_preserves_characters"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_src_test_java_com_financetracker_data_export_csvexportertest_kt",
+      "target": "export_csvexportertest_csvexportertest"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_empty_list_outputs_header_only"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_single_transaction_outputs_correct_row"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_note_with_quotes_escapes_quotes"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_note_with_commas_preserved_inside_quotes"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_note_with_newline_is_quoted"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_category_name_with_comma_is_quoted"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_category_name_with_quote_is_escaped"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L71",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_category_emoji_with_comma_is_quoted"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L80",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_multiple_transactions_has_multiple_rows"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_amount_uses_plain_number"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L98",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_negative_amount_preserves_negative_sign"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_empty_note_outputs_quoted_empty"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/src/test/java/com/financetracker/data/export/CsvExporterTest.kt",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "export_csvexportertest_csvexportertest",
+      "target": "export_csvexportertest_csvexportertest_export_note_with_unicode_preserves_characters"
     },
     {
       "relation": "contains",
@@ -8663,5 +9459,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "94ed0e14246d872ddf1913708339925e5aa906ec"
+  "built_at_commit": "1945413b0cdea758c5a3eb96d3cb5b767d6677f2"
 }

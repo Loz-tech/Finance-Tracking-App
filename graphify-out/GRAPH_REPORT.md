@@ -1,16 +1,16 @@
-# Graph Report - FinanceTrackingApp  (2026-05-16)
+# Graph Report - FinanceTrackingApp  (2026-05-18)
 
 ## Corpus Check
-- 73 files · ~44,314 words
+- 76 files · ~45,183 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 435 nodes · 464 edges · 45 communities (20 shown, 25 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 43 edges (avg confidence: 0.8)
+- 475 nodes · 507 edges · 47 communities (22 shown, 25 thin omitted)
+- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 45 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `94ed0e14`
+- Built from commit: `1945413b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,18 +55,20 @@
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Agent Guide — FinanceTrackingApp` - 19 edges
 2. `TransactionDao` - 16 edges
 3. `TransactionRepositoryImpl` - 15 edges
 4. `AppNavHost()` - 14 edges
-5. `Key Code` - 14 edges
-6. `TransactionRepository` - 12 edges
-7. `CategoryDao` - 11 edges
-8. `CategoryRepositoryImpl` - 10 edges
-9. `Plan: ktlint + `.editorconfig` Integration (Option B)` - 10 edges
-10. `Execution Steps` - 10 edges
+5. `JsonExporterTest` - 14 edges
+6. `CsvExporterTest` - 14 edges
+7. `Key Code` - 14 edges
+8. `TransactionRepository` - 12 edges
+9. `CategoryDao` - 11 edges
+10. `CategoryRepositoryImpl` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `QuickAddContent()` --calls--> `Category`  [INFERRED]
@@ -80,7 +82,7 @@
 - `AppNavHost()` --calls--> `BudgetScreen()`  [INFERRED]
   app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt → app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt
 
-## Communities (45 total, 25 thin omitted)
+## Communities (47 total, 25 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.08
@@ -131,8 +133,16 @@ Cohesion: 0.29
 Nodes (3): DateGroup, HistoryUiState, HistoryViewModel
 
 ### Community 22 - "Community 22"
-Cohesion: 0.18
-Nodes (3): AddTransactionUiState, AddTransactionViewModel, Transaction
+Cohesion: 0.13
+Nodes (4): AddTransactionUiState, AddTransactionViewModel, TransactionFixtures, Transaction
+
+### Community 28 - "Community 28"
+Cohesion: 0.6
+Nodes (3): buildJsonString(), escapeJson(), JsonExporter
+
+### Community 30 - "Community 30"
+Cohesion: 0.6
+Nodes (3): buildCsvContent(), CsvExporter, csvField()
 
 ### Community 32 - "Community 32"
 Cohesion: 0.5
@@ -151,9 +161,9 @@ Nodes (33): 10. How to Add a New Feature (End-to-End), 11. Testing, 12. Key File
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AppNavHost()` connect `Community 0` to `Community 1`, `Community 2`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
-- **Why does `Category` connect `Community 6` to `Community 1`, `Community 4`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+- **Why does `Category` connect `Community 6` to `Community 1`, `Community 4`, `Community 22`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `AppNavHost()` (e.g. with `.onCreate()` and `AppTopBar()`) actually correct?**
   _`AppNavHost()` has 13 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `FinanceApp`, `DailyTotal`, `TransactionSearchResult` to the rest of the system?**
