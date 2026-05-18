@@ -8,8 +8,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.YearMonth
 import javax.inject.Inject
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class CalendarDay(
@@ -52,12 +54,18 @@ class CalendarViewModel @Inject constructor(private val transactionRepository: T
         }
     }
 
+    private var loadMonthJob: Job? = null
+
     private fun loadMonth(yearMonth: YearMonth) {
-        viewModelScope.launch {
+        loadMonthJob?.cancel()
+        loadMonthJob = viewModelScope.launch {
             val start = yearMonth.atDay(1)
             val end = yearMonth.atEndOfMonth()
             val today = LocalDate.now()
             val dailyTotals = transactionRepository.getDailyTotals(start, end)
+
+            val monthTransactions = transactionRepository.getTransactionsByDateRange(start, end).first()
+            val transactionsByDate = monthTransactions.groupBy { it.date }
 
             val monthMax = dailyTotals.values.maxOrNull() ?: 1.0
 
@@ -65,7 +73,8 @@ class CalendarViewModel @Inject constructor(private val transactionRepository: T
             val days = allDays.map { date ->
                 val total = dailyTotals[date] ?: 0.0
                 val intensity = if (monthMax > 0) ((total / monthMax) * 4).toInt().coerceIn(0, 4) else 0
-                CalendarDay(date, total, emptyList(), intensity)
+                val dayTransactions = transactionsByDate[date] ?: emptyList()
+                CalendarDay(date, total, dayTransactions, intensity)
             }
 
             _uiState.value = CalendarUiState(yearMonth, days, null, false)
