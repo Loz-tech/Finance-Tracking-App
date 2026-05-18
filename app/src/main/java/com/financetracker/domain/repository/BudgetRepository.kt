@@ -1,8 +1,8 @@
 package com.financetracker.domain.repository
 
 import com.financetracker.domain.model.Budget
-import kotlinx.coroutines.flow.Flow
 import java.util.UUID
+import kotlinx.coroutines.flow.Flow
 
 interface BudgetRepository {
     fun getBudgetsByYearMonth(yearMonth: String): Flow<List<Budget>>
@@ -10,4 +10,5 @@ interface BudgetRepository {
     suspend fun getCategoryBudget(yearMonth: String, categoryId: UUID): Budget?
     suspend fun saveBudget(budget: Budget)
     suspend fun deleteAllBudgets()
+    suspend fun deleteDuplicateBudgets()
 }

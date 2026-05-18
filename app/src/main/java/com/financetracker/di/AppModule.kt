@@ -27,25 +27,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-        return Room.databaseBuilder(
-            context,
-            AppDatabase::class.java,
-            "finance_tracker.db"
-        ).build()
-    }
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase = Room.databaseBuilder(
+        context,
+        AppDatabase::class.java,
+        "finance_tracker.db"
+    ).build()
 
     @Provides
-    fun provideTransactionDao(database: AppDatabase): TransactionDao =
-        database.transactionDao()
+    fun provideTransactionDao(database: AppDatabase): TransactionDao = database.transactionDao()
 
     @Provides
-    fun provideCategoryDao(database: AppDatabase): CategoryDao =
-        database.categoryDao()
+    fun provideCategoryDao(database: AppDatabase): CategoryDao = database.categoryDao()
 
     @Provides
-    fun provideBudgetDao(database: AppDatabase): BudgetDao =
-        database.budgetDao()
+    fun provideBudgetDao(database: AppDatabase): BudgetDao = database.budgetDao()
 
     @Provides
     @Singleton

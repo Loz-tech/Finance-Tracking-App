@@ -3,14 +3,13 @@ package com.financetracker.data.repository
 import com.financetracker.data.local.prefs.SettingsDataStore
 import com.financetracker.data.local.prefs.UserPreferences
 import com.financetracker.domain.repository.SettingsRepository
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
 
 @Singleton
-class SettingsRepositoryImpl @Inject constructor(
-    private val settingsDataStore: SettingsDataStore
-) : SettingsRepository {
+class SettingsRepositoryImpl @Inject constructor(private val settingsDataStore: SettingsDataStore) :
+    SettingsRepository {
 
     override val userPreferences: Flow<UserPreferences> = settingsDataStore.userPreferences
 

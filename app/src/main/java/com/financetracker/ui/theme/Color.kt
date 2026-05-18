@@ -49,12 +49,18 @@ val Neutral90 = Color(0xFFE2E2E3)
 val Neutral95 = Color(0xFFF0F1F1)
 val Neutral99 = Color(0xFFFBFDFC)
 
-// Accent Color Seeds (for accent picker)
-enum class AccentColor(
-    val label: String,
-    val primaryColor: Color,
-    val primaryContainerColor: Color
-) {
+// Shared chart palette used by donut / bar charts
+val ChartColors = listOf(
+    Color(0xFF1DBD8E),
+    Color(0xFFFF8F5C),
+    Color(0xFF9151B8),
+    Color(0xFFFF57B0),
+    Color(0xFFEEB72B),
+    Color(0xFFF24F4F),
+    Color(0xFF00D4C6),
+    Color(0xFF006ECF)
+)
+enum class AccentColor(val label: String, val primaryColor: Color, val primaryContainerColor: Color) {
     TEAL("Teal", Color(0xFF006874), Color(0xFFB9FCFF)),
     BLUE("Blue", Color(0xFF005CBB), Color(0xFFD7E3FF)),
     PURPLE("Purple", Color(0xFF634186), Color(0xFFE8DEFF)),

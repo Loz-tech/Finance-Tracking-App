@@ -4,22 +4,19 @@ import com.financetracker.data.local.db.BudgetDao
 import com.financetracker.data.local.entity.BudgetEntity
 import com.financetracker.domain.model.Budget
 import com.financetracker.domain.repository.BudgetRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
-class BudgetRepositoryImpl @Inject constructor(
-    private val budgetDao: BudgetDao
-) : BudgetRepository {
+class BudgetRepositoryImpl @Inject constructor(private val budgetDao: BudgetDao) : BudgetRepository {
 
     override fun getBudgetsByYearMonth(yearMonth: String): Flow<List<Budget>> =
         budgetDao.getByYearMonth(yearMonth).map { entities -> entities.map { it.toDomain() } }
 
-    override suspend fun getTotalBudget(yearMonth: String): Budget? =
-        budgetDao.getTotalBudget(yearMonth)?.toDomain()
+    override suspend fun getTotalBudget(yearMonth: String): Budget? = budgetDao.getTotalBudget(yearMonth)?.toDomain()
 
     override suspend fun getCategoryBudget(yearMonth: String, categoryId: UUID): Budget? =
         budgetDao.getBudgetByCategory(yearMonth, categoryId)?.toDomain()
@@ -30,6 +27,10 @@ class BudgetRepositoryImpl @Inject constructor(
 
     override suspend fun deleteAllBudgets() {
         budgetDao.deleteAll()
+    }
+
+    override suspend fun deleteDuplicateBudgets() {
+        budgetDao.deleteDuplicateBudgets()
     }
 
     private fun BudgetEntity.toDomain() = Budget(

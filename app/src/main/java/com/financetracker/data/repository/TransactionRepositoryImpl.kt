@@ -7,15 +7,14 @@ import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import java.time.Instant
 import java.time.LocalDate
-import java.time.ZoneId
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class TransactionRepositoryImpl @Inject constructor(
@@ -23,8 +22,7 @@ class TransactionRepositoryImpl @Inject constructor(
     private val categoryRepository: CategoryRepository
 ) : TransactionRepository {
 
-    override fun getAllTransactions(): Flow<List<Transaction>> =
-        transactionDao.getAll().map { it.mapToDomain() }
+    override fun getAllTransactions(): Flow<List<Transaction>> = transactionDao.getAll().map { it.mapToDomain() }
 
     override fun getTransactionsByDateRange(start: LocalDate, end: LocalDate): Flow<List<Transaction>> =
         transactionDao.getByDateRange(start, end).map { it.mapToDomain() }
@@ -32,11 +30,18 @@ class TransactionRepositoryImpl @Inject constructor(
     override fun getTransactionsByCategory(categoryId: UUID): Flow<List<Transaction>> =
         transactionDao.getByCategory(categoryId).map { it.mapToDomain() }
 
-    override fun searchTransactions(query: String, categoryIds: List<UUID>, start: LocalDate?, end: LocalDate?): Flow<List<Transaction>> {
+    override fun searchTransactions(
+        query: String,
+        categoryIds: List<UUID>,
+        start: LocalDate?,
+        end: LocalDate?
+    ): Flow<List<Transaction>> {
         val hasDateRange = start != null && end != null
         return when {
             hasDateRange && categoryIds.isNotEmpty() ->
-                transactionDao.searchByTextCategoriesAndDateRange(query, categoryIds, start, end).map { it.mapToDomain() }
+                transactionDao.searchByTextCategoriesAndDateRange(query, categoryIds, start, end).map {
+                    it.mapToDomain()
+                }
             hasDateRange && categoryIds.isEmpty() ->
                 transactionDao.searchByTextAndDateRange(query, start, end).map { it.mapToDomain() }
             !hasDateRange && categoryIds.isNotEmpty() ->
@@ -57,11 +62,10 @@ class TransactionRepositoryImpl @Inject constructor(
         return transactionDao.getById(id)?.toDomain(categories)
     }
 
-    override suspend fun getDailyTotals(start: LocalDate, end: LocalDate): Map<LocalDate, Double> {
-        return transactionDao.getDailyTotals(start, end).associate {
+    override suspend fun getDailyTotals(start: LocalDate, end: LocalDate): Map<LocalDate, Double> =
+        transactionDao.getDailyTotals(start, end).associate {
             LocalDate.parse(it.date) to it.total
         }
-    }
 
     override suspend fun saveTransaction(transaction: Transaction) {
         transactionDao.insert(transaction.toEntity())

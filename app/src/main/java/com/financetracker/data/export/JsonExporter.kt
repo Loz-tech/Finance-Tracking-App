@@ -9,9 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class JsonExporter @Inject constructor(
-    @ApplicationContext private val context: Context
-) {
+class JsonExporter @Inject constructor(@ApplicationContext private val context: Context) {
     fun export(transactions: List<Transaction>): File {
         val dir = File(context.getExternalFilesDir(null), "ISpend")
         dir.mkdirs()

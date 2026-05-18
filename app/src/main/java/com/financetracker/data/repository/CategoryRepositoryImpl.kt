@@ -4,35 +4,41 @@ import com.financetracker.data.local.db.CategoryDao
 import com.financetracker.data.local.entity.CategoryEntity
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.repository.CategoryRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import com.financetracker.widget.WidgetCategoryStore
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class CategoryRepositoryImpl @Inject constructor(
-    private val categoryDao: CategoryDao
+    private val categoryDao: CategoryDao,
+    private val widgetStore: WidgetCategoryStore
 ) : CategoryRepository {
 
     override fun getAllCategories(): Flow<List<Category>> =
         categoryDao.getAll().map { entities -> entities.map { it.toDomain() } }
 
-    override suspend fun getCategoryById(id: UUID): Category? =
-        categoryDao.getById(id)?.toDomain()
+    override suspend fun getCategoryById(id: UUID): Category? = categoryDao.getById(id)?.toDomain()
 
     override suspend fun saveCategory(category: Category) {
         categoryDao.insert(category.toEntity())
+        syncWidgetCategories()
     }
 
     override suspend fun deleteCategory(category: Category) {
         categoryDao.delete(category.toEntity())
+        syncWidgetCategories()
     }
 
     override suspend fun getCategoryCount(): Int = categoryDao.count()
 
     override suspend fun seedDefaultCategories() {
-        if (categoryDao.count() > 0) return
+        if (categoryDao.count() > 0) {
+            syncWidgetCategories()
+            return
+        }
 
         val defaults = listOf(
             CategoryEntity(name = "Food & Dining", emoji = "🍔", isDefault = true, sortOrder = 0),
@@ -45,6 +51,12 @@ class CategoryRepositoryImpl @Inject constructor(
             CategoryEntity(name = "Other", emoji = "📦", isDefault = true, sortOrder = 7)
         )
         categoryDao.insertAll(defaults)
+        syncWidgetCategories()
+    }
+
+    private suspend fun syncWidgetCategories() {
+        val categories = categoryDao.getAllSync().map { it.toDomain() }
+        widgetStore.saveCategories(categories)
     }
 
     private fun CategoryEntity.toDomain() = Category(

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- Treat NewApi as fatal: blocks any usage of APIs above minSdk without desugaring/compat -->
+    <issue id="NewApi" severity="fatal" />
+
+    <!-- Treat UnusedAttribute (API-gated XML attributes) as error -->
+    <issue id="UnusedAttribute" severity="error" />
+
+    <!-- Suppress noisy/informational warnings that are not actionable in CI -->
+    <issue id="GradleDependency" severity="ignore" />
+    <issue id="OldTargetApi" severity="ignore" />
+    <issue id="NewerVersionAvailable" severity="ignore" />
+    <issue id="MonochromeLauncherIcon" severity="ignore" />
+    <issue id="UnusedResources" severity="warning" />
+    <issue id="DefaultLocale" severity="error" />
+</lint>

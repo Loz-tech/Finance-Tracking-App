@@ -11,15 +11,16 @@ import com.financetracker.domain.repository.SettingsRepository
 import com.financetracker.ui.navigation.AppNavHost
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     @Inject lateinit var settingsRepository: SettingsRepository
+
     @Inject lateinit var categoryRepository: CategoryRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {

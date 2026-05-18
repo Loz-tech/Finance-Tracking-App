@@ -46,7 +46,6 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -162,8 +161,8 @@ fun SearchScreen(
 
         // Results
         val hasActiveFilter = uiState.query.isNotEmpty() ||
-                uiState.selectedCategoryIds.isNotEmpty() ||
-                uiState.dateFilter !is DateFilter.None
+            uiState.selectedCategoryIds.isNotEmpty() ||
+            uiState.dateFilter !is DateFilter.None
 
         if (uiState.results.isEmpty() && hasActiveFilter) {
             Box(

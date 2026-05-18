@@ -7,11 +7,10 @@ import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.SettingsRepository
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 data class SettingsUiState(
     val themeMode: Int = UserPreferences.THEME_LIGHT,

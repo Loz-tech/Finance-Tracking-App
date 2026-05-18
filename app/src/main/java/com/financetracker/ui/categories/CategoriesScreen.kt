@@ -1,7 +1,5 @@
 package com.financetracker.ui.categories
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.LinearProgressIndicator
@@ -37,10 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import java.math.BigDecimal
 
 @Composable
-fun CategoriesScreen(
-    modifier: Modifier = Modifier,
-    viewModel: CategoriesViewModel = hiltViewModel()
-) {
+fun CategoriesScreen(modifier: Modifier = Modifier, viewModel: CategoriesViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
     var showAddDialog by remember { mutableStateOf(false) }
     var editingCategory by remember { mutableStateOf<com.financetracker.domain.model.Category?>(null) }
@@ -78,20 +71,21 @@ fun CategoriesScreen(
 }
 
 @Composable
-private fun CategoryCard(
-    catWithProgress: CategoryWithProgress,
-    onEdit: () -> Unit,
-    onDelete: () -> Unit
-) {
+private fun CategoryCard(catWithProgress: CategoryWithProgress, onEdit: () -> Unit, onDelete: () -> Unit) {
     val progress = if (catWithProgress.budgetLimit != null && catWithProgress.budgetLimit!! > BigDecimal.ZERO) {
         (catWithProgress.spent.toFloat() / catWithProgress.budgetLimit!!.toFloat()).coerceIn(0f, 1f)
-    } else 0f
+    } else {
+        0f
+    }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = if (catWithProgress.isOverBudget) MaterialTheme.colorScheme.errorContainer
-            else MaterialTheme.colorScheme.surfaceContainerLow
+            containerColor = if (catWithProgress.isOverBudget) {
+                MaterialTheme.colorScheme.errorContainer
+            } else {
+                MaterialTheme.colorScheme.surfaceContainerLow
+            }
         )
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -99,7 +93,11 @@ private fun CategoryCard(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(catWithProgress.category.emoji, style = MaterialTheme.typography.titleLarge)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(catWithProgress.category.name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
+                    Text(
+                        catWithProgress.category.name,
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium
+                    )
                 }
                 Row {
                     TextButton(onClick = onEdit) { Text("Edit") }
@@ -113,8 +111,11 @@ private fun CategoryCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(6.dp),
-                    color = if (catWithProgress.isOverBudget) MaterialTheme.colorScheme.error
-                    else MaterialTheme.colorScheme.primary,
+                    color = if (catWithProgress.isOverBudget) {
+                        MaterialTheme.colorScheme.error
+                    } else {
+                        MaterialTheme.colorScheme.primary
+                    },
                     trackColor = MaterialTheme.colorScheme.surfaceContainerHighest
                 )
             }
@@ -131,9 +132,13 @@ private fun AddCategoryDialog(onDismiss: () -> Unit, onSave: (String, String) ->
         title = { Text("Add Category") },
         text = {
             Column {
-                OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Name") }, singleLine = true)
+                OutlinedTextField(value = name, onValueChange = {
+                    name = it
+                }, label = { Text("Name") }, singleLine = true)
                 Spacer(modifier = Modifier.height(8.dp))
-                OutlinedTextField(value = emoji, onValueChange = { emoji = it }, label = { Text("Emoji") }, singleLine = true)
+                OutlinedTextField(value = emoji, onValueChange = {
+                    emoji = it
+                }, label = { Text("Emoji") }, singleLine = true)
             }
         },
         confirmButton = { TextButton(onClick = { if (name.isNotBlank()) onSave(name, emoji) }) { Text("Save") } },
@@ -142,7 +147,11 @@ private fun AddCategoryDialog(onDismiss: () -> Unit, onSave: (String, String) ->
 }
 
 @Composable
-private fun EditCategoryDialog(category: com.financetracker.domain.model.Category, onDismiss: () -> Unit, onSave: (com.financetracker.domain.model.Category) -> Unit) {
+private fun EditCategoryDialog(
+    category: com.financetracker.domain.model.Category,
+    onDismiss: () -> Unit,
+    onSave: (com.financetracker.domain.model.Category) -> Unit
+) {
     var name by remember { mutableStateOf(category.name) }
     var emoji by remember { mutableStateOf(category.emoji) }
     androidx.compose.material3.AlertDialog(
@@ -150,12 +159,21 @@ private fun EditCategoryDialog(category: com.financetracker.domain.model.Categor
         title = { Text("Edit Category") },
         text = {
             Column {
-                OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Name") }, singleLine = true)
+                OutlinedTextField(value = name, onValueChange = {
+                    name = it
+                }, label = { Text("Name") }, singleLine = true)
                 Spacer(modifier = Modifier.height(8.dp))
-                OutlinedTextField(value = emoji, onValueChange = { emoji = it }, label = { Text("Emoji") }, singleLine = true)
+                OutlinedTextField(value = emoji, onValueChange = {
+                    emoji = it
+                }, label = { Text("Emoji") }, singleLine = true)
             }
         },
-        confirmButton = { TextButton(onClick = { onSave(category.copy(name = name, emoji = emoji)); onDismiss() }) { Text("Save") } },
+        confirmButton = {
+            TextButton(onClick = {
+                onSave(category.copy(name = name, emoji = emoji))
+                onDismiss()
+            }) { Text("Save") }
+        },
         dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
     )
 }

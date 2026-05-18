@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,7 +38,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import java.text.NumberFormat
-import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -53,17 +51,18 @@ private val HEAT_COLORS = listOf(
 )
 
 @Composable
-fun CalendarScreen(
-    modifier: Modifier = Modifier,
-    viewModel: CalendarViewModel = hiltViewModel()
-) {
+fun CalendarScreen(modifier: Modifier = Modifier, viewModel: CalendarViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
     val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
     val today = LocalDate.now()
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         // Month header
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             IconButton(onClick = viewModel::previousMonth) { Icon(Icons.Default.ChevronLeft, "Previous") }
             Text(
                 text = DateTimeFormatter.ofPattern("MMMM yyyy").format(uiState.yearMonth),
@@ -78,7 +77,13 @@ fun CalendarScreen(
         // Day headers
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
             listOf("S", "M", "T", "W", "T", "F", "S").forEach {
-                Text(it, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.weight(1f))
+                Text(
+                    it,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.weight(1f)
+                )
             }
         }
 
@@ -126,7 +131,10 @@ fun CalendarScreen(
         // Selected day detail
         if (uiState.selectedDay != null) {
             Spacer(modifier = Modifier.height(12.dp))
-            Card(modifier = Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+            ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         DateTimeFormatter.ofPattern("EEEE, MMM d").format(uiState.selectedDay!!.date),
@@ -147,9 +155,13 @@ fun CalendarScreen(
 private fun DayCell(day: CalendarDay, isToday: Boolean, isSelected: Boolean, isFuture: Boolean, onClick: () -> Unit) {
     val baseColor = HEAT_COLORS.getOrElse(day.intensity) { HEAT_COLORS[0] }
     val bgColor = if (isFuture) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f) else baseColor
-    val borderMod = if (isToday) Modifier.border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(6.dp))
-    else if (isSelected) Modifier.border(2.dp, MaterialTheme.colorScheme.secondary, RoundedCornerShape(6.dp))
-    else Modifier.border(1.dp, Color.Transparent, RoundedCornerShape(6.dp))
+    val borderMod = if (isToday) {
+        Modifier.border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(6.dp))
+    } else if (isSelected) {
+        Modifier.border(2.dp, MaterialTheme.colorScheme.secondary, RoundedCornerShape(6.dp))
+    } else {
+        Modifier.border(1.dp, Color.Transparent, RoundedCornerShape(6.dp))
+    }
 
     Box(
         modifier = Modifier
