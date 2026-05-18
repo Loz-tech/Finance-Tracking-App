@@ -2,6 +2,8 @@ package com.financetracker.ui.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financetracker.data.export.CsvExporter
+import com.financetracker.data.export.JsonExporter
 import com.financetracker.data.local.prefs.UserPreferences
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.SettingsRepository
@@ -10,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class SettingsUiState(
@@ -22,7 +25,9 @@ data class SettingsUiState(
 class SettingsViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val transactionRepository: TransactionRepository,
-    private val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository,
+    private val csvExporter: CsvExporter,
+    private val jsonExporter: JsonExporter
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SettingsUiState())
@@ -48,6 +53,22 @@ class SettingsViewModel @Inject constructor(
     fun setAccentColor(index: Int) {
         viewModelScope.launch {
             settingsRepository.setAccentColor(index)
+        }
+    }
+
+    fun exportCsv() {
+        viewModelScope.launch {
+            val transactions = transactionRepository.getAllTransactions().first()
+            val file = csvExporter.export(transactions)
+            _uiState.value = _uiState.value.copy(message = "CSV exported to ${file.absolutePath}")
+        }
+    }
+
+    fun exportJson() {
+        viewModelScope.launch {
+            val transactions = transactionRepository.getAllTransactions().first()
+            val file = jsonExporter.export(transactions)
+            _uiState.value = _uiState.value.copy(message = "JSON exported to ${file.absolutePath}")
         }
     }
 

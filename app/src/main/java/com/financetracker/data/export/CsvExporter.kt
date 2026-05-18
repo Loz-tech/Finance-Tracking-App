@@ -4,7 +4,6 @@ import android.content.Context
 import com.financetracker.domain.model.Transaction
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
-import java.io.FileWriter
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,13 +17,24 @@ class CsvExporter @Inject constructor(@ApplicationContext private val context: C
         val dateStr = java.time.LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
         val file = File(dir, "ISpend_export_$dateStr.csv")
 
-        FileWriter(file).use { writer ->
-            writer.write("Date,Category,Emoji,Amount,Note\n")
-            transactions.forEach { txn ->
-                val note = txn.note.replace("\"", "\"\"")
-                writer.write("${txn.date},${txn.category.name},${txn.category.emoji},${txn.amount},\"$note\"\n")
-            }
-        }
+        file.writeText(buildCsvContent(transactions))
         return file
+    }
+
+    companion object {
+        internal fun buildCsvContent(transactions: List<Transaction>): String {
+            val csv = StringBuilder()
+            csv.appendLine("Date,Category,Emoji,Amount,Note")
+            transactions.forEach { txn ->
+                csv.appendLine(
+                    "${txn.date},${csvField(
+                        txn.category.name
+                    )},${csvField(txn.category.emoji)},${txn.amount},${csvField(txn.note)}"
+                )
+            }
+            return csv.toString()
+        }
+
+        private fun csvField(value: String): String = "\"${value.replace("\"", "\"\"")}\""
     }
 }
