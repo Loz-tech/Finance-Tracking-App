@@ -109,7 +109,8 @@ fun AppNavHost() {
             }
             composable(Screen.Settings.route) {
                 SettingsScreen(
-                    onNavigateToBudget = { navController.navigate(Screen.Budget.route) }
+                    onNavigateToBudget = { navController.navigate(Screen.Budget.route) },
+                    onNavigateToHistory = { navController.navigate(Screen.History.route) }
                 )
             }
             composable(Screen.History.route) {

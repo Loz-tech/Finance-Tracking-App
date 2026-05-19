@@ -129,7 +129,8 @@ fun CalendarScreen(modifier: Modifier = Modifier, viewModel: CalendarViewModel =
         }
 
         // Selected day detail
-        if (uiState.selectedDay != null) {
+        val selectedDay = uiState.selectedDay
+        if (selectedDay != null) {
             Spacer(modifier = Modifier.height(12.dp))
             Card(
                 modifier = Modifier.fillMaxWidth(),
@@ -137,14 +138,45 @@ fun CalendarScreen(modifier: Modifier = Modifier, viewModel: CalendarViewModel =
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        DateTimeFormatter.ofPattern("EEEE, MMM d").format(uiState.selectedDay!!.date),
+                        DateTimeFormatter.ofPattern("EEEE, MMM d").format(selectedDay.date),
                         style = MaterialTheme.typography.titleSmall
                     )
                     Text(
-                        currencyFormatter.format(uiState.selectedDay!!.total),
+                        currencyFormatter.format(selectedDay.total),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    val txns = selectedDay.transactions
+                    if (txns.isEmpty()) {
+                        Text(
+                            "No transactions",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    } else {
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            txns.forEach { t ->
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        "${t.category.emoji} ${t.note.ifBlank {
+                                            t.category.name
+                                        }}",
+                                        style = MaterialTheme.typography.bodySmall
+                                    )
+                                    Text(
+                                        currencyFormatter.format(t.amount),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -176,7 +208,7 @@ private fun DayCell(day: CalendarDay, isToday: Boolean, isSelected: Boolean, isF
         Text(
             text = day.date.dayOfMonth.toString(),
             style = MaterialTheme.typography.bodySmall,
-            color = if (day.intensity >= 3 || isFuture) MaterialTheme.colorScheme.onSurface else Color.White
+            color = if (day.intensity <= 1 || isFuture) MaterialTheme.colorScheme.onSurface else Color.White
         )
     }
 }

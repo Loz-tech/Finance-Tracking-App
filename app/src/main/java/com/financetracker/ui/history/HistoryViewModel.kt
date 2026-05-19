@@ -11,7 +11,6 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 data class DateGroup(val date: LocalDate, val label: String, val transactions: List<Transaction>)
@@ -58,7 +57,7 @@ class HistoryViewModel @Inject constructor(private val transactionRepository: Tr
                     currentYearMonth = yearMonth,
                     isLoading = false
                 )
-            }.stateIn(viewModelScope)
+            }.collect { _uiState.value = it }
         }
     }
 

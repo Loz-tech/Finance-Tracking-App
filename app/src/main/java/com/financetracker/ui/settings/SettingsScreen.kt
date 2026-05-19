@@ -45,6 +45,7 @@ import com.financetracker.ui.theme.AccentColor
 @Composable
 fun SettingsScreen(
     onNavigateToBudget: () -> Unit,
+    onNavigateToHistory: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SettingsViewModel = hiltViewModel()
 ) {
@@ -121,6 +122,24 @@ fun SettingsScreen(
             }
         }
 
+        // History
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text("History", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(
+                    onClick = onNavigateToHistory,
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium
+                ) {
+                    Text("📜 View History")
+                }
+            }
+        }
+
         // Budget
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -147,7 +166,9 @@ fun SettingsScreen(
             Column(modifier = Modifier.padding(16.dp)) {
                 Text("Export Data", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
                 Spacer(modifier = Modifier.height(8.dp))
-                Button(onClick = { viewModel.exportCsv() }, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) {
+                Button(onClick = {
+                    viewModel.exportCsv()
+                }, modifier = Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium) {
                     Text("📄 Export as CSV")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
