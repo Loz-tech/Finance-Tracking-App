@@ -1,35 +1,20 @@
 package com.financetracker.ui.addtransaction
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -38,23 +23,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import java.time.Instant
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
+import com.financetracker.ui.components.AmountInput
+import com.financetracker.ui.components.CategoryChip
+import com.financetracker.ui.components.DateRangePicker
+import com.financetracker.ui.components.DateSelectorRow
+import java.util.UUID
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun AddTransactionSheet(
     onDismiss: () -> Unit,
-    editTransactionId: java.util.UUID? = null,
+    editTransactionId: UUID? = null,
     viewModel: AddTransactionViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -76,32 +59,13 @@ fun AddTransactionSheet(
     }
 
     if (showDatePicker) {
-        val datePickerState = rememberDatePickerState(
-            initialSelectedDateMillis = uiState.date.atStartOfDay(ZoneId.systemDefault())
-                .toInstant().toEpochMilli()
-        )
-        DatePickerDialog(
-            onDismissRequest = { showDatePicker = false },
-            confirmButton = {
-                TextButton(onClick = {
-                    datePickerState.selectedDateMillis?.let { millis ->
-                        val date = Instant.ofEpochMilli(millis)
-                            .atZone(ZoneId.systemDefault()).toLocalDate()
-                        viewModel.onDateSelected(date)
-                    }
-                    showDatePicker = false
-                }) {
-                    Text("OK")
-                }
+        DateRangePicker(
+            onRangeSelected = { start, _ ->
+                viewModel.onDateSelected(start)
+                showDatePicker = false
             },
-            dismissButton = {
-                TextButton(onClick = { showDatePicker = false }) {
-                    Text("Cancel")
-                }
-            }
-        ) {
-            DatePicker(state = datePickerState)
-        }
+            onDismiss = { showDatePicker = false }
+        )
     }
 
     ModalBottomSheet(
@@ -116,26 +80,19 @@ fun AddTransactionSheet(
                 .padding(bottom = 32.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Title
             Text(
                 text = if (uiState.isEditMode) "Edit Transaction" else "Add Expense",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
 
-            // Amount input
-            OutlinedTextField(
+            AmountInput(
                 value = uiState.amount,
                 onValueChange = viewModel::onAmountChanged,
-                label = { Text("Amount") },
-                prefix = { Text("$  ", color = MaterialTheme.colorScheme.onSurfaceVariant) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true,
-                isError = uiState.errorMessage != null
+                isError = uiState.errorMessage != null,
+                modifier = Modifier.fillMaxWidth()
             )
 
-            // Category grid
             Text(
                 text = "Category",
                 style = MaterialTheme.typography.titleSmall,
@@ -147,16 +104,14 @@ fun AddTransactionSheet(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 uiState.categories.forEach { category ->
-                    val selected = category.id == uiState.selectedCategory?.id
                     CategoryChip(
                         category = category,
-                        selected = selected,
+                        selected = category.id == uiState.selectedCategory?.id,
                         onClick = { viewModel.onCategorySelected(category) }
                     )
                 }
             }
 
-            // Note input
             OutlinedTextField(
                 value = uiState.note,
                 onValueChange = viewModel::onNoteChanged,
@@ -165,31 +120,12 @@ fun AddTransactionSheet(
                 singleLine = true
             )
 
-            // Date selector
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(12.dp))
-                    .clickable { showDatePicker = true }
-                    .padding(horizontal = 16.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    imageVector = Icons.Default.CalendarToday,
-                    contentDescription = "Select date",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Spacer(modifier = Modifier.width(12.dp))
-                Text(
-                    text = uiState.date.format(
-                        DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-                    ),
-                    style = MaterialTheme.typography.bodyLarge
-                )
-            }
+            DateSelectorRow(
+                date = uiState.date,
+                onClick = { showDatePicker = true },
+                modifier = Modifier.fillMaxWidth()
+            )
 
-            // Error message
             if (uiState.errorMessage != null) {
                 Text(
                     text = uiState.errorMessage!!,
@@ -198,7 +134,6 @@ fun AddTransactionSheet(
                 )
             }
 
-            // Save button
             Button(
                 onClick = viewModel::saveTransaction,
                 modifier = Modifier
@@ -215,46 +150,6 @@ fun AddTransactionSheet(
                     fontWeight = FontWeight.SemiBold
                 )
             }
-        }
-    }
-}
-
-@Composable
-private fun CategoryChip(category: com.financetracker.domain.model.Category, selected: Boolean, onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(12.dp))
-            .background(
-                if (selected) {
-                    MaterialTheme.colorScheme.primaryContainer
-                } else {
-                    MaterialTheme.colorScheme.surfaceContainerHigh
-                }
-            )
-            .border(
-                1.dp,
-                if (selected) {
-                    MaterialTheme.colorScheme.primary
-                } else {
-                    MaterialTheme.colorScheme.outline
-                },
-                RoundedCornerShape(12.dp)
-            )
-            .clickable(onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = category.emoji,
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Spacer(modifier = Modifier.width(4.dp))
-            Text(
-                text = category.name,
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal
-            )
         }
     }
 }
