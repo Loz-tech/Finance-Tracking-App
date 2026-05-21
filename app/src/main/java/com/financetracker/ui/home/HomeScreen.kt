@@ -21,8 +21,10 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.financetracker.ui.components.BudgetSummaryCard
 import com.financetracker.ui.components.CategoryBreakdownCard
 import com.financetracker.ui.components.CategoryBudgetIndicatorRow
+import com.financetracker.ui.components.DonutSegment
 import com.financetracker.ui.components.EmptyState
 import com.financetracker.ui.components.TransactionCard
+import com.financetracker.ui.theme.ChartColors
 import java.util.UUID
 
 @Composable
@@ -70,10 +72,18 @@ fun HomeScreen(
         }
 
         // Donut chart + legend
-        if (uiState.categorySegments.isNotEmpty()) {
+        val segments = uiState.categoryBreakdowns.mapIndexed { i, bd ->
+            DonutSegment(
+                label = bd.name,
+                emoji = bd.emoji,
+                value = bd.amount.toDouble().toFloat(),
+                color = ChartColors[i % ChartColors.size]
+            )
+        }
+        if (segments.isNotEmpty()) {
             item(key = "donut") {
                 CategoryBreakdownCard(
-                    segments = uiState.categorySegments,
+                    segments = segments,
                     title = "This Month"
                 )
             }

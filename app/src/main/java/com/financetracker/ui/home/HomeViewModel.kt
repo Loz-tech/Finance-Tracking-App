@@ -2,18 +2,17 @@ package com.financetracker.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financetracker.domain.model.CategoryBreakdown
 import com.financetracker.domain.model.Transaction
-import com.financetracker.domain.repository.BudgetRepository
-import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
-import com.financetracker.ui.components.DonutSegment
-import com.financetracker.ui.theme.ChartColors
+import com.financetracker.domain.usecase.CalculateBudgetProgressUseCase
+import com.financetracker.domain.usecase.GetMonthlySummaryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
-import java.time.LocalDate
 import java.time.YearMonth
 import java.util.UUID
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -33,7 +32,7 @@ data class HomeUiState(
     val totalSpent: BigDecimal = BigDecimal.ZERO,
     val totalBudget: BigDecimal? = null,
     val recentTransactions: List<Transaction> = emptyList(),
-    val categorySegments: List<DonutSegment> = emptyList(),
+    val categoryBreakdowns: List<CategoryBreakdown> = emptyList(),
     val categoryBudgets: List<CategoryBudgetProgress> = emptyList(),
     val isLoading: Boolean = true,
     val hasTransactions: Boolean = false
@@ -41,67 +40,48 @@ data class HomeUiState(
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val transactionRepository: TransactionRepository,
-    private val budgetRepository: BudgetRepository,
-    private val categoryRepository: CategoryRepository
+    private val getMonthlySummaryUseCase: GetMonthlySummaryUseCase,
+    private val calculateBudgetProgressUseCase: CalculateBudgetProgressUseCase,
+    private val transactionRepository: TransactionRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState
 
     init {
-        val now = LocalDate.now()
-        val yearMonth = YearMonth.now().toString()
-        val monthStart = now.withDayOfMonth(1)
-        val monthEnd = now.withDayOfMonth(now.lengthOfMonth())
+        val yearMonth = YearMonth.now()
+
+        val summaryFlow: Flow<GetMonthlySummaryUseCase.MonthlySummary> =
+            getMonthlySummaryUseCase(yearMonth)
+
+        val budgetFlow: Flow<List<com.financetracker.domain.usecase.BudgetProgress>> =
+            calculateBudgetProgressUseCase(yearMonth.toString())
 
         combine(
-            transactionRepository.getTransactionsByDateRange(monthStart, monthEnd),
-            transactionRepository.getRecentTransactions(5),
-            budgetRepository.getBudgetsByYearMonth(yearMonth),
-            categoryRepository.getAllCategories()
-        ) { monthlyTransactions, recentTransactions, budgets, categories ->
-            val totalSpent = monthlyTransactions.fold(BigDecimal.ZERO) { acc, t -> acc + t.amount }
-            val totalBudget = budgets.find { it.categoryId == null }
-            val hasTransactions = monthlyTransactions.isNotEmpty()
-
-            // Group by category for donut
-            val categoryGroups = monthlyTransactions.groupBy { it.category }
-            val chartColors = ChartColors
-            val segments = categoryGroups.entries.mapIndexed { i, (cat, txns) ->
-                DonutSegment(
-                    label = cat.name,
-                    emoji = cat.emoji,
-                    value = txns.sumOf { it.amount.toDouble() }.toFloat(),
-                    color = chartColors[i % chartColors.size]
+            summaryFlow,
+            budgetFlow,
+            transactionRepository.getRecentTransactions(5)
+        ) { summary, budgets, recent ->
+            val totalBudget = budgets.find { it.categoryId == null }?.budgetLimit
+            val categoryBudgets = budgets.filter { it.categoryId != null }.map {
+                CategoryBudgetProgress(
+                    categoryId = it.categoryId!!,
+                    categoryName = it.categoryName,
+                    emoji = it.emoji,
+                    colorHex = it.colorHex,
+                    spent = it.spent,
+                    limit = it.budgetLimit
                 )
             }
 
-            // Per-category budget progress
-            val spentByCategory = monthlyTransactions.groupBy {
-                it.category.id
-            }.mapValues { it.value.sumOf { t -> t.amount } }
-            val categoryBudgets = categories.mapNotNull { cat ->
-                val limit = budgets.find { it.categoryId == cat.id }?.limitAmount ?: return@mapNotNull null
-                if (limit <= BigDecimal.ZERO) return@mapNotNull null
-                CategoryBudgetProgress(
-                    categoryId = cat.id,
-                    categoryName = cat.name,
-                    emoji = cat.emoji,
-                    colorHex = cat.colorHex,
-                    spent = spentByCategory[cat.id] ?: BigDecimal.ZERO,
-                    limit = limit
-                )
-            }.sortedByDescending { it.spent }
-
             HomeUiState(
-                totalSpent = totalSpent,
-                totalBudget = totalBudget?.limitAmount,
-                recentTransactions = recentTransactions,
-                categorySegments = segments,
+                totalSpent = summary.totalSpent,
+                totalBudget = totalBudget,
+                recentTransactions = recent,
+                categoryBreakdowns = summary.categoryBreakdowns,
                 categoryBudgets = categoryBudgets,
                 isLoading = false,
-                hasTransactions = hasTransactions
+                hasTransactions = summary.transactionCount > 0
             )
         }.onEach { _uiState.value = it }
             .launchIn(viewModelScope)
