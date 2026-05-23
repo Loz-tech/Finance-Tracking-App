@@ -1,15 +1,21 @@
 package com.financetracker.domain.usecase
 
 import com.financetracker.domain.repository.BudgetRepository
+import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
+import com.financetracker.domain.util.TimeProvider
 import java.math.BigDecimal
 import java.time.YearMonth
 import java.util.UUID
 import javax.inject.Inject
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 
 data class BudgetProgress(
     val categoryId: UUID?,
+    val categoryName: String,
+    val iconName: String,
+    val colorHex: String?,
     val budgetLimit: BigDecimal,
     val spent: BigDecimal,
     val remaining: BigDecimal,
@@ -18,28 +24,45 @@ data class BudgetProgress(
 
 class CalculateBudgetProgressUseCase @Inject constructor(
     private val budgetRepository: BudgetRepository,
-    private val transactionRepository: TransactionRepository
+    private val transactionRepository: TransactionRepository,
+    private val categoryRepository: CategoryRepository,
+    private val timeProvider: TimeProvider
 ) {
-    suspend operator fun invoke(yearMonth: String = YearMonth.now().toString()): List<BudgetProgress> {
-        val budgets = budgetRepository.getBudgetsByYearMonth(yearMonth).first()
-        val ym = YearMonth.parse(yearMonth)
-        val transactions = transactionRepository.getTransactionsByDateRange(ym.atDay(1), ym.atEndOfMonth()).first()
-        val categorySpending = transactions.groupBy { it.category.id }
-            .mapValues { (_, txns) -> txns.fold(BigDecimal.ZERO) { acc, t -> acc + t.amount } }
+    operator fun invoke(yearMonth: String? = null): Flow<List<BudgetProgress>> {
+        val effectiveYearMonth = yearMonth ?: YearMonth.from(timeProvider.today()).toString()
+        val ym = YearMonth.parse(effectiveYearMonth)
+        val start = ym.atDay(1)
+        val end = ym.atEndOfMonth()
 
-        return budgets.map { budget ->
-            val spent = if (budget.categoryId != null) {
-                categorySpending[budget.categoryId] ?: BigDecimal.ZERO
-            } else {
-                budgets.fold(BigDecimal.ZERO) { acc, b -> acc + (categorySpending[b.categoryId] ?: BigDecimal.ZERO) }
+        return combine(
+            budgetRepository.getBudgetsByYearMonth(effectiveYearMonth),
+            transactionRepository.getTransactionsByDateRange(start, end),
+            categoryRepository.getAllCategories()
+        ) { budgets, transactions, categories ->
+            val categoryMap = categories.associateBy { it.id }
+            val categorySpending = transactions.groupBy { it.category.id }
+                .mapValues { (_, txns) -> txns.fold(BigDecimal.ZERO) { acc, t -> acc + t.amount } }
+
+            budgets.map { budget ->
+                val spent = if (budget.categoryId != null) {
+                    categorySpending[budget.categoryId] ?: BigDecimal.ZERO
+                } else {
+                    categorySpending.values.fold(BigDecimal.ZERO) { acc, s -> acc + s }
+                }
+
+                val cat = budget.categoryId?.let { categoryMap[it] }
+
+                BudgetProgress(
+                    categoryId = budget.categoryId,
+                    categoryName = cat?.name ?: "Total",
+                    iconName = cat?.iconName ?: "AttachMoney",
+                    colorHex = cat?.colorHex,
+                    budgetLimit = budget.limitAmount,
+                    spent = spent,
+                    remaining = budget.limitAmount - spent,
+                    isOverBudget = spent > budget.limitAmount
+                )
             }
-            BudgetProgress(
-                budget.categoryId,
-                budget.limitAmount,
-                spent,
-                budget.limitAmount - spent,
-                spent > budget.limitAmount
-            )
         }
     }
 }

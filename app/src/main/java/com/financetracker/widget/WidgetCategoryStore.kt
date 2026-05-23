@@ -1,9 +1,6 @@
 package com.financetracker.widget
 
-import android.appwidget.AppWidgetManager
-import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.financetracker.domain.model.Category
@@ -22,7 +19,7 @@ class WidgetCategoryStore @Inject constructor(
 
     fun saveCategories(categories: List<Category>) {
         val widgetCategories = categories.map {
-            WidgetCategory(id = it.id.toString(), name = it.name, emoji = it.emoji)
+            WidgetCategory(id = it.id.toString(), name = it.name, iconName = it.iconName)
         }
         val json = Json.encodeToString(widgetCategories)
         prefs.edit { putString(KEY_CATEGORIES, json) }
@@ -39,16 +36,7 @@ class WidgetCategoryStore @Inject constructor(
     }
 
     private fun updateWidgets() {
-        val appWidgetManager = AppWidgetManager.getInstance(context)
-        val componentName = ComponentName(context, TransactionWidgetReceiver::class.java)
-        val widgetIds = appWidgetManager.getAppWidgetIds(componentName)
-        if (widgetIds.isNotEmpty()) {
-            val intent = Intent(context, TransactionWidgetReceiver::class.java).apply {
-                action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, widgetIds)
-            }
-            context.sendBroadcast(intent)
-        }
+        TransactionWidgetReceiver.refreshAllWidgets(context)
     }
 
     companion object {

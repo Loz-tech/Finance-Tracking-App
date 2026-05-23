@@ -2,7 +2,7 @@
     <!-- Widget background -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#FF021A54" />
+            <solid android:color="@color/widget_bg" />
             <corners android:radius="16dp" />
             <size android:width="64dp" android:height="68dp" />
         </shape>
@@ -15,7 +15,7 @@
         android:right="8dp"
         android:bottom="10dp">
         <shape android:shape="oval">
-            <solid android:color="#25FFFFFF" />
+            <solid android:color="@color/widget_icon_bg" />
         </shape>
     </item>
 </layer-list>

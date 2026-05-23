@@ -1,10 +1,7 @@
 package com.financetracker.ui.search
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,17 +14,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -40,36 +31,35 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.financetracker.domain.model.DateFilter
+import com.financetracker.domain.model.IconStyle
+import com.financetracker.domain.model.QuickChip
+import com.financetracker.ui.components.DateRangePicker
+import com.financetracker.ui.components.EmptyState
+import com.financetracker.ui.components.FilterChipGroup
 import com.financetracker.ui.components.TransactionCard
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.util.UUID
 
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
-    onEditTransaction: (java.util.UUID) -> Unit,
+    onEditTransaction: (UUID) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val focusManager = LocalFocusManager.current
-    val focusRequester = remember { FocusRequester() }
-
-    var showStartDatePicker by remember { mutableStateOf(false) }
-    var showEndDatePicker by remember { mutableStateOf(false) }
-    var pendingCustomStart by remember { mutableStateOf<LocalDate?>(null) }
-
+    val searchFocusRequester = remember { FocusRequester() }
     val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
 
+    var showDateRangePicker by remember { mutableStateOf(false) }
+
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
-        // Search input
         OutlinedTextField(
             value = uiState.query,
             onValueChange = viewModel::onQueryChanged,
-            modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
+            modifier = Modifier.fillMaxWidth().focusRequester(searchFocusRequester),
             placeholder = { Text("Search expenses...") },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
             trailingIcon = {
@@ -85,7 +75,6 @@ fun SearchScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Date range label
         Text(
             text = "Date range",
             style = MaterialTheme.typography.labelSmall,
@@ -93,43 +82,47 @@ fun SearchScreen(
         )
         Spacer(modifier = Modifier.height(4.dp))
 
-        // Date filter chips + clear button
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp),
-                modifier = Modifier.weight(1f)
-            ) {
-                QuickChip.entries.forEach { chip ->
-                    val dateFilter = uiState.dateFilter
-                    val selected = dateFilter is DateFilter.Quick && dateFilter.chip == chip
-                    FilterChip(
-                        selected = selected,
-                        onClick = { viewModel.onQuickChipSelected(chip) },
-                        label = { Text(chip.label, style = MaterialTheme.typography.labelMedium) }
-                    )
-                }
-
-                // Custom chip
-                val isCustomSelected = uiState.dateFilter is DateFilter.Custom
-                val customLabel = when (val df = uiState.dateFilter) {
-                    is DateFilter.Custom -> "${df.start.format(dateFormatter)} – ${df.end.format(dateFormatter)}"
-                    else -> "Custom"
-                }
-                FilterChip(
-                    selected = isCustomSelected,
-                    onClick = {
-                        if (!isCustomSelected) {
-                            showStartDatePicker = true
+            val allChips = QuickChip.entries.toList() + "Custom"
+            FilterChipGroup(
+                items = allChips,
+                selected = { item ->
+                    when (item) {
+                        is QuickChip ->
+                            uiState.dateFilter is DateFilter.Quick &&
+                                (uiState.dateFilter as DateFilter.Quick).chip == item
+                        "Custom" -> uiState.dateFilter is DateFilter.Custom
+                        else -> false
+                    }
+                },
+                onSelect = { item ->
+                    when (item) {
+                        is QuickChip -> viewModel.onQuickChipSelected(item)
+                        "Custom" -> {
+                            if (uiState.dateFilter !is DateFilter.Custom) {
+                                showDateRangePicker = true
+                            }
                         }
-                    },
-                    label = { Text(customLabel, style = MaterialTheme.typography.labelMedium) }
-                )
-            }
+                    }
+                },
+                label = { item ->
+                    when (item) {
+                        is QuickChip -> item.label
+                        "Custom" -> when (val df = uiState.dateFilter) {
+                            is DateFilter.Custom -> "${df.start.format(
+                                dateFormatter
+                            )} \u2013 ${df.end.format(dateFormatter)}"
+                            else -> "Custom"
+                        }
+                        else -> item.toString()
+                    }
+                },
+                modifier = Modifier.weight(1f)
+            )
 
             if (uiState.dateFilter != DateFilter.None) {
                 IconButton(onClick = viewModel::clearDateFilter) {
@@ -138,59 +131,40 @@ fun SearchScreen(
             }
         }
 
-        // Category filter chips
         if (uiState.allCategories.isNotEmpty()) {
             Spacer(modifier = Modifier.height(12.dp))
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                uiState.allCategories.forEach { category ->
-                    FilterChip(
-                        selected = category.id in uiState.selectedCategoryIds,
-                        onClick = { viewModel.onCategoryToggled(category.id) },
-                        label = {
-                            Text("${category.emoji} ${category.name}", style = MaterialTheme.typography.labelMedium)
-                        }
-                    )
-                }
-            }
+            FilterChipGroup(
+                items = uiState.allCategories,
+                selected = { it.id in uiState.selectedCategoryIds },
+                onSelect = { viewModel.onCategoryToggled(it.id) },
+                label = { category -> category.name }
+            )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Results
         val hasActiveFilter = uiState.query.isNotEmpty() ||
             uiState.selectedCategoryIds.isNotEmpty() ||
             uiState.dateFilter !is DateFilter.None
 
         if (uiState.results.isEmpty() && hasActiveFilter) {
-            Box(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 64.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    "No transactions found",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            EmptyState(
+                icon = "\ud83d\udd0d",
+                title = "No transactions found",
+                subtitle = "Try adjusting your filters"
+            )
         } else if (uiState.results.isEmpty() && !hasActiveFilter) {
-            Box(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 64.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    "Select a filter to search",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            EmptyState(
+                icon = "\ud83d\udd0d",
+                title = "Select a filter to search",
+                subtitle = "Use the search bar or pick a filter above"
+            )
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 items(uiState.results, key = { it.id }) { transaction ->
                     TransactionCard(
                         transaction = transaction,
+                        iconStyle = IconStyle.FILLED,
                         iconSize = 36.dp,
                         cardCornerRadius = 8.dp,
                         onClick = { onEditTransaction(transaction.id) }
@@ -200,61 +174,13 @@ fun SearchScreen(
         }
     }
 
-    // Start date picker
-    if (showStartDatePicker) {
-        val datePickerState = rememberDatePickerState()
-        DatePickerDialog(
-            onDismissRequest = { showStartDatePicker = false },
-            confirmButton = {
-                TextButton(onClick = {
-                    datePickerState.selectedDateMillis?.let { millis ->
-                        val date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate()
-                        pendingCustomStart = date
-                        showStartDatePicker = false
-                        showEndDatePicker = true
-                    } ?: run {
-                        showStartDatePicker = false
-                    }
-                }) { Text("Next") }
+    if (showDateRangePicker) {
+        DateRangePicker(
+            onRangeSelected = { start, end ->
+                viewModel.onCustomDateRangeSelected(start, end)
+                showDateRangePicker = false
             },
-            dismissButton = {
-                TextButton(onClick = { showStartDatePicker = false }) { Text("Cancel") }
-            }
-        ) {
-            DatePicker(state = datePickerState)
-        }
-    }
-
-    // End date picker
-    if (showEndDatePicker) {
-        val datePickerState = rememberDatePickerState()
-        DatePickerDialog(
-            onDismissRequest = { showEndDatePicker = false },
-            confirmButton = {
-                TextButton(onClick = {
-                    datePickerState.selectedDateMillis?.let { millis ->
-                        val endDate = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate()
-                        pendingCustomStart?.let { startDate ->
-                            viewModel.onCustomDateRangeSelected(startDate, endDate)
-                        }
-                        showEndDatePicker = false
-                        pendingCustomStart = null
-                    } ?: run {
-                        showEndDatePicker = false
-                        pendingCustomStart = null
-                    }
-                }) { Text("OK") }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    showEndDatePicker = false
-                    pendingCustomStart = null
-                }) { Text("Cancel") }
-            }
-        ) {
-            DatePicker(state = datePickerState)
-        }
+            onDismiss = { showDateRangePicker = false }
+        )
     }
 }
-
-// End of file

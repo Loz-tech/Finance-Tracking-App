@@ -43,7 +43,7 @@ class TransactionRepositoryImpl @Inject constructor(
                     it.mapToDomain()
                 }
             hasDateRange && categoryIds.isEmpty() ->
-                transactionDao.searchByTextAndDateRange(query, start, end).map { it.mapToDomain() }
+                transactionDao.searchByTextAndDateRange(query, start!!, end!!).map { it.mapToDomain() }
             !hasDateRange && categoryIds.isNotEmpty() ->
                 transactionDao.searchByTextAndCategories(query, categoryIds).map { it.mapToDomain() }
             else ->
@@ -87,7 +87,7 @@ class TransactionRepositoryImpl @Inject constructor(
         category = Category(
             id = categoryId,
             name = categoryName,
-            emoji = categoryEmoji,
+            iconName = categoryIconName,
             colorHex = categoryColorHex
         ),
         createdAt = createdAt.toEpochMilli()
@@ -102,7 +102,7 @@ class TransactionRepositoryImpl @Inject constructor(
     }
 
     private fun TransactionEntity.toDomain(categories: Map<UUID, Category>): Transaction {
-        val category = categories[categoryId] ?: Category(name = "Unknown", emoji = "❓")
+        val category = categories[categoryId] ?: Category(name = "Unknown", iconName = "MoreHoriz")
         return Transaction(
             id = id,
             amount = amount,

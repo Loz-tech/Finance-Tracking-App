@@ -1,8 +1,6 @@
 package com.financetracker.ui.calendar
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,13 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChevronLeft
-import androidx.compose.material.icons.filled.ChevronRight
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,16 +22,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import java.text.NumberFormat
+import com.financetracker.ui.components.DayCell
+import com.financetracker.ui.components.DayDetailCard
+import com.financetracker.ui.components.MonthNavigator
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 private val HEAT_COLORS = listOf(
     Color(0xFFE0E0E0),
@@ -53,24 +42,15 @@ private val HEAT_COLORS = listOf(
 @Composable
 fun CalendarScreen(modifier: Modifier = Modifier, viewModel: CalendarViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
     val today = LocalDate.now()
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         // Month header
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = viewModel::previousMonth) { Icon(Icons.Default.ChevronLeft, "Previous") }
-            Text(
-                text = DateTimeFormatter.ofPattern("MMMM yyyy").format(uiState.yearMonth),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.SemiBold
-            )
-            IconButton(onClick = viewModel::nextMonth) { Icon(Icons.Default.ChevronRight, "Next") }
-        }
+        MonthNavigator(
+            yearMonth = uiState.yearMonth,
+            onPrevious = viewModel::previousMonth,
+            onNext = viewModel::nextMonth
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -132,83 +112,7 @@ fun CalendarScreen(modifier: Modifier = Modifier, viewModel: CalendarViewModel =
         val selectedDay = uiState.selectedDay
         if (selectedDay != null) {
             Spacer(modifier = Modifier.height(12.dp))
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        DateTimeFormatter.ofPattern("EEEE, MMM d").format(selectedDay.date),
-                        style = MaterialTheme.typography.titleSmall
-                    )
-                    Text(
-                        currencyFormatter.format(selectedDay.total),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    val txns = selectedDay.transactions
-                    if (txns.isEmpty()) {
-                        Text(
-                            "No transactions",
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    } else {
-                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            txns.forEach { t ->
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Text(
-                                        "${t.category.emoji} ${t.note.ifBlank {
-                                            t.category.name
-                                        }}",
-                                        style = MaterialTheme.typography.bodySmall
-                                    )
-                                    Text(
-                                        currencyFormatter.format(t.amount),
-                                        style = MaterialTheme.typography.bodySmall,
-                                        fontWeight = FontWeight.SemiBold
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            DayDetailCard(day = selectedDay)
         }
-    }
-}
-
-@Composable
-private fun DayCell(day: CalendarDay, isToday: Boolean, isSelected: Boolean, isFuture: Boolean, onClick: () -> Unit) {
-    val baseColor = HEAT_COLORS.getOrElse(day.intensity) { HEAT_COLORS[0] }
-    val bgColor = if (isFuture) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f) else baseColor
-    val borderMod = if (isToday) {
-        Modifier.border(2.dp, MaterialTheme.colorScheme.primary, RoundedCornerShape(6.dp))
-    } else if (isSelected) {
-        Modifier.border(2.dp, MaterialTheme.colorScheme.secondary, RoundedCornerShape(6.dp))
-    } else {
-        Modifier.border(1.dp, Color.Transparent, RoundedCornerShape(6.dp))
-    }
-
-    Box(
-        modifier = Modifier
-            .aspectRatio(1f)
-            .padding(2.dp)
-            .then(borderMod)
-            .clip(RoundedCornerShape(4.dp))
-            .background(bgColor)
-            .clickable(enabled = !isFuture, onClick = onClick),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = day.date.dayOfMonth.toString(),
-            style = MaterialTheme.typography.bodySmall,
-            color = if (day.intensity <= 1 || isFuture) MaterialTheme.colorScheme.onSurface else Color.White
-        )
     }
 }

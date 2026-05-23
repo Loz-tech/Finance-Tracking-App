@@ -1,23 +1,14 @@
 package com.financetracker.ui.home
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,30 +16,35 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.financetracker.ui.components.DonutChart
-import com.financetracker.ui.components.DonutLegend
+import com.financetracker.ui.components.BudgetSummaryCard
+import com.financetracker.ui.components.CategoryBreakdownCard
+import com.financetracker.ui.components.CategoryBudgetIndicatorRow
+import com.financetracker.ui.components.DonutSegment
+import com.financetracker.ui.components.EmptyState
 import com.financetracker.ui.components.TransactionCard
-import java.math.BigDecimal
-import java.text.NumberFormat
-import java.time.LocalDate
-import java.util.Locale
+import com.financetracker.ui.theme.ChartColors
+import java.util.UUID
 
 @Composable
 fun HomeScreen(
     onAddTransaction: () -> Unit,
-    onEditTransaction: (java.util.UUID) -> Unit,
+    onEditTransaction: (UUID) -> Unit,
     onNavigateToBudget: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val iconStyle = com.financetracker.ui.components.rememberIconStyle()
 
     if (!uiState.hasTransactions && !uiState.isLoading) {
-        EmptyHomeScreen(onAddTransaction = onAddTransaction, modifier = modifier)
+        EmptyState(
+            icon = "💰",
+            title = "No expenses yet",
+            subtitle = "Tap + to add your first\nexpense and start tracking",
+            modifier = modifier
+        )
         return
     }
 
@@ -58,7 +54,6 @@ fun HomeScreen(
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Budget summary card
         item(key = "budget") {
             Spacer(modifier = Modifier.height(8.dp))
             BudgetSummaryCard(
@@ -68,48 +63,30 @@ fun HomeScreen(
             )
         }
 
-        // Category budget progress row
         if (uiState.categoryBudgets.isNotEmpty()) {
             item(key = "category_budgets") {
                 Spacer(modifier = Modifier.height(4.dp))
-                CategoryBudgetRow(budgets = uiState.categoryBudgets)
+                CategoryBudgetIndicatorRow(budgets = uiState.categoryBudgets, iconStyle = iconStyle)
             }
         }
 
-        // Donut chart + legend
-        if (uiState.categorySegments.isNotEmpty()) {
+        val segments = uiState.categoryBreakdowns.mapIndexed { i, bd ->
+            DonutSegment(
+                label = bd.name,
+                iconName = bd.iconName,
+                value = bd.amount.toDouble().toFloat(),
+                color = ChartColors[i % ChartColors.size]
+            )
+        }
+        if (segments.isNotEmpty()) {
             item(key = "donut") {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-                    ),
-                    shape = MaterialTheme.shapes.medium
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "This Month",
-                            style = MaterialTheme.typography.titleSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
-                        DonutChart(
-                            segments = uiState.categorySegments,
-                            centerText = "💸"
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
-                        DonutLegend(segments = uiState.categorySegments)
-                    }
-                }
+                CategoryBreakdownCard(
+                    segments = segments,
+                    title = "This Month"
+                )
             }
         }
 
-        // Recent activity header
         item(key = "recent_header") {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -128,13 +105,13 @@ fun HomeScreen(
             }
         }
 
-        // Recent transactions
         items(
             items = uiState.recentTransactions,
             key = { it.id }
         ) { transaction ->
             TransactionCard(
                 transaction = transaction,
+                iconStyle = iconStyle,
                 useCard = false,
                 iconSize = 44.dp,
                 showDate = true,
@@ -146,181 +123,5 @@ fun HomeScreen(
         item(key = "bottom_spacer") {
             Spacer(modifier = Modifier.height(80.dp))
         }
-    }
-}
-
-@Composable
-private fun BudgetSummaryCard(
-    totalSpent: BigDecimal,
-    totalBudget: BigDecimal?,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val today = LocalDate.now()
-    val daysInMonth = today.lengthOfMonth()
-    val daysLeft = daysInMonth - today.dayOfMonth
-    val remaining = totalBudget?.subtract(totalSpent) ?: BigDecimal.ZERO
-    val progress = if (totalBudget != null && totalBudget > BigDecimal.ZERO) {
-        (totalSpent.toFloat() / totalBudget.toFloat()).coerceIn(0f, 1f)
-    } else {
-        0f
-    }
-
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
-
-    Card(
-        modifier = modifier.fillMaxWidth().clickable { onClick() },
-        colors = CardDefaults.cardColors(
-            containerColor = if (remaining < BigDecimal.ZERO) {
-                MaterialTheme.colorScheme.errorContainer
-            } else {
-                MaterialTheme.colorScheme.surfaceContainerLow
-            }
-        ),
-        shape = MaterialTheme.shapes.medium
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Ring progress
-            Box(
-                modifier = Modifier.size(100.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                androidx.compose.material3.CircularProgressIndicator(
-                    progress = { progress },
-                    modifier = Modifier.fillMaxSize(),
-                    strokeWidth = 8.dp,
-                    color = MaterialTheme.colorScheme.primary,
-                    trackColor = MaterialTheme.colorScheme.surfaceContainerHigh
-                )
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(
-                        text = currencyFormatter.format(totalSpent),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = "spent",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
-
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = "Monthly Budget",
-                    style = MaterialTheme.typography.titleSmall
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                if (totalBudget != null) {
-                    Text(
-                        text = "${currencyFormatter.format(remaining)} left",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = if (remaining < BigDecimal.ZERO) {
-                            MaterialTheme.colorScheme.error
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                        }
-                    )
-                }
-                Text(
-                    text = "$daysLeft days remaining",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun CategoryBudgetRow(budgets: List<CategoryBudgetProgress>, modifier: Modifier = Modifier) {
-    LazyRow(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-        contentPadding = PaddingValues(horizontal = 4.dp)
-    ) {
-        items(budgets) { budget ->
-            val progress = if (budget.limit > BigDecimal.ZERO) {
-                (budget.spent.toFloat() / budget.limit.toFloat()).coerceIn(0f, 1f)
-            } else {
-                0f
-            }
-            val indicatorColor = budget.colorHex?.let { safeColor ->
-                try {
-                    Color(android.graphics.Color.parseColor(safeColor))
-                } catch (_: IllegalArgumentException) {
-                    MaterialTheme.colorScheme.primary
-                }
-            } ?: MaterialTheme.colorScheme.primary
-
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(
-                    modifier = Modifier.size(64.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        progress = { progress },
-                        modifier = Modifier.fillMaxSize(),
-                        strokeWidth = 4.dp,
-                        color = indicatorColor,
-                        trackColor = MaterialTheme.colorScheme.surfaceContainerHigh
-                    )
-                    Text(
-                        text = budget.emoji,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = budget.categoryName,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1
-                )
-                val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
-                Text(
-                    text = currencyFormatter.format(budget.spent),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.primary,
-                    maxLines = 1
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun EmptyHomeScreen(onAddTransaction: () -> Unit, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = "💰",
-            style = MaterialTheme.typography.displayLarge
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = "No expenses yet",
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "Tap + to add your first\nexpense and start tracking",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center
-        )
     }
 }

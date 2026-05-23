@@ -20,4 +20,8 @@ class SettingsRepositoryImpl @Inject constructor(private val settingsDataStore: 
     override suspend fun setAccentColor(index: Int) {
         settingsDataStore.setAccentColor(index)
     }
+
+    override suspend fun setIconStyle(style: Int) {
+        settingsDataStore.setIconStyle(style)
+    }
 }

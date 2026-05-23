@@ -14,6 +14,11 @@ import com.financetracker.domain.repository.BudgetRepository
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.SettingsRepository
 import com.financetracker.domain.repository.TransactionRepository
+import com.financetracker.domain.usecase.CalculateBudgetProgressUseCase
+import com.financetracker.domain.usecase.GetMonthlySummaryUseCase
+import com.financetracker.domain.usecase.SearchTransactionsUseCase
+import com.financetracker.domain.util.SystemTimeProvider
+import com.financetracker.domain.util.TimeProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -57,4 +62,34 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository = impl
+
+    @Provides
+    @Singleton
+    fun provideTimeProvider(): TimeProvider = SystemTimeProvider()
+
+    @Provides
+    @Singleton
+    fun provideSearchTransactionsUseCase(
+        transactionRepository: TransactionRepository,
+        timeProvider: TimeProvider
+    ): SearchTransactionsUseCase = SearchTransactionsUseCase(transactionRepository, timeProvider)
+
+    @Provides
+    @Singleton
+    fun provideGetMonthlySummaryUseCase(transactionRepository: TransactionRepository): GetMonthlySummaryUseCase =
+        GetMonthlySummaryUseCase(transactionRepository)
+
+    @Provides
+    @Singleton
+    fun provideCalculateBudgetProgressUseCase(
+        budgetRepository: BudgetRepository,
+        transactionRepository: TransactionRepository,
+        categoryRepository: CategoryRepository,
+        timeProvider: TimeProvider
+    ): CalculateBudgetProgressUseCase = CalculateBudgetProgressUseCase(
+        budgetRepository,
+        transactionRepository,
+        categoryRepository,
+        timeProvider
+    )
 }

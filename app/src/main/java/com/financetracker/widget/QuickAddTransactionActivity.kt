@@ -70,7 +70,7 @@ class QuickAddTransactionActivity : ComponentActivity() {
 
         val preselectedId = intent.getStringExtra("categoryId")?.let { UUID.fromString(it) }
         val preselectedName = intent.getStringExtra("categoryName") ?: ""
-        val preselectedEmoji = intent.getStringExtra("categoryEmoji") ?: ""
+        val preselectedIconName = intent.getStringExtra("categoryIconName") ?: ""
 
         setContent {
             val prefs by settingsRepository.userPreferences.collectAsState(initial = UserPreferences())
@@ -89,7 +89,7 @@ class QuickAddTransactionActivity : ComponentActivity() {
                     QuickAddContent(
                         preselectedId = preselectedId,
                         preselectedName = preselectedName,
-                        preselectedEmoji = preselectedEmoji,
+                        preselectedIconName = preselectedIconName,
                         categoryRepository = categoryRepository,
                         onSave = { amount, note, category ->
                             lifecycleScope.launch {
@@ -121,7 +121,7 @@ class QuickAddTransactionActivity : ComponentActivity() {
 private fun QuickAddContent(
     preselectedId: UUID?,
     preselectedName: String,
-    preselectedEmoji: String,
+    preselectedIconName: String,
     categoryRepository: CategoryRepository,
     onSave: (BigDecimal, String, Category) -> Unit,
     onDismiss: () -> Unit
@@ -143,7 +143,7 @@ private fun QuickAddContent(
                 selectedCategory = Category(
                     id = preselectedId,
                     name = preselectedName,
-                    emoji = preselectedEmoji
+                    iconName = preselectedIconName.ifBlank { "MoreHoriz" }
                 )
             }
         }
@@ -198,7 +198,7 @@ private fun QuickAddContent(
                         modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(text = category.emoji)
+                        // Note: widget launch doesn't have iconStyle preference so we default to Filled
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = category.name,
@@ -231,7 +231,6 @@ private fun QuickAddContent(
                             .padding(horizontal = 12.dp, vertical = 8.dp)
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(text = cat.emoji)
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
                                 text = cat.name,

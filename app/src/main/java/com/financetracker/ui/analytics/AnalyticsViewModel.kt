@@ -64,7 +64,7 @@ class AnalyticsViewModel @Inject constructor(private val transactionRepository: 
             val categorySegments = categoryGroups.entries.mapIndexed { i, (cat, txns) ->
                 DonutSegment(
                     cat.name,
-                    cat.emoji,
+                    cat.iconName,
                     txns.sumOf { it.amount.toDouble() }.toFloat(),
                     chartColors[
                         i %

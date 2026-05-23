@@ -12,17 +12,22 @@ import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+internal val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 data class UserPreferences(
     val themeMode: Int = THEME_LIGHT,
     val accentColorIndex: Int = 0,
-    val isBatterySaver: Boolean = false
+    val isBatterySaver: Boolean = false,
+    val iconStyle: Int = ICON_STYLE_FILLED
 ) {
     companion object {
         const val THEME_LIGHT = 0
         const val THEME_DARK = 1
         const val THEME_OLED = 2
+
+        const val ICON_STYLE_FILLED = 0
+        const val ICON_STYLE_OUTLINED = 1
+        const val ICON_STYLE_ROUNDED = 2
     }
 }
 
@@ -31,12 +36,14 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
     companion object {
         private val KEY_THEME_MODE = intPreferencesKey("theme_mode")
         private val KEY_ACCENT_COLOR = intPreferencesKey("accent_color")
+        private val KEY_ICON_STYLE = intPreferencesKey("icon_style")
     }
 
     val userPreferences: Flow<UserPreferences> = context.dataStore.data.map { prefs ->
         UserPreferences(
             themeMode = prefs[KEY_THEME_MODE] ?: UserPreferences.THEME_LIGHT,
-            accentColorIndex = prefs[KEY_ACCENT_COLOR] ?: 0
+            accentColorIndex = prefs[KEY_ACCENT_COLOR] ?: 0,
+            iconStyle = prefs[KEY_ICON_STYLE] ?: UserPreferences.ICON_STYLE_FILLED
         )
     }
 
@@ -49,6 +56,12 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
     suspend fun setAccentColor(index: Int) {
         context.dataStore.edit { prefs ->
             prefs[KEY_ACCENT_COLOR] = index
+        }
+    }
+
+    suspend fun setIconStyle(style: Int) {
+        context.dataStore.edit { prefs ->
+            prefs[KEY_ICON_STYLE] = style
         }
     }
 }

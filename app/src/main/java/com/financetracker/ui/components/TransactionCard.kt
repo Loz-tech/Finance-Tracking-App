@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.Transaction
 import java.text.NumberFormat
 import java.time.format.DateTimeFormatter
@@ -36,19 +37,11 @@ import java.util.Locale
 
 /**
  * Reusable transaction card used across Home, Search, and History screens.
- *
- * @param useCard            Wrap content in a [Card] when true; renders a bare row otherwise.
- * @param iconSize           Diameter of the category emoji circle.
- * @param showDate           Show the transaction date below the category/note.
- * @param onClick            Optional click handler (e.g. navigate to edit).
- * @param onDelete           Optional delete action (shown as a trailing icon button).
- * @param cardCornerRadius   Corner radius for the card wrapper.
- * @param horizontalPadding  Horizontal padding inside the card/row.
- * @param verticalPadding    Vertical padding inside the card/row.
  */
 @Composable
 fun TransactionCard(
     transaction: Transaction,
+    iconStyle: IconStyle,
     modifier: Modifier = Modifier,
     useCard: Boolean = true,
     iconSize: Dp = 40.dp,
@@ -69,7 +62,7 @@ fun TransactionCard(
                 .padding(horizontal = horizontalPadding, vertical = verticalPadding),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Category emoji circle
+            // Category icon circle
             Box(
                 modifier = Modifier
                     .size(iconSize)
@@ -77,13 +70,10 @@ fun TransactionCard(
                     .background(MaterialTheme.colorScheme.surfaceContainerHigh),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = transaction.category.emoji,
-                    style = if (iconSize >= 42.dp) {
-                        MaterialTheme.typography.titleMedium
-                    } else {
-                        MaterialTheme.typography.bodyMedium
-                    }
+                CategoryIcon(
+                    iconName = transaction.category.iconName,
+                    iconStyle = iconStyle,
+                    modifier = Modifier.size(iconSize * 0.6f)
                 )
             }
 

@@ -37,6 +37,9 @@
 ### Architecture Pattern
 Clean Architecture-lite with MVVM:
 - `domain/` — pure Kotlin models (`Transaction`, `Category`, `Budget`), repository interfaces, use cases (`*UseCase` with `operator fun invoke()`)
+  - `SearchTransactionsUseCase` — orchestrates search query, date filter, category filter via reactive `Flow`
+  - `GetMonthlySummaryUseCase` — returns `MonthlySummary` with pure `CategoryBreakdown` list (no Compose models)
+  - `CalculateBudgetProgressUseCase` — returns `Flow<List<BudgetProgress>>` with enriched category metadata
 - `data/` — Room entities (`*Entity`), DAOs (`*Dao`), repository implementations (`*RepositoryImpl`), local prefs, exporters
 - `ui/` — feature packages (`ui/<feature>/`) containing `*Screen.kt`, `*ViewModel.kt`, and `*UiState` data class; shared components in `ui/components/`
 - `di/` — single `AppModule.kt`
@@ -123,6 +126,11 @@ No Room in-memory tests, no Hilt test rules, no coroutine test utilities.
 - **`CsvExporter` / `JsonExporter`** — injected singletons writing to `context.getExternalFilesDir(null)/ISpend/`.
 - **`SettingsDataStore`** — typed DataStore wrapper for theme prefs.
 - **`WidgetCategoryStore`** — widget category cache (used by `CategoryRepositoryImpl` to sync on write).
+- **`SearchCriteria`** — value object bundling search query, selected category IDs, and date filter.
+- **`DateFilter`** — sealed class for date filtering: `None`, `Quick` (chip-based), or `Custom` range.
+- **`QuickChip`** — enum of preset date ranges (`TODAY`, `LAST_7_DAYS`, etc.) with `calculateRange(today)`.
+- **`CategoryBreakdown`** — pure domain model for category spending analysis (name, emoji, amount, colorHex).
+- **`TimeProvider`** — seam for time; `SystemTimeProvider` production impl, `FakeTimeProvider` in tests.
 - No base ViewModel, no base Activity/Fragment, no Result/Outcome sealed class.
 
 ### Code Style / Lint

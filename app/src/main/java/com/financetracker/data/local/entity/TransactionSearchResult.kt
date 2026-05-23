@@ -18,6 +18,6 @@ data class TransactionSearchResult(
     val categoryId: UUID,
     val createdAt: Instant,
     @ColumnInfo(name = "categoryName") val categoryName: String,
-    @ColumnInfo(name = "categoryEmoji") val categoryEmoji: String,
+    @ColumnInfo(name = "categoryIconName") val categoryIconName: String,
     @ColumnInfo(name = "categoryColorHex") val categoryColorHex: String?
 )

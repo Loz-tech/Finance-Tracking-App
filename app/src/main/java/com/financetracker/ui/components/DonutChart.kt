@@ -1,17 +1,19 @@
 package com.financetracker.ui.components
 
+import android.graphics.Paint
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,18 +25,17 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import java.util.Locale
+import kotlin.math.cos
+import kotlin.math.roundToInt
+import kotlin.math.sin
 
-data class DonutSegment(val label: String, val emoji: String, val value: Float, val color: Color)
+data class DonutSegment(val label: String, val iconName: String, val value: Float, val color: Color)
 
 @Composable
-fun DonutChart(
-    segments: List<DonutSegment>,
-    modifier: Modifier = Modifier,
-    strokeWidth: Float = 80f,
-    centerText: String? = null
-) {
+fun DonutChart(segments: List<DonutSegment>, modifier: Modifier = Modifier) {
     val total = segments.sumOf { it.value.toDouble() }.toFloat()
     val animationProgress by animateFloatAsState(
         targetValue = 1f,
@@ -43,7 +44,7 @@ fun DonutChart(
     )
 
     Box(
-        modifier = modifier.size(220.dp),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
@@ -53,8 +54,13 @@ fun DonutChart(
                 (size.height - diameter) / 2
             )
             val arcSize = Size(diameter, diameter)
+            val centerX = size.width / 2
+            val centerY = size.height / 2
+            val radius = diameter / 2
+            val strokeWidth = diameter * 0.22f
 
             var startAngle = -90f
+
             segments.forEach { segment ->
                 val sweep = if (total > 0) (segment.value / total) * 360f * animationProgress else 0f
                 drawArc(
@@ -64,26 +70,50 @@ fun DonutChart(
                     useCenter = false,
                     topLeft = topLeft,
                     size = arcSize,
-                    style = Stroke(width = strokeWidth, cap = StrokeCap.Butt)
+                    style = Stroke(width = strokeWidth, cap = StrokeCap.Round)
                 )
                 startAngle += sweep
             }
-        }
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            if (centerText != null) {
-                Text(
-                    text = centerText,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+            startAngle = -90f
+            val textSizePx = diameter * 0.08f
+            val labelPaint = Paint().apply {
+                textAlign = Paint.Align.CENTER
+                this.textSize = textSizePx
+                isFakeBoldText = true
             }
-            if (total > 0) {
-                Text(
-                    text = "$${String.format(Locale.getDefault(), "%.2f", total)}",
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+
+            segments.forEach { segment ->
+                val sweep = if (total > 0) (segment.value / total) * 360f * animationProgress else 0f
+                if (sweep > 15f) {
+                    val midAngle = startAngle + sweep / 2
+                    val rad = Math.toRadians(midAngle.toDouble())
+                    val labelX = centerX + radius * cos(rad).toFloat()
+                    val labelY = centerY + radius * sin(rad).toFloat()
+
+                    val pct = (segment.value / total * 100).roundToInt()
+                    val text = "$pct%"
+
+                    val lum = segment.color.red * 0.299f + segment.color.green * 0.587f + segment.color.blue * 0.114f
+                    if (lum > 0.5f) {
+                        labelPaint.color = android.graphics.Color.BLACK
+                        labelPaint.setShadowLayer(2f, 0f, 0f, android.graphics.Color.WHITE)
+                    } else {
+                        labelPaint.color = android.graphics.Color.WHITE
+                        labelPaint.setShadowLayer(2f, 0f, 0f, android.graphics.Color.BLACK)
+                    }
+
+                    val metrics = labelPaint.fontMetrics
+                    val offsetY = -(metrics.ascent + metrics.descent) / 2
+
+                    drawContext.canvas.nativeCanvas.drawText(
+                        text,
+                        labelX,
+                        labelY + offsetY,
+                        labelPaint
+                    )
+                }
+                startAngle += sweep
             }
         }
     }
@@ -93,22 +123,22 @@ fun DonutChart(
 fun DonutLegend(segments: List<DonutSegment>, modifier: Modifier = Modifier) {
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         segments.forEach { segment ->
-            val total = segments.sumOf { it.value.toDouble() }.toFloat()
-            val pct = if (total > 0) (segment.value / total * 100).toInt() else 0
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Canvas(modifier = Modifier.size(10.dp)) {
-                    drawCircle(color = segment.color)
+                Box(
+                    modifier = Modifier.size(10.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(segment.color, CircleShape)
+                    )
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = segment.emoji,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = "${segment.label}  $pct%",
+                    text = segment.label,
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    fontWeight = FontWeight.Medium
                 )
             }
         }

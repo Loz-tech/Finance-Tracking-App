@@ -41,14 +41,14 @@ class CategoryRepositoryImpl @Inject constructor(
         }
 
         val defaults = listOf(
-            CategoryEntity(name = "Food & Dining", emoji = "🍔", isDefault = true, sortOrder = 0),
-            CategoryEntity(name = "Transport", emoji = "🚗", isDefault = true, sortOrder = 1),
-            CategoryEntity(name = "Housing", emoji = "🏠", isDefault = true, sortOrder = 2),
-            CategoryEntity(name = "Entertainment", emoji = "🎮", isDefault = true, sortOrder = 3),
-            CategoryEntity(name = "Shopping", emoji = "🛒", isDefault = true, sortOrder = 4),
-            CategoryEntity(name = "Health", emoji = "💊", isDefault = true, sortOrder = 5),
-            CategoryEntity(name = "Education", emoji = "📚", isDefault = true, sortOrder = 6),
-            CategoryEntity(name = "Other", emoji = "📦", isDefault = true, sortOrder = 7)
+            CategoryEntity(name = "Food & Dining", iconName = "Restaurant", isDefault = true, sortOrder = 0),
+            CategoryEntity(name = "Transport", iconName = "DirectionsCar", isDefault = true, sortOrder = 1),
+            CategoryEntity(name = "Housing", iconName = "Home", isDefault = true, sortOrder = 2),
+            CategoryEntity(name = "Entertainment", iconName = "Movie", isDefault = true, sortOrder = 3),
+            CategoryEntity(name = "Shopping", iconName = "ShoppingCart", isDefault = true, sortOrder = 4),
+            CategoryEntity(name = "Health", iconName = "LocalHospital", isDefault = true, sortOrder = 5),
+            CategoryEntity(name = "Education", iconName = "School", isDefault = true, sortOrder = 6),
+            CategoryEntity(name = "Other", iconName = "MoreHoriz", isDefault = true, sortOrder = 7)
         )
         categoryDao.insertAll(defaults)
         syncWidgetCategories()
@@ -62,7 +62,7 @@ class CategoryRepositoryImpl @Inject constructor(
     private fun CategoryEntity.toDomain() = Category(
         id = id,
         name = name,
-        emoji = emoji,
+        iconName = iconName,
         colorHex = colorHex,
         isDefault = isDefault,
         sortOrder = sortOrder
@@ -71,7 +71,7 @@ class CategoryRepositoryImpl @Inject constructor(
     private fun Category.toEntity() = CategoryEntity(
         id = id,
         name = name,
-        emoji = emoji,
+        iconName = iconName,
         colorHex = colorHex,
         isDefault = isDefault,
         sortOrder = sortOrder

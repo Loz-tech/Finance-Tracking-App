@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FinanceTrackingApp</string>
     <string name="widget_quick_add_label">Quick Add Transaction</string>
+    <string name="widget_icon_background">widget icon background</string>
 </resources>

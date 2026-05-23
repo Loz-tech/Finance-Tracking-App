@@ -55,10 +55,10 @@ class CategoriesViewModel @Inject constructor(
         }
     }
 
-    fun addCategory(name: String, emoji: String) {
+    fun addCategory(name: String, iconName: String) {
         viewModelScope.launch {
             val maxOrder = categoryRepository.getAllCategories().first().maxOfOrNull { it.sortOrder } ?: -1
-            categoryRepository.saveCategory(Category(name = name, emoji = emoji, sortOrder = maxOrder + 1))
+            categoryRepository.saveCategory(Category(name = name, iconName = iconName, sortOrder = maxOrder + 1))
         }
     }
 
@@ -66,11 +66,17 @@ class CategoriesViewModel @Inject constructor(
         viewModelScope.launch { categoryRepository.saveCategory(category) }
     }
 
+    fun updateCategoryIcon(category: Category, iconName: String) {
+        viewModelScope.launch {
+            categoryRepository.saveCategory(category.copy(iconName = iconName))
+        }
+    }
+
     fun deleteCategory(category: Category) {
         viewModelScope.launch {
             val transactions = transactionRepository.getTransactionsByCategory(category.id).first()
             val otherCat = categoryRepository.getAllCategories().first().find { it.name == "Other" }
-                ?: Category(name = "Other", emoji = "📦")
+                ?: Category(name = "Other", iconName = "MoreHoriz")
             if (otherCat.id != category.id) {
                 transactions.forEach { txn ->
                     transactionRepository.saveTransaction(txn.copy(category = otherCat))

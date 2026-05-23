@@ -29,7 +29,7 @@ class JsonExporter @Inject constructor(@ApplicationContext private val context: 
                 json.append("  {")
                 json.append("\"date\": \"${txn.date}\", ")
                 json.append("\"category\": \"${escapeJson(txn.category.name)}\", ")
-                json.append("\"emoji\": \"${escapeJson(txn.category.emoji)}\", ")
+                json.append("\"iconName\": \"${escapeJson(txn.category.iconName)}\", ")
                 json.append("\"amount\": ${txn.amount}, ")
                 json.append("\"note\": \"${escapeJson(txn.note)}\"")
                 json.append("}")
