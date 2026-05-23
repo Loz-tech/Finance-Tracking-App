@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.onEach
 data class CategoryBudgetProgress(
     val categoryId: UUID,
     val categoryName: String,
-    val emoji: String,
+    val iconName: String,
     val colorHex: String?,
     val spent: BigDecimal,
     val limit: BigDecimal
@@ -67,7 +67,7 @@ class HomeViewModel @Inject constructor(
                 CategoryBudgetProgress(
                     categoryId = it.categoryId!!,
                     categoryName = it.categoryName,
-                    emoji = it.emoji,
+                    iconName = it.iconName,
                     colorHex = it.colorHex,
                     spent = it.spent,
                     limit = it.budgetLimit

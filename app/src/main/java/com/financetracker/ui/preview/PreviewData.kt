@@ -17,7 +17,7 @@ object PreviewData {
     val foodCategory = Category(
         id = UUID.fromString("11111111-1111-1111-1111-111111111111"),
         name = "Food",
-        emoji = "🍔",
+        iconName = "Restaurant",
         colorHex = "#1DBD8E",
         isDefault = true,
         sortOrder = 0
@@ -26,7 +26,7 @@ object PreviewData {
     val transportCategory = Category(
         id = UUID.fromString("22222222-2222-2222-2222-222222222222"),
         name = "Transport",
-        emoji = "🚗",
+        iconName = "DirectionsCar",
         colorHex = "#FF8F5C",
         isDefault = true,
         sortOrder = 1
@@ -35,7 +35,7 @@ object PreviewData {
     val entertainmentCategory = Category(
         id = UUID.fromString("33333333-3333-3333-3333-333333333333"),
         name = "Entertainment",
-        emoji = "🎬",
+        iconName = "Movie",
         colorHex = "#9151B8",
         isDefault = true,
         sortOrder = 2
@@ -44,7 +44,7 @@ object PreviewData {
     val shoppingCategory = Category(
         id = UUID.fromString("44444444-4444-4444-4444-444444444444"),
         name = "Shopping",
-        emoji = "🛍️",
+        iconName = "ShoppingCart",
         colorHex = "#FF57B0",
         isDefault = false,
         sortOrder = 3
@@ -85,17 +85,17 @@ object PreviewData {
 
     val donutSegments: List<DonutSegment>
         get() = listOf(
-            DonutSegment("Food", "🍔", 127.50f, ChartColors[0]),
-            DonutSegment("Transport", "🚗", 45.00f, ChartColors[1]),
-            DonutSegment("Entertainment", "🎬", 89.99f, ChartColors[2]),
-            DonutSegment("Shopping", "🛍️", 120.00f, ChartColors[3])
+            DonutSegment("Food", "Restaurant", 127.50f, ChartColors[0]),
+            DonutSegment("Transport", "DirectionsCar", 45.00f, ChartColors[1]),
+            DonutSegment("Entertainment", "Movie", 89.99f, ChartColors[2]),
+            DonutSegment("Shopping", "ShoppingCart", 120.00f, ChartColors[3])
         )
 
     val categoryBudgetProgress = listOf(
         CategoryBudgetProgress(
             categoryId = foodCategory.id,
             categoryName = foodCategory.name,
-            emoji = foodCategory.emoji,
+            iconName = foodCategory.iconName,
             colorHex = foodCategory.colorHex,
             spent = BigDecimal("127.50"),
             limit = BigDecimal("300.00")
@@ -103,7 +103,7 @@ object PreviewData {
         CategoryBudgetProgress(
             categoryId = transportCategory.id,
             categoryName = transportCategory.name,
-            emoji = transportCategory.emoji,
+            iconName = transportCategory.iconName,
             colorHex = transportCategory.colorHex,
             spent = BigDecimal("45.00"),
             limit = BigDecimal("150.00")

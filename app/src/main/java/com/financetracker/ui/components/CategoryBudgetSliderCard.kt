@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
@@ -24,12 +26,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.financetracker.domain.model.Category
+import com.financetracker.domain.model.IconStyle
 import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import java.math.BigDecimal
@@ -39,6 +43,7 @@ import java.util.Locale
 @Composable
 fun CategoryBudgetSliderCard(
     category: Category,
+    iconStyle: IconStyle,
     limit: BigDecimal,
     spent: BigDecimal,
     onSave: (BigDecimal) -> Unit,
@@ -66,11 +71,19 @@ fun CategoryBudgetSliderCard(
                     .clickable { expanded = !expanded },
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(
-                    "${category.emoji} ${category.name}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Medium
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    CategoryIcon(
+                        iconName = category.iconName,
+                        iconStyle = iconStyle,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        category.name,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
                 Text(
                     currencyFormatter.format(limit),
                     style = MaterialTheme.typography.bodyMedium,
@@ -138,6 +151,7 @@ private fun CategoryBudgetSliderCardPreview() {
     FinanceTrackingAppTheme {
         CategoryBudgetSliderCard(
             category = PreviewData.foodCategory,
+            iconStyle = IconStyle.FILLED,
             limit = BigDecimal("300.00"),
             spent = BigDecimal("127.50"),
             onSave = {}

@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.domain.model.IconStyle
 import com.financetracker.ui.home.CategoryBudgetProgress
 import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
@@ -26,7 +27,11 @@ import java.text.NumberFormat
 import java.util.Locale
 
 @Composable
-fun CategoryBudgetIndicatorRow(budgets: List<CategoryBudgetProgress>, modifier: Modifier = Modifier) {
+fun CategoryBudgetIndicatorRow(
+    budgets: List<CategoryBudgetProgress>,
+    iconStyle: IconStyle,
+    modifier: Modifier = Modifier
+) {
     LazyRow(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -59,9 +64,10 @@ fun CategoryBudgetIndicatorRow(budgets: List<CategoryBudgetProgress>, modifier: 
                         color = indicatorColor,
                         trackColor = MaterialTheme.colorScheme.surfaceContainerHigh
                     )
-                    Text(
-                        text = budget.emoji,
-                        style = MaterialTheme.typography.titleMedium
+                    CategoryIcon(
+                        iconName = budget.iconName,
+                        iconStyle = iconStyle,
+                        modifier = Modifier.size(24.dp)
                     )
                 }
                 Spacer(modifier = Modifier.height(4.dp))
@@ -86,6 +92,6 @@ fun CategoryBudgetIndicatorRow(budgets: List<CategoryBudgetProgress>, modifier: 
 @Composable
 private fun CategoryBudgetIndicatorRowPreview() {
     FinanceTrackingAppTheme {
-        CategoryBudgetIndicatorRow(budgets = PreviewData.categoryBudgetProgress)
+        CategoryBudgetIndicatorRow(budgets = PreviewData.categoryBudgetProgress, iconStyle = IconStyle.FILLED)
     }
 }

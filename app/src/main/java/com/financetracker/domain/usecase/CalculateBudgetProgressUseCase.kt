@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.combine
 data class BudgetProgress(
     val categoryId: UUID?,
     val categoryName: String,
-    val emoji: String,
+    val iconName: String,
     val colorHex: String?,
     val budgetLimit: BigDecimal,
     val spent: BigDecimal,
@@ -55,7 +55,7 @@ class CalculateBudgetProgressUseCase @Inject constructor(
                 BudgetProgress(
                     categoryId = budget.categoryId,
                     categoryName = cat?.name ?: "Total",
-                    emoji = cat?.emoji ?: "💰",
+                    iconName = cat?.iconName ?: "AttachMoney",
                     colorHex = cat?.colorHex,
                     budgetLimit = budget.limitAmount,
                     spent = spent,

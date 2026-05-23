@@ -13,7 +13,7 @@ import com.financetracker.data.local.entity.TransactionEntity
         CategoryEntity::class,
         BudgetEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

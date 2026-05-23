@@ -31,6 +31,7 @@ import com.financetracker.ui.components.AmountInput
 import com.financetracker.ui.components.CategoryChip
 import com.financetracker.ui.components.DateRangePicker
 import com.financetracker.ui.components.DateSelectorRow
+import com.financetracker.ui.components.rememberIconStyle
 import java.util.UUID
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -43,6 +44,7 @@ fun AddTransactionSheet(
     val uiState by viewModel.uiState.collectAsState()
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var showDatePicker by remember { mutableStateOf(false) }
+    val iconStyle = rememberIconStyle()
 
     LaunchedEffect(editTransactionId) {
         if (editTransactionId != null) {
@@ -106,6 +108,7 @@ fun AddTransactionSheet(
                 uiState.categories.forEach { category ->
                     CategoryChip(
                         category = category,
+                        iconStyle = iconStyle,
                         selected = category.id == uiState.selectedCategory?.id,
                         onClick = { viewModel.onCategorySelected(category) }
                     )

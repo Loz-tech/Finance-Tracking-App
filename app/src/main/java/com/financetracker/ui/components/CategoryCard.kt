@@ -1,5 +1,6 @@
 package com.financetracker.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -18,18 +20,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.financetracker.ui.categories.CategoryWithProgress
-import com.financetracker.ui.preview.PreviewData
-import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import java.math.BigDecimal
 
 @Composable
 fun CategoryCard(
     catWithProgress: CategoryWithProgress,
+    iconStyle: com.financetracker.domain.model.IconStyle,
     onEdit: () -> Unit,
     onDelete: () -> Unit,
+    onIconClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val progress = if (catWithProgress.budgetLimit != null && catWithProgress.budgetLimit!! > BigDecimal.ZERO) {
@@ -54,9 +55,12 @@ fun CategoryCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        catWithProgress.category.emoji,
-                        style = MaterialTheme.typography.titleLarge
+                    CategoryIcon(
+                        iconName = catWithProgress.category.iconName,
+                        iconStyle = iconStyle,
+                        modifier = Modifier
+                            .size(28.dp)
+                            .clickable(onClick = onIconClick)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
@@ -86,17 +90,5 @@ fun CategoryCard(
                 )
             }
         }
-    }
-}
-
-@Preview
-@Composable
-private fun CategoryCardPreview() {
-    FinanceTrackingAppTheme {
-        CategoryCard(
-            catWithProgress = PreviewData.categoryWithProgress[0],
-            onEdit = {},
-            onDelete = {}
-        )
     }
 }

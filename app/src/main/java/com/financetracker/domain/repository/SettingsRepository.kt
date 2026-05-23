@@ -7,4 +7,5 @@ interface SettingsRepository {
     val userPreferences: Flow<UserPreferences>
     suspend fun setThemeMode(mode: Int)
     suspend fun setAccentColor(index: Int)
+    suspend fun setIconStyle(style: Int)
 }

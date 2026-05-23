@@ -70,7 +70,7 @@ private fun TransactionRowItem(transaction: Transaction, currencyFormatter: Numb
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            "${transaction.category.emoji} ${transaction.note.ifBlank { transaction.category.name }}",
+            transaction.note.ifBlank { transaction.category.name },
             style = MaterialTheme.typography.bodySmall
         )
         Text(

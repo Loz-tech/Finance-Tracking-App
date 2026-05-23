@@ -5,7 +5,7 @@ import java.util.UUID
 data class Category(
     val id: UUID = UUID.randomUUID(),
     val name: String,
-    val emoji: String,
+    val iconName: String,
     val colorHex: String? = null,
     val isDefault: Boolean = false,
     val sortOrder: Int = 0

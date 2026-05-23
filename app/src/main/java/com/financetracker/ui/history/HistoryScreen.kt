@@ -24,6 +24,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.financetracker.ui.components.EmptyState
 import com.financetracker.ui.components.MonthNavigator
 import com.financetracker.ui.components.TransactionCard
+import com.financetracker.ui.components.rememberIconStyle
 import java.util.UUID
 
 @Composable
@@ -34,9 +35,9 @@ fun HistoryScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
+    val iconStyle = rememberIconStyle()
 
     Column(modifier = modifier.fillMaxSize()) {
-        // Month selector
         MonthNavigator(
             yearMonth = uiState.currentYearMonth,
             onPrevious = viewModel::previousMonth,
@@ -52,7 +53,6 @@ fun HistoryScreen(
             verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             uiState.dateGroups.forEach { group ->
-                // Sticky date header
                 stickyHeader(key = group.date.toString()) {
                     Text(
                         text = group.label,
@@ -72,6 +72,7 @@ fun HistoryScreen(
                 ) { transaction ->
                     TransactionCard(
                         transaction = transaction,
+                        iconStyle = iconStyle,
                         onClick = { onEditTransaction(transaction.id) },
                         onDelete = { viewModel.deleteTransaction(transaction) }
                     )

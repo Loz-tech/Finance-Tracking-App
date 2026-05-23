@@ -31,8 +31,9 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.domain.model.DateFilter
+import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.QuickChip
 import com.financetracker.ui.components.DateRangePicker
 import com.financetracker.ui.components.EmptyState
@@ -49,18 +50,16 @@ fun SearchScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val focusManager = LocalFocusManager.current
-    val focusRequester = remember { FocusRequester() }
+    val searchFocusRequester = remember { FocusRequester() }
+    val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
 
     var showDateRangePicker by remember { mutableStateOf(false) }
 
-    val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
-
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
-        // Search input
         OutlinedTextField(
             value = uiState.query,
             onValueChange = viewModel::onQueryChanged,
-            modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
+            modifier = Modifier.fillMaxWidth().focusRequester(searchFocusRequester),
             placeholder = { Text("Search expenses...") },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
             trailingIcon = {
@@ -76,7 +75,6 @@ fun SearchScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Date range label
         Text(
             text = "Date range",
             style = MaterialTheme.typography.labelSmall,
@@ -84,7 +82,6 @@ fun SearchScreen(
         )
         Spacer(modifier = Modifier.height(4.dp))
 
-        // Date filter chips + clear button
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -118,7 +115,7 @@ fun SearchScreen(
                         "Custom" -> when (val df = uiState.dateFilter) {
                             is DateFilter.Custom -> "${df.start.format(
                                 dateFormatter
-                            )} – ${df.end.format(dateFormatter)}"
+                            )} \u2013 ${df.end.format(dateFormatter)}"
                             else -> "Custom"
                         }
                         else -> item.toString()
@@ -134,33 +131,31 @@ fun SearchScreen(
             }
         }
 
-        // Category filter chips
         if (uiState.allCategories.isNotEmpty()) {
             Spacer(modifier = Modifier.height(12.dp))
             FilterChipGroup(
                 items = uiState.allCategories,
                 selected = { it.id in uiState.selectedCategoryIds },
                 onSelect = { viewModel.onCategoryToggled(it.id) },
-                label = { "${it.emoji} ${it.name}" }
+                label = { category -> category.name }
             )
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Results
         val hasActiveFilter = uiState.query.isNotEmpty() ||
             uiState.selectedCategoryIds.isNotEmpty() ||
             uiState.dateFilter !is DateFilter.None
 
         if (uiState.results.isEmpty() && hasActiveFilter) {
             EmptyState(
-                icon = "🔍",
+                icon = "\ud83d\udd0d",
                 title = "No transactions found",
                 subtitle = "Try adjusting your filters"
             )
         } else if (uiState.results.isEmpty() && !hasActiveFilter) {
             EmptyState(
-                icon = "🔍",
+                icon = "\ud83d\udd0d",
                 title = "Select a filter to search",
                 subtitle = "Use the search bar or pick a filter above"
             )
@@ -169,6 +164,7 @@ fun SearchScreen(
                 items(uiState.results, key = { it.id }) { transaction ->
                     TransactionCard(
                         transaction = transaction,
+                        iconStyle = IconStyle.FILLED,
                         iconSize = 36.dp,
                         cardCornerRadius = 8.dp,
                         onClick = { onEditTransaction(transaction.id) }

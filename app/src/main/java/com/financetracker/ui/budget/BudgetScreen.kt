@@ -34,10 +34,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.ui.components.AmountInput
 import com.financetracker.ui.components.CategoryBudgetSliderCard
+import com.financetracker.ui.components.rememberIconStyle
 
 @Composable
 fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+    val iconStyle = rememberIconStyle()
     var totalInput by remember { mutableStateOf("") }
 
     LaunchedEffect(uiState.totalBudget) {
@@ -58,7 +60,6 @@ fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hil
                 fontWeight = FontWeight.SemiBold
             )
 
-            // Total budget
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
@@ -85,11 +86,11 @@ fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hil
                 }
             }
 
-            // Per-category budgets
             Text("Category Budgets", style = MaterialTheme.typography.titleSmall)
             uiState.categorySliders.forEach { slider ->
                 CategoryBudgetSliderCard(
                     category = slider.category,
+                    iconStyle = iconStyle,
                     limit = slider.limit,
                     spent = slider.spent,
                     onSave = { amount ->

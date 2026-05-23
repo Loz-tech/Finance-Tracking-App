@@ -29,7 +29,7 @@ class GetMonthlySummaryUseCase @Inject constructor(private val transactionReposi
             val breakdowns = categoryGroups.entries.mapIndexed { i, (cat, txns) ->
                 CategoryBreakdown(
                     name = cat.name,
-                    emoji = cat.emoji,
+                    iconName = cat.iconName,
                     amount = txns.fold(BigDecimal.ZERO) { acc, t -> acc + t.amount },
                     colorHex = CHART_COLORS[i % CHART_COLORS.size]
                 )

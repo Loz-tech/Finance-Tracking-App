@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 data class SettingsUiState(
     val themeMode: Int = UserPreferences.THEME_LIGHT,
     val accentColorIndex: Int = 0,
+    val iconStyle: Int = UserPreferences.ICON_STYLE_FILLED,
     val message: String? = null
 )
 
@@ -38,7 +39,8 @@ class SettingsViewModel @Inject constructor(
             settingsRepository.userPreferences.collect { prefs ->
                 _uiState.value = _uiState.value.copy(
                     themeMode = prefs.themeMode,
-                    accentColorIndex = prefs.accentColorIndex
+                    accentColorIndex = prefs.accentColorIndex,
+                    iconStyle = prefs.iconStyle
                 )
             }
         }
@@ -53,6 +55,12 @@ class SettingsViewModel @Inject constructor(
     fun setAccentColor(index: Int) {
         viewModelScope.launch {
             settingsRepository.setAccentColor(index)
+        }
+    }
+
+    fun setIconStyle(style: Int) {
+        viewModelScope.launch {
+            settingsRepository.setIconStyle(style)
         }
     }
 

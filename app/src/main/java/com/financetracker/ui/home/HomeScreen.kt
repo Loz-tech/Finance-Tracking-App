@@ -36,6 +36,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val iconStyle = com.financetracker.ui.components.rememberIconStyle()
 
     if (!uiState.hasTransactions && !uiState.isLoading) {
         EmptyState(
@@ -53,7 +54,6 @@ fun HomeScreen(
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Budget summary card
         item(key = "budget") {
             Spacer(modifier = Modifier.height(8.dp))
             BudgetSummaryCard(
@@ -63,19 +63,17 @@ fun HomeScreen(
             )
         }
 
-        // Category budget progress row
         if (uiState.categoryBudgets.isNotEmpty()) {
             item(key = "category_budgets") {
                 Spacer(modifier = Modifier.height(4.dp))
-                CategoryBudgetIndicatorRow(budgets = uiState.categoryBudgets)
+                CategoryBudgetIndicatorRow(budgets = uiState.categoryBudgets, iconStyle = iconStyle)
             }
         }
 
-        // Donut chart + legend
         val segments = uiState.categoryBreakdowns.mapIndexed { i, bd ->
             DonutSegment(
                 label = bd.name,
-                emoji = bd.emoji,
+                iconName = bd.iconName,
                 value = bd.amount.toDouble().toFloat(),
                 color = ChartColors[i % ChartColors.size]
             )
@@ -89,7 +87,6 @@ fun HomeScreen(
             }
         }
 
-        // Recent activity header
         item(key = "recent_header") {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -108,13 +105,13 @@ fun HomeScreen(
             }
         }
 
-        // Recent transactions
         items(
             items = uiState.recentTransactions,
             key = { it.id }
         ) { transaction ->
             TransactionCard(
                 transaction = transaction,
+                iconStyle = iconStyle,
                 useCard = false,
                 iconSize = 44.dp,
                 showDate = true,

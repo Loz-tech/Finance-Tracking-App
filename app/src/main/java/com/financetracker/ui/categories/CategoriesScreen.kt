@@ -20,12 +20,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.domain.model.Category
 import com.financetracker.ui.components.CategoryCard
 import com.financetracker.ui.components.CategoryDialog
+import com.financetracker.ui.components.CategoryIconPickerSheet
+import com.financetracker.ui.components.rememberIconStyle
 
 @Composable
 fun CategoriesScreen(modifier: Modifier = Modifier, viewModel: CategoriesViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+    val iconStyle = rememberIconStyle()
     var showAddDialog by remember { mutableStateOf(false) }
     var editingCategory by remember { mutableStateOf<Category?>(null) }
+    var iconPickingCategory by remember { mutableStateOf<Category?>(null) }
 
     Box(modifier = modifier.fillMaxSize()) {
         LazyColumn(
@@ -35,8 +39,10 @@ fun CategoriesScreen(modifier: Modifier = Modifier, viewModel: CategoriesViewMod
             items(uiState.categoriesWithProgress, key = { it.category.id }) { item ->
                 CategoryCard(
                     catWithProgress = item,
+                    iconStyle = iconStyle,
                     onEdit = { editingCategory = item.category },
-                    onDelete = { viewModel.deleteCategory(item.category) }
+                    onDelete = { viewModel.deleteCategory(item.category) },
+                    onIconClick = { iconPickingCategory = item.category }
                 )
             }
             item { Spacer(modifier = Modifier.height(80.dp)) }
@@ -47,8 +53,8 @@ fun CategoriesScreen(modifier: Modifier = Modifier, viewModel: CategoriesViewMod
         CategoryDialog(
             category = null,
             onDismiss = { showAddDialog = false },
-            onSave = { name, emoji ->
-                viewModel.addCategory(name, emoji)
+            onSave = { name ->
+                viewModel.addCategory(name, "MoreHoriz")
                 showAddDialog = false
             }
         )
@@ -58,11 +64,25 @@ fun CategoriesScreen(modifier: Modifier = Modifier, viewModel: CategoriesViewMod
         CategoryDialog(
             category = editingCategory,
             onDismiss = { editingCategory = null },
-            onSave = { name, emoji ->
+            onSave = { name ->
                 editingCategory?.let {
-                    viewModel.updateCategory(it.copy(name = name, emoji = emoji))
+                    viewModel.updateCategory(it.copy(name = name))
                 }
                 editingCategory = null
+            }
+        )
+    }
+
+    if (iconPickingCategory != null) {
+        CategoryIconPickerSheet(
+            selectedIconName = iconPickingCategory!!.iconName,
+            iconStyle = iconStyle,
+            onDismiss = { iconPickingCategory = null },
+            onIconSelected = { iconName ->
+                iconPickingCategory?.let {
+                    viewModel.updateCategoryIcon(it, iconName)
+                }
+                iconPickingCategory = null
             }
         )
     }

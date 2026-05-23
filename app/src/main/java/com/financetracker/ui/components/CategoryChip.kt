@@ -1,7 +1,6 @@
 package com.financetracker.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -19,11 +18,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.financetracker.domain.model.Category
+import com.financetracker.domain.model.IconStyle
 import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 
 @Composable
-fun CategoryChip(category: Category, selected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun CategoryChip(
+    category: Category,
+    iconStyle: IconStyle,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(12.dp))
@@ -34,23 +40,15 @@ fun CategoryChip(category: Category, selected: Boolean, onClick: () -> Unit, mod
                     MaterialTheme.colorScheme.surfaceContainerHigh
                 }
             )
-            .border(
-                1.dp,
-                if (selected) {
-                    MaterialTheme.colorScheme.primary
-                } else {
-                    MaterialTheme.colorScheme.outline
-                },
-                RoundedCornerShape(12.dp)
-            )
             .clickable(onClick = onClick)
             .padding(horizontal = 12.dp, vertical = 8.dp),
         contentAlignment = Alignment.Center
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = category.emoji,
-                style = MaterialTheme.typography.bodyMedium
+            CategoryIcon(
+                iconName = category.iconName,
+                iconStyle = iconStyle,
+                modifier = Modifier.width(18.dp)
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
@@ -69,12 +67,14 @@ private fun CategoryChipPreview() {
         Row {
             CategoryChip(
                 category = PreviewData.foodCategory,
+                iconStyle = IconStyle.FILLED,
                 selected = false,
                 onClick = {}
             )
             Spacer(modifier = Modifier.width(8.dp))
             CategoryChip(
                 category = PreviewData.foodCategory,
+                iconStyle = IconStyle.FILLED,
                 selected = true,
                 onClick = {}
             )

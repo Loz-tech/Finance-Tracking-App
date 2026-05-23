@@ -38,7 +38,7 @@ interface TransactionDao {
     @Query(
         """
         SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
-               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+               c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
         WHERE t.note LIKE '%' || :query || '%'
@@ -51,7 +51,7 @@ interface TransactionDao {
     @Query(
         """
         SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
-               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+               c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
         WHERE (t.note LIKE '%' || :query || '%' OR c.name LIKE '%' || :query || '%')
@@ -64,7 +64,7 @@ interface TransactionDao {
     @Query(
         """
         SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
-               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+               c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
         WHERE (t.note LIKE '%' || :query || '%' OR c.name LIKE '%' || :query || '%')
@@ -77,7 +77,7 @@ interface TransactionDao {
     @Query(
         """
         SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
-               c.name AS categoryName, c.emoji AS categoryEmoji, c.colorHex AS categoryColorHex
+               c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
         WHERE (t.note LIKE '%' || :query || '%' OR c.name LIKE '%' || :query || '%')
