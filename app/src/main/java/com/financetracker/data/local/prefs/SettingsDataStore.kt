@@ -23,7 +23,7 @@ data class UserPreferences(
     companion object {
         const val THEME_LIGHT = 0
         const val THEME_DARK = 1
-        const val THEME_OLED = 2
+        const val THEME_SYSTEM = 2
 
         const val ICON_STYLE_FILLED = 0
         const val ICON_STYLE_OUTLINED = 1

@@ -47,20 +47,20 @@ private fun lightColorScheme(accent: AccentColor = AccentColor.TEAL): ColorSchem
 
 // Dark theme
 private fun darkColorScheme(accent: AccentColor = AccentColor.TEAL): ColorScheme = darkColorScheme(
-    primary = Teal80,
-    onPrimary = Teal20,
-    primaryContainer = Teal30,
-    onPrimaryContainer = Teal90,
+    primary = accent.darkPrimaryColor,
+    onPrimary = Color.Black,
+    primaryContainer = accent.darkPrimaryContainerColor,
+    onPrimaryContainer = accent.darkPrimaryColor.copy(alpha = 0.87f),
     secondary = TealSecondary80,
-    onSecondary = TealSecondary20,
+    onSecondary = Color.Black,
     secondaryContainer = TealSecondary30,
     onSecondaryContainer = TealSecondary90,
     tertiary = Tertiary80,
-    onTertiary = Tertiary20,
+    onTertiary = Color.Black,
     tertiaryContainer = Tertiary30,
     onTertiaryContainer = Tertiary90,
     error = Error80,
-    onError = Error20,
+    onError = Color.Black,
     errorContainer = Error30,
     onErrorContainer = Error90,
     background = Neutral10,
@@ -76,37 +76,6 @@ private fun darkColorScheme(accent: AccentColor = AccentColor.TEAL): ColorScheme
     scrim = Color.Black.copy(alpha = 0.32f)
 )
 
-// OLED Black theme
-private fun oledColorScheme(accent: AccentColor = AccentColor.TEAL): ColorScheme = darkColorScheme(
-    primary = Teal80,
-    onPrimary = Color.Black,
-    primaryContainer = Teal30,
-    onPrimaryContainer = Teal90,
-    secondary = TealSecondary80,
-    onSecondary = Color.Black,
-    secondaryContainer = TealSecondary30,
-    onSecondaryContainer = TealSecondary90,
-    tertiary = Tertiary80,
-    onTertiary = Color.Black,
-    tertiaryContainer = Tertiary30,
-    onTertiaryContainer = Tertiary90,
-    error = Error80,
-    onError = Color.Black,
-    errorContainer = Error30,
-    onErrorContainer = Error90,
-    background = Color.Black,
-    onBackground = Neutral90,
-    surface = Color.Black,
-    onSurface = Neutral90,
-    surfaceVariant = Color(0xFF1A1C1C),
-    onSurfaceVariant = Neutral80,
-    outline = Neutral40,
-    outlineVariant = Color(0xFF1A1C1C),
-    inverseSurface = Neutral90,
-    inverseOnSurface = Color.Black,
-    scrim = Color.Black.copy(alpha = 0.32f)
-)
-
 @Composable
 fun FinanceTrackingAppTheme(
     themeMode: Int = UserPreferences.THEME_LIGHT,
@@ -117,13 +86,12 @@ fun FinanceTrackingAppTheme(
     val accent = AccentColor.entries.getOrElse(accentColor) { AccentColor.TEAL }
     val darkTheme = when (themeMode) {
         UserPreferences.THEME_DARK -> true
-        UserPreferences.THEME_OLED -> true
+        UserPreferences.THEME_LIGHT -> false
         else -> isSystemInDarkTheme()
     }
 
-    val colorScheme = when (themeMode) {
-        UserPreferences.THEME_OLED -> oledColorScheme(accent)
-        UserPreferences.THEME_DARK -> darkColorScheme(accent)
+    val colorScheme = when {
+        darkTheme -> darkColorScheme(accent)
         else -> lightColorScheme(accent)
     }
 
@@ -131,11 +99,7 @@ fun FinanceTrackingAppTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = if (themeMode == UserPreferences.THEME_OLED) {
-                Color.Black.toArgb()
-            } else {
-                colorScheme.surface.toArgb()
-            }
+            window.statusBarColor = colorScheme.surface.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }

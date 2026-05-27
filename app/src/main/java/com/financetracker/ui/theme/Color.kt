@@ -60,11 +60,17 @@ val ChartColors = listOf(
     Color(0xFF00D4C6),
     Color(0xFF006ECF)
 )
-enum class AccentColor(val label: String, val primaryColor: Color, val primaryContainerColor: Color) {
-    TEAL("Teal", Color(0xFF006874), Color(0xFFB9FCFF)),
-    BLUE("Blue", Color(0xFF005CBB), Color(0xFFD7E3FF)),
-    PURPLE("Purple", Color(0xFF634186), Color(0xFFE8DEFF)),
-    ORANGE("Orange", Color(0xFF8B4A00), Color(0xFFFFDCC2)),
-    GREEN("Green", Color(0xFF006E28), Color(0xFFA6F5B6)),
-    PINK("Pink", Color(0xFF90416A), Color(0xFFFFD8E7))
+enum class AccentColor(
+    val label: String,
+    val primaryColor: Color,
+    val primaryContainerColor: Color,
+    val darkPrimaryColor: Color,
+    val darkPrimaryContainerColor: Color
+) {
+    TEAL("Teal", Color(0xFF006874), Color(0xFFB9FCFF), Color(0xFF4CD9E5), Color(0xFF004F51)),
+    BLUE("Blue", Color(0xFF005CBB), Color(0xFFD7E3FF), Color(0xFF9FC9FF), Color(0xFF00468C)),
+    PURPLE("Purple", Color(0xFF634186), Color(0xFFE8DEFF), Color(0xFFD4BBFD), Color(0xFF4B256C)),
+    ORANGE("Orange", Color(0xFF8B4A00), Color(0xFFFFDCC2), Color(0xFFFFB77E), Color(0xFF5C2F00)),
+    GREEN("Green", Color(0xFF006E28), Color(0xFFA6F5B6), Color(0xFF54DE74), Color(0xFF005317)),
+    PINK("Pink", Color(0xFF90416A), Color(0xFFFFD8E7), Color(0xFFFFAFD0), Color(0xFF6C1B46))
 }
