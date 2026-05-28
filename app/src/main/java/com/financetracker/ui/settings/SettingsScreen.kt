@@ -51,7 +51,7 @@ fun SettingsScreen(
                 items = listOf(
                     UserPreferences.THEME_LIGHT,
                     UserPreferences.THEME_DARK,
-                    UserPreferences.THEME_OLED
+                    UserPreferences.THEME_SYSTEM
                 ),
                 selected = { it == uiState.themeMode },
                 onSelect = { viewModel.setThemeMode(it) },
@@ -59,7 +59,7 @@ fun SettingsScreen(
                     when (it) {
                         UserPreferences.THEME_LIGHT -> "☀ Light"
                         UserPreferences.THEME_DARK -> "🌙 Dark"
-                        else -> "⬛ OLED"
+                        else -> "🔘 System"
                     }
                 }
             )
