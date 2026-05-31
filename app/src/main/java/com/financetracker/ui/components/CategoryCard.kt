@@ -2,16 +2,12 @@ package com.financetracker.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,56 +35,53 @@ fun CategoryCard(
         0f
     }
 
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = if (catWithProgress.isOverBudget) {
-                MaterialTheme.colorScheme.errorContainer
-            } else {
-                MaterialTheme.colorScheme.surfaceContainerLow
-            }
-        )
+    val isOverBudget = catWithProgress.isOverBudget
+    SectionCard(
+        modifier = modifier,
+        containerColor = if (isOverBudget) {
+            MaterialTheme.colorScheme.errorContainer
+        } else {
+            MaterialTheme.colorScheme.surfaceContainerLow
+        }
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    CategoryIcon(
-                        iconName = catWithProgress.category.iconName,
-                        iconStyle = iconStyle,
-                        modifier = Modifier
-                            .size(28.dp)
-                            .clickable(onClick = onIconClick)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        catWithProgress.category.name,
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-                Row {
-                    TextButton(onClick = onEdit) { Text("Edit") }
-                    TextButton(onClick = onDelete) { Text("Delete", color = MaterialTheme.colorScheme.error) }
-                }
-            }
-            if (catWithProgress.budgetLimit != null) {
-                Spacer(modifier = Modifier.height(8.dp))
-                LinearProgressIndicator(
-                    progress = { progress },
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                CategoryIcon(
+                    iconName = catWithProgress.category.iconName,
+                    iconStyle = iconStyle,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(6.dp),
-                    color = if (catWithProgress.isOverBudget) {
-                        MaterialTheme.colorScheme.error
-                    } else {
-                        MaterialTheme.colorScheme.primary
-                    },
-                    trackColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                        .size(28.dp)
+                        .clickable(onClick = onIconClick)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    catWithProgress.category.name,
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Medium
                 )
             }
+            Row {
+                TextButton(onClick = onEdit) { Text("Edit") }
+                TextButton(onClick = onDelete) { Text("Delete", color = MaterialTheme.colorScheme.error) }
+            }
+        }
+        if (catWithProgress.budgetLimit != null) {
+            Spacer(modifier = Modifier.height(8.dp))
+            LinearProgressIndicator(
+                progress = { progress },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(6.dp),
+                color = if (isOverBudget) {
+                    MaterialTheme.colorScheme.error
+                } else {
+                    MaterialTheme.colorScheme.primary
+                },
+                trackColor = MaterialTheme.colorScheme.surfaceContainerHighest
+            )
         }
     }
 }
