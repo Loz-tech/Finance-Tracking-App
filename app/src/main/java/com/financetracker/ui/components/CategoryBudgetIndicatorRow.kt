@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -59,7 +60,7 @@ fun CategoryBudgetIndicatorRow(
                 ) {
                     CircularProgressIndicator(
                         progress = { progress },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxSize(),
                         strokeWidth = 4.dp,
                         color = indicatorColor,
                         trackColor = MaterialTheme.colorScheme.surfaceContainerHigh
@@ -70,13 +71,7 @@ fun CategoryBudgetIndicatorRow(
                         modifier = Modifier.size(24.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = budget.categoryName,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1
-                )
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = currencyFormatter.format(budget.spent),
                     style = MaterialTheme.typography.labelSmall,

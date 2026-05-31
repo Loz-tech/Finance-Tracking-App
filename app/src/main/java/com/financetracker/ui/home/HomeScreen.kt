@@ -1,5 +1,6 @@
 package com.financetracker.ui.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,7 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -48,11 +50,20 @@ fun HomeScreen(
         return
     }
 
+    val segments = uiState.categoryBreakdowns.mapIndexed { i, bd ->
+        DonutSegment(
+            label = bd.name,
+            iconName = bd.iconName,
+            value = bd.amount.toDouble().toFloat(),
+            color = ChartColors[i % ChartColors.size]
+        )
+    }
+    val recentColor = MaterialTheme.colorScheme.surfaceContainerLow
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+            .padding(horizontal = 16.dp)
     ) {
         item(key = "budget") {
             Spacer(modifier = Modifier.height(8.dp))
@@ -64,21 +75,14 @@ fun HomeScreen(
         }
 
         if (uiState.categoryBudgets.isNotEmpty()) {
+            item(key = "spacer_cat") { Spacer(modifier = Modifier.height(20.dp)) }
             item(key = "category_budgets") {
-                Spacer(modifier = Modifier.height(4.dp))
                 CategoryBudgetIndicatorRow(budgets = uiState.categoryBudgets, iconStyle = iconStyle)
             }
         }
 
-        val segments = uiState.categoryBreakdowns.mapIndexed { i, bd ->
-            DonutSegment(
-                label = bd.name,
-                iconName = bd.iconName,
-                value = bd.amount.toDouble().toFloat(),
-                color = ChartColors[i % ChartColors.size]
-            )
-        }
         if (segments.isNotEmpty()) {
+            item(key = "spacer_donut") { Spacer(modifier = Modifier.height(16.dp)) }
             item(key = "donut") {
                 CategoryBreakdownCard(
                     segments = segments,
@@ -87,9 +91,19 @@ fun HomeScreen(
             }
         }
 
+        item(key = "spacer_recent") { Spacer(modifier = Modifier.height(16.dp)) }
+
         item(key = "recent_header") {
+            val headerShape = if (uiState.recentTransactions.isEmpty()) {
+                RoundedCornerShape(12.dp)
+            } else {
+                RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
+            }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(recentColor, shape = headerShape)
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -105,23 +119,31 @@ fun HomeScreen(
             }
         }
 
-        items(
+        itemsIndexed(
             items = uiState.recentTransactions,
-            key = { it.id }
-        ) { transaction ->
+            key = { _, tx -> tx.id }
+        ) { index, transaction ->
+            val isLast = index == uiState.recentTransactions.lastIndex
+            val itemShape = if (isLast) {
+                RoundedCornerShape(bottomStart = 12.dp, bottomEnd = 12.dp)
+            } else {
+                RoundedCornerShape(0.dp)
+            }
             TransactionCard(
                 transaction = transaction,
                 iconStyle = iconStyle,
+                modifier = Modifier.background(recentColor, shape = itemShape),
                 useCard = false,
                 iconSize = 44.dp,
                 showDate = true,
+                horizontalPadding = 16.dp,
                 verticalPadding = 8.dp,
                 onClick = { onEditTransaction(transaction.id) }
             )
         }
 
         item(key = "bottom_spacer") {
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(96.dp))
         }
     }
 }
