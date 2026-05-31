@@ -6,9 +6,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,33 +26,24 @@ import java.util.Locale
 fun DayDetailCard(day: CalendarDay, modifier: Modifier = Modifier) {
     val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
 
-    Card(
-        modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+    SectionCard(modifier = modifier, title = DateTimeFormatter.ofPattern("EEEE, MMM d").format(day.date)) {
+        Text(
+            currencyFormatter.format(day.total),
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        val txns = day.transactions
+        if (txns.isEmpty()) {
             Text(
-                DateTimeFormatter.ofPattern("EEEE, MMM d").format(day.date),
-                style = MaterialTheme.typography.titleSmall
+                "No transactions",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            Text(
-                currencyFormatter.format(day.total),
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            val txns = day.transactions
-            if (txns.isEmpty()) {
-                Text(
-                    "No transactions",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            } else {
-                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    txns.forEach { t ->
-                        TransactionRowItem(transaction = t, currencyFormatter = currencyFormatter)
-                    }
+        } else {
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                txns.forEach { t ->
+                    TransactionRowItem(transaction = t, currencyFormatter = currencyFormatter)
                 }
             }
         }

@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,23 +38,17 @@ fun BudgetSummaryCard(
     }
     val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
 
-    Card(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable { onClick() },
-        colors = CardDefaults.cardColors(
-            containerColor = if (remaining < BigDecimal.ZERO) {
-                MaterialTheme.colorScheme.errorContainer
-            } else {
-                MaterialTheme.colorScheme.surfaceContainerLow
-            }
-        ),
-        shape = MaterialTheme.shapes.medium
+    val isOverBudget = remaining < BigDecimal.ZERO
+    SectionCard(
+        modifier = modifier.clickable { onClick() },
+        containerColor = if (isOverBudget) {
+            MaterialTheme.colorScheme.errorContainer
+        } else {
+            MaterialTheme.colorScheme.surfaceContainerLow
+        }
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -79,7 +70,7 @@ fun BudgetSummaryCard(
                     Text(
                         text = "${currencyFormatter.format(remaining)} left",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = if (remaining < BigDecimal.ZERO) {
+                        color = if (isOverBudget) {
                             MaterialTheme.colorScheme.error
                         } else {
                             MaterialTheme.colorScheme.onSurfaceVariant

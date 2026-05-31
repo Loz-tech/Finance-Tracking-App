@@ -14,8 +14,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.ui.components.AmountInput
 import com.financetracker.ui.components.CategoryBudgetSliderCard
+import com.financetracker.ui.components.SectionCard
 import com.financetracker.ui.components.rememberIconStyle
 
 @Composable
@@ -60,30 +59,26 @@ fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hil
                 fontWeight = FontWeight.SemiBold
             )
 
-            Card(
+            SectionCard(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+                title = "Total Monthly Limit"
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Total Monthly Limit", style = MaterialTheme.typography.titleSmall)
-                    Spacer(modifier = Modifier.height(8.dp))
-                    AmountInput(
-                        value = totalInput,
-                        onValueChange = { totalInput = it },
-                        label = "Amount",
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    androidx.compose.material3.Button(
-                        onClick = {
-                            totalInput.toBigDecimalOrNull()?.let {
-                                viewModel.setTotalBudget(it)
-                            }
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp)
-                    ) { Text("Save Total Budget") }
-                }
+                AmountInput(
+                    value = totalInput,
+                    onValueChange = { totalInput = it },
+                    label = "Amount",
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                androidx.compose.material3.Button(
+                    onClick = {
+                        totalInput.toBigDecimalOrNull()?.let {
+                            viewModel.setTotalBudget(it)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp)
+                ) { Text("Save Total Budget") }
             }
 
             Text("Category Budgets", style = MaterialTheme.typography.titleSmall)
