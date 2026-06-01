@@ -4,9 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import java.math.BigDecimal
 import java.text.NumberFormat
-import java.time.LocalDate
 import java.util.Locale
 
 @Composable
@@ -27,9 +24,6 @@ fun BudgetSummaryCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val today = LocalDate.now()
-    val daysInMonth = today.lengthOfMonth()
-    val daysLeft = daysInMonth - today.dayOfMonth
     val remaining = totalBudget?.subtract(totalSpent) ?: BigDecimal.ZERO
     val progress = if (totalBudget != null && totalBudget > BigDecimal.ZERO) {
         (totalSpent.toFloat() / totalBudget.toFloat()).coerceIn(0f, 1f)
@@ -60,12 +54,10 @@ fun BudgetSummaryCard(
                 strokeWidth = 8.dp
             )
 
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = "Monthly Budget",
-                    style = MaterialTheme.typography.titleSmall
-                )
-                Spacer(modifier = Modifier.height(4.dp))
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
                 if (totalBudget != null) {
                     Text(
                         text = "${currencyFormatter.format(remaining)} left",
@@ -77,11 +69,6 @@ fun BudgetSummaryCard(
                         }
                     )
                 }
-                Text(
-                    text = "$daysLeft days remaining",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.secondary
-                )
             }
         }
     }
