@@ -2,8 +2,6 @@ package com.financetracker.ui.addtransaction
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,14 +25,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.financetracker.ui.components.AmountInput
-import com.financetracker.ui.components.CategoryChip
-import com.financetracker.ui.components.DateRangePicker
-import com.financetracker.ui.components.DateSelectorRow
-import com.financetracker.ui.components.rememberIconStyle
+import com.financetracker.ui.components.category.CategoryChipGroup
+import com.financetracker.ui.components.input.AmountInput
+import com.financetracker.ui.components.input.DateRangePicker
+import com.financetracker.ui.components.input.DateSelectorRow
+import com.financetracker.ui.components.util.rememberIconStyle
 import java.util.UUID
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTransactionSheet(
     onDismiss: () -> Unit,
@@ -95,25 +93,12 @@ fun AddTransactionSheet(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Text(
-                text = "Category",
-                style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+            CategoryChipGroup(
+                categories = uiState.categories,
+                selectedCategory = uiState.selectedCategory,
+                onCategorySelected = viewModel::onCategorySelected,
+                iconStyle = iconStyle
             )
-            FlowRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                uiState.categories.forEach { category ->
-                    CategoryChip(
-                        category = category,
-                        iconStyle = iconStyle,
-                        selected = category.id == uiState.selectedCategory?.id,
-                        onClick = { viewModel.onCategorySelected(category) }
-                    )
-                }
-            }
 
             OutlinedTextField(
                 value = uiState.note,

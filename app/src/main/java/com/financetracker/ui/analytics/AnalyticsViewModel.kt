@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Period
 import com.financetracker.domain.repository.TransactionRepository
-import com.financetracker.ui.components.DonutSegment
+import com.financetracker.ui.components.charts.DonutSegment
 import com.financetracker.ui.theme.ChartColors
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal

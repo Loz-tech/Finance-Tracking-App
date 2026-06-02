@@ -23,10 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.data.local.prefs.UserPreferences
-import com.financetracker.ui.components.AccentColorPicker
-import com.financetracker.ui.components.FilterChipGroup
-import com.financetracker.ui.components.ResetDataDialog
-import com.financetracker.ui.components.SettingsCard
+import com.financetracker.ui.components.core.SettingsCard
+import com.financetracker.ui.components.input.AccentColorPicker
+import com.financetracker.ui.components.input.FilterChipGroup
+import com.financetracker.ui.components.input.ResetDataDialog
 
 @Composable
 fun SettingsScreen(
