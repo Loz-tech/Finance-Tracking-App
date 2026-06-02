@@ -1,160 +1,304 @@
-# Code Context — FinanceTrackingApp
+# Code Context
 
 ## Files Retrieved
-1. `app/build.gradle.kts` (full) — single `:app` module; defines tech stack (Compose BOM, Room KSP, Hilt, Navigation, DataStore, Serialization), compileSdk 36, minSdk 24, Java 11.
-2. `gradle/libs.versions.toml` (full) — version catalog. Key versions: AGP 9.2.1, Kotlin 2.2.10, Room 2.7.1, Hilt 2.59.2, Navigation 2.9.0, Compose BOM 2026.02.01.
-3. `app/src/main/java/com/financetracker/di/AppModule.kt` (full) — single Hilt module `@InstallIn(SingletonComponent)`. Provides DB, DAOs, and binds repository interfaces → impls.
-4. `app/src/main/java/com/financetracker/data/local/db/AppDatabase.kt` (full) — Room DB v1, exportSchema false, 3 entities, `TypeConverters(Converters::class)`.
-5. `app/src/main/java/com/financetracker/data/local/db/Converters.kt` (full) — converters for `UUID`, `LocalDate`, `BigDecimal`, `Instant`.
-6. `app/src/main/java/com/financetracker/data/local/db/TransactionDao.kt` (full) — complex search queries returning `Flow<List<TransactionSearchResult>>` with JOINs; `DailyTotal` aggregation DTO.
-7. `app/src/main/java/com/financetracker/domain/repository/TransactionRepository.kt` (full) — repository interface contract.
-8. `app/src/main/java/com/financetracker/data/repository/TransactionRepositoryImpl.kt` (full) — maps `TransactionEntity` ↔ `Transaction`, uses `CategoryRepository` to hydrate category data.
-9. `app/src/main/java/com/financetracker/ui/navigation/AppNavHost.kt` (full) — central navigation graph with `Scaffold`, conditional `TopBar`/`BottomBar`/`FAB`, `NavHost`, routes for all screens.
-10. `app/src/main/java/com/financetracker/ui/navigation/Screen.kt` (full) — sealed class routes + `BottomNavItem` list.
-11. `app/src/main/java/com/financetracker/ui/home/HomeScreen.kt` (full) — representative Screen composable collecting `uiState` via `collectAsState()`.
-12. `app/src/main/java/com/financetracker/ui/home/HomeViewModel.kt` (full) — `HiltViewModel`, exposes `StateFlow<HomeUiState>`, combines repository flows in `init`.
-13. `app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionViewModel.kt` (full) — `HiltViewModel` pattern with mutable state updates.
-14. `app/src/main/java/com/financetracker/ui/theme/Theme.kt` (lines 1–120) — supports Light, Dark, OLED themes with accent color picker; edge-to-edge via `enableEdgeToEdge()`.
-15. `app/src/main/java/com/financetracker/MainActivity.kt` (full) — `AndroidEntryPoint`, seeds default categories on first launch, applies dynamic theme from `SettingsRepository`.
-16. `app/src/main/java/com/financetracker/domain/model/Transaction.kt`, `Category.kt`, `Budget.kt` (full) — plain domain data classes using `UUID`, `BigDecimal`, `LocalDate`.
-17. `app/src/main/java/com/financetracker/data/local/entity/TransactionEntity.kt`, `CategoryEntity.kt`, `BudgetEntity.kt` (full) — Room entities with `UUID` primary keys.
-18. `app/src/main/java/com/financetracker/data/local/prefs/SettingsDataStore.kt` (full) — DataStore preferences for theme mode and accent color.
-19. `app/src/main/java/com/financetracker/ui/components/TransactionCard.kt` (lines 1–60) — reusable component with many customization params (`useCard`, `showDate`, `onDelete`, etc.).
-20. `app/src/main/java/com/financetracker/ui/search/SearchViewModel.kt` (full) — demonstrates `Flow` debounce, `flatMapLatest`, and `combine` patterns.
 
-## Key Code
+### Screens audited (full files read)
+1. `app/src/main/java/com/financetracker/ui/home/HomeScreen.kt` (lines 1‑149) — LazyColumn with budget, donut, and recent activity header + transaction list.
+2. `app/src/main/java/com/financetracker/ui/analytics/AnalyticsScreen.kt` (lines 1‑67) — Almost entirely component calls; no significant inline blocks.
+3. `app/src/main/java/com/financetracker/ui/search/SearchScreen.kt` (lines 1‑186) — Search text field, date/category filter rows, result list.
+4. `app/src/main/java/com/financetracker/ui/budget/BudgetScreen.kt` (lines 1‑111) — Total budget editor inside `SectionCard`, category slider list, recalc FAB.
+5. `app/src/main/java/com/financetracker/ui/history/HistoryScreen.kt` (lines 1‑93) — Month navigator + sticky date-group headers + transactions.
+6. `app/src/main/java/com/financetracker/ui/calendar/CalendarScreen.kt` (lines 1‑118) — Weekday header, calendar grid with offset, heatmap legend, selected day detail.
+7. `app/src/main/java/com/financetracker/ui/categories/CategoriesScreen.kt` (lines 1‑89) — `CategoryCard` list + dialogs/sheets.
+8. `app/src/main/java/com/financetracker/ui/settings/SettingsScreen.kt` (lines 1‑144) — `SettingsCard` wrappers with inline buttons.
+9. `app/src/main/java/com/financetracker/ui/addtransaction/AddTransactionSheet.kt` (lines 1‑158) — Bottom-sheet form with inline title, category FlowRow, note input, save button.
 
-### Tech Stack
-- **Language:** Kotlin 2.2.10 (Java 11 target)
-- **UI:** Jetpack Compose (BOM 2026.02.01), Material3, `androidx.activity:activity-compose`, `androidx.hilt:hilt-navigation-compose`
-- **Database:** Room 2.7.1 with KSP compiler, `room-ktx`
-- **DI:** Dagger Hilt 2.59.2 (`@HiltAndroidApp`, `@HiltViewModel`, `hiltViewModel()`)
-- **Navigation:** Navigation Compose 2.9.0
-- **Preferences:** DataStore Preferences 1.1.6
-- **Serialization:** Kotlinx Serialization JSON 1.8.1
-- **Build:** Gradle with version catalogs, AGP 9.2.1, single `:app` module
-
-### Architecture Pattern
-Clean Architecture-lite with MVVM:
-- `domain/` — pure Kotlin models (`Transaction`, `Category`, `Budget`), repository interfaces, use cases (`*UseCase` with `operator fun invoke()`)
-  - `SearchTransactionsUseCase` — orchestrates search query, date filter, category filter via reactive `Flow`
-  - `GetMonthlySummaryUseCase` — returns `MonthlySummary` with pure `CategoryBreakdown` list (no Compose models)
-  - `CalculateBudgetProgressUseCase` — returns `Flow<List<BudgetProgress>>` with enriched category metadata
-- `data/` — Room entities (`*Entity`), DAOs (`*Dao`), repository implementations (`*RepositoryImpl`), local prefs, exporters
-- `ui/` — feature packages (`ui/<feature>/`) containing `*Screen.kt`, `*ViewModel.kt`, and `*UiState` data class; shared components in `ui/components/`
-- `di/` — single `AppModule.kt`
-
-### Naming Conventions
-| Layer | Pattern | Example |
-|-------|---------|---------|
-| Domain model | plain data class | `Transaction` |
-| Entity | `*Entity` | `TransactionEntity` |
-| DAO | `*Dao` interface | `TransactionDao` |
-| Repository interface | `*Repository` | `TransactionRepository` |
-| Repository impl | `*RepositoryImpl` | `TransactionRepositoryImpl` |
-| Use case | `*UseCase` | `GetMonthlySummaryUseCase` |
-| Screen | `*Screen` or `*Sheet` composable | `HomeScreen`, `AddTransactionSheet` |
-| ViewModel | `*ViewModel` | `HomeViewModel` |
-| UI State | `*UiState` data class | `HomeUiState` |
-| Route | `Screen.*` sealed object | `Screen.Home` |
-
-### Dependency Injection
-Single module:
-```kotlin
-@Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
-    @Provides @Singleton fun provideDatabase(...): AppDatabase
-    @Provides fun provideTransactionDao(db: AppDatabase): TransactionDao
-    @Provides @Singleton fun provideTransactionRepository(impl: TransactionRepositoryImpl): TransactionRepository = impl
-    // ... same for Category, Budget, Settings
-}
-```
-ViewModels:
-```kotlin
-@HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val transactionRepository: TransactionRepository,
-    private val budgetRepository: BudgetRepository
-) : ViewModel() { ... }
-```
-Screens inject ViewModels:
-```kotlin
-@Composable
-fun HomeScreen(..., viewModel: HomeViewModel = hiltViewModel()) { ... }
-```
-
-### Database Schema
-- **transactions** — `id: UUID` PK, `amount: BigDecimal`, `note: String`, `date: LocalDate`, `categoryId: UUID`, `createdAt: Instant`
-- **categories** — `id: UUID` PK, `name`, `emoji`, `colorHex`, `isDefault`, `sortOrder`
-- **budgets** — `id: UUID` PK, `categoryId: UUID?` (null = total budget), `yearMonth: String`, `limitAmount: BigDecimal`
-- **Converters** — `UUID↔String`, `LocalDate↔String`, `BigDecimal↔String`, `Instant↔Long`
-- **Search DTO** — `TransactionSearchResult` joins `transactions` + `categories` for query results
-- **Aggregation DTO** — `DailyTotal(date, total)`
-
-### UI Patterns
-- Each screen owns a `*UiState` data class and a `StateFlow<*UiState>` in the ViewModel.
-- Screens collect with `val uiState by viewModel.uiState.collectAsState()`.
-- State mutations happen in ViewModel via `_uiState.value = _uiState.value.copy(...)`. No shared MVI or event bus.
-- `AppNavHost` hosts `Scaffold`, `NavHost`, conditional top/bottom bars, and FAB. All navigation routes defined in `Screen.kt`.
-- Add transaction is a bottom sheet overlay (`AddTransactionSheet`) launched as a destination.
-- Edge-to-edge enabled in `MainActivity`.
-- Custom reusable components: `TransactionCard`, `DonutChart`, `DonutLegend`, `BarChart`.
-
-### Navigation Structure
-Bottom nav items: Home, Analytics, Search, Settings.
-Sub-screens (top bar + back): History, Categories, Budget, Calendar.
-Overlay: AddTransaction (`add_transaction` / `add_transaction/{transactionId}`).
-All navigation is string-based via `Screen.route` with `navArgument` for UUID editing.
-
-### Testing Setup
-Minimal. Only default example tests exist:
-- `app/src/test/java/.../ExampleUnitTest.kt` (JUnit 4)
-- `app/src/androidTest/java/.../ExampleInstrumentedTest.kt` (Espresso + Compose UI test deps declared but unused)
-No Room in-memory tests, no Hilt test rules, no coroutine test utilities.
-
-### Build System
-- Gradle with `gradle/libs.versions.toml` version catalog.
-- Plugins applied: `android.application`, `kotlin.compose`, `kotlin.serialization`, `ksp`, `hilt`.
-- No custom ProGuard rules; `isMinifyEnabled = false`.
-
-### Custom Abstractions / Utils
-- **`TransactionSearchResult`** — Room query DTO for search JOINs.
-- **`DailyTotal`** — aggregation query result.
-- **`Converters`** — Room type converters for `UUID`, `LocalDate`, `BigDecimal`, `Instant`.
-- **`DonutSegment`** — chart model shared between domain/UI layers.
-- **`CsvExporter` / `JsonExporter`** — injected singletons writing to `context.getExternalFilesDir(null)/ISpend/`.
-- **`SettingsDataStore`** — typed DataStore wrapper for theme prefs.
-- **`WidgetCategoryStore`** — widget category cache (used by `CategoryRepositoryImpl` to sync on write).
-- **`SearchCriteria`** — value object bundling search query, selected category IDs, and date filter.
-- **`DateFilter`** — sealed class for date filtering: `None`, `Quick` (chip-based), or `Custom` range.
-- **`QuickChip`** — enum of preset date ranges (`TODAY`, `LAST_7_DAYS`, etc.) with `calculateRange(today)`.
-- **`CategoryBreakdown`** — pure domain model for category spending analysis (name, emoji, amount, colorHex).
-- **`TimeProvider`** — seam for time; `SystemTimeProvider` production impl, `FakeTimeProvider` in tests.
-- No base ViewModel, no base Activity/Fragment, no Result/Outcome sealed class.
-
-### Code Style / Lint
-- No detekt, ktlint, or `.editorconfig` found.
-- No custom lint configuration.
-- Standard Kotlin/Android formatting assumed.
-
-### Feature Structure (end-to-end example: Add Transaction)
-1. **Domain:** `domain/model/Transaction.kt` + `domain/repository/TransactionRepository.kt`
-2. **Data:** `data/local/entity/TransactionEntity.kt` + `data/local/db/TransactionDao.kt` + `data/repository/TransactionRepositoryImpl.kt`
-3. **UI:** `ui/addtransaction/AddTransactionSheet.kt` + `ui/addtransaction/AddTransactionViewModel.kt` + `AddTransactionUiState`
-4. **Navigation:** Add route in `Screen.kt`, register `composable(...)` in `AppNavHost.kt`
-5. **DI:** Already covered by `AppModule` (generic DAO/repository binds); nothing new needed per feature unless new interfaces.
-
-### Widget / Extra
-- `QuickAddTransactionActivity` — Compose-based activity for widget quick-add, manually injecting repos (no ViewModel).
-- `TransactionWidgetReceiver` + XML widget info.
-- Theme supports OLED black mode and 6 accent colors.
+### Existing components referenced (all in `app/src/main/java/com/financetracker/ui/components/`)
+- `AccentColorPicker.kt`
+- `AmountInput.kt`
+- `BarChart.kt`
+- `BudgetSummaryCard.kt`
+- `CategoryBreakdownCard.kt`
+- `CategoryBudgetIndicatorRow.kt`
+- `CategoryBudgetSliderCard.kt`
+- `CategoryCard.kt`
+- `CategoryChip.kt`
+- `CategoryDialog.kt`
+- `CategoryIcon.kt`
+- `CategoryIconPickerSheet.kt`
+- `CircularProgressLabel.kt`
+- `DateRangePicker.kt`
+- `DateSelectorRow.kt`
+- `DayCell.kt`
+- `DayDetailCard.kt`
+- `DonutChart.kt`
+- `EmptyState.kt`
+- `FilterChipGroup.kt`
+- `MonthNavigator.kt`
+- `PresetAmountChips.kt`
+- `RememberIconStyle.kt`
+- `ResetDataDialog.kt`
+- `SectionCard.kt`
+- `SettingsCard.kt`
+- `StatBox.kt` (contains `StatBox` + `StatBoxRow`)
+- `TransactionCard.kt`
+- `WeekdayBarChartCard.kt`
 
 ---
 
-## Remaining Questions (3–5)
-1. **Database migrations:** Room schema is v1 with `exportSchema = false`. Is the expectation to bump version and write `Migration` objects, or rely on destructive migration during development?
-2. **Error / loading state pattern:** Most ViewModels set `isLoading = false` on success. Is there a standard sealed class (`Result`, `Outcome`) planned, or should new features keep the boolean-flag + optional `errorMessage: String?` pattern?
-3. **Testing baseline:** The project currently has no real tests. Should new features include ViewModel tests (e.g., Turbine + coroutine-test), or is testing out of scope for now?
-4. **Module split:** Is the `:app` module expected to remain monolithic, or should new large features eventually move to their own Gradle feature modules?
-5. **Widget parity:** When adding a new entity type (e.g., recurring transactions), should widget integration be considered by default, or is widget support intentionally limited to quick-add expenses only?
+## Key Code
+
+### HomeScreen — inline "Recent Activity" header block (candidate)
+```kotlin
+// HomeScreen.kt lines 96-120
+item(key = "recent_header") {
+    val headerShape = if (uiState.recentTransactions.isEmpty()) {
+        RoundedCornerShape(12.dp)
+    } else {
+        RoundedCornerShape(topStart = 12.dp, topEnd = 12.dp)
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(recentColor, shape = headerShape)
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text("Recent Activity", style = MaterialTheme.typography.titleSmall)
+        Text("History", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+    }
+}
+```
+- ~24 lines. Only used in Home. Could be `RecentActivityHeader`.
+
+### SearchScreen — search OutlinedTextField block (candidate)
+```kotlin
+// SearchScreen.kt lines 59-74
+OutlinedTextField(
+    value = uiState.query,
+    onValueChange = viewModel::onQueryChanged,
+    modifier = Modifier.fillMaxWidth().focusRequester(searchFocusRequester),
+    placeholder = { Text("Search expenses...") },
+    leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+    trailingIcon = {
+        if (uiState.query.isNotEmpty()) {
+            IconButton(onClick = viewModel::clearSearch) {
+                Icon(Icons.Default.Clear, contentDescription = "Clear")
+            }
+        }
+    },
+    singleLine = true,
+    shape = RoundedCornerShape(16.dp)
+)
+```
+- ~16 lines. Only used in SearchScreen. Single-use but dense.
+
+### SearchScreen — date range filter row (candidate)
+```kotlin
+// SearchScreen.kt lines 85-132
+Row(...) {
+    val allChips = QuickChip.entries.toList() + "Custom"
+    FilterChipGroup(...)
+    if (uiState.dateFilter != DateFilter.None) {
+        IconButton(onClick = viewModel::clearDateFilter) { ... }
+    }
+}
+```
+- ~48 lines. Contains logic for mixed-type chip list + clear action. Only used here.
+
+### BudgetScreen — total budget editor block inside SectionCard (candidate)
+```kotlin
+// BudgetScreen.kt lines 66-81
+AmountInput(...)
+Spacer(modifier = Modifier.height(8.dp))
+Button(
+    onClick = { totalInput.toBigDecimalOrNull()?.let { viewModel.setTotalBudget(it) } },
+    modifier = Modifier.fillMaxWidth(),
+    shape = RoundedCornerShape(12.dp)
+) { Text("Save Total Budget") }
+```
+- ~16 lines. Only used in BudgetScreen.
+
+### HistoryScreen — sticky date-group header (candidate)
+```kotlin
+// HistoryScreen.kt lines 56-67
+stickyHeader(key = group.date.toString()) {
+    Text(
+        text = group.label,
+        style = MaterialTheme.typography.titleSmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(vertical = 8.dp)
+    )
+}
+```
+- ~12 lines. Repeated per group inside LazyColumn. Only used in HistoryScreen.
+
+### CalendarScreen — weekday header row (candidate)
+```kotlin
+// CalendarScreen.kt lines 58-68
+Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+    listOf("S","M","T","W","T","F","S").forEach {
+        Text(it, style = MaterialTheme.typography.labelSmall, ...)
+    }
+}
+```
+- ~11 lines. Only used in CalendarScreen.
+
+### CalendarScreen — heatmap legend row (candidate)
+```kotlin
+// CalendarScreen.kt lines 103-109
+Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+    Text("Less", style = MaterialTheme.typography.labelSmall)
+    HEAT_COLORS.forEach { color ->
+        Box(modifier = Modifier.size(16.dp).padding(2.dp).background(color, RoundedCornerShape(2.dp)))
+    }
+    Text("More", style = MaterialTheme.typography.labelSmall)
+}
+```
+- ~7 lines. Only used in CalendarScreen.
+
+### SettingsScreen — inline navigation/export buttons inside SettingsCards (candidates)
+```kotlin
+// SettingsScreen.kt lines 78-124
+// History button (5 lines)
+// Budget button (5 lines)
+// Export CSV/JSON buttons (12 lines)
+// Reset button (4 lines)
+```
+- Each block is trivial (<6 lines) and only used here.
+
+### AddTransactionSheet — inline title + category selector + note + save button (candidates)
+```kotlin
+// AddTransactionSheet.kt lines 85-155
+// Title Text (5 lines)
+// "Category" label + FlowRow of CategoryChip (18 lines)
+// OutlinedTextField for note (7 lines)
+// Error Text (7 lines)
+// Save Button (15 lines)
+```
+- Title and save button are single-use but styled. Category selector could be `CategoryChipGroup`.
+
+---
+
+## Architecture
+
+- **UI layer:** Each screen is a single `@Composable` in its own package. Screens hold `LazyColumn`/`Column` scaffolding and wire components to ViewModel events.
+- **Reusable components live in `ui/components/`**. They are imported directly; no wrapper module.
+- **State flow:** `ViewModel` exposes `StateFlow<*UiState>` → screen collects via `collectAsState()` → passes lambdas down to components.
+- **Navigation:** Screens receive `onNavigate*` or `onEditTransaction` lambdas from `AppNavHost`. Components never touch `NavController`.
+- **Theming:** `MaterialTheme` + custom `ChartColors`. Inline styles reference theme directly.
+
+---
+
+## Per-Screen Audit
+
+### HomeScreen
+**Already extracted:** `EmptyState`, `BudgetSummaryCard`, `CategoryBudgetIndicatorRow`, `CategoryBreakdownCard`, `TransactionCard`.
+**Inline blocks worth noting:**
+- `Recent Activity` header Row (lines 96‑120, ~24 lines). Could become `RecentActivityHeader`.
+- Transaction item shape logic (lines 126‑142) is just a `RoundedCornerShape` wrapper around `TransactionCard`. Not worth extracting.
+**Already-exists match:** The header+list pattern is similar to a generic `ListSectionCard`, but `SectionCard` already exists and is used in Budget/Settings.
+
+### AnalyticsScreen
+**Already extracted:** `FilterChipGroup`, `StatBoxRow`, `CategoryBreakdownCard`, `WeekdayBarChartCard`.
+**Inline blocks:** None significant; screen is pure glue.
+
+### SearchScreen
+**Already extracted:** `DateRangePicker`, `EmptyState`, `FilterChipGroup`, `TransactionCard`.
+**Inline blocks worth noting:**
+- Search `OutlinedTextField` with focus requester + clear icon (lines 59‑74, ~16 lines). Could be `SearchTextField`.
+- Date-range filter Row (lines 85‑132, ~48 lines). Logic-heavy (mixed `QuickChip` + `"Custom"` string). Could be `DateFilterChipRow`, but coupling to `SearchViewModel` is tight.
+- Category `FilterChipGroup` block (lines 136‑142) is trivial.
+**Already-exists match:** `FilterChipGroup` already covers the chip rendering; the surrounding Row and clear button are extra.
+
+### BudgetScreen
+**Already extracted:** `AmountInput`, `CategoryBudgetSliderCard`, `SectionCard`.
+**Inline blocks worth noting:**
+- Total budget editor inside `SectionCard` (lines 66‑81, ~16 lines). Could be `TotalBudgetEditor`.
+- `FloatingActionButton` for recalc (lines 100‑109) is trivial.
+**Already-exists match:** `SectionCard` already provides the card wrapper.
+
+### HistoryScreen
+**Already extracted:** `MonthNavigator`, `TransactionCard`, `EmptyState`.
+**Inline blocks worth noting:**
+- Sticky date-group header (lines 56‑67, ~12 lines). Could become `DateGroupHeader`.
+- `LazyColumn` grouping logic (lines 55‑80) is screen-level; extracting would require passing `Map` of groups.
+
+### CalendarScreen
+**Already extracted:** `MonthNavigator`, `DayCell`, `DayDetailCard`.
+**Inline blocks worth noting:**
+- Weekday header Row (lines 58‑68, ~11 lines). Could become `WeekdayHeader`.
+- Calendar grid offset + DayCell items (lines 76‑98, ~22 lines). Could become `CalendarGrid`, but highly specialized.
+- Heatmap legend Row (lines 103‑109, ~7 lines). Could become `HeatmapLegend`.
+- Selected day detail block (lines 113‑116) is just a conditional `DayDetailCard`.
+
+### CategoriesScreen
+**Already extracted:** `CategoryCard`, `CategoryDialog`, `CategoryIconPickerSheet`.
+**Inline blocks:** None; screen is list + dialogs.
+
+### SettingsScreen
+**Already extracted:** `AccentColorPicker`, `FilterChipGroup`, `ResetDataDialog`, `SettingsCard`.
+**Inline blocks worth noting:**
+- Navigation/export buttons inside `SettingsCard` (lines 78‑124). Each is 4‑6 lines, single-use, trivial.
+- Message `Text` (lines 126‑132, ~7 lines). Could be inline snackbar text.
+**Already-exists match:** `SettingsCard` already wraps each section.
+
+### AddTransactionSheet
+**Already extracted:** `AmountInput`, `CategoryChip`, `DateRangePicker`, `DateSelectorRow`.
+**Inline blocks worth noting:**
+- Title `Text` (lines 85‑89, ~5 lines).
+- Category label + `FlowRow` of `CategoryChip`s (lines 98‑116, ~18 lines). Could become `CategoryChipGroup`.
+- Note `OutlinedTextField` (lines 118‑124, ~7 lines).
+- Error `Text` (lines 132‑138, ~7 lines).
+- Save `Button` (lines 140‑155, ~15 lines). Could become `PrimaryActionButton` or `SaveButton`.
+
+---
+
+## Summary
+
+### Already done (from existing components)
+- Most heavy UI already extracted: `TransactionCard`, `CategoryBreakdownCard`, `BudgetSummaryCard`, `CategoryBudgetSliderCard`, `StatBoxRow`, `WeekdayBarChartCard`, `MonthNavigator`, `DayCell`, `DayDetailCard`, `EmptyState`, `AmountInput`, `DateSelectorRow`, `FilterChipGroup`, `CategoryChip`, `CategoryCard`, `CategoryDialog`, `SettingsCard`, `SectionCard`, `AccentColorPicker`, `ResetDataDialog`, `DateRangePicker`.
+
+### Still inline and worth extracting
+| Candidate | Location | Approx Lines | Rationale |
+|-----------|----------|--------------|-----------|
+| `RecentActivityHeader` | `HomeScreen.kt` 96‑120 | 24 | Distinct visual block; shape logic depends on empty state but could be parameterized. |
+| `SearchTextField` | `SearchScreen.kt` 59‑74 | 16 | Search field with clear icon and focus logic. Could be reused if search expands. |
+| `DateFilterChipRow` | `SearchScreen.kt` 85‑132 | 48 | Complex Row wrapping `FilterChipGroup` + clear button + mixed type chips. Tight to Search but reduces screen size. |
+| `TotalBudgetEditor` | `BudgetScreen.kt` 66‑81 | 16 | `AmountInput` + save button inside a section. Could encapsulate local input state. |
+| `DateGroupHeader` | `HistoryScreen.kt` 56‑67 | 12 | Reused for every sticky header in History. |
+| `WeekdayHeader` | `CalendarScreen.kt` 58‑68 | 11 | Static letters row. Reusable for any calendar view. |
+| `CalendarGrid` | `CalendarScreen.kt` 76‑98 | 22 | Offset empty cells + DayCell items. High cohesion. |
+| `HeatmapLegend` | `CalendarScreen.kt` 103‑109 | 7 | Small but visually distinct. |
+| `CategoryChipGroup` | `AddTransactionSheet.kt` 98‑116 | 18 | Label + FlowRow of `CategoryChip`s. Used only here but could be reused for filters. |
+| `ErrorText` | `AddTransactionSheet.kt` 132‑138 | 7 | Conditional error text with theme color. Very small; marginal value. |
+| `PrimarySaveButton` | `AddTransactionSheet.kt` 140‑155 | 15 | Styled save button with conditional label. Could be generic `PrimaryButton` if shape/height match app-wide. |
+
+### NOT worth extracting (single-use / trivial)
+- Transaction shape wrapper in HomeScreen (2‑3 lines of shape logic).
+- FAB recalc button in BudgetScreen (standard `FloatingActionButton`).
+- Navigation/export buttons in SettingsScreen (4‑6 lines each, just `Button` + `Text`).
+- Title Text in AddTransactionSheet (5 lines, single-use).
+- Note `OutlinedTextField` in AddTransactionSheet (7 lines, single-use).
+- Message Text in SettingsScreen (single-use).
+
+### Recommended next steps with file names
+1. **HomeScreen** → extract `ui/components/RecentActivityHeader.kt` (parameterize `onHistoryClick`, `isEmpty`, `backgroundColor`).
+2. **SearchScreen** → extract `ui/components/SearchTextField.kt` (wrap `OutlinedTextField` + clear + focus). Then optionally `ui/components/DateFilterChipRow.kt`.
+3. **BudgetScreen** → extract `ui/components/TotalBudgetEditor.kt` (hold local `totalInput` state inside component).
+4. **HistoryScreen** → extract `ui/components/DateGroupHeader.kt` (parameterize `label`).
+5. **CalendarScreen** → extract `ui/components/WeekdayHeader.kt` and `ui/components/HeatmapLegend.kt`. Optionally `ui/components/CalendarGrid.kt` if calendar is reused elsewhere.
+6. **AddTransactionSheet** → extract `ui/components/CategoryChipGroup.kt` (label + FlowRow). Optionally `ui/components/PrimarySaveButton.kt` if same style used on other screens (e.g., login/sign-up later).
+
+---
+
+## Start Here
+
+Open **`app/src/main/java/com/financetracker/ui/home/HomeScreen.kt`** first because:
+- It contains the largest remaining inline visual block (the `Recent Activity` header).
+- It also shows how `TransactionCard` is already parameterized (`useCard`, `iconSize`, `showDate`, etc.), giving a pattern for further extraction.

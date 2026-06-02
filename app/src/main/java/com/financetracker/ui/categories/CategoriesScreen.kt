@@ -18,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.domain.model.Category
-import com.financetracker.ui.components.CategoryCard
-import com.financetracker.ui.components.CategoryDialog
-import com.financetracker.ui.components.CategoryIconPickerSheet
-import com.financetracker.ui.components.rememberIconStyle
+import com.financetracker.ui.components.category.CategoryCard
+import com.financetracker.ui.components.category.CategoryIconPickerSheet
+import com.financetracker.ui.components.input.CategoryDialog
+import com.financetracker.ui.components.util.rememberIconStyle
 
 @Composable
 fun CategoriesScreen(modifier: Modifier = Modifier, viewModel: CategoriesViewModel = hiltViewModel()) {

@@ -5,7 +5,7 @@ import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.Transaction
 import com.financetracker.ui.calendar.CalendarDay
 import com.financetracker.ui.categories.CategoryWithProgress
-import com.financetracker.ui.components.DonutSegment
+import com.financetracker.ui.components.charts.DonutSegment
 import com.financetracker.ui.home.CategoryBudgetProgress
 import com.financetracker.ui.theme.ChartColors
 import java.math.BigDecimal

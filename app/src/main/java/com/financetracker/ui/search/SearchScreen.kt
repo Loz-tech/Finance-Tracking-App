@@ -2,7 +2,6 @@ package com.financetracker.ui.search
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,14 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -25,20 +17,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.domain.model.DateFilter
 import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.QuickChip
-import com.financetracker.ui.components.DateRangePicker
-import com.financetracker.ui.components.EmptyState
-import com.financetracker.ui.components.FilterChipGroup
-import com.financetracker.ui.components.TransactionCard
+import com.financetracker.ui.components.core.EmptyState
+import com.financetracker.ui.components.core.TransactionCard
+import com.financetracker.ui.components.input.DateFilterChipRow
+import com.financetracker.ui.components.input.DateRangePicker
+import com.financetracker.ui.components.input.FilterChipGroup
+import com.financetracker.ui.components.input.SearchTextField
 import java.time.format.DateTimeFormatter
 import java.util.UUID
 
@@ -49,28 +41,18 @@ fun SearchScreen(
     viewModel: SearchViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    val focusManager = LocalFocusManager.current
     val searchFocusRequester = remember { FocusRequester() }
     val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
 
     var showDateRangePicker by remember { mutableStateOf(false) }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
-        OutlinedTextField(
-            value = uiState.query,
-            onValueChange = viewModel::onQueryChanged,
-            modifier = Modifier.fillMaxWidth().focusRequester(searchFocusRequester),
-            placeholder = { Text("Search expenses...") },
-            leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-            trailingIcon = {
-                if (uiState.query.isNotEmpty()) {
-                    IconButton(onClick = viewModel::clearSearch) {
-                        Icon(Icons.Default.Clear, contentDescription = "Clear")
-                    }
-                }
-            },
-            singleLine = true,
-            shape = RoundedCornerShape(16.dp)
+        SearchTextField(
+            query = uiState.query,
+            onQueryChange = viewModel::onQueryChanged,
+            onClear = viewModel::clearSearch,
+            modifier = Modifier.fillMaxWidth(),
+            focusRequester = searchFocusRequester
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -82,54 +64,43 @@ fun SearchScreen(
         )
         Spacer(modifier = Modifier.height(4.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            val allChips = QuickChip.entries.toList() + "Custom"
-            FilterChipGroup(
-                items = allChips,
-                selected = { item ->
-                    when (item) {
-                        is QuickChip ->
-                            uiState.dateFilter is DateFilter.Quick &&
-                                (uiState.dateFilter as DateFilter.Quick).chip == item
-                        "Custom" -> uiState.dateFilter is DateFilter.Custom
-                        else -> false
-                    }
-                },
-                onSelect = { item ->
-                    when (item) {
-                        is QuickChip -> viewModel.onQuickChipSelected(item)
-                        "Custom" -> {
-                            if (uiState.dateFilter !is DateFilter.Custom) {
-                                showDateRangePicker = true
-                            }
-                        }
-                    }
-                },
-                label = { item ->
-                    when (item) {
-                        is QuickChip -> item.label
-                        "Custom" -> when (val df = uiState.dateFilter) {
-                            is DateFilter.Custom -> "${df.start.format(
-                                dateFormatter
-                            )} \u2013 ${df.end.format(dateFormatter)}"
-                            else -> "Custom"
-                        }
-                        else -> item.toString()
-                    }
-                },
-                modifier = Modifier.weight(1f)
-            )
-
-            if (uiState.dateFilter != DateFilter.None) {
-                IconButton(onClick = viewModel::clearDateFilter) {
-                    Icon(Icons.Default.Clear, contentDescription = "Clear date filter")
+        val allChips = QuickChip.entries.toList() + "Custom"
+        DateFilterChipRow(
+            items = allChips,
+            selected = { item ->
+                when (item) {
+                    is QuickChip ->
+                        uiState.dateFilter is DateFilter.Quick &&
+                            (uiState.dateFilter as DateFilter.Quick).chip == item
+                    "Custom" -> uiState.dateFilter is DateFilter.Custom
+                    else -> false
                 }
-            }
-        }
+            },
+            onSelect = { item ->
+                when (item) {
+                    is QuickChip -> viewModel.onQuickChipSelected(item)
+                    "Custom" -> {
+                        if (uiState.dateFilter !is DateFilter.Custom) {
+                            showDateRangePicker = true
+                        }
+                    }
+                }
+            },
+            label = { item ->
+                when (item) {
+                    is QuickChip -> item.label
+                    "Custom" -> when (val df = uiState.dateFilter) {
+                        is DateFilter.Custom -> "${df.start.format(
+                            dateFormatter
+                        )} \u2013 ${df.end.format(dateFormatter)}"
+                        else -> "Custom"
+                    }
+                    else -> item.toString()
+                }
+            },
+            showClear = uiState.dateFilter != DateFilter.None,
+            onClear = viewModel::clearDateFilter
+        )
 
         if (uiState.allCategories.isNotEmpty()) {
             Spacer(modifier = Modifier.height(12.dp))

@@ -15,11 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.domain.model.Period
-import com.financetracker.ui.components.BarData
-import com.financetracker.ui.components.CategoryBreakdownCard
-import com.financetracker.ui.components.FilterChipGroup
-import com.financetracker.ui.components.StatBoxRow
-import com.financetracker.ui.components.WeekdayBarChartCard
+import com.financetracker.ui.components.charts.BarData
+import com.financetracker.ui.components.charts.CategoryBreakdownCard
+import com.financetracker.ui.components.charts.WeekdayBarChartCard
+import com.financetracker.ui.components.core.StatBoxRow
+import com.financetracker.ui.components.input.FilterChipGroup
 import java.text.NumberFormat
 import java.util.Locale
 
