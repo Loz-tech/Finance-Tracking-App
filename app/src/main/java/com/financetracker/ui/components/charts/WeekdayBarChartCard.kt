@@ -7,7 +7,7 @@ import com.financetracker.ui.components.core.SectionCard
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 
 @Composable
-fun WeekdayBarChartCard(bars: List<BarData>, modifier: Modifier = Modifier, title: String = "Weekday Averages") {
+fun WeekdayBarChartCard(bars: List<BarData>, modifier: Modifier = Modifier, title: String) {
     SectionCard(modifier = modifier, title = title) {
         BarChart(bars = bars)
     }
@@ -26,7 +26,8 @@ private fun WeekdayBarChartCardPreview() {
                 BarData("Fri", 67.5),
                 BarData("Sat", 120.0),
                 BarData("Sun", 5.0)
-            )
+            ),
+            title = "Weekday Averages"
         )
     }
 }

@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 
 private val DEFAULT_HEAT_COLORS = listOf(
@@ -32,7 +34,7 @@ fun HeatmapLegend(colors: List<Color> = DEFAULT_HEAT_COLORS, modifier: Modifier 
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text("Less", style = MaterialTheme.typography.labelSmall)
+        Text(stringResource(R.string.heatmap_less), style = MaterialTheme.typography.labelSmall)
         colors.forEach { color ->
             Box(
                 modifier = Modifier
@@ -41,7 +43,7 @@ fun HeatmapLegend(colors: List<Color> = DEFAULT_HEAT_COLORS, modifier: Modifier 
                     .background(color, RoundedCornerShape(2.dp))
             )
         }
-        Text("More", style = MaterialTheme.typography.labelSmall)
+        Text(stringResource(R.string.heatmap_more), style = MaterialTheme.typography.labelSmall)
     }
 }
 

@@ -20,8 +20,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.financetracker.R
 import com.financetracker.domain.model.DateFilter
 import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.QuickChip
@@ -52,19 +54,21 @@ fun SearchScreen(
             onQueryChange = viewModel::onQueryChanged,
             onClear = viewModel::clearSearch,
             modifier = Modifier.fillMaxWidth(),
-            focusRequester = searchFocusRequester
+            focusRequester = searchFocusRequester,
+            placeholder = stringResource(R.string.search_placeholder)
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Date range",
+            text = stringResource(R.string.search_date_range),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.height(4.dp))
 
-        val allChips = QuickChip.entries.toList() + "Custom"
+        val customLabel = stringResource(R.string.search_custom)
+        val allChips = QuickChip.entries.toList() + customLabel
         DateFilterChipRow(
             items = allChips,
             selected = { item ->
@@ -72,14 +76,14 @@ fun SearchScreen(
                     is QuickChip ->
                         uiState.dateFilter is DateFilter.Quick &&
                             (uiState.dateFilter as DateFilter.Quick).chip == item
-                    "Custom" -> uiState.dateFilter is DateFilter.Custom
+                    customLabel -> uiState.dateFilter is DateFilter.Custom
                     else -> false
                 }
             },
             onSelect = { item ->
                 when (item) {
                     is QuickChip -> viewModel.onQuickChipSelected(item)
-                    "Custom" -> {
+                    customLabel -> {
                         if (uiState.dateFilter !is DateFilter.Custom) {
                             showDateRangePicker = true
                         }
@@ -89,11 +93,11 @@ fun SearchScreen(
             label = { item ->
                 when (item) {
                     is QuickChip -> item.label
-                    "Custom" -> when (val df = uiState.dateFilter) {
+                    customLabel -> when (val df = uiState.dateFilter) {
                         is DateFilter.Custom -> "${df.start.format(
                             dateFormatter
                         )} \u2013 ${df.end.format(dateFormatter)}"
-                        else -> "Custom"
+                        else -> customLabel
                     }
                     else -> item.toString()
                 }
@@ -121,14 +125,14 @@ fun SearchScreen(
         if (uiState.results.isEmpty() && hasActiveFilter) {
             EmptyState(
                 icon = "\ud83d\udd0d",
-                title = "No transactions found",
-                subtitle = "Try adjusting your filters"
+                title = stringResource(R.string.search_no_results_title),
+                subtitle = stringResource(R.string.search_no_results_subtitle)
             )
         } else if (uiState.results.isEmpty() && !hasActiveFilter) {
             EmptyState(
                 icon = "\ud83d\udd0d",
-                title = "Select a filter to search",
-                subtitle = "Use the search bar or pick a filter above"
+                title = stringResource(R.string.search_prompt_title),
+                subtitle = stringResource(R.string.search_prompt_subtitle)
             )
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {

@@ -1,10 +1,13 @@
 package com.financetracker.ui.history
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financetracker.R
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.LocalDate
 import java.time.YearMonth
 import javax.inject.Inject
@@ -22,7 +25,10 @@ data class HistoryUiState(
 )
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor(private val transactionRepository: TransactionRepository) : ViewModel() {
+class HistoryViewModel @Inject constructor(
+    private val transactionRepository: TransactionRepository,
+    @ApplicationContext private val appContext: Context
+) : ViewModel() {
 
     private val _currentYearMonth = MutableStateFlow(YearMonth.now())
     val currentYearMonth: StateFlow<YearMonth> = _currentYearMonth
@@ -44,8 +50,8 @@ class HistoryViewModel @Inject constructor(private val transactionRepository: Tr
                 val today = LocalDate.now()
                 val dateGroups = monthTransactions.groupBy { it.date }.map { (date, txns) ->
                     val label = when {
-                        date == today -> "Today"
-                        date == today.minusDays(1) -> "Yesterday"
+                        date == today -> appContext.getString(R.string.date_today)
+                        date == today.minusDays(1) -> appContext.getString(R.string.date_yesterday)
                         else -> java.time.format.DateTimeFormatter.ofPattern("EEEE, MMM d")
                             .format(date)
                     }

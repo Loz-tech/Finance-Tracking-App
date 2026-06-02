@@ -23,9 +23,8 @@ import com.financetracker.domain.model.IconStyle
 import com.financetracker.ui.home.CategoryBudgetProgress
 import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
+import com.financetracker.util.rememberCurrencyFormatter
 import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.Locale
 
 @Composable
 fun CategoryBudgetIndicatorRow(
@@ -51,7 +50,7 @@ fun CategoryBudgetIndicatorRow(
                     MaterialTheme.colorScheme.primary
                 }
             } ?: MaterialTheme.colorScheme.primary
-            val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+            val currencyFormatter = rememberCurrencyFormatter()
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 androidx.compose.foundation.layout.Box(

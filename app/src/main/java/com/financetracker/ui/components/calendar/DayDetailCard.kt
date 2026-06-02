@@ -11,21 +11,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.domain.model.Transaction
 import com.financetracker.ui.calendar.CalendarDay
 import com.financetracker.ui.components.core.SectionCard
 import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
+import com.financetracker.util.rememberCurrencyFormatter
 import java.text.NumberFormat
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 @Composable
 fun DayDetailCard(day: CalendarDay, modifier: Modifier = Modifier) {
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    val currencyFormatter = rememberCurrencyFormatter()
 
     SectionCard(modifier = modifier, title = DateTimeFormatter.ofPattern("EEEE, MMM d").format(day.date)) {
         Text(
@@ -37,7 +39,7 @@ fun DayDetailCard(day: CalendarDay, modifier: Modifier = Modifier) {
         val txns = day.transactions
         if (txns.isEmpty()) {
             Text(
-                "No transactions",
+                stringResource(R.string.calendar_no_transactions),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -18,7 +19,8 @@ data class UserPreferences(
     val themeMode: Int = THEME_LIGHT,
     val accentColorIndex: Int = 0,
     val isBatterySaver: Boolean = false,
-    val iconStyle: Int = ICON_STYLE_FILLED
+    val iconStyle: Int = ICON_STYLE_FILLED,
+    val languageTag: String = ""
 ) {
     companion object {
         const val THEME_LIGHT = 0
@@ -37,13 +39,15 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
         private val KEY_THEME_MODE = intPreferencesKey("theme_mode")
         private val KEY_ACCENT_COLOR = intPreferencesKey("accent_color")
         private val KEY_ICON_STYLE = intPreferencesKey("icon_style")
+        private val KEY_LANGUAGE = stringPreferencesKey("language")
     }
 
     val userPreferences: Flow<UserPreferences> = context.dataStore.data.map { prefs ->
         UserPreferences(
             themeMode = prefs[KEY_THEME_MODE] ?: UserPreferences.THEME_LIGHT,
             accentColorIndex = prefs[KEY_ACCENT_COLOR] ?: 0,
-            iconStyle = prefs[KEY_ICON_STYLE] ?: UserPreferences.ICON_STYLE_FILLED
+            iconStyle = prefs[KEY_ICON_STYLE] ?: UserPreferences.ICON_STYLE_FILLED,
+            languageTag = prefs[KEY_LANGUAGE] ?: ""
         )
     }
 
@@ -62,6 +66,12 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
     suspend fun setIconStyle(style: Int) {
         context.dataStore.edit { prefs ->
             prefs[KEY_ICON_STYLE] = style
+        }
+    }
+
+    suspend fun setLanguage(tag: String) {
+        context.dataStore.edit { prefs ->
+            prefs[KEY_LANGUAGE] = tag
         }
     }
 }

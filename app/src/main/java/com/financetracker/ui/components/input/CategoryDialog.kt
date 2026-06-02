@@ -10,12 +10,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
+import com.financetracker.R
 import com.financetracker.domain.model.Category
 
 @Composable
 fun CategoryDialog(category: Category?, onDismiss: () -> Unit, onSave: (String) -> Unit) {
     var name by remember(category?.id) { mutableStateOf(category?.name ?: "") }
-    val title = if (category == null) "Add Category" else "Edit Category"
+    val title = if (category ==
+        null
+    ) {
+        stringResource(R.string.dialog_add_category)
+    } else {
+        stringResource(R.string.dialog_edit_category)
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -25,7 +33,7 @@ fun CategoryDialog(category: Category?, onDismiss: () -> Unit, onSave: (String) 
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Name") },
+                    label = { Text(stringResource(R.string.dialog_category_name)) },
                     singleLine = true
                 )
             }
@@ -38,10 +46,10 @@ fun CategoryDialog(category: Category?, onDismiss: () -> Unit, onSave: (String) 
                         onDismiss()
                     }
                 }
-            ) { Text("Save") }
+            ) { Text(stringResource(R.string.dialog_save)) }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) }
         }
     )
 }

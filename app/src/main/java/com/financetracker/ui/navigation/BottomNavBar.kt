@@ -9,7 +9,9 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 
 @Composable
 fun BottomNavBar(currentRoute: String?, onNavigate: (Screen) -> Unit, modifier: Modifier = Modifier) {
@@ -20,19 +22,26 @@ fun BottomNavBar(currentRoute: String?, onNavigate: (Screen) -> Unit, modifier: 
     ) {
         bottomNavItems.forEach { item ->
             val selected = currentRoute == item.screen.route
+            val label = when (item.screen) {
+                Screen.Home -> stringResource(R.string.nav_home)
+                Screen.Analytics -> stringResource(R.string.nav_analytics)
+                Screen.Search -> stringResource(R.string.nav_search)
+                Screen.Settings -> stringResource(R.string.nav_settings)
+                else -> item.label
+            }
             NavigationBarItem(
                 selected = selected,
                 onClick = { onNavigate(item.screen) },
                 icon = {
                     Icon(
                         imageVector = if (selected) item.selectedIcon else item.unselectedIcon,
-                        contentDescription = item.label,
+                        contentDescription = label,
                         modifier = Modifier.size(24.dp)
                     )
                 },
                 label = {
                     Text(
-                        text = item.label,
+                        text = label,
                         style = MaterialTheme.typography.labelSmall
                     )
                 },

@@ -1,5 +1,140 @@
-<resources>
-    <string name="app_name">FinanceTrackingApp</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">FinanceTrackingApp</string>
     <string name="widget_quick_add_label">Quick Add Transaction</string>
     <string name="widget_icon_background">widget icon background</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_analytics">Analytics</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="title_history">History</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_budget">Budget</string>
+    <string name="title_calendar">Calendar</string>
+
+    <string name="cd_back">Back</string>
+
+    <!-- Home -->
+    <string name="home_empty_title">No expenses yet</string>
+    <string name="home_empty_subtitle">Tap + to add your first\nexpense and start tracking</string>
+    <string name="home_this_month">This Month</string>
+    <string name="home_recent_activity">Recent Activity</string>
+    <string name="home_history">History</string>
+
+    <!-- Analytics -->
+    <string name="period_today">Today</string>
+    <string name="period_week">Week</string>
+    <string name="period_month">Month</string>
+    <string name="period_year">Year</string>
+
+    <string name="analytics_total_spent">Total Spent</string>
+    <string name="analytics_daily_avg">Daily Avg</string>
+    <string name="analytics_count">Count</string>
+    <string name="analytics_categories">Categories</string>
+    <string name="analytics_weekday_averages">Weekday Averages</string>
+    <string name="heatmap_less">Less</string>
+    <string name="heatmap_more">More</string>
+
+    <!-- Search -->
+    <string name="search_placeholder">Search expenses…</string>
+    <string name="search_date_range">Date range</string>
+    <string name="search_custom">Custom</string>
+    <string name="search_clear">Clear</string>
+    <string name="search_no_results_title">No transactions found</string>
+    <string name="search_no_results_subtitle">Try adjusting your filters</string>
+    <string name="search_prompt_title">Select a filter to search</string>
+    <string name="search_prompt_subtitle">Use the search bar or pick a filter above</string>
+
+    <!-- Budget -->
+    <string name="budget_monthly_title">Monthly Budget</string>
+    <string name="budget_total_limit">Total Monthly Limit</string>
+    <string name="budget_category_budgets">Category Budgets</string>
+    <string name="budget_amount_label">Amount</string>
+    <string name="budget_save_total">Save Total Budget</string>
+    <string name="budget_recalculate">Recalculate</string>
+    <string name="budget_spent">spent</string>
+    <string name="budget_left">left</string>
+    <string name="budget_save">Save</string>
+
+    <!-- Add / Edit Transaction -->
+    <string name="add_transaction_title">Add Expense</string>
+    <string name="edit_transaction_title">Edit Transaction</string>
+    <string name="note_optional">Note (optional)</string>
+    <string name="action_update">Update</string>
+    <string name="action_save_expense">Save Expense</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_change">Change</string>
+    <string name="category_label">Category</string>
+
+    <string name="error_select_category">Please select a category</string>
+    <string name="error_valid_amount">Please enter a valid amount</string>
+    <string name="msg_transaction_saved">Transaction saved!</string>
+
+    <!-- History -->
+    <string name="history_empty_title">No transactions this month</string>
+    <string name="history_empty_subtitle">Add some expenses to see them here</string>
+    <string name="date_today">Today</string>
+    <string name="date_yesterday">Yesterday</string>
+
+    <string name="cd_previous_month">Previous month</string>
+    <string name="cd_next_month">Next month</string>
+
+    <!-- Calendar -->
+    <string name="calendar_no_transactions">No transactions</string>
+
+    <!-- Settings -->
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_light">☀ Light</string>
+    <string name="settings_theme_dark">🌙 Dark</string>
+    <string name="settings_theme_system">🔘 System</string>
+    <string name="settings_accent_color">Accent Color</string>
+    <string name="settings_history">History</string>
+    <string name="settings_history_view">📜 View History</string>
+    <string name="settings_budget">Budget</string>
+    <string name="settings_budget_manage">📊 Manage Budgets</string>
+    <string name="settings_export_data">Export Data</string>
+    <string name="settings_export_csv">📄 Export as CSV</string>
+    <string name="settings_export_json">📋 Export as JSON</string>
+    <string name="settings_danger_zone">Danger Zone</string>
+    <string name="settings_reset_all_data">Reset All Data</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_system">System default</string>
+    <string name="language_en">English</string>
+    <string name="language_es">Español</string>
+    <string name="language_ru">Русский</string>
+
+    <string name="msg_csv_exported">CSV exported to %1$s</string>
+    <string name="msg_json_exported">JSON exported to %1$s</string>
+    <string name="msg_reset_complete">All data has been reset</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_reset_title">Reset All Data?</string>
+    <string name="dialog_reset_body">This will permanently delete all transactions, custom categories, and budgets. This cannot be undone.</string>
+    <string name="dialog_reset_confirm">Reset</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_add_category">Add Category</string>
+    <string name="dialog_edit_category">Edit Category</string>
+    <string name="dialog_category_name">Name</string>
+    <string name="dialog_save">Save</string>
+    <string name="dialog_close">Close</string>
+    <string name="dialog_choose_icon">Choose Icon</string>
+    <string name="dialog_search_icons">Search icons…</string>
+
+    <!-- Date picker -->
+    <string name="date_picker_next">Next</string>
+    <string name="date_picker_ok">OK</string>
+    <string name="cd_select_date">Select date</string>
+    <string name="cd_clear_date_filter">Clear date filter</string>
+
+    <!-- Category -->
+    <string name="category_edit">Edit</string>
+    <string name="category_delete">Delete</string>
+    <string name="category_amount">Amount</string>
+
+    <!-- Inputs -->
+    <string name="input_amount">Amount</string>
+    <string name="currency_prefix">$  </string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
@@ -16,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.financetracker.R
 import com.financetracker.ui.addtransaction.AddTransactionSheet
 import com.financetracker.ui.analytics.AnalyticsScreen
 import com.financetracker.ui.budget.BudgetScreen
@@ -47,10 +49,10 @@ fun AppNavHost() {
     val showFAB = currentDestination?.route == Screen.Home.route || currentDestination?.route == Screen.Categories.route
 
     val topBarTitle = when (currentDestination?.route) {
-        Screen.History.route -> "History"
-        Screen.Categories.route -> "Categories"
-        Screen.Budget.route -> "Budget"
-        Screen.Calendar.route -> "Calendar"
+        Screen.History.route -> stringResource(R.string.title_history)
+        Screen.Categories.route -> stringResource(R.string.title_categories)
+        Screen.Budget.route -> stringResource(R.string.title_budget)
+        Screen.Calendar.route -> stringResource(R.string.title_calendar)
         else -> ""
     }
 

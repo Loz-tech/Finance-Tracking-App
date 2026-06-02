@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
+import com.financetracker.util.rememberCurrencySymbol
 
 @Composable
 fun PresetAmountChips(presets: List<Int>, onPresetSelected: (Int) -> Unit, modifier: Modifier = Modifier) {
@@ -20,7 +21,10 @@ fun PresetAmountChips(presets: List<Int>, onPresetSelected: (Int) -> Unit, modif
         presets.forEach { preset ->
             SuggestionChip(
                 onClick = { onPresetSelected(preset) },
-                label = { Text("$$preset") }
+                label = {
+                    val symbol = rememberCurrencySymbol()
+                    Text("${symbol}$preset")
+                }
             )
         }
     }

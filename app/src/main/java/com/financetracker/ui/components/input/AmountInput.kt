@@ -13,21 +13,28 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
+import com.financetracker.util.rememberCurrencySymbol
 
 @Composable
 fun AmountInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    label: String = "Amount",
+    label: String,
     isError: Boolean = false,
     supportingText: String? = null
 ) {
+    val currencySymbol = rememberCurrencySymbol()
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
-        prefix = { Text("$  ", color = MaterialTheme.colorScheme.onSurfaceVariant) },
+        prefix = {
+            Text(
+                "$currencySymbol  ",
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
         modifier = modifier
             .fillMaxWidth()
@@ -44,7 +51,8 @@ private fun AmountInputPreview() {
     FinanceTrackingAppTheme {
         AmountInput(
             value = "42.50",
-            onValueChange = {}
+            onValueChange = {},
+            label = "Amount"
         )
     }
 }

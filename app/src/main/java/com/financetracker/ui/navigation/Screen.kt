@@ -36,8 +36,8 @@ data class BottomNavItem(
 )
 
 val bottomNavItems = listOf(
-    BottomNavItem(Screen.Home, "Home", Icons.Filled.Home, Icons.Outlined.Home),
-    BottomNavItem(Screen.Analytics, "Analytics", Icons.Filled.Assessment, Icons.Outlined.Assessment),
-    BottomNavItem(Screen.Search, "Search", Icons.Filled.Search, Icons.Outlined.Search),
-    BottomNavItem(Screen.Settings, "Settings", Icons.Filled.Settings, Icons.Outlined.Settings)
+    BottomNavItem(Screen.Home, "home", Icons.Filled.Home, Icons.Outlined.Home),
+    BottomNavItem(Screen.Analytics, "analytics", Icons.Filled.Assessment, Icons.Outlined.Assessment),
+    BottomNavItem(Screen.Search, "search", Icons.Filled.Search, Icons.Outlined.Search),
+    BottomNavItem(Screen.Settings, "settings", Icons.Filled.Settings, Icons.Outlined.Settings)
 )

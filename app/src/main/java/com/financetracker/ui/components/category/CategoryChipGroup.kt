@@ -23,7 +23,7 @@ fun CategoryChipGroup(
     onCategorySelected: (Category) -> Unit,
     iconStyle: IconStyle,
     modifier: Modifier = Modifier,
-    label: String? = "Category"
+    label: String? = null
 ) {
     if (label != null) {
         Text(

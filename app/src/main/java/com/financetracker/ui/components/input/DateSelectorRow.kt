@@ -17,8 +17,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -37,7 +39,7 @@ fun DateSelectorRow(date: LocalDate, onClick: () -> Unit, modifier: Modifier = M
     ) {
         Icon(
             imageVector = Icons.Default.CalendarToday,
-            contentDescription = "Select date",
+            contentDescription = stringResource(R.string.cd_select_date),
             tint = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.width(12.dp))

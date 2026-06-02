@@ -10,14 +10,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.ui.components.charts.CircularProgressLabel
 import com.financetracker.ui.components.core.SectionCard
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
+import com.financetracker.util.rememberCurrencyFormatter
 import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.Locale
 
 @Composable
 fun BudgetSummaryCard(
@@ -32,7 +33,7 @@ fun BudgetSummaryCard(
     } else {
         0f
     }
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    val currencyFormatter = rememberCurrencyFormatter()
 
     val isOverBudget = remaining < BigDecimal.ZERO
     SectionCard(
@@ -51,7 +52,7 @@ fun BudgetSummaryCard(
             CircularProgressLabel(
                 progress = progress,
                 centerText = currencyFormatter.format(totalSpent),
-                subText = "spent",
+                subText = stringResource(R.string.budget_spent),
                 size = 100.dp,
                 strokeWidth = 8.dp
             )
@@ -62,7 +63,7 @@ fun BudgetSummaryCard(
             ) {
                 if (totalBudget != null) {
                     Text(
-                        text = "${currencyFormatter.format(remaining)} left",
+                        text = "${currencyFormatter.format(remaining)} ${stringResource(R.string.budget_left)}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = if (isOverBudget) {
                             MaterialTheme.colorScheme.error

@@ -5,26 +5,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.financetracker.R
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 
 @Composable
 fun ResetDataDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Reset All Data?") },
+        title = { Text(stringResource(R.string.dialog_reset_title)) },
         text = {
             Text(
-                "This will permanently delete all transactions, custom categories, and budgets. This cannot be undone."
+                stringResource(R.string.dialog_reset_body)
             )
         },
         confirmButton = {
             TextButton(onClick = onConfirm) {
-                Text("Reset", color = MaterialTheme.colorScheme.error)
+                Text(stringResource(R.string.dialog_reset_confirm), color = MaterialTheme.colorScheme.error)
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text("Cancel") }
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) }
         }
     )
 }
