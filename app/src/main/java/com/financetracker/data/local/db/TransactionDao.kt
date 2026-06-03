@@ -5,9 +5,11 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.financetracker.data.local.entity.TransactionEntity
 import com.financetracker.data.local.entity.TransactionSearchResult
+import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
@@ -37,7 +39,7 @@ interface TransactionDao {
 
     @Query(
         """
-        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+        SELECT t.id, t.amount, t.originalAmount, t.originalCurrencyCode, t.note, t.date, t.categoryId, t.createdAt,
                c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
@@ -50,7 +52,7 @@ interface TransactionDao {
 
     @Query(
         """
-        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+        SELECT t.id, t.amount, t.originalAmount, t.originalCurrencyCode, t.note, t.date, t.categoryId, t.createdAt,
                c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
@@ -63,7 +65,7 @@ interface TransactionDao {
 
     @Query(
         """
-        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+        SELECT t.id, t.amount, t.originalAmount, t.originalCurrencyCode, t.note, t.date, t.categoryId, t.createdAt,
                c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
@@ -76,7 +78,7 @@ interface TransactionDao {
 
     @Query(
         """
-        SELECT t.id, t.amount, t.note, t.date, t.categoryId, t.createdAt,
+        SELECT t.id, t.amount, t.originalAmount, t.originalCurrencyCode, t.note, t.date, t.categoryId, t.createdAt,
                c.name AS categoryName, c.iconName AS categoryIconName, c.colorHex AS categoryColorHex
         FROM transactions t
         JOIN categories c ON t.categoryId = c.id
@@ -118,6 +120,16 @@ interface TransactionDao {
 
     @Query("DELETE FROM transactions")
     suspend fun deleteAll()
+
+    @Query("UPDATE transactions SET amount = :amount WHERE id = :id")
+    suspend fun updateAmount(id: UUID, amount: BigDecimal)
+
+    @Transaction
+    suspend fun updateAmounts(updates: List<Pair<UUID, BigDecimal>>) {
+        updates.forEach { (id, amount) ->
+            updateAmount(id, amount)
+        }
+    }
 }
 
 data class DailyTotal(val date: String, val total: Double)

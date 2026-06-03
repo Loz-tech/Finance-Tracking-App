@@ -13,6 +13,8 @@ import java.util.UUID
 data class TransactionSearchResult(
     val id: UUID,
     val amount: BigDecimal,
+    val originalAmount: BigDecimal,
+    val originalCurrencyCode: String,
     val note: String,
     val date: LocalDate,
     val categoryId: UUID,

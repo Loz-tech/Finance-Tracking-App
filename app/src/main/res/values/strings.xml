@@ -110,6 +110,26 @@
     <string name="msg_json_exported">JSON exported to %1$s</string>
     <string name="msg_reset_complete">All data has been reset</string>
 
+    <!-- Currency -->
+    <string name="settings_currency">Currency</string>
+    <string name="settings_currency_usd">🇺🇸 USD</string>
+    <string name="settings_currency_eur">🇪🇺 EUR</string>
+    <string name="settings_currency_gbp">🇬🇧 GBP</string>
+    <string name="settings_currency_jpy">🇯🇵 JPY</string>
+    <string name="settings_currency_cny">🇨🇳 CNY</string>
+    <string name="settings_manual_rate">Manual rate</string>
+    <string name="settings_manual_rate_hint">Enter custom rate</string>
+    <string name="settings_refresh_rates">Refresh rates</string>
+    <string name="settings_rates_disclaimer">Rates are indicative midpoints from free APIs and may differ from bank rates.</string>
+    <string name="settings_last_updated">Last updated: %1$s</string>
+    <string name="dialog_currency_change_title">Change Currency?</string>
+    <string name="dialog_currency_change_body">This will recalculate all transaction and budget amounts. Original amounts are preserved.</string>
+    <string name="dialog_currency_change_confirm">Change</string>
+    <string name="msg_currency_changed">Currency changed to %1$s</string>
+    <string name="error_currency_change">Failed to change currency. Please try again.</string>
+    <string name="msg_rates_refreshed">Rates refreshed</string>
+    <string name="error_rates_refresh">Failed to refresh rates</string>
+
     <!-- Dialogs -->
     <string name="dialog_reset_title">Reset All Data?</string>
     <string name="dialog_reset_body">This will permanently delete all transactions, custom categories, and budgets. This cannot be undone.</string>

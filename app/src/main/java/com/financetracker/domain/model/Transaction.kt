@@ -7,6 +7,8 @@ import java.util.UUID
 data class Transaction(
     val id: UUID = UUID.randomUUID(),
     val amount: BigDecimal,
+    val originalAmount: BigDecimal = amount,
+    val originalCurrencyCode: String = "USD",
     val note: String = "",
     val date: LocalDate = LocalDate.now(),
     val category: Category,

@@ -6,6 +6,7 @@ import com.financetracker.domain.model.Budget
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.repository.BudgetRepository
 import com.financetracker.domain.repository.CategoryRepository
+import com.financetracker.domain.repository.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
 import java.time.YearMonth
@@ -27,7 +28,8 @@ data class BudgetUiState(
 @HiltViewModel
 class BudgetViewModel @Inject constructor(
     private val budgetRepository: BudgetRepository,
-    private val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository,
+    private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(BudgetUiState())
@@ -62,11 +64,14 @@ class BudgetViewModel @Inject constructor(
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
             val existing = budgetRepository.getTotalBudget(yearMonth)
+            val prefs = settingsRepository.userPreferences.first()
             val budget = Budget(
                 id = existing?.id ?: UUID.randomUUID(),
                 categoryId = null,
                 yearMonth = yearMonth,
-                limitAmount = amount
+                limitAmount = amount,
+                originalLimitAmount = existing?.originalLimitAmount ?: amount,
+                originalCurrencyCode = existing?.originalCurrencyCode ?: prefs.currencyCode
             )
             budgetRepository.saveBudget(budget)
         }
@@ -81,11 +86,14 @@ class BudgetViewModel @Inject constructor(
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
             val existing = budgetRepository.getCategoryBudget(yearMonth, category.id)
+            val prefs = settingsRepository.userPreferences.first()
             val budget = Budget(
                 id = existing?.id ?: UUID.randomUUID(),
                 categoryId = category.id,
                 yearMonth = yearMonth,
-                limitAmount = amount
+                limitAmount = amount,
+                originalLimitAmount = existing?.originalLimitAmount ?: amount,
+                originalCurrencyCode = existing?.originalCurrencyCode ?: prefs.currencyCode
             )
             budgetRepository.saveBudget(budget)
         }

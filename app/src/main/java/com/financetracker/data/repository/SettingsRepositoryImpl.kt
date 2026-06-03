@@ -28,4 +28,8 @@ class SettingsRepositoryImpl @Inject constructor(private val settingsDataStore: 
     override suspend fun setLanguage(tag: String) {
         settingsDataStore.setLanguage(tag)
     }
+
+    override suspend fun setCurrencyCode(code: String) {
+        settingsDataStore.setCurrencyCode(code)
+    }
 }

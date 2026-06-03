@@ -54,6 +54,7 @@ import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID
 import javax.inject.Inject
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -107,8 +108,11 @@ class QuickAddTransactionActivity : AppCompatActivity() {
     }
 
     private suspend fun saveTransaction(amount: BigDecimal, note: String, category: Category) {
+        val prefs = settingsRepository.userPreferences.first()
         val transaction = Transaction(
             amount = amount,
+            originalAmount = amount,
+            originalCurrencyCode = prefs.currencyCode,
             note = note,
             date = LocalDate.now(),
             category = category

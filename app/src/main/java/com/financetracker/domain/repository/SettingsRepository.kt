@@ -9,4 +9,5 @@ interface SettingsRepository {
     suspend fun setAccentColor(index: Int)
     suspend fun setIconStyle(style: Int)
     suspend fun setLanguage(tag: String)
+    suspend fun setCurrencyCode(code: String)
 }

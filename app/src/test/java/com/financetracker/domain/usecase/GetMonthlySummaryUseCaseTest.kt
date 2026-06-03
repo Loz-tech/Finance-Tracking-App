@@ -14,8 +14,8 @@ import org.junit.Test
 
 class GetMonthlySummaryUseCaseTest {
 
-    private val catA = Category(name = "Food", emoji = "🍔", colorHex = "#FF0000")
-    private val catB = Category(name = "Transport", emoji = "🚌", colorHex = "#00FF00")
+    private val catA = Category(name = "Food", iconName = "🍔", colorHex = "#FF0000")
+    private val catB = Category(name = "Transport", iconName = "🚌", colorHex = "#00FF00")
 
     private val txn1 = Transaction(
         id = UUID.randomUUID(),
@@ -49,6 +49,8 @@ class GetMonthlySummaryUseCaseTest {
         override suspend fun saveTransaction(transaction: Transaction) {}
         override suspend fun deleteTransaction(transaction: Transaction) {}
         override suspend fun deleteAllTransactions() {}
+        override suspend fun updateTransactionAmount(id: UUID, amount: BigDecimal) {}
+        override suspend fun updateTransactionAmounts(updates: List<Pair<UUID, BigDecimal>>) {}
     }
 
     @Test
@@ -76,7 +78,7 @@ class GetMonthlySummaryUseCaseTest {
             assertEquals(2, summary.categoryBreakdowns.size)
             val food = summary.categoryBreakdowns.find { it.name == "Food" }!!
             assertEquals(BigDecimal("30.00"), food.amount)
-            assertEquals("🍔", food.emoji)
+            assertEquals("🍔", food.iconName)
         }
     }
 }

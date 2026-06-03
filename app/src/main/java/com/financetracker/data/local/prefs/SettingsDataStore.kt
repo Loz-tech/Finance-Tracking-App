@@ -13,14 +13,15 @@ import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-internal val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 data class UserPreferences(
     val themeMode: Int = THEME_LIGHT,
     val accentColorIndex: Int = 0,
     val isBatterySaver: Boolean = false,
     val iconStyle: Int = ICON_STYLE_FILLED,
-    val languageTag: String = ""
+    val languageTag: String = "",
+    val currencyCode: String = "USD"
 ) {
     companion object {
         const val THEME_LIGHT = 0
@@ -40,6 +41,7 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
         private val KEY_ACCENT_COLOR = intPreferencesKey("accent_color")
         private val KEY_ICON_STYLE = intPreferencesKey("icon_style")
         private val KEY_LANGUAGE = stringPreferencesKey("language")
+        private val KEY_CURRENCY = stringPreferencesKey("currency")
     }
 
     val userPreferences: Flow<UserPreferences> = context.dataStore.data.map { prefs ->
@@ -47,7 +49,8 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
             themeMode = prefs[KEY_THEME_MODE] ?: UserPreferences.THEME_LIGHT,
             accentColorIndex = prefs[KEY_ACCENT_COLOR] ?: 0,
             iconStyle = prefs[KEY_ICON_STYLE] ?: UserPreferences.ICON_STYLE_FILLED,
-            languageTag = prefs[KEY_LANGUAGE] ?: ""
+            languageTag = prefs[KEY_LANGUAGE] ?: "",
+            currencyCode = prefs[KEY_CURRENCY] ?: "USD"
         )
     }
 
@@ -72,6 +75,12 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
     suspend fun setLanguage(tag: String) {
         context.dataStore.edit { prefs ->
             prefs[KEY_LANGUAGE] = tag
+        }
+    }
+
+    suspend fun setCurrencyCode(code: String) {
+        context.dataStore.edit { prefs ->
+            prefs[KEY_CURRENCY] = code
         }
     }
 }

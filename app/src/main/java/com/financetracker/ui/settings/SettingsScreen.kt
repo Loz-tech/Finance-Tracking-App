@@ -2,6 +2,7 @@ package com.financetracker.ui.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,7 +12,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -20,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -40,6 +45,8 @@ fun SettingsScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var showResetDialog by remember { mutableStateOf(false) }
+    var showCurrencyConfirm by remember { mutableStateOf(false) }
+    var pendingCurrency by remember { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -103,6 +110,80 @@ fun SettingsScreen(
             }
         }
 
+        // Currency selector
+        SettingsCard(title = stringResource(R.string.settings_currency)) {
+            val currencies = listOf(
+                "USD" to stringResource(R.string.settings_currency_usd),
+                "EUR" to stringResource(R.string.settings_currency_eur),
+                "GBP" to stringResource(R.string.settings_currency_gbp),
+                "JPY" to stringResource(R.string.settings_currency_jpy),
+                "CNY" to stringResource(R.string.settings_currency_cny)
+            )
+            Column {
+                currencies.forEach { (code, label) ->
+                    val selected = uiState.currencyCode == code
+                    TextButton(
+                        onClick = {
+                            if (!selected && !uiState.isLoading) {
+                                pendingCurrency = code
+                                showCurrencyConfirm = true
+                            }
+                        }
+                    ) {
+                        Text(
+                            text = if (selected) "✓ $label" else label,
+                            color = if (selected) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.onSurface
+                            }
+                        )
+                    }
+                }
+            }
+            if (uiState.isLoading) {
+                CircularProgressIndicator(modifier = Modifier.padding(top = 8.dp))
+            }
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 8.dp)) {
+                Checkbox(
+                    checked = uiState.showManualRate,
+                    onCheckedChange = { viewModel.setShowManualRate(it) }
+                )
+                Text(stringResource(R.string.settings_manual_rate), style = MaterialTheme.typography.bodyMedium)
+            }
+            if (uiState.showManualRate) {
+                OutlinedTextField(
+                    value = uiState.manualRate,
+                    onValueChange = { viewModel.setManualRate(it) },
+                    label = { Text(stringResource(R.string.settings_manual_rate_hint)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    singleLine = true
+                )
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = { viewModel.refreshRates() },
+                modifier = Modifier.fillMaxWidth(),
+                enabled = !uiState.isLoading,
+                shape = MaterialTheme.shapes.medium
+            ) {
+                Text(stringResource(R.string.settings_refresh_rates))
+            }
+            if (uiState.lastUpdated != null) {
+                Text(
+                    text = stringResource(R.string.settings_last_updated, uiState.lastUpdated!!),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
+            Text(
+                text = stringResource(R.string.settings_rates_disclaimer),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.outline,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+
         // History
         SettingsCard(title = stringResource(R.string.settings_history)) {
             Button(
@@ -151,6 +232,27 @@ fun SettingsScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
             ) { Text(stringResource(R.string.settings_reset_all_data)) }
+        }
+
+        if (showCurrencyConfirm) {
+            androidx.compose.material3.AlertDialog(
+                onDismissRequest = { showCurrencyConfirm = false },
+                title = { Text(stringResource(R.string.dialog_currency_change_title)) },
+                text = { Text(stringResource(R.string.dialog_currency_change_body)) },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            showCurrencyConfirm = false
+                            viewModel.setCurrencyCode(pendingCurrency)
+                        }
+                    ) { Text(stringResource(R.string.dialog_currency_change_confirm)) }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showCurrencyConfirm = false }) {
+                        Text(stringResource(R.string.dialog_cancel))
+                    }
+                }
+            )
         }
 
         if (uiState.message != null) {
