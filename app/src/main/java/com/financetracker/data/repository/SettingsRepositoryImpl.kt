@@ -24,4 +24,8 @@ class SettingsRepositoryImpl @Inject constructor(private val settingsDataStore: 
     override suspend fun setIconStyle(style: Int) {
         settingsDataStore.setIconStyle(style)
     }
+
+    override suspend fun setLanguage(tag: String) {
+        settingsDataStore.setLanguage(tag)
+    }
 }

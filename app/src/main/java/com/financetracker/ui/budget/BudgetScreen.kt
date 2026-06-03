@@ -26,9 +26,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.financetracker.R
 import com.financetracker.ui.components.budget.TotalBudgetEditor
 import com.financetracker.ui.components.category.CategoryBudgetSliderCard
 import com.financetracker.ui.components.core.SectionCard
@@ -53,14 +55,14 @@ fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hil
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                "Monthly Budget",
+                stringResource(R.string.budget_monthly_title),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
 
             SectionCard(
                 modifier = Modifier.fillMaxWidth(),
-                title = "Total Monthly Limit"
+                title = stringResource(R.string.budget_total_limit)
             ) {
                 TotalBudgetEditor(
                     value = totalInput,
@@ -70,12 +72,12 @@ fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hil
                             viewModel.setTotalBudget(it)
                         }
                     },
-                    label = "Amount",
-                    buttonLabel = "Save Total Budget"
+                    label = stringResource(R.string.budget_amount_label),
+                    buttonLabel = stringResource(R.string.budget_save_total)
                 )
             }
 
-            Text("Category Budgets", style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.budget_category_budgets), style = MaterialTheme.typography.titleSmall)
             uiState.categorySliders.forEach { slider ->
                 CategoryBudgetSliderCard(
                     category = slider.category,
@@ -98,7 +100,7 @@ fun BudgetScreen(modifier: Modifier = Modifier, viewModel: BudgetViewModel = hil
         ) {
             Icon(
                 imageVector = Icons.Default.Refresh,
-                contentDescription = "Recalculate"
+                contentDescription = stringResource(R.string.budget_recalculate)
             )
         }
     }

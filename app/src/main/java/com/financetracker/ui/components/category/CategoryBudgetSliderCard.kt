@@ -25,18 +25,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.IconStyle
 import com.financetracker.ui.components.core.SectionCard
 import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
+import com.financetracker.util.rememberCurrencyFormatter
+import com.financetracker.util.rememberCurrencySymbol
 import java.math.BigDecimal
-import java.text.NumberFormat
-import java.util.Locale
 
 @Composable
 fun CategoryBudgetSliderCard(
@@ -51,7 +53,7 @@ fun CategoryBudgetSliderCard(
     var draftLimit by remember(category.id) { mutableStateOf(limit.toFloat()) }
     var draftText by remember(category.id) { mutableStateOf(limit.toPlainString()) }
     var expanded by remember(category.id) { mutableStateOf(false) }
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    val currencyFormatter = rememberCurrencyFormatter()
 
     LaunchedEffect(limit) {
         draftLimit = limit.toFloat()
@@ -102,8 +104,11 @@ fun CategoryBudgetSliderCard(
                         draftText = text
                         text.toFloatOrNull()?.let { draftLimit = it.coerceIn(0f, 2000f) }
                     },
-                    label = { Text("Amount") },
-                    prefix = { Text("$  ") },
+                    label = { Text(stringResource(R.string.category_amount)) },
+                    prefix = {
+                        val symbol = rememberCurrencySymbol()
+                        Text("$symbol  ")
+                    },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
@@ -119,7 +124,10 @@ fun CategoryBudgetSliderCard(
                                 draftLimit = preset.toFloat()
                                 draftText = preset.toString()
                             },
-                            label = { Text("$$preset") }
+                            label = {
+                                val symbol = rememberCurrencySymbol()
+                                Text("${symbol}$preset")
+                            }
                         )
                     }
                 }
@@ -132,7 +140,7 @@ fun CategoryBudgetSliderCard(
                     },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp)
-                ) { Text("Save") }
+                ) { Text(stringResource(R.string.budget_save)) }
             }
         }
     }

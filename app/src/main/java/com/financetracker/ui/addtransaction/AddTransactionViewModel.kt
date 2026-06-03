@@ -1,12 +1,15 @@
 package com.financetracker.ui.addtransaction
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financetracker.R
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.math.BigDecimal
 import java.time.LocalDate
 import javax.inject.Inject
@@ -29,7 +32,8 @@ data class AddTransactionUiState(
 @HiltViewModel
 class AddTransactionViewModel @Inject constructor(
     private val transactionRepository: TransactionRepository,
-    private val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository,
+    @ApplicationContext private val appContext: Context
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AddTransactionUiState())
@@ -86,13 +90,13 @@ class AddTransactionViewModel @Inject constructor(
         val category = state.selectedCategory
 
         if (category == null) {
-            _uiState.value = state.copy(errorMessage = "Please select a category")
+            _uiState.value = state.copy(errorMessage = appContext.getString(R.string.error_select_category))
             return
         }
 
         val amount = state.amount.toBigDecimalOrNull()
         if (amount == null || amount <= BigDecimal.ZERO) {
-            _uiState.value = state.copy(errorMessage = "Please enter a valid amount")
+            _uiState.value = state.copy(errorMessage = appContext.getString(R.string.error_valid_amount))
             return
         }
 

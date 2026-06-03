@@ -14,8 +14,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.financetracker.R
 import com.financetracker.ui.components.core.DateGroupHeader
 import com.financetracker.ui.components.core.EmptyState
 import com.financetracker.ui.components.core.TransactionCard
@@ -70,8 +72,8 @@ fun HistoryScreen(
                 item {
                     EmptyState(
                         icon = "📜",
-                        title = "No transactions this month",
-                        subtitle = "Add some expenses to see them here"
+                        title = stringResource(R.string.history_empty_title),
+                        subtitle = stringResource(R.string.history_empty_subtitle)
                     )
                 }
             }

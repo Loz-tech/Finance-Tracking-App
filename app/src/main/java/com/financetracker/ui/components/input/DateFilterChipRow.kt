@@ -10,7 +10,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.financetracker.R
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 
 @Composable
@@ -18,7 +20,7 @@ fun <T> DateFilterChipRow(
     items: List<T>,
     selected: (T) -> Boolean,
     onSelect: (T) -> Unit,
-    label: (T) -> String,
+    label: @Composable (T) -> String,
     showClear: Boolean,
     onClear: () -> Unit,
     modifier: Modifier = Modifier
@@ -39,7 +41,7 @@ fun <T> DateFilterChipRow(
             IconButton(onClick = onClear) {
                 Icon(
                     imageVector = Icons.Default.Clear,
-                    contentDescription = "Clear date filter"
+                    contentDescription = stringResource(R.string.cd_clear_date_filter)
                 )
             }
         }

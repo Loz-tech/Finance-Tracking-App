@@ -18,7 +18,7 @@ fun <T> FilterChipGroup(
     items: List<T>,
     selected: (T) -> Boolean,
     onSelect: (T) -> Unit,
-    label: (T) -> String,
+    label: @Composable (T) -> String,
     modifier: Modifier = Modifier
 ) {
     FlowRow(

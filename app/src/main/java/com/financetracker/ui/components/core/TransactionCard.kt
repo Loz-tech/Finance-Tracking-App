@@ -24,17 +24,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.Transaction
 import com.financetracker.ui.components.category.CategoryIcon
-import java.text.NumberFormat
+import com.financetracker.util.rememberCurrencyFormatter
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import java.util.Locale
 
 /**
  * Reusable transaction card used across Home, Search, and History screens.
@@ -53,7 +54,7 @@ fun TransactionCard(
     horizontalPadding: Dp = 12.dp,
     verticalPadding: Dp = 12.dp
 ) {
-    val currencyFormatter = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    val currencyFormatter = rememberCurrencyFormatter()
     val dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
 
     val content: @Composable (Modifier) -> Unit = { contentModifier ->
@@ -117,7 +118,7 @@ fun TransactionCard(
                 IconButton(onClick = onDelete) {
                     Icon(
                         imageVector = Icons.Default.Delete,
-                        contentDescription = "Delete",
+                        contentDescription = stringResource(R.string.category_delete),
                         tint = MaterialTheme.colorScheme.error
                     )
                 }

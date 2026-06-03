@@ -11,7 +11,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.financetracker.R
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import java.time.Instant
 import java.time.LocalDate
@@ -44,13 +46,13 @@ fun DateRangePicker(onRangeSelected: (LocalDate, LocalDate) -> Unit, onDismiss: 
                         showStartDatePicker = false
                         onDismiss()
                     }
-                }) { Text("Next") }
+                }) { Text(stringResource(R.string.date_picker_next)) }
             },
             dismissButton = {
                 TextButton(onClick = {
                     showStartDatePicker = false
                     onDismiss()
-                }) { Text("Cancel") }
+                }) { Text(stringResource(R.string.action_cancel)) }
             }
         ) {
             DatePicker(state = datePickerState)
@@ -81,14 +83,14 @@ fun DateRangePicker(onRangeSelected: (LocalDate, LocalDate) -> Unit, onDismiss: 
                         pendingCustomStart = null
                         onDismiss()
                     }
-                }) { Text("OK") }
+                }) { Text(stringResource(R.string.date_picker_ok)) }
             },
             dismissButton = {
                 TextButton(onClick = {
                     showEndDatePicker = false
                     pendingCustomStart = null
                     onDismiss()
-                }) { Text("Cancel") }
+                }) { Text(stringResource(R.string.action_cancel)) }
             }
         ) {
             DatePicker(state = datePickerState)

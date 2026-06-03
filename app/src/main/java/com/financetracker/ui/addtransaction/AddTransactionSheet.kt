@@ -22,9 +22,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.financetracker.R
 import com.financetracker.ui.components.category.CategoryChipGroup
 import com.financetracker.ui.components.input.AmountInput
 import com.financetracker.ui.components.input.DateRangePicker
@@ -81,12 +83,15 @@ fun AddTransactionSheet(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = if (uiState.isEditMode) "Edit Transaction" else "Add Expense",
+                text = stringResource(
+                    if (uiState.isEditMode) R.string.edit_transaction_title else R.string.add_transaction_title
+                ),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
 
             AmountInput(
+                label = stringResource(R.string.input_amount),
                 value = uiState.amount,
                 onValueChange = viewModel::onAmountChanged,
                 isError = uiState.errorMessage != null,
@@ -97,13 +102,14 @@ fun AddTransactionSheet(
                 categories = uiState.categories,
                 selectedCategory = uiState.selectedCategory,
                 onCategorySelected = viewModel::onCategorySelected,
-                iconStyle = iconStyle
+                iconStyle = iconStyle,
+                label = stringResource(R.string.category_label)
             )
 
             OutlinedTextField(
                 value = uiState.note,
                 onValueChange = viewModel::onNoteChanged,
-                label = { Text("Note (optional)") },
+                label = { Text(stringResource(R.string.note_optional)) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
@@ -133,7 +139,9 @@ fun AddTransactionSheet(
                 )
             ) {
                 Text(
-                    text = if (uiState.isEditMode) "Update" else "Save Expense",
+                    text = stringResource(
+                        if (uiState.isEditMode) R.string.action_update else R.string.action_save_expense
+                    ),
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.SemiBold
                 )

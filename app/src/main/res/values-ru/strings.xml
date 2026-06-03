@@ -1,0 +1,140 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">FinanceTrackingApp</string>
+    <string name="widget_quick_add_label">Быстрое добавление транзакции</string>
+    <string name="widget_icon_background">фон иконки виджета</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_analytics">Аналитика</string>
+    <string name="nav_search">Поиск</string>
+    <string name="nav_settings">Настройки</string>
+
+    <string name="title_history">История</string>
+    <string name="title_categories">Категории</string>
+    <string name="title_budget">Бюджет</string>
+    <string name="title_calendar">Календарь</string>
+
+    <string name="cd_back">Назад</string>
+
+    <!-- Home -->
+    <string name="home_empty_title">Пока нет расходов</string>
+    <string name="home_empty_subtitle">Нажмите + чтобы добавить первый\nрасход и начать учёт</string>
+    <string name="home_this_month">В этом месяце</string>
+    <string name="home_recent_activity">Недавняя активность</string>
+    <string name="home_history">История</string>
+
+    <!-- Analytics -->
+    <string name="period_today">Сегодня</string>
+    <string name="period_week">Неделя</string>
+    <string name="period_month">Месяц</string>
+    <string name="period_year">Год</string>
+
+    <string name="analytics_total_spent">Всего потрачено</string>
+    <string name="analytics_daily_avg">Среднее в день</string>
+    <string name="analytics_count">Количество</string>
+    <string name="analytics_categories">Категории</string>
+    <string name="analytics_weekday_averages">Средние по дням недели</string>
+    <string name="heatmap_less">Меньше</string>
+    <string name="heatmap_more">Больше</string>
+
+    <!-- Search -->
+    <string name="search_placeholder">Поиск расходов…</string>
+    <string name="search_date_range">Период</string>
+    <string name="search_custom">Свой период</string>
+    <string name="search_clear">Очистить</string>
+    <string name="search_no_results_title">Транзакций не найдено</string>
+    <string name="search_no_results_subtitle">Попробуйте изменить фильтры</string>
+    <string name="search_prompt_title">Выберите фильтр для поиска</string>
+    <string name="search_prompt_subtitle">Используйте строку поиска или выберите фильтр сверху</string>
+
+    <!-- Budget -->
+    <string name="budget_monthly_title">Бюджет на месяц</string>
+    <string name="budget_total_limit">Общий лимит на месяц</string>
+    <string name="budget_category_budgets">Бюджеты по категориям</string>
+    <string name="budget_amount_label">Сумма</string>
+    <string name="budget_save_total">Сохранить общий бюджет</string>
+    <string name="budget_recalculate">Пересчитать</string>
+    <string name="budget_spent">потрачено</string>
+    <string name="budget_left">осталось</string>
+    <string name="budget_save">Сохранить</string>
+
+    <!-- Add / Edit Transaction -->
+    <string name="add_transaction_title">Добавить расход</string>
+    <string name="edit_transaction_title">Редактировать транзакцию</string>
+    <string name="note_optional">Примечание (необязательно)</string>
+    <string name="action_update">Обновить</string>
+    <string name="action_save_expense">Сохранить расход</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_change">Изменить</string>
+    <string name="category_label">Категория</string>
+
+    <string name="error_select_category">Пожалуйста, выберите категорию</string>
+    <string name="error_valid_amount">Пожалуйста, введите корректную сумму</string>
+    <string name="msg_transaction_saved">Транзакция сохранена!</string>
+
+    <!-- History -->
+    <string name="history_empty_title">Нет транзакций в этом месяце</string>
+    <string name="history_empty_subtitle">Добавьте расходы, чтобы увидеть их здесь</string>
+    <string name="date_today">Сегодня</string>
+    <string name="date_yesterday">Вчера</string>
+
+    <string name="cd_previous_month">Предыдущий месяц</string>
+    <string name="cd_next_month">Следующий месяц</string>
+
+    <!-- Calendar -->
+    <string name="calendar_no_transactions">Нет транзакций</string>
+
+    <!-- Settings -->
+    <string name="settings_theme">Тема</string>
+    <string name="settings_theme_light">☀ Светлая</string>
+    <string name="settings_theme_dark">🌙 Тёмная</string>
+    <string name="settings_theme_system">🔘 Системная</string>
+    <string name="settings_accent_color">Акцентный цвет</string>
+    <string name="settings_history">История</string>
+    <string name="settings_history_view">📜 Смотреть историю</string>
+    <string name="settings_budget">Бюджет</string>
+    <string name="settings_budget_manage">📊 Управлять бюджетами</string>
+    <string name="settings_export_data">Экспорт данных</string>
+    <string name="settings_export_csv">📄 Экспорт в CSV</string>
+    <string name="settings_export_json">📋 Экспорт в JSON</string>
+    <string name="settings_danger_zone">Опасная зона</string>
+    <string name="settings_reset_all_data">Сбросить все данные</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_language_system">Системный по умолчанию</string>
+    <string name="language_en">English</string>
+    <string name="language_es">Español</string>
+    <string name="language_ru">Русский</string>
+
+    <string name="msg_csv_exported">CSV экспортирован в %1$s</string>
+    <string name="msg_json_exported">JSON экспортирован в %1$s</string>
+    <string name="msg_reset_complete">Все данные сброшены</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_reset_title">Сбросить все данные?</string>
+    <string name="dialog_reset_body">Это навсегда удалит все транзакции, пользовательские категории и бюджеты. Это действие нельзя отменить.</string>
+    <string name="dialog_reset_confirm">Сбросить</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="dialog_add_category">Добавить категорию</string>
+    <string name="dialog_edit_category">Редактировать категорию</string>
+    <string name="dialog_category_name">Название</string>
+    <string name="dialog_save">Сохранить</string>
+    <string name="dialog_close">Закрыть</string>
+    <string name="dialog_choose_icon">Выбрать иконку</string>
+    <string name="dialog_search_icons">Поиск иконок…</string>
+
+    <!-- Date picker -->
+    <string name="date_picker_next">Далее</string>
+    <string name="date_picker_ok">ОК</string>
+    <string name="cd_select_date">Выбрать дату</string>
+    <string name="cd_clear_date_filter">Очистить фильтр даты</string>
+
+    <!-- Category -->
+    <string name="category_edit">Редактировать</string>
+    <string name="category_delete">Удалить</string>
+    <string name="category_amount">Сумма</string>
+
+    <!-- Inputs -->
+    <string name="input_amount">Сумма</string>
+    <string name="currency_prefix">$  </string>
+</resources>

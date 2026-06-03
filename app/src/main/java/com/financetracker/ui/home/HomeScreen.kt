@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.financetracker.R
 import com.financetracker.ui.components.budget.BudgetSummaryCard
 import com.financetracker.ui.components.category.CategoryBudgetIndicatorRow
 import com.financetracker.ui.components.charts.CategoryBreakdownCard
@@ -39,8 +41,8 @@ fun HomeScreen(
     if (!uiState.hasTransactions && !uiState.isLoading) {
         EmptyState(
             icon = "💰",
-            title = "No expenses yet",
-            subtitle = "Tap + to add your first\nexpense and start tracking",
+            title = stringResource(R.string.home_empty_title),
+            subtitle = stringResource(R.string.home_empty_subtitle),
             modifier = modifier
         )
         return
@@ -82,7 +84,7 @@ fun HomeScreen(
             item(key = "donut") {
                 CategoryBreakdownCard(
                     segments = segments,
-                    title = "This Month"
+                    title = stringResource(R.string.home_this_month)
                 )
             }
         }
@@ -91,8 +93,8 @@ fun HomeScreen(
 
         item(key = "recent_header") {
             RecentActivityHeader(
-                title = "Recent Activity",
-                actionLabel = "History",
+                title = stringResource(R.string.home_recent_activity),
+                actionLabel = stringResource(R.string.home_history),
                 isEmpty = uiState.recentTransactions.isEmpty()
             )
         }

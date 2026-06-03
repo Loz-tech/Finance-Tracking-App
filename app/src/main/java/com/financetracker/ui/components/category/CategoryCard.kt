@@ -15,8 +15,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.ui.categories.CategoryWithProgress
 import com.financetracker.ui.components.core.SectionCard
 import java.math.BigDecimal
@@ -65,8 +67,10 @@ fun CategoryCard(
                 )
             }
             Row {
-                TextButton(onClick = onEdit) { Text("Edit") }
-                TextButton(onClick = onDelete) { Text("Delete", color = MaterialTheme.colorScheme.error) }
+                TextButton(onClick = onEdit) { Text(stringResource(R.string.category_edit)) }
+                TextButton(onClick = onDelete) {
+                    Text(stringResource(R.string.category_delete), color = MaterialTheme.colorScheme.error)
+                }
             }
         }
         if (catWithProgress.budgetLimit != null) {

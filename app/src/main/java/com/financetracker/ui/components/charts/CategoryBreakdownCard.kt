@@ -16,7 +16,7 @@ import com.financetracker.ui.preview.PreviewData
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 
 @Composable
-fun CategoryBreakdownCard(segments: List<DonutSegment>, modifier: Modifier = Modifier, title: String = "Categories") {
+fun CategoryBreakdownCard(segments: List<DonutSegment>, modifier: Modifier = Modifier, title: String) {
     SectionCard(modifier = modifier.heightIn(min = 280.dp), title = title) {
         Column(
             modifier = Modifier
@@ -50,6 +50,6 @@ fun CategoryBreakdownCard(segments: List<DonutSegment>, modifier: Modifier = Mod
 @Composable
 private fun CategoryBreakdownCardPreview() {
     FinanceTrackingAppTheme {
-        CategoryBreakdownCard(segments = PreviewData.donutSegments)
+        CategoryBreakdownCard(segments = PreviewData.donutSegments, title = "Categories")
     }
 }

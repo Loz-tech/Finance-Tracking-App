@@ -13,6 +13,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,8 +21,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.financetracker.R
 import com.financetracker.data.local.prefs.UserPreferences
 import com.financetracker.ui.components.core.SettingsCard
 import com.financetracker.ui.components.input.AccentColorPicker
@@ -46,7 +49,7 @@ fun SettingsScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         // Theme selector
-        SettingsCard(title = "Theme") {
+        SettingsCard(title = stringResource(R.string.settings_theme)) {
             FilterChipGroup(
                 items = listOf(
                     UserPreferences.THEME_LIGHT,
@@ -57,52 +60,79 @@ fun SettingsScreen(
                 onSelect = { viewModel.setThemeMode(it) },
                 label = {
                     when (it) {
-                        UserPreferences.THEME_LIGHT -> "☀ Light"
-                        UserPreferences.THEME_DARK -> "🌙 Dark"
-                        else -> "🔘 System"
+                        UserPreferences.THEME_LIGHT -> stringResource(R.string.settings_theme_light)
+                        UserPreferences.THEME_DARK -> stringResource(R.string.settings_theme_dark)
+                        else -> stringResource(R.string.settings_theme_system)
                     }
                 }
             )
         }
 
         // Accent color picker
-        SettingsCard(title = "Accent Color") {
+        SettingsCard(title = stringResource(R.string.settings_accent_color)) {
             AccentColorPicker(
                 selectedIndex = uiState.accentColorIndex,
                 onSelect = { viewModel.setAccentColor(it) }
             )
         }
 
+        // Language selector
+        SettingsCard(title = stringResource(R.string.settings_language)) {
+            val languages = listOf(
+                "" to stringResource(R.string.settings_language_system),
+                "en" to stringResource(R.string.language_en),
+                "es" to stringResource(R.string.language_es),
+                "ru" to stringResource(R.string.language_ru)
+            )
+            Column {
+                languages.forEach { (tag, label) ->
+                    val selected = uiState.languageTag == tag
+                    TextButton(
+                        onClick = { viewModel.setLanguage(tag) }
+                    ) {
+                        Text(
+                            text = if (selected) "✓ $label" else label,
+                            color = if (selected) {
+                                MaterialTheme.colorScheme.primary
+                            } else {
+                                MaterialTheme.colorScheme.onSurface
+                            }
+                        )
+                    }
+                }
+            }
+        }
+
         // History
-        SettingsCard(title = "History") {
+        SettingsCard(title = stringResource(R.string.settings_history)) {
             Button(
                 onClick = onNavigateToHistory,
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.medium
             ) {
-                Text("📜 View History")
+                Text(stringResource(R.string.settings_history_view))
             }
         }
 
         // Budget
-        SettingsCard(title = "Budget") {
+        SettingsCard(title = stringResource(R.string.settings_budget)) {
             Button(
                 onClick = onNavigateToBudget,
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.medium
             ) {
-                Text("📊 Manage Budgets")
+                Text(stringResource(R.string.settings_budget_manage))
             }
         }
 
         // Export
-        SettingsCard(title = "Export Data") {
+        SettingsCard(title = stringResource(R.string.settings_export_data)) {
             Button(
                 onClick = { viewModel.exportCsv() },
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.medium
             ) {
-                Text("📄 Export as CSV")
+                Text(stringResource(R.string.settings_export_csv))
             }
             Spacer(modifier = Modifier.height(8.dp))
             Button(
@@ -110,17 +140,17 @@ fun SettingsScreen(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.medium
             ) {
-                Text("📋 Export as JSON")
+                Text(stringResource(R.string.settings_export_json))
             }
         }
 
         // Reset
-        SettingsCard(title = "Danger Zone") {
+        SettingsCard(title = stringResource(R.string.settings_danger_zone)) {
             Button(
                 onClick = { showResetDialog = true },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-            ) { Text("Reset All Data") }
+            ) { Text(stringResource(R.string.settings_reset_all_data)) }
         }
 
         if (uiState.message != null) {

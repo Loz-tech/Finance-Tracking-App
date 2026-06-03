@@ -23,7 +23,7 @@ fun SearchTextField(
     onClear: () -> Unit,
     modifier: Modifier = Modifier,
     focusRequester: FocusRequester? = null,
-    placeholder: String = "Search expenses..."
+    placeholder: String
 ) {
     OutlinedTextField(
         value = query,
@@ -54,7 +54,8 @@ private fun SearchTextFieldEmptyPreview() {
         SearchTextField(
             query = "",
             onQueryChange = {},
-            onClear = {}
+            onClear = {},
+            placeholder = "Search expenses..."
         )
     }
 }
@@ -66,7 +67,8 @@ private fun SearchTextFieldFilledPreview() {
         SearchTextField(
             query = "coffee",
             onQueryChange = {},
-            onClear = {}
+            onClear = {},
+            placeholder = "Search expenses..."
         )
     }
 }

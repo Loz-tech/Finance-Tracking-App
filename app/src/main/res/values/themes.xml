@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FinanceTrackingApp" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.FinanceTrackingApp" parent="Theme.AppCompat.DayNight.NoActionBar" />
 
     <style name="Theme.FinanceTrackingApp.Dialog" parent="Theme.FinanceTrackingApp">
         <item name="android:windowIsFloating">true</item>

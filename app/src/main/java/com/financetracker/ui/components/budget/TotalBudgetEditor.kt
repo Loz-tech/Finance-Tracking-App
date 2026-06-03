@@ -20,8 +20,8 @@ fun TotalBudgetEditor(
     onValueChange: (String) -> Unit,
     onSave: () -> Unit,
     modifier: Modifier = Modifier,
-    label: String = "Amount",
-    buttonLabel: String = "Save Total Budget",
+    label: String,
+    buttonLabel: String,
     isError: Boolean = false
 ) {
     Column(modifier = modifier) {
@@ -50,7 +50,9 @@ private fun TotalBudgetEditorPreview() {
         TotalBudgetEditor(
             value = "1000.00",
             onValueChange = {},
-            onSave = {}
+            onSave = {},
+            label = "Amount",
+            buttonLabel = "Save Total Budget"
         )
     }
 }
@@ -63,6 +65,8 @@ private fun TotalBudgetEditorErrorPreview() {
             value = "abc",
             onValueChange = {},
             onSave = {},
+            label = "Amount",
+            buttonLabel = "Save Total Budget",
             isError = true
         )
     }

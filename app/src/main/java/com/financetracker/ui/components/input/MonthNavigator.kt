@@ -14,9 +14,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.financetracker.R
 import com.financetracker.ui.theme.FinanceTrackingAppTheme
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -31,7 +33,7 @@ fun MonthNavigator(yearMonth: YearMonth, onPrevious: () -> Unit, onNext: () -> U
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(onClick = onPrevious) {
-            Icon(Icons.Default.ChevronLeft, contentDescription = "Previous month")
+            Icon(Icons.Default.ChevronLeft, contentDescription = stringResource(R.string.cd_previous_month))
         }
         Text(
             text = DateTimeFormatter.ofPattern("MMMM yyyy").format(yearMonth),
@@ -39,7 +41,7 @@ fun MonthNavigator(yearMonth: YearMonth, onPrevious: () -> Unit, onNext: () -> U
             fontWeight = FontWeight.SemiBold
         )
         IconButton(onClick = onNext) {
-            Icon(Icons.Default.ChevronRight, contentDescription = "Next month")
+            Icon(Icons.Default.ChevronRight, contentDescription = stringResource(R.string.cd_next_month))
         }
     }
 }
