@@ -7,11 +7,14 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.financetracker.data.local.prefs.RecentExport
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -42,6 +45,7 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
         private val KEY_ICON_STYLE = intPreferencesKey("icon_style")
         private val KEY_LANGUAGE = stringPreferencesKey("language")
         private val KEY_CURRENCY = stringPreferencesKey("currency")
+        private val KEY_RECENT_EXPORTS = stringPreferencesKey("recent_exports")
     }
 
     val userPreferences: Flow<UserPreferences> = context.dataStore.data.map { prefs ->
@@ -81,6 +85,23 @@ class SettingsDataStore @Inject constructor(@ApplicationContext private val cont
     suspend fun setCurrencyCode(code: String) {
         context.dataStore.edit { prefs ->
             prefs[KEY_CURRENCY] = code
+        }
+    }
+
+    val recentExports: Flow<List<RecentExport>> = context.dataStore.data.map { prefs ->
+        prefs[KEY_RECENT_EXPORTS]?.let { json ->
+            runCatching { Json.decodeFromString<List<RecentExport>>(json) }.getOrNull()
+        } ?: emptyList()
+    }
+
+    suspend fun addRecentExport(export: RecentExport) {
+        context.dataStore.edit { prefs ->
+            val existing = prefs[KEY_RECENT_EXPORTS]?.let { json ->
+                runCatching { Json.decodeFromString<List<RecentExport>>(json) }.getOrNull()
+            } ?: emptyList()
+            val filtered = existing.filter { it.relativePath != export.relativePath }
+            val updated = listOf(export) + filtered.take(9)
+            prefs[KEY_RECENT_EXPORTS] = Json.encodeToString(updated)
         }
     }
 }

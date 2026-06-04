@@ -1,5 +1,6 @@
 package com.financetracker.ui.settings
 
+import android.content.ActivityNotFoundException
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,7 +25,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,7 +39,12 @@ import com.financetracker.ui.components.core.SettingsCard
 import com.financetracker.ui.components.input.AccentColorPicker
 import com.financetracker.ui.components.input.FilterChipGroup
 import com.financetracker.ui.components.input.ResetDataDialog
+import com.financetracker.util.FileOpener
 import com.financetracker.util.LocaleHelper
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 @Composable
 fun SettingsScreen(
@@ -53,7 +58,7 @@ fun SettingsScreen(
     var showCurrencyConfirm by remember { mutableStateOf(false) }
     var pendingCurrency by remember { mutableStateOf("") }
     val context = LocalContext.current
-    var message by rememberSaveable { mutableStateOf<String?>(null) }
+    var message by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
         viewModel.events.collect { event ->
@@ -269,6 +274,64 @@ fun SettingsScreen(
                 shape = MaterialTheme.shapes.medium
             ) {
                 Text(stringResource(R.string.settings_export_json))
+            }
+            if (uiState.recentExports.isNotEmpty()) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = stringResource(R.string.settings_recent_exports),
+                    style = MaterialTheme.typography.titleSmall
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                uiState.recentExports.forEach { export ->
+                    val formatter = remember {
+                        DateTimeFormatter.ofPattern("MMM dd, HH:mm", Locale.getDefault())
+                    }
+                    val dateStr = remember(export.timestamp) {
+                        Instant.ofEpochMilli(export.timestamp)
+                            .atZone(ZoneId.systemDefault())
+                            .format(formatter)
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = export.relativePath,
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                            Text(
+                                text = dateStr,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.outline
+                            )
+                        }
+                        TextButton(
+                            onClick = {
+                                val result = FileOpener.openExport(
+                                    context = context,
+                                    relativePath = export.relativePath,
+                                    format = export.format,
+                                    chooserTitle = context.getString(R.string.open_with)
+                                )
+                                message = if (result.isFailure) {
+                                    val error = result.exceptionOrNull()
+                                    if (error is ActivityNotFoundException) {
+                                        context.getString(R.string.msg_no_app_found)
+                                    } else {
+                                        context.getString(R.string.error_file_not_found)
+                                    }
+                                } else {
+                                    null
+                                }
+                            }
+                        ) {
+                            Text(stringResource(R.string.action_open))
+                        }
+                    }
+                }
             }
         }
 

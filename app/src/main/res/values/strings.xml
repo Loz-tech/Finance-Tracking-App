@@ -159,4 +159,10 @@
     <!-- Inputs -->
     <string name="input_amount">Amount</string>
     <string name="currency_prefix">$  </string>
+
+    <string name="settings_recent_exports">Recent exports</string>
+    <string name="action_open">Open</string>
+    <string name="open_with">Open with</string>
+    <string name="error_file_not_found">File not found. It may have been deleted.</string>
+    <string name="msg_no_app_found">No app found to open this file.</string>
 </resources>

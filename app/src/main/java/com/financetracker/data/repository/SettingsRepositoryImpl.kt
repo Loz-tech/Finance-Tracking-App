@@ -1,5 +1,6 @@
 package com.financetracker.data.repository
 
+import com.financetracker.data.local.prefs.RecentExport
 import com.financetracker.data.local.prefs.SettingsDataStore
 import com.financetracker.data.local.prefs.UserPreferences
 import com.financetracker.domain.repository.SettingsRepository
@@ -12,6 +13,8 @@ class SettingsRepositoryImpl @Inject constructor(private val settingsDataStore: 
     SettingsRepository {
 
     override val userPreferences: Flow<UserPreferences> = settingsDataStore.userPreferences
+
+    override val recentExports: Flow<List<RecentExport>> = settingsDataStore.recentExports
 
     override suspend fun setThemeMode(mode: Int) {
         settingsDataStore.setThemeMode(mode)
@@ -31,5 +34,9 @@ class SettingsRepositoryImpl @Inject constructor(private val settingsDataStore: 
 
     override suspend fun setCurrencyCode(code: String) {
         settingsDataStore.setCurrencyCode(code)
+    }
+
+    override suspend fun addRecentExport(export: RecentExport) {
+        settingsDataStore.addRecentExport(export)
     }
 }

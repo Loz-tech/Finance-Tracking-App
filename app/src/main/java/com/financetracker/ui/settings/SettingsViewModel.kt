@@ -2,6 +2,7 @@ package com.financetracker.ui.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.financetracker.data.local.prefs.RecentExport
 import com.financetracker.data.local.prefs.UserPreferences
 import com.financetracker.domain.model.ExportFormat
 import com.financetracker.domain.repository.ExchangeRateRepository
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class SettingsUiState(
@@ -29,7 +31,8 @@ data class SettingsUiState(
     val manualRate: String = "",
     val showManualRate: Boolean = false,
     val lastUpdated: String? = null,
-    val isLoading: Boolean = false
+    val isLoading: Boolean = false,
+    val recentExports: List<RecentExport> = emptyList()
 )
 
 sealed class SettingsEvent {
@@ -63,13 +66,20 @@ class SettingsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             settingsRepository.userPreferences.collect { prefs ->
-                _uiState.value = _uiState.value.copy(
-                    themeMode = prefs.themeMode,
-                    accentColorIndex = prefs.accentColorIndex,
-                    iconStyle = prefs.iconStyle,
-                    languageTag = prefs.languageTag,
-                    currencyCode = prefs.currencyCode
-                )
+                _uiState.update {
+                    it.copy(
+                        themeMode = prefs.themeMode,
+                        accentColorIndex = prefs.accentColorIndex,
+                        iconStyle = prefs.iconStyle,
+                        languageTag = prefs.languageTag,
+                        currencyCode = prefs.currencyCode
+                    )
+                }
+            }
+        }
+        viewModelScope.launch {
+            settingsRepository.recentExports.collect { exports ->
+                _uiState.update { it.copy(recentExports = exports) }
             }
         }
     }
@@ -99,17 +109,17 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun setShowManualRate(show: Boolean) {
-        _uiState.value = _uiState.value.copy(showManualRate = show)
+        _uiState.update { it.copy(showManualRate = show) }
     }
 
     fun setManualRate(rate: String) {
-        _uiState.value = _uiState.value.copy(manualRate = rate)
+        _uiState.update { it.copy(manualRate = rate) }
     }
 
     fun setCurrencyCode(code: String) {
         currencyChangeJob?.cancel()
         currencyChangeJob = viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.update { it.copy(isLoading = true) }
             val current = _uiState.value.currencyCode
             val manualRateText = _uiState.value.manualRate
             val useManual = _uiState.value.showManualRate
@@ -117,15 +127,17 @@ class SettingsViewModel @Inject constructor(
             val result = changeCurrencyUseCase(current, code, manualRateText, useManual)
 
             if (result.isSuccess) {
-                _uiState.value = _uiState.value.copy(
-                    currencyCode = code,
-                    manualRate = "",
-                    showManualRate = false,
-                    isLoading = false
-                )
+                _uiState.update {
+                    it.copy(
+                        currencyCode = code,
+                        manualRate = "",
+                        showManualRate = false,
+                        isLoading = false
+                    )
+                }
                 _events.send(SettingsEvent.CurrencyChanged(code))
             } else {
-                _uiState.value = _uiState.value.copy(isLoading = false)
+                _uiState.update { it.copy(isLoading = false) }
                 _events.send(SettingsEvent.CurrencyChangeFailed)
             }
         }
@@ -133,16 +145,18 @@ class SettingsViewModel @Inject constructor(
 
     fun refreshRates() {
         viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.update { it.copy(isLoading = true) }
             val result = exchangeRateRepository.refreshRates(_uiState.value.currencyCode)
             if (result.isSuccess) {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    lastUpdated = Instant.now().toString()
-                )
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        lastUpdated = Instant.now().toString()
+                    )
+                }
                 _events.send(SettingsEvent.RatesRefreshed)
             } else {
-                _uiState.value = _uiState.value.copy(isLoading = false)
+                _uiState.update { it.copy(isLoading = false) }
                 _events.send(SettingsEvent.RatesRefreshFailed)
             }
         }
@@ -156,7 +170,11 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             val result = exportTransactionsUseCase(format)
             if (result.isSuccess) {
-                _events.send(SettingsEvent.Exported(result.getOrThrow().absolutePath, format))
+                val file = result.getOrThrow()
+                _events.send(SettingsEvent.Exported(file.absolutePath, format))
+                settingsRepository.addRecentExport(
+                    RecentExport(relativePath = file.name, format = format)
+                )
             } else {
                 _events.send(SettingsEvent.ExportFailed)
             }
