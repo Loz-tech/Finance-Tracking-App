@@ -108,7 +108,9 @@
 
     <string name="msg_csv_exported">CSV exported to %1$s</string>
     <string name="msg_json_exported">JSON exported to %1$s</string>
+    <string name="error_export_failed">Export failed. Please try again.</string>
     <string name="msg_reset_complete">All data has been reset</string>
+    <string name="error_reset_failed">Failed to reset data. Please try again.</string>
 
     <!-- Currency -->
     <string name="settings_currency">Currency</string>

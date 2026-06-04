@@ -19,22 +19,27 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.R
 import com.financetracker.data.local.prefs.UserPreferences
+import com.financetracker.domain.model.ExportFormat
 import com.financetracker.ui.components.core.SettingsCard
 import com.financetracker.ui.components.input.AccentColorPicker
 import com.financetracker.ui.components.input.FilterChipGroup
 import com.financetracker.ui.components.input.ResetDataDialog
+import com.financetracker.util.LocaleHelper
 
 @Composable
 fun SettingsScreen(
@@ -47,6 +52,45 @@ fun SettingsScreen(
     var showResetDialog by remember { mutableStateOf(false) }
     var showCurrencyConfirm by remember { mutableStateOf(false) }
     var pendingCurrency by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    var message by rememberSaveable { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) {
+        viewModel.events.collect { event ->
+            message = when (event) {
+                is SettingsEvent.CurrencyChanged ->
+                    context.getString(R.string.msg_currency_changed, event.newCode)
+
+                SettingsEvent.CurrencyChangeFailed ->
+                    context.getString(R.string.error_currency_change)
+
+                SettingsEvent.RatesRefreshed ->
+                    context.getString(R.string.msg_rates_refreshed)
+
+                SettingsEvent.RatesRefreshFailed ->
+                    context.getString(R.string.error_rates_refresh)
+
+                is SettingsEvent.Exported -> when (event.format) {
+                    ExportFormat.CSV -> context.getString(R.string.msg_csv_exported, event.filePath)
+                    ExportFormat.JSON -> context.getString(R.string.msg_json_exported, event.filePath)
+                }
+
+                SettingsEvent.ExportFailed -> context.getString(R.string.error_export_failed)
+
+                SettingsEvent.DataReset ->
+                    context.getString(R.string.msg_reset_complete)
+
+                SettingsEvent.ResetFailed -> context.getString(R.string.error_reset_failed)
+            }
+        }
+    }
+
+    LaunchedEffect(message) {
+        if (message != null) {
+            kotlinx.coroutines.delay(3000)
+            message = null
+        }
+    }
 
     Column(
         modifier = modifier
@@ -95,7 +139,10 @@ fun SettingsScreen(
                 languages.forEach { (tag, label) ->
                     val selected = uiState.languageTag == tag
                     TextButton(
-                        onClick = { viewModel.setLanguage(tag) }
+                        onClick = {
+                            viewModel.setLanguage(tag)
+                            LocaleHelper.setAppLocale(context, tag)
+                        }
                     ) {
                         Text(
                             text = if (selected) "✓ $label" else label,
@@ -255,9 +302,9 @@ fun SettingsScreen(
             )
         }
 
-        if (uiState.message != null) {
+        message?.let { msg ->
             Text(
-                uiState.message!!,
+                msg,
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.primary
             )

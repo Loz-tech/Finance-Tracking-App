@@ -1,26 +1,23 @@
 package com.financetracker.ui.settings
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.financetracker.R
-import com.financetracker.data.export.CsvExporter
-import com.financetracker.data.export.JsonExporter
 import com.financetracker.data.local.prefs.UserPreferences
-import com.financetracker.domain.repository.CategoryRepository
+import com.financetracker.domain.model.ExportFormat
 import com.financetracker.domain.repository.ExchangeRateRepository
 import com.financetracker.domain.repository.SettingsRepository
-import com.financetracker.domain.repository.TransactionRepository
-import com.financetracker.domain.usecase.RecalculateTransactionsUseCase
-import com.financetracker.util.LocaleHelper
+import com.financetracker.domain.usecase.ChangeCurrencyUseCase
+import com.financetracker.domain.usecase.ExportTransactionsUseCase
+import com.financetracker.domain.usecase.ResetDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import java.math.BigDecimal
+import java.time.Instant
 import javax.inject.Inject
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 data class SettingsUiState(
@@ -32,24 +29,35 @@ data class SettingsUiState(
     val manualRate: String = "",
     val showManualRate: Boolean = false,
     val lastUpdated: String? = null,
-    val isLoading: Boolean = false,
-    val message: String? = null
+    val isLoading: Boolean = false
 )
+
+sealed class SettingsEvent {
+    data class CurrencyChanged(val newCode: String) : SettingsEvent()
+    object CurrencyChangeFailed : SettingsEvent()
+    object RatesRefreshed : SettingsEvent()
+    object RatesRefreshFailed : SettingsEvent()
+    data class Exported(val filePath: String, val format: ExportFormat) : SettingsEvent()
+    object ExportFailed : SettingsEvent()
+    object DataReset : SettingsEvent()
+    object ResetFailed : SettingsEvent()
+}
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
-    @ApplicationContext private val appContext: Context,
-    private val transactionRepository: TransactionRepository,
-    private val categoryRepository: CategoryRepository,
     private val exchangeRateRepository: ExchangeRateRepository,
-    private val recalculateTransactionsUseCase: RecalculateTransactionsUseCase,
-    private val csvExporter: CsvExporter,
-    private val jsonExporter: JsonExporter
+    private val changeCurrencyUseCase: ChangeCurrencyUseCase,
+    private val exportTransactionsUseCase: ExportTransactionsUseCase,
+    private val resetDataUseCase: ResetDataUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SettingsUiState())
     val uiState: StateFlow<SettingsUiState> = _uiState
+
+    private val _events = Channel<SettingsEvent>(Channel.BUFFERED)
+    val events: Flow<SettingsEvent> = _events.receiveAsFlow()
+
     private var currencyChangeJob: Job? = null
 
     init {
@@ -87,46 +95,6 @@ class SettingsViewModel @Inject constructor(
     fun setLanguage(tag: String) {
         viewModelScope.launch {
             settingsRepository.setLanguage(tag)
-            LocaleHelper.setAppLocale(appContext, tag)
-            _uiState.value = _uiState.value.copy(languageTag = tag)
-        }
-    }
-
-    fun setCurrencyCode(code: String) {
-        currencyChangeJob?.cancel()
-        currencyChangeJob = viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true)
-            val current = _uiState.value.currencyCode
-            if (current == code) {
-                _uiState.value = _uiState.value.copy(isLoading = false)
-                return@launch
-            }
-
-            val manualRateText = _uiState.value.manualRate
-            val useManual = _uiState.value.showManualRate && manualRateText.isNotBlank()
-            if (useManual) {
-                val rate = manualRateText.toBigDecimalOrNull()
-                if (rate != null && rate > BigDecimal.ZERO) {
-                    exchangeRateRepository.setManualRate(current, code, rate)
-                }
-            }
-
-            val result = recalculateTransactionsUseCase(current, code)
-            if (result.isSuccess) {
-                settingsRepository.setCurrencyCode(code)
-                _uiState.value = _uiState.value.copy(
-                    currencyCode = code,
-                    manualRate = "",
-                    showManualRate = false,
-                    isLoading = false,
-                    message = appContext.getString(R.string.msg_currency_changed, code)
-                )
-            } else {
-                _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    message = appContext.getString(R.string.error_currency_change)
-                )
-            }
         }
     }
 
@@ -138,57 +106,71 @@ class SettingsViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(manualRate = rate)
     }
 
+    fun setCurrencyCode(code: String) {
+        currencyChangeJob?.cancel()
+        currencyChangeJob = viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(isLoading = true)
+            val current = _uiState.value.currencyCode
+            val manualRateText = _uiState.value.manualRate
+            val useManual = _uiState.value.showManualRate
+
+            val result = changeCurrencyUseCase(current, code, manualRateText, useManual)
+
+            if (result.isSuccess) {
+                _uiState.value = _uiState.value.copy(
+                    currencyCode = code,
+                    manualRate = "",
+                    showManualRate = false,
+                    isLoading = false
+                )
+                _events.send(SettingsEvent.CurrencyChanged(code))
+            } else {
+                _uiState.value = _uiState.value.copy(isLoading = false)
+                _events.send(SettingsEvent.CurrencyChangeFailed)
+            }
+        }
+    }
+
     fun refreshRates() {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true)
             val result = exchangeRateRepository.refreshRates(_uiState.value.currencyCode)
-            _uiState.value = _uiState.value.copy(
-                isLoading = false,
-                lastUpdated = if (result.isSuccess) {
-                    java.time.Instant.now().toString()
-                } else {
-                    null
-                },
-                message = if (result.isSuccess) {
-                    appContext.getString(R.string.msg_rates_refreshed)
-                } else {
-                    appContext.getString(R.string.error_rates_refresh)
-                }
-            )
+            if (result.isSuccess) {
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    lastUpdated = Instant.now().toString()
+                )
+                _events.send(SettingsEvent.RatesRefreshed)
+            } else {
+                _uiState.value = _uiState.value.copy(isLoading = false)
+                _events.send(SettingsEvent.RatesRefreshFailed)
+            }
         }
     }
 
-    fun clearMessage() {
-        _uiState.value = _uiState.value.copy(message = null)
-    }
+    fun exportCsv() = export(ExportFormat.CSV)
 
-    fun exportCsv() {
-        viewModelScope.launch {
-            val transactions = transactionRepository.getAllTransactions().first()
-            val file = csvExporter.export(transactions)
-            _uiState.value = _uiState.value.copy(
-                message = appContext.getString(R.string.msg_csv_exported, file.absolutePath)
-            )
-        }
-    }
+    fun exportJson() = export(ExportFormat.JSON)
 
-    fun exportJson() {
+    private fun export(format: ExportFormat) {
         viewModelScope.launch {
-            val transactions = transactionRepository.getAllTransactions().first()
-            val file = jsonExporter.export(transactions)
-            _uiState.value = _uiState.value.copy(
-                message = appContext.getString(R.string.msg_json_exported, file.absolutePath)
-            )
+            val result = exportTransactionsUseCase(format)
+            if (result.isSuccess) {
+                _events.send(SettingsEvent.Exported(result.getOrThrow().absolutePath, format))
+            } else {
+                _events.send(SettingsEvent.ExportFailed)
+            }
         }
     }
 
     fun resetAllData() {
         viewModelScope.launch {
-            transactionRepository.deleteAllTransactions()
-            categoryRepository.seedDefaultCategories()
-            _uiState.value = _uiState.value.copy(
-                message = appContext.getString(R.string.msg_reset_complete)
-            )
+            val result = resetDataUseCase()
+            if (result.isSuccess) {
+                _events.send(SettingsEvent.DataReset)
+            } else {
+                _events.send(SettingsEvent.ResetFailed)
+            }
         }
     }
 }
