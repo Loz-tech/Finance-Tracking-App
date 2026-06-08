@@ -20,10 +20,10 @@ import com.financetracker.ui.theme.FinanceTrackingAppTheme
 @Composable
 fun RecentActivityHeader(
     title: String,
+    modifier: Modifier = Modifier,
     actionLabel: String? = null,
     onActionClick: (() -> Unit)? = null,
-    isEmpty: Boolean = false,
-    modifier: Modifier = Modifier
+    isEmpty: Boolean = false
 ) {
     val headerShape = if (isEmpty) {
         RoundedCornerShape(12.dp)

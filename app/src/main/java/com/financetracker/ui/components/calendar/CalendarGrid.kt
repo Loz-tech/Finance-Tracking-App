@@ -20,8 +20,8 @@ fun CalendarGrid(
     yearMonth: YearMonth,
     selectedDay: CalendarDay?,
     onDayClick: (CalendarDay) -> Unit,
-    today: LocalDate = LocalDate.now(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    today: LocalDate = LocalDate.now()
 ) {
     val firstDayOfWeek = yearMonth.atDay(1).dayOfWeek.value
     val offset = if (firstDayOfWeek == 7) 0 else firstDayOfWeek

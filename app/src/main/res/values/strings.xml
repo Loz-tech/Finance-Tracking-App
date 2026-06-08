@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">FinanceTrackingApp</string>
     <string name="widget_quick_add_label">Quick Add Transaction</string>
-    <string name="widget_icon_background">widget icon background</string>
 
     <!-- Navigation -->
     <string name="nav_home">Home</string>
@@ -24,7 +23,6 @@
     <string name="home_history">History</string>
 
     <!-- Analytics -->
-    <string name="period_today">Today</string>
     <string name="period_week">Week</string>
     <string name="period_month">Month</string>
     <string name="period_year">Year</string>
@@ -41,7 +39,6 @@
     <string name="search_placeholder">Search expenses…</string>
     <string name="search_date_range">Date range</string>
     <string name="search_custom">Custom</string>
-    <string name="search_clear">Clear</string>
     <string name="search_no_results_title">No transactions found</string>
     <string name="search_no_results_subtitle">Try adjusting your filters</string>
     <string name="search_prompt_title">Select a filter to search</string>
@@ -158,7 +155,6 @@
 
     <!-- Inputs -->
     <string name="input_amount">Amount</string>
-    <string name="currency_prefix">$  </string>
 
     <string name="settings_recent_exports">Recent exports</string>
     <string name="action_open">Open</string>

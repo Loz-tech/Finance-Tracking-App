@@ -1,7 +1,6 @@
 package com.financetracker.util
 
 import android.content.Context
-import android.os.Build
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
@@ -13,12 +12,7 @@ import java.util.Currency
 import java.util.Locale
 import kotlinx.coroutines.flow.map
 
-fun Context.currentLocale(): Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-    resources.configuration.locales.get(0)
-} else {
-    @Suppress("DEPRECATION")
-    resources.configuration.locale
-}
+fun Context.currentLocale(): Locale = resources.configuration.locales.get(0)
 
 @Composable
 fun rememberCurrencyCode(): String {

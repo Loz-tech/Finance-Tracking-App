@@ -204,6 +204,7 @@ Follow this order for every new feature:
 4. **UI:** Create package `ui/<feature>/` with `*Screen.kt`, `*ViewModel.kt`, `*UiState.kt`
 5. **Navigation:** Add route in `Screen.kt`, register `composable` in `AppNavHost.kt`
 6. **Theme/Components:** Add reusable UI components to `ui/components/` if needed
+7. **Verify:** Run `./gradlew check` and fix any lint or ktlint issues before finishing
 
 Example existing feature: `AddTransactionSheet` → `AddTransactionViewModel` → `AddTransactionUiState`
 
@@ -249,6 +250,7 @@ When modifying a feature, read these in order:
 - **`.editorconfig`** — project root, shared by ktlint and IDE
 - Run `./gradlew ktlintCheck` to verify formatting
 - Run `./gradlew ktlintFormat` to auto-fix formatting
+- Run `./gradlew check` after any code change to verify lint, ktlint, and compilation pass
 - **CI** — `.github/workflows/ci.yml` runs `./gradlew check` on every PR and push to `main`
 - **detekt** — deferred until stable 2.0 supports Kotlin 2.2.10 + AGP 9.2.1
 - Use standard Kotlin/Android formatting

@@ -28,7 +28,7 @@ private val DEFAULT_HEAT_COLORS = listOf(
 )
 
 @Composable
-fun HeatmapLegend(colors: List<Color> = DEFAULT_HEAT_COLORS, modifier: Modifier = Modifier) {
+fun HeatmapLegend(modifier: Modifier = Modifier, colors: List<Color> = DEFAULT_HEAT_COLORS) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center,

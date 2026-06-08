@@ -46,6 +46,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
+@Suppress("LocalContextGetResourceValueCall")
 @Composable
 fun SettingsScreen(
     onNavigateToBudget: () -> Unit,

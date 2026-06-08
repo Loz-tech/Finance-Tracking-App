@@ -1,7 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">FinanceTrackingApp</string>
     <string name="widget_quick_add_label">Быстрое добавление транзакции</string>
-    <string name="widget_icon_background">фон иконки виджета</string>
 
     <!-- Navigation -->
     <string name="nav_home">Главная</string>
@@ -24,7 +22,6 @@
     <string name="home_history">История</string>
 
     <!-- Analytics -->
-    <string name="period_today">Сегодня</string>
     <string name="period_week">Неделя</string>
     <string name="period_month">Месяц</string>
     <string name="period_year">Год</string>
@@ -41,7 +38,6 @@
     <string name="search_placeholder">Поиск расходов…</string>
     <string name="search_date_range">Период</string>
     <string name="search_custom">Свой период</string>
-    <string name="search_clear">Очистить</string>
     <string name="search_no_results_title">Транзакций не найдено</string>
     <string name="search_no_results_subtitle">Попробуйте изменить фильтры</string>
     <string name="search_prompt_title">Выберите фильтр для поиска</string>
@@ -108,7 +104,29 @@
 
     <string name="msg_csv_exported">CSV экспортирован в %1$s</string>
     <string name="msg_json_exported">JSON экспортирован в %1$s</string>
+    <string name="error_export_failed">Ошибка экспорта. Попробуйте ещё раз.</string>
     <string name="msg_reset_complete">Все данные сброшены</string>
+    <string name="error_reset_failed">Ошибка сброса данных. Попробуйте ещё раз.</string>
+
+    <!-- Currency -->
+    <string name="settings_currency">Валюта</string>
+    <string name="settings_currency_usd">🇺🇸 USD</string>
+    <string name="settings_currency_eur">🇪🇺 EUR</string>
+    <string name="settings_currency_gbp">🇬🇧 GBP</string>
+    <string name="settings_currency_jpy">🇯🇵 JPY</string>
+    <string name="settings_currency_cny">🇨🇳 CNY</string>
+    <string name="settings_manual_rate">Ручной курс</string>
+    <string name="settings_manual_rate_hint">Введите свой курс</string>
+    <string name="settings_refresh_rates">Обновить курсы</string>
+    <string name="settings_rates_disclaimer">Курсы — усреднённые значения из бесплатных API и могут отличаться от банковских.</string>
+    <string name="settings_last_updated">Последнее обновление: %1$s</string>
+    <string name="dialog_currency_change_title">Сменить валюту?</string>
+    <string name="dialog_currency_change_body">Это пересчитает все суммы транзакций и бюджетов. Исходные суммы сохранятся.</string>
+    <string name="dialog_currency_change_confirm">Сменить</string>
+    <string name="msg_currency_changed">Валюта изменена на %1$s</string>
+    <string name="error_currency_change">Ошибка смены валюты. Попробуйте ещё раз.</string>
+    <string name="msg_rates_refreshed">Курсы обновлены</string>
+    <string name="error_rates_refresh">Ошибка обновления курсов</string>
 
     <!-- Dialogs -->
     <string name="dialog_reset_title">Сбросить все данные?</string>
@@ -136,5 +154,9 @@
 
     <!-- Inputs -->
     <string name="input_amount">Сумма</string>
-    <string name="currency_prefix">$  </string>
+    <string name="settings_recent_exports">Недавние экспорты</string>
+    <string name="action_open">Открыть</string>
+    <string name="open_with">Открыть в</string>
+    <string name="error_file_not_found">Файл не найден. Возможно, он был удалён.</string>
+    <string name="msg_no_app_found">Не найдено приложение для открытия этого файла.</string>
 </resources>

@@ -14,7 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -33,7 +33,7 @@ fun BarChart(bars: List<BarData>, modifier: Modifier = Modifier, maxValue: Doubl
 
     val barMax = maxValue ?: bars.maxOf { it.value }
     val displayMax = if (barMax == 0.0) 1.0 else barMax * 1.15
-    var selectedIndex by remember { mutableStateOf(-1) }
+    var selectedIndex by remember { mutableIntStateOf(-1) }
     val animationProgress by animateFloatAsState(1f, tween(600), label = "bars")
 
     val primaryColor = MaterialTheme.colorScheme.primary
