@@ -73,16 +73,23 @@ fun SearchScreen(
             items = allChips,
             selected = { item ->
                 when (item) {
-                    is QuickChip ->
+                    is QuickChip -> {
                         uiState.dateFilter is DateFilter.Quick &&
                             (uiState.dateFilter as DateFilter.Quick).chip == item
-                    customLabel -> uiState.dateFilter is DateFilter.Custom
-                    else -> false
+                    }
+                    customLabel -> {
+                        uiState.dateFilter is DateFilter.Custom
+                    }
+                    else -> {
+                        false
+                    }
                 }
             },
             onSelect = { item ->
                 when (item) {
-                    is QuickChip -> viewModel.onQuickChipSelected(item)
+                    is QuickChip -> {
+                        viewModel.onQuickChipSelected(item)
+                    }
                     customLabel -> {
                         if (uiState.dateFilter !is DateFilter.Custom) {
                             showDateRangePicker = true

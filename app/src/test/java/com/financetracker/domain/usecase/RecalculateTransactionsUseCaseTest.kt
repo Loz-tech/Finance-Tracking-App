@@ -39,21 +39,34 @@ class RecalculateTransactionsUseCaseTest {
 
     private open inner class FakeTransactionRepo : TransactionRepository {
         val updatedAmounts = mutableMapOf<UUID, BigDecimal>()
+
         override fun getAllTransactions(): Flow<List<Transaction>> = flowOf(listOf(txn))
+
         override fun getTransactionsByDateRange(start: LocalDate, end: LocalDate) = flowOf(emptyList<Transaction>())
+
         override fun getTransactionsByCategory(categoryId: UUID) = flowOf(emptyList<Transaction>())
+
         override fun searchTransactions(query: String, categoryIds: List<UUID>, start: LocalDate?, end: LocalDate?) =
             flowOf(emptyList<Transaction>())
+
         override fun getRecentTransactions(limit: Int) = flowOf(emptyList<Transaction>())
+
         override fun getTransactionsByYearMonth(yearMonth: String) = flowOf(emptyList<Transaction>())
+
         override suspend fun getTransactionById(id: UUID): Transaction? = null
+
         override suspend fun getDailyTotals(start: LocalDate, end: LocalDate) = emptyMap<LocalDate, Double>()
+
         override suspend fun saveTransaction(transaction: Transaction) {}
+
         override suspend fun deleteTransaction(transaction: Transaction) {}
+
         override suspend fun deleteAllTransactions() {}
+
         override suspend fun updateTransactionAmount(id: UUID, amount: BigDecimal) {
             updatedAmounts[id] = amount
         }
+
         override suspend fun updateTransactionAmounts(updates: List<Pair<UUID, BigDecimal>>) {
             updates.forEach { (id, amount) -> updatedAmounts[id] = amount }
         }
@@ -61,16 +74,25 @@ class RecalculateTransactionsUseCaseTest {
 
     private open inner class FakeBudgetRepo : BudgetRepository {
         val updatedLimits = mutableMapOf<UUID, BigDecimal>()
+
         override fun getBudgetsByYearMonth(yearMonth: String): Flow<List<Budget>> = flowOf(emptyList())
+
         override fun getAllBudgets(): Flow<List<Budget>> = flowOf(listOf(budget))
+
         override suspend fun getTotalBudget(yearMonth: String): Budget? = null
+
         override suspend fun getCategoryBudget(yearMonth: String, categoryId: UUID): Budget? = null
+
         override suspend fun saveBudget(budget: Budget) {}
+
         override suspend fun deleteAllBudgets() {}
+
         override suspend fun deleteDuplicateBudgets() {}
+
         override suspend fun updateBudgetLimitAmount(id: UUID, limitAmount: BigDecimal) {
             updatedLimits[id] = limitAmount
         }
+
         override suspend fun updateBudgetLimitAmounts(updates: List<Pair<UUID, BigDecimal>>) {
             updates.forEach { (id, limit) -> updatedLimits[id] = limit }
         }
@@ -81,14 +103,18 @@ class RecalculateTransactionsUseCaseTest {
             baseCode: String,
             targetCode: String
         ): Flow<com.financetracker.domain.model.ExchangeRate?> = flowOf(null)
+
         override suspend fun refreshRates(baseCode: String): Result<Map<String, BigDecimal>> = Result.success(
             mapOf(
                 "USD" to BigDecimal.ONE,
                 "EUR" to BigDecimal("0.92")
             )
         )
+
         override suspend fun setManualRate(baseCode: String, targetCode: String, rate: BigDecimal) {}
+
         override suspend fun clearManualRate(baseCode: String, targetCode: String) {}
+
         override suspend fun getManualRate(baseCode: String, targetCode: String): BigDecimal? = null
     }
 

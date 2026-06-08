@@ -37,12 +37,19 @@ data class SettingsUiState(
 
 sealed class SettingsEvent {
     data class CurrencyChanged(val newCode: String) : SettingsEvent()
+
     object CurrencyChangeFailed : SettingsEvent()
+
     object RatesRefreshed : SettingsEvent()
+
     object RatesRefreshFailed : SettingsEvent()
+
     data class Exported(val filePath: String, val format: ExportFormat) : SettingsEvent()
+
     object ExportFailed : SettingsEvent()
+
     object DataReset : SettingsEvent()
+
     object ResetFailed : SettingsEvent()
 }
 

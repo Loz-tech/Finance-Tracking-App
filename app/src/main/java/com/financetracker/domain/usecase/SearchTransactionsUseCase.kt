@@ -21,12 +21,16 @@ class SearchTransactionsUseCase @Inject constructor(
             flowOf(emptyList())
         } else {
             val (start, end) = when (val df = c.dateFilter) {
-                is DateFilter.None -> null to null
+                is DateFilter.None -> {
+                    null to null
+                }
                 is DateFilter.Quick -> {
                     val range = df.chip.calculateRange(timeProvider.today())
                     range.first to range.second
                 }
-                is DateFilter.Custom -> df.start to df.end
+                is DateFilter.Custom -> {
+                    df.start to df.end
+                }
             }
             transactionRepository.searchTransactions(
                 query = c.query.trim(),

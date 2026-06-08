@@ -60,6 +60,7 @@ class SearchTransactionsUseCaseTest {
         override suspend fun deleteAllTransactions() {}
 
         override suspend fun updateTransactionAmount(id: UUID, amount: BigDecimal) {}
+
         override suspend fun updateTransactionAmounts(updates: List<Pair<UUID, BigDecimal>>) {}
     }
 

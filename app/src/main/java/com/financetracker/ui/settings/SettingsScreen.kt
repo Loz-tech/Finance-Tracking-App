@@ -64,29 +64,40 @@ fun SettingsScreen(
     LaunchedEffect(Unit) {
         viewModel.events.collect { event ->
             message = when (event) {
-                is SettingsEvent.CurrencyChanged ->
+                is SettingsEvent.CurrencyChanged -> {
                     context.getString(R.string.msg_currency_changed, event.newCode)
-
-                SettingsEvent.CurrencyChangeFailed ->
-                    context.getString(R.string.error_currency_change)
-
-                SettingsEvent.RatesRefreshed ->
-                    context.getString(R.string.msg_rates_refreshed)
-
-                SettingsEvent.RatesRefreshFailed ->
-                    context.getString(R.string.error_rates_refresh)
-
-                is SettingsEvent.Exported -> when (event.format) {
-                    ExportFormat.CSV -> context.getString(R.string.msg_csv_exported, event.filePath)
-                    ExportFormat.JSON -> context.getString(R.string.msg_json_exported, event.filePath)
                 }
 
-                SettingsEvent.ExportFailed -> context.getString(R.string.error_export_failed)
+                SettingsEvent.CurrencyChangeFailed -> {
+                    context.getString(R.string.error_currency_change)
+                }
 
-                SettingsEvent.DataReset ->
+                SettingsEvent.RatesRefreshed -> {
+                    context.getString(R.string.msg_rates_refreshed)
+                }
+
+                SettingsEvent.RatesRefreshFailed -> {
+                    context.getString(R.string.error_rates_refresh)
+                }
+
+                is SettingsEvent.Exported -> {
+                    when (event.format) {
+                        ExportFormat.CSV -> context.getString(R.string.msg_csv_exported, event.filePath)
+                        ExportFormat.JSON -> context.getString(R.string.msg_json_exported, event.filePath)
+                    }
+                }
+
+                SettingsEvent.ExportFailed -> {
+                    context.getString(R.string.error_export_failed)
+                }
+
+                SettingsEvent.DataReset -> {
                     context.getString(R.string.msg_reset_complete)
+                }
 
-                SettingsEvent.ResetFailed -> context.getString(R.string.error_reset_failed)
+                SettingsEvent.ResetFailed -> {
+                    context.getString(R.string.error_reset_failed)
+                }
             }
         }
     }

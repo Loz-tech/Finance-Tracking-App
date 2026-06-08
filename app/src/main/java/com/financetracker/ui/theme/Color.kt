@@ -60,6 +60,7 @@ val ChartColors = listOf(
     Color(0xFF00D4C6),
     Color(0xFF006ECF)
 )
+
 enum class AccentColor(
     val label: String,
     val primaryColor: Color,

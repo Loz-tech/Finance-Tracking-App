@@ -214,7 +214,9 @@ object WidgetIconRenderer {
                     currentX = endX
                     currentY = endY
                 }
-                is PathNode.Close -> path.close()
+                is PathNode.Close -> {
+                    path.close()
+                }
             }
         }
         if (vectorPath.pathFillType == androidx.compose.ui.graphics.PathFillType.EvenOdd) {

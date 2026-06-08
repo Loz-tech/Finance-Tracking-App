@@ -39,19 +39,23 @@ class TransactionRepositoryImpl @Inject constructor(
     ): Flow<List<Transaction>> {
         val hasDateRange = start != null && end != null
         return when {
-            hasDateRange && categoryIds.isNotEmpty() ->
+            hasDateRange && categoryIds.isNotEmpty() -> {
                 transactionDao.searchByTextCategoriesAndDateRange(query, categoryIds, start, end).map {
                     it.mapToDomain()
                 }
+            }
 
-            hasDateRange && categoryIds.isEmpty() ->
+            hasDateRange && categoryIds.isEmpty() -> {
                 transactionDao.searchByTextAndDateRange(query, start!!, end!!).map { it.mapToDomain() }
+            }
 
-            !hasDateRange && categoryIds.isNotEmpty() ->
+            !hasDateRange && categoryIds.isNotEmpty() -> {
                 transactionDao.searchByTextAndCategories(query, categoryIds).map { it.mapToDomain() }
+            }
 
-            else ->
+            else -> {
                 transactionDao.searchByTextOnly(query).map { it.mapToDomain() }
+            }
         }
     }
 

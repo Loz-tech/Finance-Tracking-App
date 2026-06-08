@@ -21,7 +21,10 @@ import com.financetracker.data.local.entity.TransactionEntity
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun transactionDao(): TransactionDao
+
     abstract fun categoryDao(): CategoryDao
+
     abstract fun budgetDao(): BudgetDao
+
     abstract fun exchangeRateDao(): ExchangeRateDao
 }
