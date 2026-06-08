@@ -3,7 +3,7 @@ package com.financetracker.ui.calendar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Transaction
-import com.financetracker.domain.repository.TransactionRepository
+import com.financetracker.domain.usecase.GetCalendarMonthDataUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.YearMonth
@@ -11,7 +11,6 @@ import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class CalendarDay(
@@ -30,7 +29,8 @@ data class CalendarUiState(
 )
 
 @HiltViewModel
-class CalendarViewModel @Inject constructor(private val transactionRepository: TransactionRepository) : ViewModel() {
+class CalendarViewModel @Inject constructor(private val getCalendarMonthDataUseCase: GetCalendarMonthDataUseCase) :
+    ViewModel() {
 
     private val _uiState = MutableStateFlow(CalendarUiState())
     val uiState: StateFlow<CalendarUiState> = _uiState
@@ -60,21 +60,14 @@ class CalendarViewModel @Inject constructor(private val transactionRepository: T
     private fun loadMonth(yearMonth: YearMonth) {
         loadMonthJob?.cancel()
         loadMonthJob = viewModelScope.launch {
+            val data = getCalendarMonthDataUseCase(yearMonth)
             val start = yearMonth.atDay(1)
             val end = yearMonth.atEndOfMonth()
-            val today = LocalDate.now()
-            val dailyTotals = transactionRepository.getDailyTotals(start, end)
-
-            val monthTransactions = transactionRepository.getTransactionsByDateRange(start, end).first()
-            val transactionsByDate = monthTransactions.groupBy { it.date }
-
-            val monthMax = dailyTotals.values.maxOrNull() ?: 1.0
-
             val allDays = start.datesUntil(end.plusDays(1)).toList()
             val days = allDays.map { date ->
-                val total = dailyTotals[date] ?: 0.0
-                val intensity = if (monthMax > 0) ((total / monthMax) * 4).toInt().coerceIn(0, 4) else 0
-                val dayTransactions = transactionsByDate[date] ?: emptyList()
+                val total = data.dayTotals[date] ?: 0.0
+                val intensity = if (data.monthMax > 0) ((total / data.monthMax) * 4).toInt().coerceIn(0, 4) else 0
+                val dayTransactions = data.transactionsByDate[date] ?: emptyList()
                 CalendarDay(date, total, dayTransactions, intensity)
             }
 
