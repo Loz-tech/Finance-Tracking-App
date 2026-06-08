@@ -2,19 +2,15 @@ package com.financetracker.ui.budget
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.financetracker.domain.model.Budget
 import com.financetracker.domain.model.Category
-import com.financetracker.domain.repository.BudgetRepository
-import com.financetracker.domain.repository.CategoryRepository
-import com.financetracker.domain.repository.SettingsRepository
+import com.financetracker.domain.usecase.GetBudgetDataUseCase
+import com.financetracker.domain.usecase.SaveBudgetUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
 import java.time.YearMonth
-import java.util.UUID
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class CategoryBudgetSliders(val category: Category, val limit: BigDecimal, val spent: BigDecimal)
@@ -27,9 +23,8 @@ data class BudgetUiState(
 
 @HiltViewModel
 class BudgetViewModel @Inject constructor(
-    private val budgetRepository: BudgetRepository,
-    private val categoryRepository: CategoryRepository,
-    private val settingsRepository: SettingsRepository
+    private val getBudgetDataUseCase: GetBudgetDataUseCase,
+    private val saveBudgetUseCase: SaveBudgetUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(BudgetUiState())
@@ -41,21 +36,14 @@ class BudgetViewModel @Inject constructor(
 
     private fun loadBudget() {
         viewModelScope.launch {
-            val yearMonth = YearMonth.now().toString()
-            budgetRepository.deleteDuplicateBudgets()
-            val totalBudget = budgetRepository.getTotalBudget(yearMonth)?.limitAmount ?: BigDecimal.ZERO
-            val categories = categoryRepository.getAllCategories().first()
-            val existingBudgets = budgetRepository.getBudgetsByYearMonth(yearMonth).first()
-            val prevBudgets = budgetRepository.getBudgetsByYearMonth(YearMonth.now().minusMonths(1).toString()).first()
-
-            val sliders = categories.map { cat ->
-                val existing = existingBudgets.find { it.categoryId == cat.id }
-                val prev = prevBudgets.find { it.categoryId == cat.id }
-                val limit = existing?.limitAmount ?: prev?.limitAmount ?: BigDecimal.ZERO
-                CategoryBudgetSliders(cat, limit, BigDecimal.ZERO)
-            }
-
-            _uiState.value = BudgetUiState(totalBudget, sliders, false)
+            val data = getBudgetDataUseCase(YearMonth.now())
+            _uiState.value = BudgetUiState(
+                totalBudget = data.totalBudget,
+                categorySliders = data.categoryBudgets.map {
+                    CategoryBudgetSliders(it.category, it.limit, it.spent)
+                },
+                isLoading = false
+            )
         }
     }
 
@@ -63,17 +51,7 @@ class BudgetViewModel @Inject constructor(
         _uiState.value = _uiState.value.copy(totalBudget = amount)
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
-            val existing = budgetRepository.getTotalBudget(yearMonth)
-            val prefs = settingsRepository.userPreferences.first()
-            val budget = Budget(
-                id = existing?.id ?: UUID.randomUUID(),
-                categoryId = null,
-                yearMonth = yearMonth,
-                limitAmount = amount,
-                originalLimitAmount = existing?.originalLimitAmount ?: amount,
-                originalCurrencyCode = existing?.originalCurrencyCode ?: prefs.currencyCode
-            )
-            budgetRepository.saveBudget(budget)
+            saveBudgetUseCase(categoryId = null, amount = amount, yearMonth = yearMonth)
         }
     }
 
@@ -85,17 +63,7 @@ class BudgetViewModel @Inject constructor(
         )
         viewModelScope.launch {
             val yearMonth = YearMonth.now().toString()
-            val existing = budgetRepository.getCategoryBudget(yearMonth, category.id)
-            val prefs = settingsRepository.userPreferences.first()
-            val budget = Budget(
-                id = existing?.id ?: UUID.randomUUID(),
-                categoryId = category.id,
-                yearMonth = yearMonth,
-                limitAmount = amount,
-                originalLimitAmount = existing?.originalLimitAmount ?: amount,
-                originalCurrencyCode = existing?.originalCurrencyCode ?: prefs.currencyCode
-            )
-            budgetRepository.saveBudget(budget)
+            saveBudgetUseCase(categoryId = category.id, amount = amount, yearMonth = yearMonth)
         }
     }
 

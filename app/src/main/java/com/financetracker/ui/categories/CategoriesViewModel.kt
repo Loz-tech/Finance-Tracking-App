@@ -4,15 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.repository.CategoryRepository
-import com.financetracker.domain.repository.TransactionRepository
+import com.financetracker.domain.usecase.AddCategoryUseCase
+import com.financetracker.domain.usecase.DeleteCategoryUseCase
+import com.financetracker.domain.usecase.GetCategoriesWithSpendingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
 import java.time.YearMonth
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 data class CategoryWithProgress(
@@ -30,7 +31,9 @@ data class CategoriesUiState(
 @HiltViewModel
 class CategoriesViewModel @Inject constructor(
     private val categoryRepository: CategoryRepository,
-    private val transactionRepository: TransactionRepository
+    private val getCategoriesWithSpendingUseCase: GetCategoriesWithSpendingUseCase,
+    private val addCategoryUseCase: AddCategoryUseCase,
+    private val deleteCategoryUseCase: DeleteCategoryUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CategoriesUiState())
@@ -38,27 +41,18 @@ class CategoriesViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            combine(
-                categoryRepository.getAllCategories(),
-                transactionRepository.getTransactionsByYearMonth(YearMonth.now().toString())
-            ) { categories, transactions ->
-                val categorySpending = transactions.groupBy { it.category.id }
-                    .mapValues { (_, txns) -> txns.fold(BigDecimal.ZERO) { acc, t -> acc + t.amount } }
-
-                val withProgress = categories.map { cat ->
-                    val spent = categorySpending[cat.id] ?: BigDecimal.ZERO
-                    CategoryWithProgress(cat, spent, null, false)
+            getCategoriesWithSpendingUseCase(YearMonth.now()).collect { categorySpendings ->
+                val withProgress = categorySpendings.map { cs ->
+                    CategoryWithProgress(cs.category, cs.spent, null, false)
                 }
-
-                CategoriesUiState(categoriesWithProgress = withProgress, isLoading = false)
-            }.collect { _uiState.value = it }
+                _uiState.value = CategoriesUiState(categoriesWithProgress = withProgress, isLoading = false)
+            }
         }
     }
 
     fun addCategory(name: String, iconName: String) {
         viewModelScope.launch {
-            val maxOrder = categoryRepository.getAllCategories().first().maxOfOrNull { it.sortOrder } ?: -1
-            categoryRepository.saveCategory(Category(name = name, iconName = iconName, sortOrder = maxOrder + 1))
+            addCategoryUseCase(name, iconName)
         }
     }
 
@@ -74,15 +68,7 @@ class CategoriesViewModel @Inject constructor(
 
     fun deleteCategory(category: Category) {
         viewModelScope.launch {
-            val transactions = transactionRepository.getTransactionsByCategory(category.id).first()
-            val otherCat = categoryRepository.getAllCategories().first().find { it.name == "Other" }
-                ?: Category(name = "Other", iconName = "MoreHoriz")
-            if (otherCat.id != category.id) {
-                transactions.forEach { txn ->
-                    transactionRepository.saveTransaction(txn.copy(category = otherCat))
-                }
-            }
-            categoryRepository.deleteCategory(category)
+            deleteCategoryUseCase(category)
         }
     }
 }
