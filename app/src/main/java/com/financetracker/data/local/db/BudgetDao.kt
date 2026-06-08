@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.financetracker.data.local.entity.BudgetEntity
+import java.math.BigDecimal
 import java.util.UUID
 import kotlinx.coroutines.flow.Flow
 
@@ -42,6 +44,19 @@ interface BudgetDao {
     )
     suspend fun deleteDuplicateBudgets()
 
+    @Query("SELECT * FROM budgets")
+    fun getAll(): Flow<List<BudgetEntity>>
+
     @Query("DELETE FROM budgets")
     suspend fun deleteAll()
+
+    @Query("UPDATE budgets SET limitAmount = :limitAmount WHERE id = :id")
+    suspend fun updateLimitAmount(id: UUID, limitAmount: BigDecimal)
+
+    @Transaction
+    suspend fun updateLimitAmounts(updates: List<Pair<UUID, BigDecimal>>) {
+        updates.forEach { (id, limitAmount) ->
+            updateLimitAmount(id, limitAmount)
+        }
+    }
 }

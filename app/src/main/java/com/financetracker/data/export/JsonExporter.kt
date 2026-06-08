@@ -31,6 +31,8 @@ class JsonExporter @Inject constructor(@ApplicationContext private val context: 
                 json.append("\"category\": \"${escapeJson(txn.category.name)}\", ")
                 json.append("\"iconName\": \"${escapeJson(txn.category.iconName)}\", ")
                 json.append("\"amount\": ${txn.amount}, ")
+                json.append("\"originalAmount\": ${txn.originalAmount}, ")
+                json.append("\"originalCurrencyCode\": \"${txn.originalCurrencyCode}\", ")
                 json.append("\"note\": \"${escapeJson(txn.note)}\"")
                 json.append("}")
                 if (i < transactions.size - 1) json.appendLine(",") else json.appendLine()

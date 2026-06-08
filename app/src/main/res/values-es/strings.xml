@@ -1,7 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">FinanceTrackingApp</string>
     <string name="widget_quick_add_label">Añadir transacción rápida</string>
-    <string name="widget_icon_background">fondo del icono del widget</string>
 
     <!-- Navigation -->
     <string name="nav_home">Inicio</string>
@@ -24,7 +22,6 @@
     <string name="home_history">Historial</string>
 
     <!-- Analytics -->
-    <string name="period_today">Hoy</string>
     <string name="period_week">Semana</string>
     <string name="period_month">Mes</string>
     <string name="period_year">Año</string>
@@ -41,7 +38,6 @@
     <string name="search_placeholder">Buscar gastos…</string>
     <string name="search_date_range">Rango de fechas</string>
     <string name="search_custom">Personalizado</string>
-    <string name="search_clear">Limpiar</string>
     <string name="search_no_results_title">No se encontraron transacciones</string>
     <string name="search_no_results_subtitle">Intenta ajustar tus filtros</string>
     <string name="search_prompt_title">Selecciona un filtro para buscar</string>
@@ -108,7 +104,29 @@
 
     <string name="msg_csv_exported">CSV exportado a %1$s</string>
     <string name="msg_json_exported">JSON exportado a %1$s</string>
+    <string name="error_export_failed">Error al exportar. Inténtalo de nuevo.</string>
     <string name="msg_reset_complete">Todos los datos han sido restablecidos</string>
+    <string name="error_reset_failed">Error al restablecer datos. Inténtalo de nuevo.</string>
+
+    <!-- Currency -->
+    <string name="settings_currency">Moneda</string>
+    <string name="settings_currency_usd">🇺🇸 USD</string>
+    <string name="settings_currency_eur">🇪🇺 EUR</string>
+    <string name="settings_currency_gbp">🇬🇧 GBP</string>
+    <string name="settings_currency_jpy">🇯🇵 JPY</string>
+    <string name="settings_currency_cny">🇨🇳 CNY</string>
+    <string name="settings_manual_rate">Tasa manual</string>
+    <string name="settings_manual_rate_hint">Introduce tasa personalizada</string>
+    <string name="settings_refresh_rates">Actualizar tasas</string>
+    <string name="settings_rates_disclaimer">Las tasas son promedios indicativos de APIs gratuitas y pueden diferir de las de los bancos.</string>
+    <string name="settings_last_updated">Última actualización: %1$s</string>
+    <string name="dialog_currency_change_title">¿Cambiar moneda?</string>
+    <string name="dialog_currency_change_body">Esto recalculará todas las cantidades de transacciones y presupuestos. Las cantidades originales se conservan.</string>
+    <string name="dialog_currency_change_confirm">Cambiar</string>
+    <string name="msg_currency_changed">Moneda cambiada a %1$s</string>
+    <string name="error_currency_change">Error al cambiar moneda. Inténtalo de nuevo.</string>
+    <string name="msg_rates_refreshed">Tasas actualizadas</string>
+    <string name="error_rates_refresh">Error al actualizar tasas</string>
 
     <!-- Dialogs -->
     <string name="dialog_reset_title">¿Restablecer todos los datos?</string>
@@ -136,5 +154,9 @@
 
     <!-- Inputs -->
     <string name="input_amount">Cantidad</string>
-    <string name="currency_prefix">$  </string>
+    <string name="settings_recent_exports">Exportaciones recientes</string>
+    <string name="action_open">Abrir</string>
+    <string name="open_with">Abrir con</string>
+    <string name="error_file_not_found">Archivo no encontrado. Puede haber sido eliminado.</string>
+    <string name="msg_no_app_found">No se encontró una app para abrir este archivo.</string>
 </resources>

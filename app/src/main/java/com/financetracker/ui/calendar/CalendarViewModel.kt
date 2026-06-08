@@ -42,6 +42,7 @@ class CalendarViewModel @Inject constructor(private val transactionRepository: T
     fun previousMonth() {
         loadMonth(_uiState.value.yearMonth.minusMonths(1))
     }
+
     fun nextMonth() {
         loadMonth(_uiState.value.yearMonth.plusMonths(1))
     }

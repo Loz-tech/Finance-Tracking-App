@@ -1,7 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">FinanceTrackingApp</string>
     <string name="widget_quick_add_label">Quick Add Transaction</string>
-    <string name="widget_icon_background">widget icon background</string>
 
     <!-- Navigation -->
     <string name="nav_home">Home</string>
@@ -24,7 +23,6 @@
     <string name="home_history">History</string>
 
     <!-- Analytics -->
-    <string name="period_today">Today</string>
     <string name="period_week">Week</string>
     <string name="period_month">Month</string>
     <string name="period_year">Year</string>
@@ -41,7 +39,6 @@
     <string name="search_placeholder">Search expenses…</string>
     <string name="search_date_range">Date range</string>
     <string name="search_custom">Custom</string>
-    <string name="search_clear">Clear</string>
     <string name="search_no_results_title">No transactions found</string>
     <string name="search_no_results_subtitle">Try adjusting your filters</string>
     <string name="search_prompt_title">Select a filter to search</string>
@@ -108,7 +105,29 @@
 
     <string name="msg_csv_exported">CSV exported to %1$s</string>
     <string name="msg_json_exported">JSON exported to %1$s</string>
+    <string name="error_export_failed">Export failed. Please try again.</string>
     <string name="msg_reset_complete">All data has been reset</string>
+    <string name="error_reset_failed">Failed to reset data. Please try again.</string>
+
+    <!-- Currency -->
+    <string name="settings_currency">Currency</string>
+    <string name="settings_currency_usd">🇺🇸 USD</string>
+    <string name="settings_currency_eur">🇪🇺 EUR</string>
+    <string name="settings_currency_gbp">🇬🇧 GBP</string>
+    <string name="settings_currency_jpy">🇯🇵 JPY</string>
+    <string name="settings_currency_cny">🇨🇳 CNY</string>
+    <string name="settings_manual_rate">Manual rate</string>
+    <string name="settings_manual_rate_hint">Enter custom rate</string>
+    <string name="settings_refresh_rates">Refresh rates</string>
+    <string name="settings_rates_disclaimer">Rates are indicative midpoints from free APIs and may differ from bank rates.</string>
+    <string name="settings_last_updated">Last updated: %1$s</string>
+    <string name="dialog_currency_change_title">Change Currency?</string>
+    <string name="dialog_currency_change_body">This will recalculate all transaction and budget amounts. Original amounts are preserved.</string>
+    <string name="dialog_currency_change_confirm">Change</string>
+    <string name="msg_currency_changed">Currency changed to %1$s</string>
+    <string name="error_currency_change">Failed to change currency. Please try again.</string>
+    <string name="msg_rates_refreshed">Rates refreshed</string>
+    <string name="error_rates_refresh">Failed to refresh rates</string>
 
     <!-- Dialogs -->
     <string name="dialog_reset_title">Reset All Data?</string>
@@ -136,5 +155,10 @@
 
     <!-- Inputs -->
     <string name="input_amount">Amount</string>
-    <string name="currency_prefix">$  </string>
+
+    <string name="settings_recent_exports">Recent exports</string>
+    <string name="action_open">Open</string>
+    <string name="open_with">Open with</string>
+    <string name="error_file_not_found">File not found. It may have been deleted.</string>
+    <string name="msg_no_app_found">No app found to open this file.</string>
 </resources>

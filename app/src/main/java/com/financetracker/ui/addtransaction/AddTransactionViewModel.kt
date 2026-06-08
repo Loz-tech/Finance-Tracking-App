@@ -7,6 +7,7 @@ import com.financetracker.R
 import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
+import com.financetracker.domain.repository.SettingsRepository
 import com.financetracker.domain.repository.TransactionRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -15,6 +16,7 @@ import java.time.LocalDate
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class AddTransactionUiState(
@@ -33,6 +35,7 @@ data class AddTransactionUiState(
 class AddTransactionViewModel @Inject constructor(
     private val transactionRepository: TransactionRepository,
     private val categoryRepository: CategoryRepository,
+    private val settingsRepository: SettingsRepository,
     @ApplicationContext private val appContext: Context
 ) : ViewModel() {
 
@@ -101,9 +104,22 @@ class AddTransactionViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
+            val prefs = settingsRepository.userPreferences.first()
+            val originalAmount: BigDecimal
+            val originalCurrencyCode: String
+            if (state.editTransactionId != null) {
+                val existing = transactionRepository.getTransactionById(state.editTransactionId)
+                originalAmount = existing?.originalAmount ?: amount
+                originalCurrencyCode = existing?.originalCurrencyCode ?: prefs.currencyCode
+            } else {
+                originalAmount = amount
+                originalCurrencyCode = prefs.currencyCode
+            }
             val transaction = Transaction(
                 id = state.editTransactionId ?: java.util.UUID.randomUUID(),
                 amount = amount,
+                originalAmount = originalAmount,
+                originalCurrencyCode = originalCurrencyCode,
                 note = state.note,
                 date = state.date,
                 category = category

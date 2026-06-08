@@ -21,8 +21,8 @@ import com.financetracker.ui.theme.FinanceTrackingAppTheme
 fun CircularProgressLabel(
     progress: Float,
     centerText: String,
-    subText: String? = null,
     modifier: Modifier = Modifier,
+    subText: String? = null,
     size: Dp = 100.dp,
     strokeWidth: Dp = 8.dp,
     color: Color = MaterialTheme.colorScheme.primary,

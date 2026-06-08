@@ -11,6 +11,8 @@ import java.util.UUID
 data class TransactionEntity(
     @PrimaryKey val id: UUID = UUID.randomUUID(),
     val amount: BigDecimal,
+    val originalAmount: BigDecimal,
+    val originalCurrencyCode: String,
     val note: String = "",
     val date: LocalDate,
     val categoryId: UUID,

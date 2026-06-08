@@ -24,12 +24,14 @@ class CsvExporter @Inject constructor(@ApplicationContext private val context: C
     companion object {
         internal fun buildCsvContent(transactions: List<Transaction>): String {
             val csv = StringBuilder()
-            csv.appendLine("Date,Category,Icon,Amount,Note")
+            csv.appendLine("Date,Category,Icon,Amount,OriginalAmount,Currency,Note")
             transactions.forEach { txn ->
                 csv.appendLine(
                     "${txn.date},${csvField(
                         txn.category.name
-                    )},${csvField(txn.category.iconName)},${txn.amount},${csvField(txn.note)}"
+                    )},${csvField(
+                        txn.category.iconName
+                    )},${txn.amount},${txn.originalAmount},${txn.originalCurrencyCode},${csvField(txn.note)}"
                 )
             }
             return csv.toString()

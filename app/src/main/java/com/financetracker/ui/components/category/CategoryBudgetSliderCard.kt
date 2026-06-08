@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -50,7 +51,7 @@ fun CategoryBudgetSliderCard(
     modifier: Modifier = Modifier,
     presets: List<Int> = listOf(50, 100, 200, 500)
 ) {
-    var draftLimit by remember(category.id) { mutableStateOf(limit.toFloat()) }
+    var draftLimit by remember(category.id) { mutableFloatStateOf(limit.toFloat()) }
     var draftText by remember(category.id) { mutableStateOf(limit.toPlainString()) }
     var expanded by remember(category.id) { mutableStateOf(false) }
     val currencyFormatter = rememberCurrencyFormatter()

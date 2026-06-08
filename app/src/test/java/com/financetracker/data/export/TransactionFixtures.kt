@@ -7,10 +7,10 @@ import java.time.LocalDate
 import java.util.UUID
 
 object TransactionFixtures {
-    fun cat(name: String = "Food", emoji: String = "🍔") = Category(
+    fun cat(name: String = "Food", iconName: String = "🍔") = Category(
         id = UUID.fromString("00000000-0000-0000-0000-000000000001"),
         name = name,
-        emoji = emoji,
+        iconName = iconName,
         colorHex = "#FF5722",
         isDefault = false,
         sortOrder = 0

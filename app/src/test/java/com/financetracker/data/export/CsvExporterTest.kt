@@ -11,7 +11,7 @@ class CsvExporterTest {
         val output = CsvExporter.buildCsvContent(emptyList())
         val lines = output.lines().filter { it.isNotBlank() }
         assertEquals(1, lines.size)
-        assertEquals("Date,Category,Emoji,Amount,Note", lines[0])
+        assertEquals("Date,Category,Icon,Amount,OriginalAmount,Currency,Note", lines[0])
     }
 
     @Test
@@ -21,9 +21,9 @@ class CsvExporterTest {
 
         val lines = output.lines().filter { it.isNotBlank() }
         assertEquals(2, lines.size)
-        assertEquals("Date,Category,Emoji,Amount,Note", lines[0])
+        assertEquals("Date,Category,Icon,Amount,OriginalAmount,Currency,Note", lines[0])
         assertTrue(lines[1].startsWith("2026-05-18,"))
-        assertTrue(lines[1].contains(",\"Food\",\"🍔\",10.50,\"lunch\""))
+        assertTrue(lines[1].contains(",\"Food\",\"🍔\",10.50,10.50,USD,\"lunch\""))
     }
 
     @Test
@@ -56,7 +56,7 @@ class CsvExporterTest {
         val txn = TransactionFixtures.txn("10.50", category = cat)
         val output = CsvExporter.buildCsvContent(listOf(txn))
 
-        assertTrue(output.contains("2026-05-18,\"Food, Drinks\""))
+        assertTrue(output.contains("2026-05-18,\"Food, Drinks\",\"🍔\",10.50,10.50,USD"))
     }
 
     @Test
@@ -65,12 +65,12 @@ class CsvExporterTest {
         val txn = TransactionFixtures.txn("10.50", category = cat)
         val output = CsvExporter.buildCsvContent(listOf(txn))
 
-        assertTrue(output.contains("2026-05-18,\"Salary \"\"Net\"\"\",\""))
+        assertTrue(output.contains("2026-05-18,\"Salary \"\"Net\"\"\",\"🍔\",10.50,10.50,USD"))
     }
 
     @Test
     fun `export category emoji with comma is quoted`() {
-        val cat = TransactionFixtures.cat(emoji = "🍔,🍕")
+        val cat = TransactionFixtures.cat(iconName = "🍔,🍕")
         val txn = TransactionFixtures.txn("10.50", category = cat)
         val output = CsvExporter.buildCsvContent(listOf(txn))
 

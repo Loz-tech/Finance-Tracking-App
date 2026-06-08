@@ -34,7 +34,7 @@ class SearchTransactionsUseCaseTest {
                         amount = BigDecimal.TEN,
                         note = query,
                         date = start ?: today,
-                        category = Category(name = "Test", emoji = "🧪")
+                        category = Category(name = "Test", iconName = "🧪")
                     )
                 )
             )
@@ -58,6 +58,10 @@ class SearchTransactionsUseCaseTest {
         override suspend fun deleteTransaction(transaction: Transaction) {}
 
         override suspend fun deleteAllTransactions() {}
+
+        override suspend fun updateTransactionAmount(id: UUID, amount: BigDecimal) {}
+
+        override suspend fun updateTransactionAmounts(updates: List<Pair<UUID, BigDecimal>>) {}
     }
 
     @Test

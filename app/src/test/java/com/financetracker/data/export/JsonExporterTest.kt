@@ -22,8 +22,10 @@ class JsonExporterTest {
 
         assertTrue(output.contains("\"date\": \"2026-05-18\""))
         assertTrue(output.contains("\"category\": \"Food\""))
-        assertTrue(output.contains("\"emoji\": \"🍔\""))
+        assertTrue(output.contains("\"iconName\": \"🍔\""))
         assertTrue(output.contains("\"amount\": 10.50"))
+        assertTrue(output.contains("\"originalAmount\": 10.50"))
+        assertTrue(output.contains("\"originalCurrencyCode\": \"USD\""))
         assertTrue(output.contains("\"note\": \"\""))
     }
 

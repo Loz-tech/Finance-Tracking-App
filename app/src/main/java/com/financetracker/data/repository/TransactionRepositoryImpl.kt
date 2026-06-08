@@ -7,6 +7,7 @@ import com.financetracker.domain.model.Category
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
+import java.math.BigDecimal
 import java.time.Instant
 import java.time.LocalDate
 import java.util.UUID
@@ -38,16 +39,23 @@ class TransactionRepositoryImpl @Inject constructor(
     ): Flow<List<Transaction>> {
         val hasDateRange = start != null && end != null
         return when {
-            hasDateRange && categoryIds.isNotEmpty() ->
+            hasDateRange && categoryIds.isNotEmpty() -> {
                 transactionDao.searchByTextCategoriesAndDateRange(query, categoryIds, start, end).map {
                     it.mapToDomain()
                 }
-            hasDateRange && categoryIds.isEmpty() ->
+            }
+
+            hasDateRange && categoryIds.isEmpty() -> {
                 transactionDao.searchByTextAndDateRange(query, start!!, end!!).map { it.mapToDomain() }
-            !hasDateRange && categoryIds.isNotEmpty() ->
+            }
+
+            !hasDateRange && categoryIds.isNotEmpty() -> {
                 transactionDao.searchByTextAndCategories(query, categoryIds).map { it.mapToDomain() }
-            else ->
+            }
+
+            else -> {
                 transactionDao.searchByTextOnly(query).map { it.mapToDomain() }
+            }
         }
     }
 
@@ -79,9 +87,19 @@ class TransactionRepositoryImpl @Inject constructor(
         transactionDao.deleteAll()
     }
 
+    override suspend fun updateTransactionAmount(id: UUID, amount: BigDecimal) {
+        transactionDao.updateAmount(id, amount)
+    }
+
+    override suspend fun updateTransactionAmounts(updates: List<Pair<UUID, BigDecimal>>) {
+        transactionDao.updateAmounts(updates)
+    }
+
     private fun TransactionSearchResult.toDomain(): Transaction = Transaction(
         id = id,
         amount = amount,
+        originalAmount = originalAmount,
+        originalCurrencyCode = originalCurrencyCode,
         note = note,
         date = date,
         category = Category(
@@ -106,6 +124,8 @@ class TransactionRepositoryImpl @Inject constructor(
         return Transaction(
             id = id,
             amount = amount,
+            originalAmount = originalAmount,
+            originalCurrencyCode = originalCurrencyCode,
             note = note,
             date = date,
             category = category,
@@ -116,6 +136,8 @@ class TransactionRepositoryImpl @Inject constructor(
     private fun Transaction.toEntity() = TransactionEntity(
         id = id,
         amount = amount,
+        originalAmount = originalAmount,
+        originalCurrencyCode = originalCurrencyCode,
         note = note,
         date = date,
         categoryId = category.id,
