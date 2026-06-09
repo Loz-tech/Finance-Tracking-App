@@ -25,6 +25,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,6 +36,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.financetracker.R
 import com.financetracker.data.local.prefs.UserPreferences
 import com.financetracker.domain.model.ExportFormat
+import com.financetracker.ui.components.core.ExpandableSettingsCard
 import com.financetracker.ui.components.core.SettingsCard
 import com.financetracker.ui.components.input.AccentColorPicker
 import com.financetracker.ui.components.input.FilterChipGroup
@@ -60,6 +62,9 @@ fun SettingsScreen(
     var pendingCurrency by remember { mutableStateOf("") }
     val context = LocalContext.current
     var message by remember { mutableStateOf<String?>(null) }
+    var expandedLanguage by rememberSaveable { mutableStateOf(false) }
+    var expandedCurrency by rememberSaveable { mutableStateOf(false) }
+    var expandedExport by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         viewModel.events.collect { event ->
@@ -145,7 +150,11 @@ fun SettingsScreen(
         }
 
         // Language selector
-        SettingsCard(title = stringResource(R.string.settings_language)) {
+        ExpandableSettingsCard(
+            title = stringResource(R.string.settings_language),
+            expanded = expandedLanguage,
+            onToggle = { expandedLanguage = !expandedLanguage }
+        ) {
             val languages = listOf(
                 "" to stringResource(R.string.settings_language_system),
                 "en" to stringResource(R.string.language_en),
@@ -175,7 +184,11 @@ fun SettingsScreen(
         }
 
         // Currency selector
-        SettingsCard(title = stringResource(R.string.settings_currency)) {
+        ExpandableSettingsCard(
+            title = stringResource(R.string.settings_currency),
+            expanded = expandedCurrency,
+            onToggle = { expandedCurrency = !expandedCurrency }
+        ) {
             val currencies = listOf(
                 "USD" to stringResource(R.string.settings_currency_usd),
                 "EUR" to stringResource(R.string.settings_currency_eur),
@@ -271,7 +284,11 @@ fun SettingsScreen(
         }
 
         // Export
-        SettingsCard(title = stringResource(R.string.settings_export_data)) {
+        ExpandableSettingsCard(
+            title = stringResource(R.string.settings_export_data),
+            expanded = expandedExport,
+            onToggle = { expandedExport = !expandedExport }
+        ) {
             Button(
                 onClick = { viewModel.exportCsv() },
                 modifier = Modifier.fillMaxWidth(),
