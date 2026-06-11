@@ -28,7 +28,7 @@ import com.financetracker.domain.model.DateFilter
 import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.QuickChip
 import com.financetracker.ui.components.core.EmptyState
-import com.financetracker.ui.components.core.TransactionCard
+import com.financetracker.ui.components.core.SwipeableTransactionCard
 import com.financetracker.ui.components.input.DateFilterChipRow
 import com.financetracker.ui.components.input.DateRangePicker
 import com.financetracker.ui.components.input.FilterChipGroup
@@ -47,6 +47,7 @@ fun SearchScreen(
     val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
 
     var showDateRangePicker by remember { mutableStateOf(false) }
+    var currentlySwipedId by remember { mutableStateOf<UUID?>(null) }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         SearchTextField(
@@ -77,9 +78,11 @@ fun SearchScreen(
                         uiState.dateFilter is DateFilter.Quick &&
                             (uiState.dateFilter as DateFilter.Quick).chip == item
                     }
+
                     customLabel -> {
                         uiState.dateFilter is DateFilter.Custom
                     }
+
                     else -> {
                         false
                     }
@@ -90,6 +93,7 @@ fun SearchScreen(
                     is QuickChip -> {
                         viewModel.onQuickChipSelected(item)
                     }
+
                     customLabel -> {
                         if (uiState.dateFilter !is DateFilter.Custom) {
                             showDateRangePicker = true
@@ -100,12 +104,15 @@ fun SearchScreen(
             label = { item ->
                 when (item) {
                     is QuickChip -> item.label
+
                     customLabel -> when (val df = uiState.dateFilter) {
                         is DateFilter.Custom -> "${df.start.format(
                             dateFormatter
                         )} \u2013 ${df.end.format(dateFormatter)}"
+
                         else -> customLabel
                     }
+
                     else -> item.toString()
                 }
             },
@@ -144,12 +151,15 @@ fun SearchScreen(
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 items(uiState.results, key = { it.id }) { transaction ->
-                    TransactionCard(
+                    SwipeableTransactionCard(
                         transaction = transaction,
                         iconStyle = IconStyle.FILLED,
                         iconSize = 36.dp,
                         cardCornerRadius = 8.dp,
-                        onClick = { onEditTransaction(transaction.id) }
+                        onEdit = { onEditTransaction(transaction.id) },
+                        onDelete = { viewModel.deleteTransaction(transaction) },
+                        currentlySwipedId = currentlySwipedId,
+                        onSwipeOpened = { currentlySwipedId = it }
                     )
                 }
             }
