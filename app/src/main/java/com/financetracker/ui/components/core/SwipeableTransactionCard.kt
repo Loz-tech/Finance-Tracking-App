@@ -121,6 +121,9 @@ fun SwipeableTransactionCard(
         )
 
         // Background actions — each 50 % width.
+        // clickable is enabled only when the card is settling to / at Open.
+        // When closed the foreground covers this layer in hit-testing, so these
+        // clickables are naturally unreachable.
         Row(
             modifier = Modifier.matchParentSize(),
             horizontalArrangement = Arrangement.End,
@@ -133,7 +136,7 @@ fun SwipeableTransactionCard(
                     .weight(1f)
                     .background(MaterialTheme.colorScheme.primaryContainer)
                     .clickable(
-                        enabled = state.currentValue == SwipeAnchor.Open
+                        enabled = state.targetValue == SwipeAnchor.Open
                     ) {
                         scope.launch {
                             state.snapTo(SwipeAnchor.Closed)
@@ -156,7 +159,7 @@ fun SwipeableTransactionCard(
                     .weight(1f)
                     .background(MaterialTheme.colorScheme.errorContainer)
                     .clickable(
-                        enabled = state.currentValue == SwipeAnchor.Open
+                        enabled = state.targetValue == SwipeAnchor.Open
                     ) {
                         scope.launch {
                             state.snapTo(SwipeAnchor.Closed)
@@ -175,17 +178,19 @@ fun SwipeableTransactionCard(
         }
 
         // Foreground card — shifts via offset.
+        // anchoredDraggable is outermost so it receives pointer events first
+        // and handles drags; taps that it does not consume fall through.
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .offset {
+                    IntOffset(state.requireOffset().roundToInt(), 0)
+                }
                 .anchoredDraggable(
                     state = state,
                     orientation = Orientation.Horizontal,
                     flingBehavior = flingBehavior
                 )
-                .offset {
-                    IntOffset(state.requireOffset().roundToInt(), 0)
-                }
                 .semantics(mergeDescendants = true) {
                     customActions = listOf(
                         CustomAccessibilityAction(
