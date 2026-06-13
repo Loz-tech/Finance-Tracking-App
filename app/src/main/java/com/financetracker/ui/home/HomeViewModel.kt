@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 data class CategoryBudgetProgress(
     val categoryId: UUID,
@@ -85,5 +86,11 @@ class HomeViewModel @Inject constructor(
             )
         }.onEach { _uiState.value = it }
             .launchIn(viewModelScope)
+    }
+
+    fun deleteTransaction(transaction: Transaction) {
+        viewModelScope.launch {
+            transactionRepository.deleteTransaction(transaction)
+        }
     }
 }

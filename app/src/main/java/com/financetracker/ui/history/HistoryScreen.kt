@@ -8,11 +8,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -20,7 +21,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.financetracker.R
 import com.financetracker.ui.components.core.DateGroupHeader
 import com.financetracker.ui.components.core.EmptyState
-import com.financetracker.ui.components.core.TransactionCard
+import com.financetracker.ui.components.core.SwipeableTransactionCard
 import com.financetracker.ui.components.input.MonthNavigator
 import com.financetracker.ui.components.util.rememberIconStyle
 import java.util.UUID
@@ -32,8 +33,8 @@ fun HistoryScreen(
     viewModel: HistoryViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() }
     val iconStyle = rememberIconStyle()
+    var currentlySwipedId by remember { mutableStateOf<UUID?>(null) }
 
     Column(modifier = modifier.fillMaxSize()) {
         MonthNavigator(
@@ -59,11 +60,13 @@ fun HistoryScreen(
                     items = group.transactions,
                     key = { it.id }
                 ) { transaction ->
-                    TransactionCard(
+                    SwipeableTransactionCard(
                         transaction = transaction,
                         iconStyle = iconStyle,
-                        onClick = { onEditTransaction(transaction.id) },
-                        onDelete = { viewModel.deleteTransaction(transaction) }
+                        onEdit = { onEditTransaction(transaction.id) },
+                        onDelete = { viewModel.deleteTransaction(transaction) },
+                        currentlySwipedId = currentlySwipedId,
+                        onSwipeOpened = { currentlySwipedId = it }
                     )
                 }
             }

@@ -5,11 +5,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -17,7 +18,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.financetracker.R
 import com.financetracker.ui.addtransaction.AddTransactionSheet
 import com.financetracker.ui.analytics.AnalyticsScreen
 import com.financetracker.ui.budget.BudgetScreen
@@ -29,48 +29,42 @@ import com.financetracker.ui.search.SearchScreen
 import com.financetracker.ui.settings.SettingsScreen
 
 @Composable
-fun AppNavHost() {
+fun AppNavHost(coordinator: NavigationCoordinator = hiltViewModel()) {
     val navController = rememberNavController()
     val snackbarHostState = remember { SnackbarHostState() }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
+    val currentRoute = navBackStackEntry?.destination?.route
+    val chrome = coordinator.chromeState(currentRoute)
 
-    val showBottomBar = currentDestination?.hierarchy?.any { dest ->
-        bottomNavItems.any { it.screen.route == dest.route }
-    } == true
-
-    val showTopBar = currentDestination?.route in listOf(
-        Screen.History.route,
-        Screen.Categories.route,
-        Screen.Budget.route,
-        Screen.Calendar.route
-    )
-
-    val showFAB = currentDestination?.route == Screen.Home.route || currentDestination?.route == Screen.Categories.route
-
-    val topBarTitle = when (currentDestination?.route) {
-        Screen.History.route -> stringResource(R.string.title_history)
-        Screen.Categories.route -> stringResource(R.string.title_categories)
-        Screen.Budget.route -> stringResource(R.string.title_budget)
-        Screen.Calendar.route -> stringResource(R.string.title_calendar)
-        else -> ""
+    LaunchedEffect(Unit) {
+        coordinator.navigationTargets.collect { target ->
+            when (target) {
+                NavigationTarget.Back -> navController.popBackStack()
+                NavigationTarget.AddTransaction -> navController.navigate(Screen.AddTransaction.route)
+                is NavigationTarget.EditTransaction -> navController.navigate(
+                    "${Screen.AddTransaction.route}/${target.id}"
+                )
+                NavigationTarget.Budget -> navController.navigate(Screen.Budget.route)
+                NavigationTarget.History -> navController.navigate(Screen.History.route)
+            }
+        }
     }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
-            if (showTopBar) {
+            if (chrome.showsTopBar) {
                 AppTopBar(
-                    title = topBarTitle,
+                    title = chrome.titleRes?.let { stringResource(it) } ?: "",
                     showBackButton = true,
-                    onBackClick = { navController.popBackStack() }
+                    onBackClick = { coordinator.navigate(NavigationTarget.Back) }
                 )
             }
         },
         bottomBar = {
-            if (showBottomBar) {
+            if (chrome.showsBottomBar) {
                 BottomNavBar(
-                    currentRoute = currentDestination?.route,
+                    state = chrome.bottomNav,
                     onNavigate = { screen ->
                         navController.navigate(screen.route) {
                             popUpTo(navController.graph.findStartDestination().id) {
@@ -84,8 +78,8 @@ fun AppNavHost() {
             }
         },
         floatingActionButton = {
-            if (showFAB) {
-                AppFAB(onClick = { navController.navigate(Screen.AddTransaction.route) })
+            if (chrome.showsFab) {
+                AppFAB(onClick = { coordinator.navigate(NavigationTarget.AddTransaction) })
             }
         }
     ) { innerPadding ->
@@ -96,9 +90,11 @@ fun AppNavHost() {
         ) {
             composable(Screen.Home.route) {
                 HomeScreen(
-                    onAddTransaction = { navController.navigate(Screen.AddTransaction.route) },
-                    onEditTransaction = { id -> navController.navigate("${Screen.AddTransaction.route}/$id") },
-                    onNavigateToBudget = { navController.navigate(Screen.Budget.route) }
+                    onAddTransaction = { coordinator.navigate(NavigationTarget.AddTransaction) },
+                    onEditTransaction = { id ->
+                        coordinator.navigate(NavigationTarget.EditTransaction(id))
+                    },
+                    onNavigateToBudget = { coordinator.navigate(NavigationTarget.Budget) }
                 )
             }
             composable(Screen.Analytics.route) {
@@ -106,19 +102,23 @@ fun AppNavHost() {
             }
             composable(Screen.Search.route) {
                 SearchScreen(
-                    onEditTransaction = { id -> navController.navigate("${Screen.AddTransaction.route}/$id") }
+                    onEditTransaction = { id ->
+                        coordinator.navigate(NavigationTarget.EditTransaction(id))
+                    }
                 )
             }
             composable(Screen.Settings.route) {
                 SettingsScreen(
-                    onNavigateToBudget = { navController.navigate(Screen.Budget.route) },
-                    onNavigateToHistory = { navController.navigate(Screen.History.route) }
+                    onNavigateToBudget = { coordinator.navigate(NavigationTarget.Budget) },
+                    onNavigateToHistory = { coordinator.navigate(NavigationTarget.History) }
                 )
             }
             composable(Screen.History.route) {
-                HistoryScreen(onEditTransaction = { id ->
-                    navController.navigate("${Screen.AddTransaction.route}/$id")
-                })
+                HistoryScreen(
+                    onEditTransaction = { id ->
+                        coordinator.navigate(NavigationTarget.EditTransaction(id))
+                    }
+                )
             }
             composable(Screen.Categories.route) {
                 CategoriesScreen()
@@ -138,12 +138,14 @@ fun AppNavHost() {
                 }
 
                 AddTransactionSheet(
-                    onDismiss = { navController.popBackStack() },
+                    onDismiss = { coordinator.navigate(NavigationTarget.Back) },
                     editTransactionId = transactionId
                 )
             }
             composable(Screen.AddTransaction.route) {
-                AddTransactionSheet(onDismiss = { navController.popBackStack() })
+                AddTransactionSheet(
+                    onDismiss = { coordinator.navigate(NavigationTarget.Back) }
+                )
             }
         }
     }

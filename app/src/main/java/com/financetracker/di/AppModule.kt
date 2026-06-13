@@ -49,7 +49,9 @@ object AppModule {
         context,
         AppDatabase::class.java,
         "finance_tracker.db"
-    ).addMigrations(MIGRATION_2_3).build()
+    ).addMigrations(MIGRATION_2_3)
+        .fallbackToDestructiveMigrationOnDowngrade(false)
+        .build()
 
     @Provides
     fun provideTransactionDao(database: AppDatabase): TransactionDao = database.transactionDao()

@@ -1,5 +1,11 @@
 # Code Context
 
+## Architecture vocabulary
+
+- **NavigationCoordinator** — Hilt ViewModel that owns navigation chrome policy and emits typed navigation targets. Screens consume its `ChromeState`; `AppNavHost` adapts `NavigationTarget`s to the `NavController`.
+- **Destination** — one data object describing a screen route, chrome visibility, bottom nav icons, and title resource.
+- **NavigationTarget** — sealed class representing a navigation intent (`Back`, `AddTransaction`, `EditTransaction`, `Budget`, `History`). Screens emit these; the coordinator forwards them.
+
 ## Files Retrieved
 
 ### Screens audited (full files read)
