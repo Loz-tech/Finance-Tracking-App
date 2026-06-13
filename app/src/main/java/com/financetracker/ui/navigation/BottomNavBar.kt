@@ -11,37 +11,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.financetracker.R
 
 @Composable
-fun BottomNavBar(currentRoute: String?, onNavigate: (Screen) -> Unit, modifier: Modifier = Modifier) {
+fun BottomNavBar(state: BottomNavState, onNavigate: (Screen) -> Unit, modifier: Modifier = Modifier) {
     NavigationBar(
         modifier = modifier,
         containerColor = MaterialTheme.colorScheme.surface,
         tonalElevation = 3.dp
     ) {
-        bottomNavItems.forEach { item ->
-            val selected = currentRoute == item.screen.route
-            val label = when (item.screen) {
-                Screen.Home -> stringResource(R.string.nav_home)
-                Screen.Analytics -> stringResource(R.string.nav_analytics)
-                Screen.Search -> stringResource(R.string.nav_search)
-                Screen.Settings -> stringResource(R.string.nav_settings)
-                else -> item.label
-            }
+        state.items.forEach { item ->
+            val selected = state.selectedRoute == item.route
             NavigationBarItem(
                 selected = selected,
                 onClick = { onNavigate(item.screen) },
                 icon = {
                     Icon(
                         imageVector = if (selected) item.selectedIcon else item.unselectedIcon,
-                        contentDescription = label,
+                        contentDescription = stringResource(item.labelRes),
                         modifier = Modifier.size(24.dp)
                     )
                 },
                 label = {
                     Text(
-                        text = label,
+                        text = stringResource(item.labelRes),
                         style = MaterialTheme.typography.labelSmall
                     )
                 },
