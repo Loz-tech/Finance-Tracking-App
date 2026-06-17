@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.financetracker.R
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.TransactionRepository
+import com.financetracker.domain.usecase.DeleteTransactionUseCase
 import com.financetracker.domain.usecase.GetHistoryForMonthUseCase
+import com.financetracker.domain.usecase.MonthNavigatorController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.LocalDate
@@ -16,6 +18,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -33,17 +36,19 @@ data class HistoryUiState(
 class HistoryViewModel @Inject constructor(
     private val transactionRepository: TransactionRepository,
     private val getHistoryForMonthUseCase: GetHistoryForMonthUseCase,
+    private val deleteTransactionUseCase: DeleteTransactionUseCase,
     @ApplicationContext private val appContext: Context
 ) : ViewModel() {
 
-    private val _currentYearMonth = MutableStateFlow(YearMonth.now())
-    val currentYearMonth: StateFlow<YearMonth> = _currentYearMonth
+    private val monthNavigator = MonthNavigatorController()
+
+    val currentYearMonth: StateFlow<YearMonth> = monthNavigator.yearMonth
     private val _uiState = MutableStateFlow(HistoryUiState())
-    val uiState: StateFlow<HistoryUiState> = _uiState
+    val uiState: StateFlow<HistoryUiState> = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
-            _currentYearMonth
+            monthNavigator.yearMonth
                 .flatMapLatest { yearMonth ->
                     getHistoryForMonthUseCase(yearMonth).map { history ->
                         val today = LocalDate.now()
@@ -68,16 +73,16 @@ class HistoryViewModel @Inject constructor(
     }
 
     fun previousMonth() {
-        _currentYearMonth.value = _currentYearMonth.value.minusMonths(1)
+        monthNavigator.previous()
     }
 
     fun nextMonth() {
-        _currentYearMonth.value = _currentYearMonth.value.plusMonths(1)
+        monthNavigator.next()
     }
 
     fun deleteTransaction(transaction: Transaction) {
         viewModelScope.launch {
-            transactionRepository.deleteTransaction(transaction)
+            deleteTransactionUseCase(transaction)
         }
     }
 }

@@ -22,6 +22,7 @@ import com.financetracker.domain.repository.SettingsRepository
 import com.financetracker.domain.repository.TransactionRepository
 import com.financetracker.domain.usecase.CalculateBudgetProgressUseCase
 import com.financetracker.domain.usecase.ConvertAmountUseCase
+import com.financetracker.domain.usecase.DeleteTransactionUseCase
 import com.financetracker.domain.usecase.GetMonthlySummaryUseCase
 import com.financetracker.domain.usecase.SearchTransactionsUseCase
 import com.financetracker.domain.util.SystemTimeProvider
@@ -123,6 +124,11 @@ object AppModule {
     @Provides
     @Singleton
     fun provideConvertAmountUseCase(): ConvertAmountUseCase = ConvertAmountUseCase()
+
+    @Provides
+    @Singleton
+    fun provideDeleteTransactionUseCase(transactionRepository: TransactionRepository): DeleteTransactionUseCase =
+        DeleteTransactionUseCase(transactionRepository)
 
     @Provides
     @Singleton

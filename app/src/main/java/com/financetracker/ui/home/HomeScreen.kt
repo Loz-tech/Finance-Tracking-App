@@ -10,11 +10,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -27,6 +25,7 @@ import com.financetracker.ui.components.charts.DonutSegment
 import com.financetracker.ui.components.core.EmptyState
 import com.financetracker.ui.components.core.RecentActivityHeader
 import com.financetracker.ui.components.core.SwipeableTransactionCard
+import com.financetracker.ui.components.core.rememberSwipeableTransactionListState
 import com.financetracker.ui.theme.ChartColors
 import java.util.UUID
 
@@ -40,7 +39,11 @@ fun HomeScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val iconStyle = com.financetracker.ui.components.util.rememberIconStyle()
-    var currentlySwipedId by remember { mutableStateOf<UUID?>(null) }
+    val listState = rememberSwipeableTransactionListState(viewModel::deleteTransaction)
+
+    LaunchedEffect(uiState.recentTransactions) {
+        listState.onListChanged(uiState.recentTransactions)
+    }
 
     if (!uiState.hasTransactions && !uiState.isLoading) {
         EmptyState(
@@ -117,9 +120,9 @@ fun HomeScreen(
                 transaction = transaction,
                 iconStyle = iconStyle,
                 onEdit = { onEditTransaction(transaction.id) },
-                onDelete = { viewModel.deleteTransaction(transaction) },
-                currentlySwipedId = currentlySwipedId,
-                onSwipeOpened = { currentlySwipedId = it },
+                onDelete = { listState.delete(transaction) },
+                currentlySwipedId = listState.currentlySwipedId,
+                onSwipeOpened = { listState.open(it) },
                 modifier = Modifier.background(recentColor, shape = itemShape),
                 shape = itemShape,
                 useCard = false,

@@ -6,6 +6,7 @@ import com.financetracker.domain.model.CategoryBreakdown
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.TransactionRepository
 import com.financetracker.domain.usecase.CalculateBudgetProgressUseCase
+import com.financetracker.domain.usecase.DeleteTransactionUseCase
 import com.financetracker.domain.usecase.GetMonthlySummaryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.math.BigDecimal
@@ -43,7 +44,8 @@ data class HomeUiState(
 class HomeViewModel @Inject constructor(
     private val getMonthlySummaryUseCase: GetMonthlySummaryUseCase,
     private val calculateBudgetProgressUseCase: CalculateBudgetProgressUseCase,
-    private val transactionRepository: TransactionRepository
+    private val transactionRepository: TransactionRepository,
+    private val deleteTransactionUseCase: DeleteTransactionUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
@@ -90,7 +92,7 @@ class HomeViewModel @Inject constructor(
 
     fun deleteTransaction(transaction: Transaction) {
         viewModelScope.launch {
-            transactionRepository.deleteTransaction(transaction)
+            deleteTransactionUseCase(transaction)
         }
     }
 }

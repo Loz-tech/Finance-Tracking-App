@@ -4,13 +4,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.usecase.GetCalendarMonthDataUseCase
+import com.financetracker.domain.usecase.MonthNavigatorController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.YearMonth
 import javax.inject.Inject
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 data class CalendarDay(
@@ -28,23 +32,48 @@ data class CalendarUiState(
     val isLoading: Boolean = true
 )
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class CalendarViewModel @Inject constructor(private val getCalendarMonthDataUseCase: GetCalendarMonthDataUseCase) :
     ViewModel() {
 
+    private val monthNavigator = MonthNavigatorController()
+
     private val _uiState = MutableStateFlow(CalendarUiState())
-    val uiState: StateFlow<CalendarUiState> = _uiState
+    val uiState: StateFlow<CalendarUiState> = _uiState.asStateFlow()
 
     init {
-        loadMonth(YearMonth.now())
+        viewModelScope.launch {
+            monthNavigator.yearMonth
+                .flatMapLatest { yearMonth ->
+                    flow {
+                        val data = getCalendarMonthDataUseCase(yearMonth)
+                        val start = yearMonth.atDay(1)
+                        val end = yearMonth.atEndOfMonth()
+                        val allDays = start.datesUntil(end.plusDays(1)).toList()
+                        val days = allDays.map { date ->
+                            val total = data.dayTotals[date] ?: 0.0
+                            val intensity = if (data.monthMax > 0) {
+                                ((total / data.monthMax) * 4).toInt().coerceIn(0, 4)
+                            } else {
+                                0
+                            }
+                            val dayTransactions = data.transactionsByDate[date] ?: emptyList()
+                            CalendarDay(date, total, dayTransactions, intensity)
+                        }
+                        emit(CalendarUiState(yearMonth, days, null, false))
+                    }
+                }
+                .collect { _uiState.value = it }
+        }
     }
 
     fun previousMonth() {
-        loadMonth(_uiState.value.yearMonth.minusMonths(1))
+        monthNavigator.previous()
     }
 
     fun nextMonth() {
-        loadMonth(_uiState.value.yearMonth.plusMonths(1))
+        monthNavigator.next()
     }
 
     fun onDayClicked(day: CalendarDay) {
@@ -52,26 +81,6 @@ class CalendarViewModel @Inject constructor(private val getCalendarMonthDataUseC
             _uiState.value.copy(selectedDay = null)
         } else {
             _uiState.value.copy(selectedDay = day)
-        }
-    }
-
-    private var loadMonthJob: Job? = null
-
-    private fun loadMonth(yearMonth: YearMonth) {
-        loadMonthJob?.cancel()
-        loadMonthJob = viewModelScope.launch {
-            val data = getCalendarMonthDataUseCase(yearMonth)
-            val start = yearMonth.atDay(1)
-            val end = yearMonth.atEndOfMonth()
-            val allDays = start.datesUntil(end.plusDays(1)).toList()
-            val days = allDays.map { date ->
-                val total = data.dayTotals[date] ?: 0.0
-                val intensity = if (data.monthMax > 0) ((total / data.monthMax) * 4).toInt().coerceIn(0, 4) else 0
-                val dayTransactions = data.transactionsByDate[date] ?: emptyList()
-                CalendarDay(date, total, dayTransactions, intensity)
-            }
-
-            _uiState.value = CalendarUiState(yearMonth, days, null, false)
         }
     }
 }

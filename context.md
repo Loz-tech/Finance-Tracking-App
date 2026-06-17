@@ -5,6 +5,9 @@
 - **NavigationCoordinator** — Hilt ViewModel that owns navigation chrome policy and emits typed navigation targets. Screens consume its `ChromeState`; `AppNavHost` adapts `NavigationTarget`s to the `NavController`.
 - **Destination** — one data object describing a screen route, chrome visibility, bottom nav icons, and title resource.
 - **NavigationTarget** — sealed class representing a navigation intent (`Back`, `AddTransaction`, `EditTransaction`, `Budget`, `History`). Screens emit these; the coordinator forwards them.
+- **SwipeableTransactionListState** — Compose state holder that owns the swipe-to-action mutex (only one card open across a list) plus the delete action. Per-screen instance via `rememberSwipeableTransactionListState(onDelete)`. Closes any open card when the backing list no longer contains its id. Edit action stays a screen lambda (navigation concern, not controller concern).
+- **MonthNavigatorController** — Pure-Kotlin state holder exposing `yearMonth: StateFlow<YearMonth>` + `previous/next/set`. Each month-scoped ViewModel owns its own instance (History and Calendar navigate independently). Drives data loading via Flow operators (`flatMapLatest`) rather than imperative `Job` cancellation.
+- **UiStateHolder** — Composable state holder (`class UiStateHolder<S>(initial, scope)`) wrapping a `MutableStateFlow<S>` plus a cancellable `load(flow)` method. Used by ViewModels that stream data from a use case (Analytics). Composition, not inheritance — does not violate §16 "No base ViewModel". The `*UiState` payload type holds domain/loading fields; `UiStateHolder` owns only the cancel-and-collect plumbing.
 
 ## Files Retrieved
 

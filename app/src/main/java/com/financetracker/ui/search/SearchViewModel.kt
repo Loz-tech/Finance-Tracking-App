@@ -9,6 +9,7 @@ import com.financetracker.domain.model.SearchCriteria
 import com.financetracker.domain.model.Transaction
 import com.financetracker.domain.repository.CategoryRepository
 import com.financetracker.domain.repository.TransactionRepository
+import com.financetracker.domain.usecase.DeleteTransactionUseCase
 import com.financetracker.domain.usecase.SearchTransactionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.UUID
@@ -37,7 +38,8 @@ data class SearchUiState(
 class SearchViewModel @Inject constructor(
     private val searchTransactionsUseCase: SearchTransactionsUseCase,
     private val categoryRepository: CategoryRepository,
-    private val transactionRepository: TransactionRepository
+    private val transactionRepository: TransactionRepository,
+    private val deleteTransactionUseCase: DeleteTransactionUseCase
 ) : ViewModel() {
 
     private val queryFlow = MutableStateFlow("")
@@ -110,7 +112,7 @@ class SearchViewModel @Inject constructor(
 
     fun deleteTransaction(transaction: Transaction) {
         viewModelScope.launch {
-            transactionRepository.deleteTransaction(transaction)
+            deleteTransactionUseCase(transaction)
         }
     }
 }

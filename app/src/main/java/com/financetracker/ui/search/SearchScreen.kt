@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,6 +30,7 @@ import com.financetracker.domain.model.IconStyle
 import com.financetracker.domain.model.QuickChip
 import com.financetracker.ui.components.core.EmptyState
 import com.financetracker.ui.components.core.SwipeableTransactionCard
+import com.financetracker.ui.components.core.rememberSwipeableTransactionListState
 import com.financetracker.ui.components.input.DateFilterChipRow
 import com.financetracker.ui.components.input.DateRangePicker
 import com.financetracker.ui.components.input.FilterChipGroup
@@ -45,9 +47,13 @@ fun SearchScreen(
     val uiState by viewModel.uiState.collectAsState()
     val searchFocusRequester = remember { FocusRequester() }
     val dateFormatter = remember { DateTimeFormatter.ofPattern("MMM d") }
+    val listState = rememberSwipeableTransactionListState(viewModel::deleteTransaction)
 
     var showDateRangePicker by remember { mutableStateOf(false) }
-    var currentlySwipedId by remember { mutableStateOf<UUID?>(null) }
+
+    LaunchedEffect(uiState.results) {
+        listState.onListChanged(uiState.results)
+    }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         SearchTextField(
@@ -157,9 +163,9 @@ fun SearchScreen(
                         iconSize = 36.dp,
                         cardCornerRadius = 8.dp,
                         onEdit = { onEditTransaction(transaction.id) },
-                        onDelete = { viewModel.deleteTransaction(transaction) },
-                        currentlySwipedId = currentlySwipedId,
-                        onSwipeOpened = { currentlySwipedId = it }
+                        onDelete = { listState.delete(transaction) },
+                        currentlySwipedId = listState.currentlySwipedId,
+                        onSwipeOpened = { listState.open(it) }
                     )
                 }
             }
